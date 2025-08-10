@@ -1,3 +1,9 @@
+## v0.3.4 (2025-08-10)
+
+### Fix
+
+- **compat**: add backward compatibility for untyped Django usage
+
 ## v0.3.3 (2025-08-09)
 
 ### Fix

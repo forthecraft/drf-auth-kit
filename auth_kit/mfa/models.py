@@ -12,16 +12,24 @@ from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.db.models import (
     CASCADE,
-    BooleanField,
-    CharField,
     CheckConstraint,
-    ForeignKey,
     Index,
-    JSONField,
     Manager,
     Model,
     Q,
     UniqueConstraint,
+)
+from django.db.models import (
+    BooleanField as BaseBooleanField,
+)
+from django.db.models import (
+    CharField as BaseCharField,
+)
+from django.db.models import (
+    ForeignKey as BaseForeignKey,
+)
+from django.db.models import (
+    JSONField as BaseJSONField,
 )
 from django.utils.translation import gettext_lazy as _
 
@@ -33,6 +41,17 @@ from .services.backup_codes import generate_backup_codes
 
 if TYPE_CHECKING:  # pragma: no cover
     from django.contrib.auth.models import User  # noqa
+
+    # Type aliases for Django model fields to support type checking
+    CharField = BaseCharField[str, str]
+    BooleanField = BaseBooleanField[bool, bool]
+    JSONField = BaseJSONField[Any, Any]
+    UserForeignKey = BaseForeignKey["User", "User"]
+else:
+    CharField = BaseCharField
+    BooleanField = BaseBooleanField
+    JSONField = BaseJSONField
+    UserForeignKey = BaseForeignKey
 
 
 class MFAMethodManager(Manager["MFAMethod"]):
@@ -143,34 +162,34 @@ class MFAMethod(Model):
 
     id: int | None
     user_id: int
-    user = ForeignKey["User", "User"](
+    user = UserForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=CASCADE,
         verbose_name=_("user"),
         related_name="mfa_methods",
         help_text=_("User who owns this MFA method"),
     )
-    name = CharField[str, str](
+    name = CharField(
         _("name"),
         max_length=255,
         help_text=_("MFA method name (e.g., 'app', 'email')"),
     )
-    secret = CharField[str, str](
+    secret = CharField(
         _("secret"),
         max_length=255,
         help_text=_("TOTP secret key for generating verification codes"),
     )
-    is_primary = BooleanField[bool, bool](
+    is_primary = BooleanField(
         _("is primary"),
         default=False,
         help_text=_("Whether this is the user's primary MFA method"),
     )
-    is_active = BooleanField[bool, bool](
+    is_active = BooleanField(
         _("is active"),
         default=False,
         help_text=_("Whether this method is active and can be used"),
     )
-    _backup_codes = JSONField[Any, Any](
+    _backup_codes = JSONField(
         _("backup codes"),
         default=dict,
         blank=True,

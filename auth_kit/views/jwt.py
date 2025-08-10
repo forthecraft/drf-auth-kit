@@ -32,7 +32,7 @@ class RefreshViewWithCookieSupport(TokenRefreshView):
     Supports both request data and cookie-based refresh tokens.
     """
 
-    serializer_class = CookieTokenRefreshSerializer
+    serializer_class = CookieTokenRefreshSerializer  # type: ignore[assignment,unused-ignore]
 
     @extend_schema(description=lazy(get_jwt_refresh_description, str)())
     def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:

@@ -6,13 +6,20 @@ MFA methods in the Django admin panel with optimized queries
 and useful filtering options.
 """
 
+from typing import TYPE_CHECKING
+
 from django.contrib import admin
 
 from .models import MFAMethod
 
+if TYPE_CHECKING:
+    AdminModel = admin.ModelAdmin[MFAMethod]
+else:
+    AdminModel = admin.ModelAdmin
+
 
 @admin.register(MFAMethod)
-class MFAMethodAdmin(admin.ModelAdmin[MFAMethod]):
+class MFAMethodAdmin(AdminModel):
     """
     Admin interface for MFA method management.
 

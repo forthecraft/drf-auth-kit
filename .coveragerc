@@ -8,3 +8,5 @@ omit =
 
 [report]
 show_missing = True
+exclude_also =
+    if TYPE_CHECKING:

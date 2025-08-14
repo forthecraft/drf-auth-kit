@@ -86,30 +86,32 @@ class LoginView(GenericAPIView[Any]):
         """
         django_login(self.request, user)  # type: ignore[unused-ignore, arg-type]
 
-    def create_response_with_cookies(self, validated_data: dict[str, Any]) -> Response:
+    def create_response_with_cookies(self, serializer: BaseSerializer[Any]) -> Response:
         """
         Create login response with authentication cookies.
 
         Args:
-            validated_data: Validated login data containing tokens
+            serializer: Validated login serializer containing tokens
 
         Returns:
             DRF response with authentication cookies set
         """
-        response = Response(validated_data, status=status.HTTP_200_OK)
+        data = serializer.data
+        validated_data = serializer.data
+        response = Response(data, status=status.HTTP_200_OK)
 
         if auth_kit_settings.AUTH_TYPE == "jwt":
             set_auth_kit_cookie(
                 response,
                 auth_kit_settings.AUTH_JWT_COOKIE_NAME,
-                validated_data["access"],
+                data["access"],
                 auth_kit_settings.AUTH_JWT_COOKIE_PATH,
                 validated_data["access_expiration"],
             )
             set_auth_kit_cookie(
                 response,
                 auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME,
-                validated_data["refresh"],
+                data["refresh"],
                 auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_PATH,
                 validated_data["refresh_expiration"],
             )
@@ -123,7 +125,7 @@ class LoginView(GenericAPIView[Any]):
             set_auth_kit_cookie(
                 response,
                 auth_kit_settings.AUTH_TOKEN_COOKIE_NAME,
-                validated_data["key"],
+                data["key"],
                 auth_kit_settings.AUTH_TOKEN_COOKIE_PATH,
                 token_cookie_expire_time,
             )
@@ -152,7 +154,7 @@ class LoginView(GenericAPIView[Any]):
         return self.perform_login(serializer)
 
     def create_redirect_response(
-        self, serializer_data: dict[str, Any], redirect_url: str
+        self, serializer: BaseSerializer[Any], redirect_url: str
     ) -> HttpResponseRedirect:
         """
         Create HTTP redirect response with authentication cookies.
@@ -160,14 +162,14 @@ class LoginView(GenericAPIView[Any]):
         Reuses the cookie setting logic from create_response_with_cookies.
 
         Args:
-            serializer_data: Validated login data containing tokens
+            serializer: Validated login serializer containing tokens
             redirect_url: URL to redirect to
 
         Returns:
             HttpResponseRedirect with authentication cookies set
         """
         # Create a temporary response to set cookies on
-        temp_response = self.create_response_with_cookies(serializer_data)
+        temp_response = self.create_response_with_cookies(serializer)
 
         # Create redirect response
         redirect_response = HttpResponseRedirect(redirect_url)
@@ -209,12 +211,12 @@ class LoginView(GenericAPIView[Any]):
         # If redirect URL is provided, return HttpResponseRedirect with cookies
         if redirect_url:
             return cast(
-                Response, self.create_redirect_response(serializer.data, redirect_url)
+                Response, self.create_redirect_response(serializer, redirect_url)
             )
 
         # Standard API response
         if auth_kit_settings.USE_AUTH_COOKIE:
-            response = self.create_response_with_cookies(serializer.data)
+            response = self.create_response_with_cookies(serializer)
         else:
             response = Response(serializer.data, status=status.HTTP_200_OK)
 

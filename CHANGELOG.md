@@ -1,3 +1,9 @@
+## v0.3.6 (2025-08-14)
+
+### Fix
+
+- remove types-python-dateutil dev package
+
 ## v0.3.5 (2025-08-14)
 
 ### Fix

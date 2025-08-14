@@ -1,3 +1,9 @@
+## v0.3.5 (2025-08-14)
+
+### Fix
+
+- **auth**: simplify cookie handling and remove dateutil parser usage
+
 ## v0.3.4 (2025-08-10)
 
 ### Fix

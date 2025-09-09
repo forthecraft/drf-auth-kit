@@ -149,7 +149,7 @@ Testing Authenticated Endpoints
 *Authenticated Requests:*
 - Include valid tokens automatically (cookies) or manually (headers)
 - Access to protected endpoints like user profile, logout
-- Token refresh happens automatically with cookies
+- Token refresh is available for both cookies and headers
 
 Next Steps
 ----------

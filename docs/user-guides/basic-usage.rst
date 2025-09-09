@@ -146,7 +146,7 @@ When testing in the API documentation:
 
 - Include valid tokens automatically (cookies) or manually (headers)
 - Access to protected endpoints like user profile, logout
-- Token refresh happens automatically with cookies
+- Token refresh is available for both cookies and headers
 
 User Profile Management
 -----------------------
@@ -196,13 +196,14 @@ By default, password reset links point to the API backend. For frontend applicat
 Token Management (JWT Only)
 ---------------------------
 
-**Automatic Refresh (Cookie Authentication)**
+**Token Refresh**
 
-With cookie authentication, token refresh happens automatically. No manual intervention needed.
+To refresh expired access tokens, call ``POST /api/auth/token/refresh/`` to get a new access token. The refresh token can be provided via:
 
-**Manual Refresh (Header Authentication)**
+- **Cookie Authentication**: Refresh token is automatically read from the cookie
+- **Header Authentication**: Include refresh token in the request body
 
-Use ``POST /api/auth/token/refresh/`` with the refresh token to get a new access token.
+Note: Token refresh requires an explicit API call and does not happen automatically.
 
 **Token Verification**
 

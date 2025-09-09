@@ -20,7 +20,7 @@ Key Features
 
 **🔐 Multiple Authentication Types**
 
-- JWT tokens with automatic refresh
+- JWT tokens with refresh support
 - DRF token authentication
 - Custom authentication support
 - Seamless switching between authentication types

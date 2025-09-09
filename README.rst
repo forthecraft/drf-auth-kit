@@ -130,7 +130,7 @@ Authentication Types
 
 **JWT Authentication (Recommended)**
    - Access and refresh tokens
-   - Automatic token refresh
+   - Token refresh support
    - Secure cookie storage
 
 **DRF Token Authentication**

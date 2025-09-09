@@ -1,3 +1,9 @@
+## v0.3.7 (2025-09-09)
+
+### Fix
+
+- **docs**: correct token refresh documentation to clarify manual API calls required
+
 ## v0.3.6 (2025-08-14)
 
 ### Fix

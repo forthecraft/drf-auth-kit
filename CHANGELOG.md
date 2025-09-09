@@ -1,3 +1,9 @@
+## v0.3.8 (2025-09-09)
+
+### Fix
+
+- correct django-allauth package constraint due to error
+
 ## v0.3.7 (2025-09-09)
 
 ### Fix

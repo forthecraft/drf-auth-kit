@@ -73,7 +73,9 @@ class MFAMethodViewSet(
         Returns:
             QuerySet of user's MFA methods
         """
-        return auth_kit_mfa_settings.MFA_MODEL.objects.filter(user=self.request.user)
+        return auth_kit_mfa_settings.MFA_MODEL.objects.filter(
+            user_id=str(self.request.user.pk)
+        )
 
     @extend_schema(
         description=MFA_METHOD_CREATE_DESCRIPTION,

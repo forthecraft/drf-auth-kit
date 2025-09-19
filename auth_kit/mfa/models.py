@@ -63,7 +63,7 @@ class MFAMethodManager(Manager["MFAMethod"]):
     """
 
     def get_by_name(
-        self, user_id: int | str | None, name: str, is_active: bool = True
+        self, user_id: int | str, name: str, is_active: bool = True
     ) -> "MFAMethod":
         """
         Retrieve MFA method by user and method name.
@@ -103,7 +103,7 @@ class MFAMethodManager(Manager["MFAMethod"]):
             raise MFAMethodDoesNotExistError() from e
 
     def check_method(
-        self, user_id: int | str | None, method_name: str, is_active: bool = True
+        self, user_id: int | str, method_name: str, is_active: bool = True
     ) -> None:
         """
         Verify that a method exists for user.

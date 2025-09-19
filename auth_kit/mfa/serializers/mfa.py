@@ -70,7 +70,7 @@ class MFAMethodCreateSerializer(MFAMethodGenericSerializer):
         """
         request = cast(Request, self.context.get("request"))
         method_exists = auth_kit_mfa_settings.MFA_MODEL.objects.filter(
-            name=value, user=request.user
+            name=value, user_id=str(request.user.pk)
         ).exists()
         if method_exists:
             raise serializers.ValidationError(_("This method is already exists"))
@@ -137,7 +137,7 @@ class MFAMethodConfirmSerializer(MFAMethodGenericSerializer):
         request = cast(Request, self.context.get("request"))
 
         method = auth_kit_mfa_settings.MFA_MODEL.objects.get_by_name(
-            request.user.pk, attrs["method"], is_active=False
+            str(request.user.pk), attrs["method"], is_active=False
         )
         handler = MFAHandlerRegistry.get_handler(method)
         is_code_valid = handler.validate_otp_code(attrs["code"])
@@ -146,7 +146,7 @@ class MFAMethodConfirmSerializer(MFAMethodGenericSerializer):
 
         method.is_active = True
         if not auth_kit_mfa_settings.MFA_MODEL.objects.filter(
-            user=request.user, is_primary=True
+            user_id=str(request.user.pk), is_primary=True
         ).exists():
             method.is_primary = True
         method.save()
@@ -186,7 +186,7 @@ class MFAMethodDeactivateSerializer(MFAMethodGenericSerializer):
         request = cast(Request, self.context.get("request"))
 
         method = auth_kit_mfa_settings.MFA_MODEL.objects.get_by_name(
-            request.user.pk, attrs["method"]
+            str(request.user.pk), attrs["method"]
         )
 
         if method.is_primary:
@@ -249,7 +249,7 @@ class MFAMethodPrimaryUpdateSerializer(MFAMethodGenericSerializer):
         """
         request = cast(Request, self.context.get("request"))
         method = auth_kit_mfa_settings.MFA_MODEL.objects.get_by_name(
-            request.user.pk, attrs["method"]
+            str(request.user.pk), attrs["method"]
         )
         primary_method = auth_kit_mfa_settings.MFA_MODEL.objects.get_primary_active(
             request.user.pk
@@ -320,7 +320,7 @@ class MFAMethodDeleteSerializer(MFAMethodGenericSerializer):
             request = cast(Request, self.context.get("request"))
 
             method: MFAMethod = auth_kit_mfa_settings.MFA_MODEL.objects.get(
-                name=attrs["method"], user=request.user
+                name=attrs["method"], user_id=str(request.user.pk)
             )
 
             if (
@@ -381,7 +381,7 @@ class MFAMethodSendCodeSerializer(MFAMethodGenericSerializer):
 
         try:
             method = auth_kit_mfa_settings.MFA_MODEL.objects.get(
-                user_id=request.user.pk, name=attrs["method"]
+                user_id=str(request.user.pk), name=attrs["method"]
             )
         except auth_kit_mfa_settings.MFA_MODEL.DoesNotExist as e:
             raise MFAMethodDoesNotExistError() from e

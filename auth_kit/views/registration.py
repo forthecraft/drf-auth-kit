@@ -118,6 +118,7 @@ class RegisterView(CreateAPIView[Any]):
 
     serializer_class = auth_kit_settings.REGISTER_SERIALIZER
     authentication_classes = []
+    permission_classes = (AllowAny,)
     throttle_scope = "auth_kit"
 
     @sensitive_post_parameters_m

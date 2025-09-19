@@ -1,3 +1,10 @@
+## v0.3.9 (2025-09-19)
+
+### Fix
+
+- **mfa**: ensure consistent string type for user_id in queries
+- **auth**: add AllowAny permission to RegisterView
+
 ## v0.3.8 (2025-09-09)
 
 ### Fix

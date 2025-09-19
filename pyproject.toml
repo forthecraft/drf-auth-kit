@@ -86,7 +86,7 @@ license = {file = "LICENSE"}
 name = "drf-auth-kit"
 readme = "README.rst"
 requires-python = ">=3.10,<4.0"
-version = "0.3.8"
+version = "0.3.9"
 
 [project.optional-dependencies]
 all = [

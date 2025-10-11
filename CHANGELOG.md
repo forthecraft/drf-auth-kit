@@ -1,3 +1,9 @@
+## v0.3.10 (2025-10-11)
+
+### Fix
+
+- **ui**: create unified template view supporting all auth features
+
 ## v0.3.9 (2025-09-19)
 
 ### Fix

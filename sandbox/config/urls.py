@@ -21,10 +21,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
 
-from auth_kit.social.views.ui import (
-    SocialAccountManagementView,
-    SocialLoginTemplateView,
-)
+from auth_kit.views import AuthKitUIView
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -54,17 +51,8 @@ api_urlpatterns = [
     path("auth/", include("auth_kit.urls")),
     path("auth/social/", include("auth_kit.social.urls")),
     path("status/", StatusView.as_view(), name="status"),
-    # In your urls.py
-    path(
-        "auth/social/login/",
-        SocialLoginTemplateView.as_view(),
-        name="social_login_page",
-    ),
-    path(
-        "auth/social/manage/",
-        SocialAccountManagementView.as_view(),
-        name="social_management_page",
-    ),
+    # UI View for testing all auth features
+    path("auth/ui/", AuthKitUIView.as_view(), name="auth_kit_ui"),
 ]
 
 

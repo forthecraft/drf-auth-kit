@@ -1,35 +1,42 @@
 """
-Template-based UI views for social authentication.
+Template-based UI view for authentication features.
 
-This module provides web interface views for social login and account
-management, including provider discovery and OAuth URL generation.
+This module provides a comprehensive web interface view for all
+authentication features including login, registration, password reset,
+user management, and social authentication.
 """
 
 import secrets
 from typing import Any, cast
 from urllib.parse import urlencode
 
+from django.conf import settings
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
-from allauth.socialaccount.adapter import (  # pyright: ignore[reportMissingTypeStubs]
-    get_adapter as get_social_adapter,
-)
-from allauth.socialaccount.models import (  # pyright: ignore[reportMissingTypeStubs]
-    SocialAccount,
-    SocialApp,
-)
-from allauth.socialaccount.providers.openid_connect.provider import (  # pyright: ignore[reportMissingTypeStubs]
-    OpenIDConnectProvider,
-)
-from allauth.socialaccount.providers.openid_connect.views import (  # pyright: ignore[reportMissingTypeStubs]
-    OpenIDConnectOAuth2Adapter,
-)
 from drf_spectacular.utils import extend_schema
 
 from auth_kit.app_settings import auth_kit_settings
+from auth_kit.utils import UserModel, UserNameField
+
+# Conditional imports for social authentication
+HAS_SOCIAL_AUTH = "allauth.socialaccount" in settings.INSTALLED_APPS
+
+if HAS_SOCIAL_AUTH:  # pragma: no cover
+    from allauth.socialaccount.adapter import (  # pyright: ignore
+        get_adapter as get_social_adapter,
+    )
+    from allauth.socialaccount.models import (  # pyright: ignore
+        SocialAccount,
+        SocialApp,
+    )
+    from allauth.socialaccount.providers.openid_connect.provider import (  # pyright: ignore
+        OpenIDConnectProvider,
+    )
+    from allauth.socialaccount.providers.openid_connect.views import (  # pyright: ignore
+        OpenIDConnectOAuth2Adapter,
+    )
 
 # Provider icon mappings (FontAwesome classes)
 PROVIDER_ICONS: dict[str, str] = {
@@ -219,11 +226,11 @@ def get_provider_icon(provider_id: str, provider_name: str | None = None) -> str
     return DEFAULT_PROVIDER_STYLE["icon"]  # pragma: no cover
 
 
-def get_provider_display_name(social_app: SocialApp) -> str:
+def get_provider_display_name(social_app: "SocialApp") -> str:
     """Get clean display name for a social provider."""
     # Use custom name if set
     if social_app.name:
-        return str(social_app.name)  # pyright: ignore[reportUnknownArgumentType]
+        return str(social_app.name)  # pyright: ignore
 
     # Determine the key to use
     provider_key = getattr(social_app, "provider_id", None) or social_app.provider
@@ -233,51 +240,105 @@ def get_provider_display_name(social_app: SocialApp) -> str:
         return DISPLAY_NAME_OVERRIDES[provider_key]
 
     # Default: clean up provider name
-    return provider_key.replace("_oauth2", "").replace("_", " ").title()  # type: ignore[no-any-return]
+    return cast(str, provider_key.replace("_oauth2", "").replace("_", " ").title())
 
 
 @extend_schema(exclude=True)
-class SocialLoginTemplateView(APIView):
+class AuthKitUIView(APIView):
     """
-    Template view for social login page.
+    Comprehensive UI for Auth Kit features.
 
-    Renders a web page showing all available social providers with
-    OAuth login links for user authentication.
+    Provides a web interface for all authentication features including:
+    - Login (standard and social)
+    - Registration
+    - Password reset and change
+    - User profile viewing and updating
+    - Social account connections
+    - Logout
     """
 
-    template_name = "accounts/social_login.html"
-    authentication_classes = ()
+    template_name = "auth_kit/ui.html"
     permission_classes = ()
 
     def get(self, request: HttpRequest) -> HttpResponse:
         """
-        Render the social login template with available providers.
+        Render the comprehensive test UI.
 
         Args:
             request: The Django HTTP request object
 
         Returns:
-            Rendered HTML response with social login options
+            Rendered HTML response with all authentication testing features
         """
-        social_adapter = get_social_adapter()
-        social_apps = social_adapter.list_apps(self.request)
+        # Get username field value if user is authenticated
+        username_field_value = ""
+        if request.user.is_authenticated:
+            username_field_value = getattr(request.user, UserNameField, "")
+
+        context: dict[str, Any] = {
+            "user": request.user,
+            "is_authenticated": request.user.is_authenticated,
+            "auth_type": auth_kit_settings.AUTH_TYPE,
+            "use_auth_cookie": auth_kit_settings.USE_AUTH_COOKIE,
+            "use_mfa": auth_kit_settings.USE_MFA,
+            "has_social_auth": HAS_SOCIAL_AUTH,
+            "username_field": UserNameField,
+            "username_field_value": username_field_value,
+            # For login: show only the username field (email is removed if UserNameField == "username")
+            "login_uses_email": UserNameField == "email",
+            "login_uses_username": UserNameField == "username",
+            "login_uses_custom": UserNameField not in ["username", "email"],
+            # For registration: always has email, but username is conditional
+            "has_username_field": (
+                UserNameField != "email"
+            ),  # username field exists unless email is the username
+            "has_first_name": hasattr(UserModel, "first_name"),
+            "has_last_name": hasattr(UserModel, "last_name"),
+        }
+
+        # Add social providers if social auth is available
+        if HAS_SOCIAL_AUTH:
+            social_providers = self._get_social_providers(request)
+            context["social_providers"] = social_providers
+            # If user is authenticated, get their social connections
+            if request.user.is_authenticated:
+                context["social_connections"] = self._get_user_social_connections(
+                    request
+                )
+            else:
+                context["social_connections"] = []
+        else:
+            context["social_providers"] = []
+            context["social_connections"] = []
+
+        return render(request, self.template_name, context)
+
+    def _get_social_providers(self, request: HttpRequest) -> list[dict[str, Any]]:
+        """
+        Get list of available social providers with OAuth URLs.
+
+        Args:
+            request: The Django HTTP request object
+
+        Returns:
+            List of provider dictionaries with connection information
+        """
+        if not HAS_SOCIAL_AUTH:  # pragma: no cover
+            return []
+
+        social_adapter = get_social_adapter()  # pyright: ignore
+
+        social_apps = social_adapter.list_apps(request)
 
         if not social_apps:
-            return render(
-                request,
-                self.template_name,
-                {
-                    "providers": [],
-                    "error": "No social providers are properly configured",
-                },
-            )
+            return []
 
-        all_apps = []
+        all_providers: list[dict[str, Any]] = []
 
         for social_app in social_apps:
-            provider = social_app.get_provider(self.request)
+            provider = social_app.get_provider(request)
 
-            # Generate state
+            # Generate state for OAuth
             state = secrets.token_urlsafe(32)
             request.session[f"{social_app.provider}_oauth_state"] = state
 
@@ -287,7 +348,7 @@ class SocialLoginTemplateView(APIView):
             params = {
                 "client_id": social_app.client_id,
                 "redirect_uri": auth_kit_settings.SOCIAL_LOGIN_CALLBACK_URL_GENERATOR(
-                    self.request, None, social_app
+                    request, None, social_app
                 ),
                 "scope": (
                     " ".join(default_scope)
@@ -298,10 +359,11 @@ class SocialLoginTemplateView(APIView):
                 "state": state,
             }
 
-            if isinstance(provider, OpenIDConnectProvider):
-                adapter = OpenIDConnectOAuth2Adapter(request, social_app.provider_id)
+            if isinstance(provider, OpenIDConnectProvider):  # pyright: ignore
+                adapter = OpenIDConnectOAuth2Adapter(  # pyright: ignore
+                    request, social_app.provider_id
+                )
                 oauth_url = f"{adapter.authorize_url}?{urlencode(params)}"
-                # For OpenID Connect, use provider_id for better identification
                 provider_id = getattr(social_app, "provider_id", social_app.provider)
             else:
                 oauth_url = (
@@ -309,23 +371,45 @@ class SocialLoginTemplateView(APIView):
                 )
                 provider_id = social_app.provider
 
-            # Get display name and icon
-            display_name = get_provider_display_name(social_app)
-            icon_class = get_provider_icon(provider_id, display_name)
+            # Generate connect state
+            connect_state = secrets.token_urlsafe(32)
+            request.session[f"{social_app.provider}_oauth_connect_state"] = (
+                connect_state
+            )
 
-            all_apps.append(
+            connect_params = {
+                **params,
+                "state": connect_state,
+                "redirect_uri": auth_kit_settings.SOCIAL_CONNECT_CALLBACK_URL_GENERATOR(
+                    request, None, social_app
+                ),
+            }
+
+            if isinstance(provider, OpenIDConnectProvider):  # pyright: ignore
+                adapter = OpenIDConnectOAuth2Adapter(  # pyright: ignore
+                    request, social_app.provider_id
+                )
+                connect_url = f"{adapter.authorize_url}?{urlencode(connect_params)}"
+            else:
+                connect_url = f"{provider.oauth2_adapter_class.authorize_url}?{urlencode(connect_params)}"
+
+            display_name = get_provider_display_name(social_app)  # pyright: ignore
+            icon_class = get_provider_icon(provider_id, display_name)  # pyright: ignore
+
+            all_providers.append(
                 {
                     "id": provider_id,
-                    "provider": social_app.provider,  # Keep original for compatibility
+                    "provider": social_app.provider,
                     "name": display_name,
-                    "url": oauth_url,
+                    "login_url": oauth_url,
+                    "connect_url": connect_url,
                     "icon_class": icon_class,
                 }
             )
 
-        # Sort providers by popularity/importance
+        # Sort providers by popularity
         def provider_sort_key(app: dict[str, Any]) -> int:
-            """Sort providers by popularity, putting well-known providers first."""
+            """Sort providers by popularity."""
             priority_order = [
                 "google",
                 "facebook",
@@ -340,157 +424,63 @@ class SocialLoginTemplateView(APIView):
             try:
                 return priority_order.index(app["id"])
             except ValueError:
-                return len(priority_order)  # Put unknown providers at the end
+                return len(priority_order)
 
-        all_apps.sort(key=provider_sort_key)
+        all_providers.sort(key=provider_sort_key)
 
-        context: dict[str, Any] = {
-            "providers": all_apps,
-        }
+        return all_providers
 
-        return render(request, self.template_name, context)
-
-
-@extend_schema(exclude=True)
-class SocialAccountManagementView(APIView):
-    """
-    View for managing social account connections.
-
-    Shows all available providers, indicates which ones are connected,
-    and allows users to connect/disconnect social accounts.
-    """
-
-    template_name = "accounts/social_account_management.html"
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request: HttpRequest) -> HttpResponse:
+    def _get_user_social_connections(
+        self, request: HttpRequest
+    ) -> list[dict[str, Any]]:
         """
-        Render the social account management page.
+        Get user's connected social accounts.
 
         Args:
             request: The Django HTTP request object
 
         Returns:
-            Rendered HTML response with account management interface
+            List of connected social account dictionaries
         """
-        social_adapter = get_social_adapter()
-        social_apps = social_adapter.list_apps(self.request)
+        if not HAS_SOCIAL_AUTH or not request.user.is_authenticated:  # pragma: no cover
+            return []
 
-        if not social_apps:
-            return render(
-                request,
-                self.template_name,
+        user_social_accounts = SocialAccount.objects.filter(  # pyright: ignore
+            user=request.user
+        )
+
+        connections: list[dict[str, Any]] = []
+        for account in user_social_accounts:
+            # Try to get the app to get display name
+            try:
+                social_app = SocialApp.objects.get(  # pyright: ignore
+                    provider=account.provider
+                )
+                display_name = get_provider_display_name(social_app)
+                provider_id = str(
+                    getattr(
+                        social_app,
+                        "provider_id",
+                        social_app.provider,  # pyright: ignore
+                    )
+                )
+            except Exception:  # SocialApp.DoesNotExist or if imports failed
+                display_name = account.provider.title()
+                provider_id = account.provider
+
+            icon_class = get_provider_icon(provider_id, display_name)  # pyright: ignore
+
+            connections.append(
                 {
-                    "providers": [],
-                    "error": "No social providers are properly configured",
-                },
+                    "id": account.pk,
+                    "provider": account.provider,
+                    "provider_id": provider_id,
+                    "name": display_name,
+                    "uid": account.uid,
+                    "icon_class": icon_class,
+                    "last_login": account.last_login,
+                    "date_joined": account.date_joined,
+                }
             )
 
-        # Get user's existing social accounts
-        user_social_accounts = SocialAccount.objects.filter(user=request.user)
-        connected_providers: dict[str, SocialAccount] = {
-            account.provider: account for account in user_social_accounts
-        }
-
-        all_providers: list[dict[str, Any]] = []
-
-        for social_app in social_apps:
-            provider = social_app.get_provider(self.request)
-
-            # Check if user is already connected to this provider
-            is_connected = social_app.provider in connected_providers
-            social_account = connected_providers.get(social_app.provider)
-
-            # Generate state for OAuth
-            state = secrets.token_urlsafe(32)
-            request.session[f"{social_app.provider}_oauth_connect_state"] = state
-
-            # Build OAuth URL for connection
-            default_scope = cast(list[str] | str, provider.get_default_scope())
-
-            params = {
-                "client_id": social_app.client_id,
-                "redirect_uri": auth_kit_settings.SOCIAL_CONNECT_CALLBACK_URL_GENERATOR(
-                    self.request, None, social_app
-                ),
-                "scope": (
-                    " ".join(default_scope)
-                    if isinstance(default_scope, list)
-                    else str(default_scope)
-                ),
-                "response_type": "code",
-                "state": state,
-            }
-
-            if isinstance(provider, OpenIDConnectProvider):
-                adapter = OpenIDConnectOAuth2Adapter(request, social_app.provider_id)
-                connect_url = f"{adapter.authorize_url}?{urlencode(params)}"
-                provider_id = getattr(social_app, "provider_id", social_app.provider)
-            else:
-                connect_url = (
-                    f"{provider.oauth2_adapter_class.authorize_url}?{urlencode(params)}"
-                )
-                provider_id = social_app.provider
-
-            # Get display name and icon
-            display_name = get_provider_display_name(social_app)
-            icon_class = get_provider_icon(provider_id, display_name)
-
-            provider_data: dict[str, Any] = {
-                "id": provider_id,
-                "provider": social_app.provider,
-                "name": display_name,
-                "icon_class": icon_class,
-                "is_connected": is_connected,
-                "connect_url": connect_url,
-                "social_account": None,
-            }
-
-            if is_connected and social_account:
-                provider_data["social_account"] = {
-                    "id": social_account.pk,
-                    "uid": social_account.uid,
-                    "last_login": social_account.last_login,
-                    "date_joined": social_account.date_joined,
-                }
-
-            all_providers.append(provider_data)
-
-        # Sort providers by connection status (connected first) then by popularity
-        def provider_sort_key(provider: dict[str, Any]) -> tuple[int, Any]:
-            """Sort providers by connection status and popularity."""
-            # Connected providers first
-            if provider["is_connected"]:
-                return (0, provider["name"])
-
-            # Then by popularity/importance
-            priority_order = [
-                "google",
-                "facebook",
-                "github",
-                "microsoft",
-                "apple",
-                "twitter",
-                "discord",
-                "linkedin_oauth2",
-                "instagram",
-            ]
-            try:
-                return 1, priority_order.index(provider["id"])
-            except ValueError:
-                return 1, len(priority_order)
-
-        all_providers.sort(key=provider_sort_key)
-
-        # Count connections
-        connected_count = sum(1 for p in all_providers if p["is_connected"])
-        total_count = len(all_providers)
-
-        context: dict[str, Any] = {
-            "providers": all_providers,
-            "connected_count": connected_count,
-            "total_count": total_count,
-            "user": request.user,
-        }
-
-        return render(request, self.template_name, context)
+        return connections

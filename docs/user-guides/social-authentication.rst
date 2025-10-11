@@ -442,19 +442,6 @@ Common error scenarios:
 - Monitor for suspicious social login activity
 - Consider rate limiting social authentication attempts
 
-Browser-Based Templates (Optional)
------------------------------------
-
-DRF Auth Kit includes optional HTML templates for browser-based social authentication flows:
-
-
-**Template Views**
-
-- ``/api/auth/social/login/`` - Social login page with provider buttons
-- ``/api/auth/social/manage/`` - Social account management page
-
-These templates complement the API endpoints and provide a complete web-based authentication experience.
-
 Next Steps
 ----------
 

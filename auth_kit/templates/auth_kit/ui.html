@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Kit - UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4285f4;
+            --success-color: #34a853;
+            --danger-color: #ea4335;
+            --warning-color: #fbbc05;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header h1 i {
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge.authenticated {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-badge.unauthenticated {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .status-badge.info {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+
+        .card-icon.blue { background: var(--primary-color); }
+        .card-icon.green { background: var(--success-color); }
+        .card-icon.orange { background: #ff9800; }
+        .card-icon.purple { background: #9c27b0; }
+        .card-icon.red { background: var(--danger-color); }
+        .card-icon.indigo { background: #3f51b5; }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background: #2d8f47;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 168, 83, 0.3);
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #d33828;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(234, 67, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #e0e0e0;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .alert i {
+            font-size: 18px;
+        }
+
+        .alert-success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .alert-error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        .alert-info {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+        }
+
+        .alert-warning {
+            background: #fff3e0;
+            color: #e65100;
+            border: 1px solid #ffcc80;
+        }
+
+        .divider {
+            margin: 25px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            color: #999;
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-providers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+            gap: 12px;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary-color);
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .user-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .user-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info p {
+            opacity: 0.9;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .response-viewer {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            margin-top: 15px;
+        }
+
+        .response-viewer.show {
+            display: block;
+        }
+
+        .response-viewer pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: currentColor;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .social-connection {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-connection-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .endpoint-info {
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .endpoint-info code {
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            flex: 1;
+        }
+
+        .method-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .method-post { background: #4caf50; color: white; }
+        .method-get { background: #2196f3; color: white; }
+        .method-delete { background: #f44336; color: white; }
+        .method-put { background: #ff9800; color: white; }
+        .method-patch { background: #9c27b0; color: white; }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        .json-key { color: #881391; }
+        .json-value { color: #1a1aa6; }
+        .json-string { color: #c41a16; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-shield-alt"></i>
+                Auth Kit
+            </h1>
+            <p class="subtitle">All authentication features in one place</p>
+
+            <div class="status-bar">
+                {% if is_authenticated %}
+                    <span class="status-badge authenticated">
+                        <i class="fas fa-check-circle"></i>
+                        Authenticated
+                    </span>
+                    <span class="status-badge info">
+                        <i class="fas fa-user"></i>
+                        {{ user.username }}
+                    </span>
+                {% else %}
+                    <span class="status-badge unauthenticated">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Not Authenticated
+                    </span>
+                {% endif %}
+
+                <span class="status-badge info">
+                    <i class="fas fa-key"></i>
+                    Auth Type: {{ auth_type|upper }}
+                </span>
+
+                {% if use_auth_cookie %}
+                    <span class="status-badge info">
+                        <i class="fas fa-cookie"></i>
+                        Cookie Auth Enabled
+                    </span>
+                {% endif %}
+
+                {% if use_mfa %}
+                    <span class="status-badge info">
+                        <i class="fas fa-mobile-alt"></i>
+                        MFA Enabled
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Authentication Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon blue">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h2 class="card-title">Authentication</h2>
+                </div>
+
+                {% if not is_authenticated %}
+                    <!-- Login Form -->
+                    <div>
+                        <div class="endpoint-info">
+                            <span class="method-badge method-post">POST</span>
+                            <code>/api/auth/login/</code>
+                        </div>
+
+                        <form id="loginForm">
+                            {% if login_uses_email %}
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" id="loginEmail" name="email" required>
+                            </div>
+                            {% elif login_uses_username %}
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-input" id="loginUsername" name="username" required>
+                            </div>
+                            {% else %}
+                            <div class="form-group">
+                                <label class="form-label">{{ username_field|title }}</label>
+                                <input type="text" class="form-input" id="loginUsername" name="{{ username_field }}" required>
+                            </div>
+                            {% endif %}
+
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" id="loginPassword" name="password" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </button>
+                        </form>
+
+                        <div class="response-viewer" id="loginResponse"></div>
+
+                        {% if has_social_auth and social_providers %}
+                            <div class="divider"><span>OR</span></div>
+
+                            <div class="social-providers">
+                                {% for provider in social_providers %}
+                                    <a href="{{ provider.login_url }}" class="social-btn">
+                                        <span class="social-icon">
+                                            <i class="{{ provider.icon_class }}"></i>
+                                        </span>
+                                        Continue with {{ provider.name }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <!-- User Info -->
+                    <div class="user-info">
+                        <h3>
+                            <i class="fas fa-user-circle"></i>
+                            Welcome, {{ user.username }}!
+                        </h3>
+                        <p><i class="fas fa-envelope"></i> {{ user.email }}</p>
+                        {% if user.first_name %}
+                            <p><i class="fas fa-id-card"></i> {{ user.first_name }} {{ user.last_name }}</p>
+                        {% endif %}
+                        <p><i class="fas fa-calendar"></i> Joined: {{ user.date_joined|date:"M d, Y" }}</p>
+                    </div>
+
+                    <!-- Logout -->
+                    <div class="endpoint-info">
+                        <span class="method-badge method-post">POST</span>
+                        <code>/api/auth/logout/</code>
+                    </div>
+
+                    <button onclick="logout()" class="btn btn-danger btn-block">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+
+                    <div class="response-viewer" id="logoutResponse"></div>
+                {% endif %}
+            </div>
+
+            <!-- Registration Section -->
+            {% if not is_authenticated %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon green">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2 class="card-title">Registration</h2>
+                </div>
+
+                <div class="endpoint-info">
+                    <span class="method-badge method-post">POST</span>
+                    <code>/api/auth/registration/</code>
+                </div>
+
+                <form id="registerForm">
+                    {% if has_username_field %}
+                    <div class="form-group">
+                        <label class="form-label">{% if username_field == 'username' %}Username{% else %}{{ username_field|title }}{% endif %}</label>
+                        <input type="text" class="form-input" id="registerUsername" name="{{ username_field }}" required>
+                    </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="registerEmail" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="registerPassword1" name="password1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-input" id="registerPassword2" name="password2" required>
+                    </div>
+
+                    {% if has_first_name %}
+                    <div class="form-group">
+                        <label class="form-label">First Name <span style="color: #999; font-weight: normal;">(optional)</span></label>
+                        <input type="text" class="form-input" id="registerFirstName" name="first_name">
+                    </div>
+                    {% endif %}
+
+                    {% if has_last_name %}
+                    <div class="form-group">
+                        <label class="form-label">Last Name <span style="color: #999; font-weight: normal;">(optional)</span></label>
+                        <input type="text" class="form-input" id="registerLastName" name="last_name">
+                    </div>
+                    {% endif %}
+
+                    <button type="submit" class="btn btn-success btn-block">
+                        <i class="fas fa-user-plus"></i>
+                        Register
+                    </button>
+                </form>
+
+                <div class="response-viewer" id="registerResponse"></div>
+            </div>
+            {% endif %}
+
+            <!-- User Management Section (Authenticated Users) -->
+            {% if is_authenticated %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon purple">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h2 class="card-title">User Profile</h2>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('view')">View Profile</button>
+                    <button class="tab" onclick="switchTab('update')">Update Profile</button>
+                </div>
+
+                <!-- View Profile Tab -->
+                <div id="viewTab" class="tab-content active">
+                    <div class="endpoint-info">
+                        <span class="method-badge method-get">GET</span>
+                        <code>/api/auth/user/</code>
+                    </div>
+
+                    <button onclick="getUserInfo()" class="btn btn-primary btn-block">
+                        <i class="fas fa-sync"></i>
+                        Refresh User Info
+                    </button>
+
+                    <div class="response-viewer" id="userInfoResponse"></div>
+                </div>
+
+                <!-- Update Profile Tab -->
+                <div id="updateTab" class="tab-content">
+                    <div class="endpoint-info">
+                        <span class="method-badge method-put">PUT</span>
+                        <code>/api/auth/user/</code>
+                    </div>
+
+                    <form id="updateUserForm">
+                        {% if has_username_field %}
+                        <div class="form-group">
+                            <label class="form-label">{% if username_field == 'username' %}Username{% else %}{{ username_field|title }}{% endif %}</label>
+                            <input type="text" class="form-input" id="updateUsername" name="{{ username_field }}" value="{{ username_field_value }}">
+                        </div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="updateEmail" name="email" value="{{ user.email }}">
+                        </div>
+
+                        {% if has_first_name %}
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" id="updateFirstName" name="first_name" value="{{ user.first_name }}">
+                        </div>
+                        {% endif %}
+
+                        {% if has_last_name %}
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" id="updateLastName" name="last_name" value="{{ user.last_name }}">
+                        </div>
+                        {% endif %}
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-save"></i>
+                            Update Profile
+                        </button>
+                    </form>
+
+                    <div class="response-viewer" id="updateUserResponse"></div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Password Management -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon orange">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h2 class="card-title">Password Management</h2>
+                </div>
+
+                <div class="tabs">
+                    {% if is_authenticated %}
+                        <button class="tab active" onclick="switchPasswordTab('change')">Change Password</button>
+                    {% else %}
+                        <button class="tab active" onclick="switchPasswordTab('reset')">Reset Password</button>
+                    {% endif %}
+                    {% if not is_authenticated %}
+                        <button class="tab" onclick="switchPasswordTab('confirm')">Confirm Reset</button>
+                    {% endif %}
+                </div>
+
+                {% if is_authenticated %}
+                    <!-- Change Password Tab -->
+                    <div id="changeTab" class="tab-content active">
+                        <div class="endpoint-info">
+                            <span class="method-badge method-post">POST</span>
+                            <code>/api/auth/password/change/</code>
+                        </div>
+
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input type="password" class="form-input" id="oldPassword" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-input" id="newPassword1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-input" id="newPassword2" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-key"></i>
+                                Change Password
+                            </button>
+                        </form>
+
+                        <div class="response-viewer" id="changePasswordResponse"></div>
+                    </div>
+                {% else %}
+                    <!-- Reset Password Tab -->
+                    <div id="resetTab" class="tab-content active">
+                        <div class="endpoint-info">
+                            <span class="method-badge method-post">POST</span>
+                            <code>/api/auth/password/reset/</code>
+                        </div>
+
+                        <form id="resetPasswordForm">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" id="resetEmail" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Reset Email
+                            </button>
+                        </form>
+
+                        <div class="response-viewer" id="resetPasswordResponse"></div>
+                    </div>
+
+                    <!-- Confirm Reset Tab -->
+                    <div id="confirmTab" class="tab-content">
+                        <div class="endpoint-info">
+                            <span class="method-badge method-post">POST</span>
+                            <code>/api/auth/password/reset/confirm/</code>
+                        </div>
+
+                        <form id="confirmResetForm">
+                            <div class="form-group">
+                                <label class="form-label">UID</label>
+                                <input type="text" class="form-input" id="confirmUid" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Token</label>
+                                <input type="text" class="form-input" id="confirmToken" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-input" id="confirmNewPassword1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-input" id="confirmNewPassword2" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-check"></i>
+                                Confirm Reset
+                            </button>
+                        </form>
+
+                        <div class="response-viewer" id="confirmResetResponse"></div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Social Connections (Authenticated Users) -->
+            {% if is_authenticated and has_social_auth and social_providers %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon indigo">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h2 class="card-title">Social Connections</h2>
+                </div>
+
+                {% if social_connections %}
+                    <h3 style="font-size: 16px; margin-bottom: 15px; color: #666;">
+                        <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
+                        Connected Accounts
+                    </h3>
+
+                    {% for connection in social_connections %}
+                        <div class="social-connection">
+                            <div class="social-connection-info">
+                                <div class="card-icon blue" style="width: 35px; height: 35px; font-size: 16px;">
+                                    <i class="{{ connection.icon_class }}"></i>
+                                </div>
+                                <div>
+                                    <strong>{{ connection.name }}</strong>
+                                    <p style="font-size: 12px; color: #666; margin: 0;">{{ connection.uid }}</p>
+                                </div>
+                            </div>
+                            <button onclick="disconnectSocial({{ connection.id }}, '{{ connection.name }}')"
+                                    class="btn btn-danger" style="padding: 8px 16px; font-size: 12px;">
+                                <i class="fas fa-unlink"></i>
+                                Disconnect
+                            </button>
+                        </div>
+                    {% endfor %}
+
+                    <div class="divider"><span>Connect More</span></div>
+                {% endif %}
+
+                <div class="social-providers">
+                    {% for provider in social_providers %}
+                        <a href="{{ provider.connect_url }}" class="social-btn">
+                            <span class="social-icon">
+                                <i class="{{ provider.icon_class }}"></i>
+                            </span>
+                            Connect {{ provider.name }}
+                        </a>
+                    {% endfor %}
+                </div>
+
+                <div class="response-viewer" id="socialResponse"></div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Utility functions
+        function getCsrfToken() {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'csrftoken') {
+                    return value;
+                }
+            }
+            return '';
+        }
+
+        function showResponse(elementId, response, isError = false) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<pre>${JSON.stringify(response, null, 2)}</pre>`;
+            element.classList.add('show');
+            element.style.borderLeft = `4px solid ${isError ? 'var(--danger-color)' : 'var(--success-color)'}`;
+        }
+
+        function showAlert(message, type = 'info') {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `
+                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                ${message}
+            `;
+            document.body.insertBefore(alert, document.body.firstChild);
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        async function apiRequest(url, method, data = null, responseElementId = null) {
+            try {
+                const options = {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCsrfToken(),
+                    },
+                    credentials: 'same-origin',
+                };
+
+                if (data) {
+                    options.body = JSON.stringify(data);
+                }
+
+                const response = await fetch(url, options);
+                const responseData = await response.json();
+
+                if (responseElementId) {
+                    showResponse(responseElementId, responseData, !response.ok);
+                }
+
+                if (response.ok) {
+                    return { success: true, data: responseData };
+                } else {
+                    return { success: false, error: responseData };
+                }
+            } catch (error) {
+                if (responseElementId) {
+                    showResponse(responseElementId, { error: error.message }, true);
+                }
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(`${tabName}Tab`).classList.add('active');
+        }
+
+        function switchPasswordTab(tabName) {
+            const parentCard = event.target.closest('.card');
+            parentCard.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            parentCard.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            event.target.classList.add('active');
+            parentCard.querySelector(`#${tabName}Tab`).classList.add('active');
+        }
+
+        // Login
+        document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Logging in...';
+            btn.disabled = true;
+
+            // Collect form data dynamically
+            const formData = {};
+            const form = e.target;
+            const inputs = form.querySelectorAll('input[name]');
+            inputs.forEach(input => {
+                formData[input.name] = input.value;
+            });
+
+            const result = await apiRequest('/api/auth/login/', 'POST', formData, 'loginResponse');
+
+            if (result.success) {
+                showAlert('Login successful! Reloading...', 'success');
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                showAlert('Login failed. Check the response below.', 'error');
+            }
+        });
+
+        // Registration
+        document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Registering...';
+            btn.disabled = true;
+
+            // Collect form data dynamically
+            const formData = {};
+            const form = e.target;
+            const inputs = form.querySelectorAll('input[name]');
+            inputs.forEach(input => {
+                if (input.value) {  // Only include non-empty values
+                    formData[input.name] = input.value;
+                }
+            });
+
+            const result = await apiRequest('/api/auth/registration/', 'POST', formData, 'registerResponse');
+
+            if (result.success) {
+                showAlert('Registration successful!', 'success');
+                e.target.reset();
+            } else {
+                showAlert('Registration failed. Check the response below.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Logout
+        async function logout() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Logging out...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/logout/', 'POST', {}, 'logoutResponse');
+
+            if (result.success) {
+                showAlert('Logout successful! Reloading...', 'success');
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                showAlert('Logout failed. Check the response below.', 'error');
+            }
+        }
+
+        // Get User Info
+        async function getUserInfo() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Loading...';
+            btn.disabled = true;
+
+            await apiRequest('/api/auth/user/', 'GET', null, 'userInfoResponse');
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        // Update User
+        document.getElementById('updateUserForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Updating...';
+            btn.disabled = true;
+
+            // Collect form data dynamically
+            const formData = {};
+            const form = e.target;
+            const inputs = form.querySelectorAll('input[name]');
+            inputs.forEach(input => {
+                formData[input.name] = input.value || '';
+            });
+
+            const result = await apiRequest('/api/auth/user/', 'PUT', formData, 'updateUserResponse');
+
+            if (result.success) {
+                showAlert('Profile updated successfully!', 'success');
+            } else {
+                showAlert('Update failed. Check the response below.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Change Password
+        document.getElementById('changePasswordForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Changing...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/password/change/', 'POST', {
+                old_password: document.getElementById('oldPassword').value,
+                new_password1: document.getElementById('newPassword1').value,
+                new_password2: document.getElementById('newPassword2').value,
+            }, 'changePasswordResponse');
+
+            if (result.success) {
+                showAlert('Password changed successfully!', 'success');
+                e.target.reset();
+            } else {
+                showAlert('Password change failed. Check the response below.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Reset Password
+        document.getElementById('resetPasswordForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Sending...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/password/reset/', 'POST', {
+                email: document.getElementById('resetEmail').value,
+            }, 'resetPasswordResponse');
+
+            if (result.success) {
+                showAlert('Password reset email sent!', 'success');
+                e.target.reset();
+            } else {
+                showAlert('Failed to send reset email. Check the response below.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Confirm Reset
+        document.getElementById('confirmResetForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Confirming...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/password/reset/confirm/', 'POST', {
+                uid: document.getElementById('confirmUid').value,
+                token: document.getElementById('confirmToken').value,
+                new_password1: document.getElementById('confirmNewPassword1').value,
+                new_password2: document.getElementById('confirmNewPassword2').value,
+            }, 'confirmResetResponse');
+
+            if (result.success) {
+                showAlert('Password reset successful!', 'success');
+                e.target.reset();
+            } else {
+                showAlert('Password reset failed. Check the response below.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Disconnect Social Account
+        async function disconnectSocial(accountId, providerName) {
+            if (!confirm(`Are you sure you want to disconnect your ${providerName} account?`)) {
+                return;
+            }
+
+            const result = await apiRequest(`/api/auth/social/accounts/${accountId}/`, 'DELETE', null, 'socialResponse');
+
+            if (result.success) {
+                showAlert(`${providerName} disconnected successfully! Reloading...`, 'success');
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                showAlert(`Failed to disconnect ${providerName}.`, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

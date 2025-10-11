@@ -161,6 +161,42 @@ DRF Auth Kit includes automatic OpenAPI schema generation. Set up DRF Spectacula
 
 Visit ``/api/docs/`` to explore the complete API documentation with all available authentication endpoints.
 
+UI Testing View (Development Only)
+------------------------------------
+
+DRF Auth Kit provides a comprehensive UI view for testing all authentication features in development:
+
+.. code-block:: python
+
+    # urls.py
+    from auth_kit.views import AuthKitUIView
+    from django.conf import settings
+
+    urlpatterns = [
+        # ... your existing URLs
+        path('api/auth/', include('auth_kit.urls')),
+    ]
+
+    # Include UI testing view only in DEBUG mode
+    if settings.DEBUG:
+        urlpatterns += [
+            path('api/auth/ui/', AuthKitUIView.as_view(), name='auth_kit_ui'),
+        ]
+
+**Features:**
+
+- Interactive forms for registration, login, and logout
+- User profile management interface
+- Password change and reset functionality
+- Social authentication testing (if configured)
+- MFA enrollment and verification (if enabled)
+- Real-time API response viewer
+- All auth features in one convenient page
+
+Visit ``/api/auth/ui/`` (in development) to access the testing interface.
+
+**Important:** This UI view is designed for development and testing purposes only. Use the ``DEBUG`` conditional to ensure it's not exposed in production.
+
 External Library Configuration
 -------------------------------
 

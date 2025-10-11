@@ -10,6 +10,7 @@ from .login import LoginView
 from .logout import LogoutView
 from .password import PasswordChangeView, PasswordResetConfirmView, PasswordResetView
 from .registration import RegisterView, ResendEmailVerificationView, VerifyEmailView
+from .ui import AuthKitUIView
 from .user import UserView
 
 __all__ = [
@@ -23,4 +24,5 @@ __all__ = [
     "ResendEmailVerificationView",
     "VerifyEmailView",
     "UserView",
+    "AuthKitUIView",
 ]

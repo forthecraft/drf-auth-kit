@@ -241,6 +241,35 @@ Use your API documentation to test error conditions:
 - Expired tokens
 - Unauthorized access attempts
 
+UI Testing View (Development)
+------------------------------
+
+For development and testing, DRF Auth Kit provides a comprehensive UI view for testing all authentication features:
+
+**Accessing the UI:**
+
+.. code-block:: python
+
+    # urls.py (Development only)
+    from auth_kit.views import AuthKitUIView
+    from django.conf import settings
+
+    if settings.DEBUG:
+        urlpatterns += [
+            path('api/auth/ui/', AuthKitUIView.as_view(), name='auth_kit_ui'),
+        ]
+
+Visit ``/api/auth/ui/`` to access the testing interface which includes:
+
+- Registration and login forms
+- User profile management
+- Password change and reset
+- Social authentication (if configured)
+- MFA enrollment (if enabled)
+- Real-time API response viewer
+
+**Important:** This UI view is designed for development and testing only. Use the ``DEBUG`` conditional to ensure it's not exposed in production.
+
 Frontend Integration
 --------------------
 

@@ -10,7 +10,6 @@ from typing import Any, cast
 from urllib.parse import urlencode
 
 from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import AbstractUser
 from django.http import HttpRequest
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -31,7 +30,7 @@ from .utils import build_frontend_url
 
 
 def password_reset_url_generator(
-    request: HttpRequest, user: AbstractUser, temp_key: str
+    request: HttpRequest, user: AbstractBaseUser, temp_key: str
 ) -> str:
     """
     Generate password reset URL with token and user ID.

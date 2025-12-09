@@ -9,7 +9,7 @@ and email verification resend functionality.
 from typing import Any, NoReturn, cast
 from urllib.parse import urlencode
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models import QuerySet
 from django.http import HttpResponseBase
 from django.urls import reverse
@@ -76,7 +76,7 @@ def get_email_verification_url(request: Request, emailconfirmation: Any) -> str:
         return cast(str, build_absolute_uri(request, path_with_params))
 
 
-def send_verify_email(request: Request, user: AbstractUser) -> None:
+def send_verify_email(request: Request, user: AbstractBaseUser) -> None:
     """
     Send email verification message to user.
 
@@ -89,8 +89,10 @@ def send_verify_email(request: Request, user: AbstractUser) -> None:
 
     email_template = "account/email/email_confirmation_signup"
 
+    # getattr safely accesses email field which may vary across user models
     email_address = EmailAddress.objects.get_for_user(  # pyright: ignore
-        user, user.email
+        user,
+        getattr(user, "email"),  # noqa: B009
     )
     model = get_emailconfirmation_model()
     emailconfirmation = model.create(email_address)  # pyright: ignore
@@ -135,7 +137,7 @@ class RegisterView(CreateAPIView[Any]):
         """
         return super().dispatch(*args, **kwargs)
 
-    def get_response_data(self, user: AbstractUser) -> dict[str, Any]:
+    def get_response_data(self, user: AbstractBaseUser) -> dict[str, Any]:
         """
         Get response data for successful registration.
 

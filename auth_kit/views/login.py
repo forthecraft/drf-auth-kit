@@ -9,7 +9,6 @@ from typing import Any, cast
 
 from django.contrib.auth import login as django_login
 from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import AbstractUser
 from django.http import HttpResponseBase, HttpResponseRedirect
 from django.utils import timezone
 from django.utils.functional import lazy
@@ -50,7 +49,7 @@ class LoginView(GenericAPIView[Any]):
             **kwargs: Arbitrary keyword arguments
         """
         super().__init__(**kwargs)
-        self.user: AbstractUser | AbstractBaseUser | None = None
+        self.user: AbstractBaseUser | None = None
         self.access_token: str | None = None
         self.refresh_token: str | None = None
 

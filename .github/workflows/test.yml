@@ -19,8 +19,8 @@ jobs:
         with:
             enable-cache: true
             python-version: 3.11
-      - name: Install tox
-        run: uv tool install tox --with tox-uv --with tox-gh
+      - name: Install tox with patched tox-gh
+        run: uv tool install tox --with tox-uv --with git+https://github.com/huynguyengl99/tox-gh.git
       - name: Run lint
         run: tox -e lint
 
@@ -58,8 +58,8 @@ jobs:
         with:
           enable-cache: true
           python-version: ${{ matrix.python-version }}
-      - name: Install tox
-        run: uv tool install tox --with tox-uv --with tox-gh
+      - name: Install tox with patched tox-gh
+        run: uv tool install tox --with tox-uv --with git+https://github.com/huynguyengl99/tox-gh.git
       - name: Run tests
         run: tox
 
@@ -92,8 +92,8 @@ jobs:
         with:
           enable-cache: true
           python-version: "3.11"
-      - name: Install tox
-        run: uv tool install tox --with tox-uv --with tox-gh
+      - name: Install tox with patched tox-gh
+        run: uv tool install tox --with tox-uv --with git+https://github.com/huynguyengl99/tox-gh.git
       - name: Run coverage
         run: tox -e coverage
       - name: Upload coverage reports to Codecov

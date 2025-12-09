@@ -1,3 +1,9 @@
+## v0.3.11 (2025-12-09)
+
+### Fix
+
+- use AbstractBaseUser instead of AbstractUser for better custom user
+
 ## v0.3.10 (2025-10-11)
 
 ### Fix

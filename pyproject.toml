@@ -74,18 +74,18 @@ classifiers = [
   "Topic :: Software Development"
 ]
 dependencies = [
-  "Django>=5,<6.1",
+  "django==6.0.0",
   "django-allauth>=65.5.0,<65.11.0",
   "djangorestframework-simplejwt>=5,<6",
   "djangorestframework>=3,<4",
   "drf-spectacular",
-  "structlog"
+  "structlog",
 ]
 description = "Modern Django REST Framework authentication toolkit with JWT cookies, social login, and 2FA support"
 license = {file = "LICENSE"}
 name = "drf-auth-kit"
 readme = "README.rst"
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.12"
 version = "0.3.11"
 
 [project.optional-dependencies]

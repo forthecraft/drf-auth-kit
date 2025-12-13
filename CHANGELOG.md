@@ -1,3 +1,10 @@
+## v1.0.0 (2025-12-13)
+
+### Feat
+
+- add Django 6.0 support and multi-version testing
+- bump version to 1.0.0 (stable release)
+
 ## v0.3.11 (2025-12-09)
 
 ### Fix

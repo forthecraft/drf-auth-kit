@@ -20,15 +20,27 @@ jobs:
             enable-cache: true
             python-version: 3.11
       - name: Install tox with patched tox-gh
-        run: uv tool install tox --with tox-uv --with git+https://github.com/huynguyengl99/tox-gh.git
+        run: uv tool install tox --with tox-uv --with tox-gh
       - name: Run lint
         run: tox -e lint
 
   test:
-    runs-on: ubuntu-latest
+    name: test py${{ matrix.py }}-django${{ matrix.django }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        py: ["3.10", "3.11", "3.12", "3.13"]
+        django: ["42", "50", "51", "60"]
+        os: [ubuntu-latest]
+        exclude:
+          # Django 4.2 doesn't officially support Python 3.13
+          - py: "3.13"
+            django: "42"
+          # Django 6.0 requires Python 3.12+
+          - py: "3.10"
+            django: "60"
+          - py: "3.11"
+            django: "60"
       fail-fast: false
     services:
       postgres:
@@ -50,18 +62,27 @@ jobs:
       POSTGRES_PASSWORD: auth_kit_test_pass
       POSTGRES_HOST: localhost
       POSTGRES_PORT: 5432
-      TOX_GH_MAJOR_MINOR: ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-          python-version: ${{ matrix.python-version }}
-      - name: Install tox with patched tox-gh
-        run: uv tool install tox --with tox-uv --with git+https://github.com/huynguyengl99/tox-gh.git
-      - name: Run tests
-        run: tox
+          cache-dependency-glob: "pyproject.toml"
+      - name: Install tox
+        run: uv tool install --python-preference only-managed --python ${{ matrix.py }} tox --with tox-uv --with tox-gh
+      - name: Install Python
+        run: uv python install --python-preference only-managed ${{ matrix.py }}
+      - name: Setup test suite
+        run: tox run -vv --notest --skip-missing-interpreters false -e py$(echo "${{ matrix.py }}" | tr -d '.')-django${{ matrix.django }}
+        env:
+          TOX_GH_MAJOR_MINOR: ${{ matrix.py }}
+      - name: Run test suite
+        run: tox run --skip-pkg-install -e py$(echo "${{ matrix.py }}" | tr -d '.')-django${{ matrix.django }}
+        env:
+          TOX_GH_MAJOR_MINOR: ${{ matrix.py }}
 
   coverage:
     runs-on: ubuntu-latest

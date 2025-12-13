@@ -13,6 +13,8 @@ from datetime import timedelta
 from pathlib import Path
 from typing import Any
 
+import django
+
 import django_stubs_ext
 import structlog
 from environs import env
@@ -138,6 +140,11 @@ TEMPLATES: list[dict[str, Any]] = [
 # =========================================================================
 # DATABASE CONFIGURATION
 # =========================================================================
+# Pool option is only available in Django 5.1+
+_db_options = {}
+if django.VERSION >= (5, 1):
+    _db_options["pool"] = True
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -146,9 +153,7 @@ DATABASES = {
         "PASSWORD": env.str("POSTGRES_PASSWORD", ""),
         "HOST": env.str("POSTGRES_HOST", "localhost"),
         "PORT": env.int("POSTGRES_PORT", 5432),
-        "OPTIONS": {
-            "pool": True,
-        },
+        "OPTIONS": _db_options,
     }
 }
 

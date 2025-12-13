@@ -8,6 +8,7 @@ user MFA configurations including secrets, backup codes, and method status.
 from collections.abc import Iterable
 from typing import TYPE_CHECKING, Any, ClassVar
 
+import django
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.db.models import (
@@ -201,6 +202,22 @@ class MFAMethod(Model):
 
         verbose_name = _("MFA Method")
         verbose_name_plural = _("MFA Methods")
+        # Build constraints with version-appropriate parameter names
+        # Type checking disabled for multi-version Django compatibility
+        _check_constraint_kwargs: dict[str, Any] = {
+            "name": "primary_is_active",
+        }
+        _check_q = (Q(is_primary=True) & Q(is_active=True)) | Q(is_primary=False)
+        # Django 5.1+ uses 'condition', earlier versions use 'check'
+        if django.VERSION >= (5, 1):
+            _check_constraint_kwargs["condition"] = (
+                _check_q  # pyright: ignore[reportArgumentType]
+            )
+        else:
+            _check_constraint_kwargs["check"] = (
+                _check_q  # pyright: ignore[reportArgumentType]
+            )
+
         constraints = (
             UniqueConstraint(
                 fields=("user", "name"),
@@ -211,11 +228,9 @@ class MFAMethod(Model):
                 fields=("user",),
                 name="unique_user_is_primary",
             ),
-            CheckConstraint(
-                condition=(Q(is_primary=True) & Q(is_active=True))
-                | Q(is_primary=False),
-                name="primary_is_active",
-            ),
+            CheckConstraint(  # pyright: ignore[reportDeprecated]
+                **_check_constraint_kwargs
+            ),  # pyright: ignore[reportCallIssue]
         )
         indexes = [
             Index(fields=["user", "is_active"], name="user_is_active_idx"),

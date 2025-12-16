@@ -8,6 +8,7 @@ JWT authentication cookies in HTTP responses.
 from datetime import datetime
 
 from django.contrib.auth.base_user import AbstractBaseUser
+from django.utils.dateparse import parse_datetime
 from rest_framework.response import Response
 
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
@@ -20,7 +21,7 @@ def set_auth_kit_cookie(
     cookie_name: str,
     cookie_value: str,
     cookie_path: str,
-    cookie_exp_time: datetime | None,
+    cookie_exp_time: datetime | str | None,
 ) -> None:
     """
     Set an authentication cookie in the HTTP response.
@@ -32,6 +33,8 @@ def set_auth_kit_cookie(
         cookie_path: Path for which the cookie is valid
         cookie_exp_time: Expiration time for the cookie
     """
+    if isinstance(cookie_exp_time, str):
+        cookie_exp_time = parse_datetime(cookie_exp_time)
 
     response.set_cookie(
         cookie_name,

@@ -1,3 +1,9 @@
+## v1.0.1 (2025-12-16)
+
+### Fix
+
+- **jwt**: handle string datetime in cookie expiration
+
 ## v1.0.0 (2025-12-13)
 
 ### Feat

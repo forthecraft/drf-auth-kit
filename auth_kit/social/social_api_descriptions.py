@@ -5,10 +5,8 @@ This module provides dynamic descriptions for social authentication OpenAPI sche
 based on the current Auth Kit configuration settings.
 """
 
-from functools import partial
 from typing import TYPE_CHECKING
 
-from django.utils.functional import lazy
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
@@ -27,9 +25,12 @@ def get_social_login_description(
     provider_name: str = "social provider",
 ) -> _StrOrPromise:
     """Generate dynamic social login description based on authentication type."""
-    base = _(
-        "Authenticate with %(provider)s using OAuth2/OpenID Connect authorization code to obtain access tokens."
-    ) % {"provider": provider_name}
+    base = format_lazy(
+        _(
+            "Authenticate with {} using OAuth2/OpenID Connect authorization code to obtain access tokens."
+        ),
+        provider_name,
+    )
     # Reuse existing functions from api_descriptions
     auth_part = get_auth_type_description()
     cookie_part = get_auth_cookie_description()
@@ -49,18 +50,26 @@ def get_social_connect_description(
     provider_name: str = "social provider",
 ) -> _StrOrPromise:
     """Generate social account connection description."""
-    base = _(
-        "Connect a %(provider)s account to the current user's account. "
-        "This allows the user to login using their existing %(provider)s account in the future."
-    ) % {"provider": provider_name}
+    base = format_lazy(
+        _(
+            "Connect a {} account to the current user's account. "
+            "This allows the user to login using their existing {} account in the future."
+        ),
+        provider_name,
+        provider_name,
+    )
 
-    requirements = _(
-        "Requires authentication and a valid OAuth2/OpenID Connect authorization code from %(provider)s."
-    ) % {"provider": provider_name}
+    requirements = format_lazy(
+        _(
+            "Requires authentication and a valid OAuth2/OpenID Connect authorization code from {}."
+        ),
+        provider_name,
+    )
 
-    result = _(
-        "On success, the %(provider)s account is linked and can be used for future logins."
-    ) % {"provider": provider_name}
+    result = format_lazy(
+        _("On success, the {} account is linked and can be used for future logins."),
+        provider_name,
+    )
 
     return format_lazy(
         "{} {} {}",
@@ -72,12 +81,12 @@ def get_social_connect_description(
 
 def get_lazy_social_login_description(provider_name: str) -> _StrOrPromise:
     """Get a lazy version of social login description for a specific provider."""
-    return lazy(partial(get_social_login_description, provider_name), str)()
+    return get_social_login_description(provider_name)
 
 
 def get_lazy_social_connect_description(provider_name: str) -> _StrOrPromise:
     """Get a lazy version of social connect description for a specific provider."""
-    return lazy(partial(get_social_connect_description, provider_name), str)()
+    return get_social_connect_description(provider_name)
 
 
 # Social Account Management descriptions
@@ -93,5 +102,5 @@ SOCIAL_ACCOUNT_DELETE_DESCRIPTION = _(
 )
 
 # Static descriptions for social endpoints
-SOCIAL_LOGIN_DESCRIPTION = lazy(get_social_login_description, str)()
-SOCIAL_CONNECT_DESCRIPTION = lazy(get_social_connect_description, str)()
+SOCIAL_LOGIN_DESCRIPTION = get_social_login_description()
+SOCIAL_CONNECT_DESCRIPTION = get_social_connect_description()

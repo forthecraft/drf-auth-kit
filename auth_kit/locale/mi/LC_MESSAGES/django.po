@@ -204,8 +204,8 @@ msgstr "Kua tukuna he karere īmēra me te waehere MFA."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Ka mutu te waehere MFA i %(seconds)s hēkona."
+msgid "MFA code expires in {} seconds."
+msgstr "Ka mutu te waehere MFA i {} hēkona."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -218,11 +218,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "Whakahoki ai te tohu roa-poto mo te whakamana MFA tetahi rānei "
-"%(auth_tokens)s katoa mēnā kua monokia te MFA."
+"{} katoa mēnā kua monokia te MFA."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -246,8 +246,8 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Ka mutu te tohu roa-poto hou i %(seconds)s hēkona."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Ka mutu te tohu roa-poto hou i {} hēkona."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -513,38 +513,38 @@ msgstr "I rahua te whakawhiti waehere mo te tohu urunga"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Whakamanatia me %(provider)s ma te waehere whakamana OAuth2/OpenID Connect "
+"Whakamanatia me {} ma te waehere whakamana OAuth2/OpenID Connect "
 "hoki nga tohu urunga."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Honoa he pūkete %(provider)s ki te pūkete o te kaiwhakamahi o nāianei. Tenei "
-"whakaaetanga te kaiwhakamahi takiuru ma to rātou pūkete %(provider)s o mua i "
+"Honoa he pūkete {} ki te pūkete o te kaiwhakamahi o nāianei. Tenei "
+"whakaaetanga te kaiwhakamahi takiuru ma to rātou pūkete {} o mua i "
 "nga rā o mua."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Me whakamanatia me he waehere whakamana OAuth2/OpenID Connect "
-"whakawhitiwhiti i %(provider)s."
+"whakawhitiwhiti i {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"I te angitū, ka honoa te pūkete %(provider)s ā ka taea te whakamahi mō nga "
+"I te angitū, ka honoa te pūkete {} ā ka taea te whakamahi mō nga "
 "takiuru a mua."
 
 #: auth_kit/social/social_api_descriptions.py:85

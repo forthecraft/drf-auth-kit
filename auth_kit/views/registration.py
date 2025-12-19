@@ -13,7 +13,6 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models import QuerySet
 from django.http import HttpResponseBase
 from django.urls import reverse
-from django.utils.functional import lazy
 from django.utils.translation import gettext_lazy as _
 from rest_framework import status
 from rest_framework.exceptions import MethodNotAllowed
@@ -154,7 +153,7 @@ class RegisterView(CreateAPIView[Any]):
             return {"detail": _("Verification e-mail sent.")}
         return {"detail": _("Successfully registered.")}
 
-    @extend_schema(description=lazy(get_register_description, str)())
+    @extend_schema(description=get_register_description())
     def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """
         Create a new user account.

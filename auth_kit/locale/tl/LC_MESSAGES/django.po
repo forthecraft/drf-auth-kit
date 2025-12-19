@@ -211,8 +211,8 @@ msgstr "Ang email message na may MFA code ay napadala na."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Ang MFA code ay mag-expire sa %(seconds)s segundo."
+msgid "MFA code expires in {} seconds."
+msgstr "Ang MFA code ay mag-expire sa {} segundo."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -225,11 +225,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "Nagbabalik ng ephemeral token para sa MFA verification o kumpletong "
-"%(auth_tokens)s kung ang MFA ay disabled."
+"{} kung ang MFA ay disabled."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -254,8 +254,8 @@ msgstr "Kailangan ng valid ephemeral token mula sa first step authentication."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Ang bagong ephemeral token ay mag-expire sa %(seconds)s segundo."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Ang bagong ephemeral token ay mag-expire sa {} segundo."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -529,38 +529,38 @@ msgstr "Hindi naging matagumpay ang exchange ng code para sa access token"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Mag-authenticate gamit ang %(provider)s sa pamamagitan ng OAuth2/OpenID "
+"Mag-authenticate gamit ang {} sa pamamagitan ng OAuth2/OpenID "
 "Connect authorization code para makakuha ng access tokens."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Mag-connect ng %(provider)s account sa kasalukuyang user account. Ito ay "
+"Mag-connect ng {} account sa kasalukuyang user account. Ito ay "
 "nagbibigay-daan sa user na mag-login gamit ang kanilang existing "
-"%(provider)s account sa hinaharap."
+"{} account sa hinaharap."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Kailangan ng authentication at valid OAuth2/OpenID Connect authorization "
-"code mula sa %(provider)s."
+"code mula sa {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Kapag matagumpay, ang %(provider)s account ay ma-link at maaaring gamitin "
+"Kapag matagumpay, ang {} account ay ma-link at maaaring gamitin "
 "para sa mga future logins."
 
 #: auth_kit/social/social_api_descriptions.py:85

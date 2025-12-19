@@ -204,8 +204,8 @@ msgstr "E-mailová správa s MFA kódom bola odoslaná."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA kód vyprší za %(seconds)s sekúnd."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA kód vyprší za {} sekúnd."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -218,10 +218,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Vráti dočasný token na MFA overenie alebo kompletné %(auth_tokens)s ak je "
+"Vráti dočasný token na MFA overenie alebo kompletné {} ak je "
 "MFA zakázaná."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -245,8 +245,8 @@ msgstr "Vyžaduje platný dočasný token z prvého kroku autentifikácie."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Nový dočasný token vyprší za %(seconds)s sekúnd."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Nový dočasný token vyprší za {} sekúnd."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -512,38 +512,38 @@ msgstr "Nepodarilo sa vymeniť kód za prístupový token"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Autentifikujte sa pomocou %(provider)s pomocou autorizačného kódu OAuth2/"
+"Autentifikujte sa pomocou {} pomocou autorizačného kódu OAuth2/"
 "OpenID Connect na získanie prístupových tokenov."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Pripojí %(provider)s účet k účtu aktuálneho používateľa. Toto umožní "
-"používateľovi prihlásiť sa pomocou existujúceho %(provider)s účtu v "
+"Pripojí {} účet k účtu aktuálneho používateľa. Toto umožní "
+"používateľovi prihlásiť sa pomocou existujúceho {} účtu v "
 "budúcnosti."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Vyžaduje autentifikáciu a platný autorizačný kód OAuth2/OpenID Connect od "
-"%(provider)s."
+"{}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Pri úspechu je %(provider)s účet prepojený a môže sa použiť pre budúce "
+"Pri úspechu je {} účet prepojený a môže sa použiť pre budúce "
 "prihlásenia."
 
 #: auth_kit/social/social_api_descriptions.py:85

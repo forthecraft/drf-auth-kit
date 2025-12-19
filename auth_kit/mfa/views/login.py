@@ -8,7 +8,6 @@ and code resending functionality.
 
 from typing import Any
 
-from django.utils.functional import lazy
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
@@ -55,7 +54,7 @@ class LoginFirstStepView(LoginView):
         return auth_kit_mfa_settings.MFA_FIRST_STEP_SERIALIZER_FACTORY()
 
     @extend_schema(
-        description=lazy(get_mfa_login_first_step_description, str)(),
+        description=get_mfa_login_first_step_description(),
         responses=PolymorphicProxySerializer(
             component_name="FirstStepResponse",
             serializers=get_mfa_login_first_step_response_schemas,
@@ -108,7 +107,7 @@ class LoginSecondStepView(LoginView):
         return auth_kit_mfa_settings.MFA_SECOND_STEP_SERIALIZER_FACTORY()
 
     @extend_schema(
-        description=lazy(get_mfa_login_second_step_description, str)(),
+        description=get_mfa_login_second_step_description(),
     )
     def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """
@@ -139,7 +138,7 @@ class LoginChangeMethodView(GenericAPIView[Any]):
     serializer_class = auth_kit_mfa_settings.MFA_CHANGE_METHOD_SERIALIZER
 
     @extend_schema(
-        description=lazy(get_mfa_login_change_method_description, str)(),
+        description=get_mfa_login_change_method_description(),
     )
     def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """
@@ -172,7 +171,7 @@ class LoginMFAResendView(GenericAPIView[Any]):
     serializer_class = auth_kit_mfa_settings.MFA_RESEND_SERIALIZER
 
     @extend_schema(
-        description=lazy(get_mfa_login_resend_description, str)(),
+        description=get_mfa_login_resend_description(),
     )
     def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """

@@ -7,7 +7,6 @@ including creation, activation, deactivation, and deletion of MFA configurations
 
 from typing import Any
 
-from django.utils.functional import lazy
 from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -181,7 +180,7 @@ class MFAMethodViewSet(
         return Response(serializer.data)
 
     @extend_schema(
-        description=lazy(get_mfa_method_primary_description, str)(),
+        description=get_mfa_method_primary_description(),
     )
     @action(
         detail=False,
@@ -229,7 +228,7 @@ class MFAMethodViewSet(
         return Response(serializer.data)
 
     @extend_schema(
-        description=lazy(get_mfa_method_delete_description, str)(),
+        description=get_mfa_method_delete_description(),
     )
     @action(
         detail=False,

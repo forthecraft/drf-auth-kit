@@ -184,8 +184,8 @@ msgstr "ข้อความอีเมลพร้อมรหัส MFA ถ�
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "รหัส MFA จะหมดอายุใน %(seconds)s วินาที"
+msgid "MFA code expires in {} seconds."
+msgstr "รหัส MFA จะหมดอายุใน {} วินาที"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -197,10 +197,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"ส่งคืน ephemeral token สำหรับการยืนยัน MFA หรือ %(auth_tokens)s ที่สมบูรณ์หาก MFA "
+"ส่งคืน ephemeral token สำหรับการยืนยัน MFA หรือ {} ที่สมบูรณ์หาก MFA "
 "ถูกปิดใช้งาน"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -223,8 +223,8 @@ msgstr "ต้องใช้ ephemeral token ที่ถูกต้องจ�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "ephemeral token ใหม่จะหมดอายุใน %(seconds)s วินาที"
+msgid "New ephemeral token expires in {} seconds."
+msgstr "ephemeral token ใหม่จะหมดอายุใน {} วินาที"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -488,37 +488,37 @@ msgstr "ไม่สามารถแลกเปลี่ยนรหัสก
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"รับรองความถูกต้องด้วย %(provider)s โดยใช้รหัสการให้สิทธิ์ OAuth2/OpenID Connect เพื่อรับ "
+"รับรองความถูกต้องด้วย {} โดยใช้รหัสการให้สิทธิ์ OAuth2/OpenID Connect เพื่อรับ "
 "access token"
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"เชื่อมต่อบัญชี %(provider)s กับบัญชีของผู้ใช้ปัจจุบัน ทำให้ผู้ใช้สามารถเข้าสู่ระบบโดยใช้บัญชี "
-"%(provider)s ที่มีอยู่ในอนาคต"
+"เชื่อมต่อบัญชี {} กับบัญชีของผู้ใช้ปัจจุบัน ทำให้ผู้ใช้สามารถเข้าสู่ระบบโดยใช้บัญชี "
+"{} ที่มีอยู่ในอนาคต"
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "ต้องการการรับรองความถูกต้องและรหัสการให้สิทธิ์ OAuth2/OpenID Connect ที่ถูกต้องจาก "
-"%(provider)s"
+"{}"
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"เมื่อสำเร็จ บัญชี %(provider)s จะถูกเชื่อมโยงและสามารถใช้สำหรับการเข้าสู่ระบบในอนาคต"
+"เมื่อสำเร็จ บัญชี {} จะถูกเชื่อมโยงและสามารถใช้สำหรับการเข้าสู่ระบบในอนาคต"
 
 #: auth_kit/social/social_api_descriptions.py:85
 msgid ""

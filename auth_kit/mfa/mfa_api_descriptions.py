@@ -25,9 +25,10 @@ else:
 
 def get_mfa_ephemeral_token_expiry_description() -> _StrOrPromise:
     """Get ephemeral token expiry description."""
-    return _("MFA code expires in %(seconds)s seconds.") % {
-        "seconds": auth_kit_mfa_settings.MFA_EPHEMERAL_TOKEN_EXPIRY
-    }
+    return format_lazy(
+        _("MFA code expires in {} seconds."),
+        auth_kit_mfa_settings.MFA_EPHEMERAL_TOKEN_EXPIRY,
+    )
 
 
 def get_mfa_login_first_step_description() -> _StrOrPromise:
@@ -36,10 +37,12 @@ def get_mfa_login_first_step_description() -> _StrOrPromise:
         "First step of MFA-enabled authentication. Validates credentials and initiates MFA flow."
     )
 
-    # Use the token name instead of the full description
-    auth_part = _(
-        "Returns ephemeral token for MFA verification or complete %(auth_tokens)s if MFA is disabled."
-    ) % {"auth_tokens": get_auth_tokens_name()}
+    auth_part = format_lazy(
+        _(
+            "Returns ephemeral token for MFA verification or complete {} if MFA is disabled."
+        ),
+        get_auth_tokens_name(),
+    )
 
     mfa_part = get_mfa_ephemeral_token_expiry_description()
 
@@ -69,9 +72,10 @@ def get_mfa_login_change_method_description() -> _StrOrPromise:
 
     requirements = _("Requires valid ephemeral token from first step authentication.")
 
-    expiry_part = _("New ephemeral token expires in %(seconds)s seconds.") % {
-        "seconds": auth_kit_mfa_settings.MFA_EPHEMERAL_TOKEN_EXPIRY
-    }
+    expiry_part = format_lazy(
+        _("New ephemeral token expires in {} seconds."),
+        auth_kit_mfa_settings.MFA_EPHEMERAL_TOKEN_EXPIRY,
+    )
 
     return format_lazy("{} {} {}", base, requirements, expiry_part)
 
@@ -84,9 +88,10 @@ def get_mfa_login_resend_description() -> _StrOrPromise:
         "Only applicable for methods that require code dispatch (e.g., email)."
     )
 
-    expiry_part = _("New ephemeral token expires in %(seconds)s seconds.") % {
-        "seconds": auth_kit_mfa_settings.MFA_EPHEMERAL_TOKEN_EXPIRY
-    }
+    expiry_part = format_lazy(
+        _("New ephemeral token expires in {} seconds."),
+        auth_kit_mfa_settings.MFA_EPHEMERAL_TOKEN_EXPIRY,
+    )
 
     return format_lazy("{} {} {}", base, handlers_part, expiry_part)
 
@@ -155,7 +160,7 @@ def get_mfa_method_delete_description() -> _StrOrPromise:
 
     if restrictions:
         # Build format string dynamically based on number of restrictions
-        restrictions_format = " ".join(["{}" for _ in restrictions])
+        restrictions_format = " ".join(["{}" for _item in restrictions])
         restrictions_text = format_lazy(restrictions_format, *restrictions)
         return format_lazy("{} {} {}", base, restrictions_text, ending)
     else:

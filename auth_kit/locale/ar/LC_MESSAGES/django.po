@@ -195,8 +195,8 @@ msgstr "تم إرسال رسالة بريد إلكتروني مع رمز الم�
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "رمز المصادقة متعددة العوامل ينتهي في %(seconds)s ثانية."
+msgid "MFA code expires in {} seconds."
+msgstr "رمز المصادقة متعددة العوامل ينتهي في {} ثانية."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -209,9 +209,9 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
-msgstr "يعيد رمز مؤقت للتحقق من MFA أو %(auth_tokens)s كاملة إذا كان MFA معطل."
+msgstr "يعيد رمز مؤقت للتحقق من MFA أو {} كاملة إذا كان MFA معطل."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -233,8 +233,8 @@ msgstr "يتطلب رمز مؤقت صالح من مصادقة الخطوة ال�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "الرمز المؤقت الجديد ينتهي في %(seconds)s ثانية."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "الرمز المؤقت الجديد ينتهي في {} ثانية."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -498,35 +498,35 @@ msgstr "فشل في استبدال الرمز برمز الوصول"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"قم بالمصادقة مع %(provider)s باستخدام رمز التفويض OAuth2/OpenID Connect "
+"قم بالمصادقة مع {} باستخدام رمز التفويض OAuth2/OpenID Connect "
 "للحصول على رموز الوصول."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"ربط حساب %(provider)s بحساب المستخدم الحالي. هذا يسمح للمستخدم بتسجيل الدخول "
-"باستخدام حساب %(provider)s الموجود في المستقبل."
+"ربط حساب {} بحساب المستخدم الحالي. هذا يسمح للمستخدم بتسجيل الدخول "
+"باستخدام حساب {} الموجود في المستقبل."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
-msgstr "يتطلب المصادقة ورمز تفويض OAuth2/OpenID Connect صالح من %(provider)s."
+"from {}."
+msgstr "يتطلب المصادقة ورمز تفويض OAuth2/OpenID Connect صالح من {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"عند النجاح، يتم ربط حساب %(provider)s ويمكن استخدامه لتسجيل الدخول في "
+"عند النجاح، يتم ربط حساب {} ويمكن استخدامه لتسجيل الدخول في "
 "المستقبل."
 
 #: auth_kit/social/social_api_descriptions.py:85

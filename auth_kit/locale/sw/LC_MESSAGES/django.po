@@ -210,8 +210,8 @@ msgstr "Ujumbe wa barua pepe wenye msimbo wa MFA umetumwa."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Msimbo wa MFA unakwisha katika sekunde %(seconds)s."
+msgid "MFA code expires in {} seconds."
+msgstr "Msimbo wa MFA unakwisha katika sekunde {}."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -224,10 +224,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Inarudisha alama ya muda mfupi kwa uthibitishaji wa MFA au %(auth_tokens)s "
+"Inarudisha alama ya muda mfupi kwa uthibitishaji wa MFA au {} "
 "kamili ikiwa MFA imezimwa."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -256,8 +256,8 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Alama mpya ya muda mfupi inakwisha katika sekunde %(seconds)s."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Alama mpya ya muda mfupi inakwisha katika sekunde {}."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -532,38 +532,38 @@ msgstr "Imeshindwa kubadilishana msimbo kwa alama ya ufikiaji"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Thibitisha kwa %(provider)s kwa kutumia msimbo wa idhini wa OAuth2/OpenID "
+"Thibitisha kwa {} kwa kutumia msimbo wa idhini wa OAuth2/OpenID "
 "Connect ili kupata alama za ufikiaji."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Unganisha akaunti ya %(provider)s na akaunti ya mtumiaji wa sasa. Hii "
-"inaruhusu mtumiaji kuingia kwa kutumia akaunti yao ya %(provider)s iliyopo "
+"Unganisha akaunti ya {} na akaunti ya mtumiaji wa sasa. Hii "
+"inaruhusu mtumiaji kuingia kwa kutumia akaunti yao ya {} iliyopo "
 "katika siku zijazo."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Inahitaji uthibitishaji na msimbo halali wa idhini wa OAuth2/OpenID Connect "
-"kutoka %(provider)s."
+"kutoka {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Ikiwa imefanikiwa, akaunti ya %(provider)s itaunganishwa na inaweza kutumiwa "
+"Ikiwa imefanikiwa, akaunti ya {} itaunganishwa na inaweza kutumiwa "
 "kwa kuingia katika siku zijazo."
 
 #: auth_kit/social/social_api_descriptions.py:85

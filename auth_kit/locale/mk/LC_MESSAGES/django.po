@@ -207,8 +207,8 @@ msgstr "Емаил порака со MFA код е испратена."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA кодот истекува за %(seconds)s секунди."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA кодот истекува за {} секунди."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -221,10 +221,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Враќа привремен токен за MFA верификација или комплетен %(auth_tokens)s ако "
+"Враќа привремен токен за MFA верификација или комплетен {} ако "
 "MFA е оневозможен."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -249,8 +249,8 @@ msgstr "Бара валиден привремен токен од автент�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Новиот привремен токен истекува за %(seconds)s секунди."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Новиот привремен токен истекува за {} секунди."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -522,38 +522,38 @@ msgstr "Неуспешна размена на код за токен за пр�
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Автентикувај се со %(provider)s користејќи OAuth2/OpenID Connect "
+"Автентикувај се со {} користејќи OAuth2/OpenID Connect "
 "авторизациски код за да добиеш токени за пристап."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Поврзи %(provider)s сметка со сметката на тековниот корисник. Ова овозможува "
-"корисникот да се најави користејќи ја својата постоечка %(provider)s сметка "
+"Поврзи {} сметка со сметката на тековниот корисник. Ова овозможува "
+"корисникот да се најави користејќи ја својата постоечка {} сметка "
 "во иднина."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Бара автентикација и валиден OAuth2/OpenID Connect авторизациски код од "
-"%(provider)s."
+"{}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"При успех, %(provider)s сметката е поврзана и може да се користи за идни "
+"При успех, {} сметката е поврзана и може да се користи за идни "
 "најавувања."
 
 #: auth_kit/social/social_api_descriptions.py:85

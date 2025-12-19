@@ -192,8 +192,8 @@ msgstr "E-postmelding med MFA-kode har blitt sendt."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA-kode utløper om %(seconds)s sekunder."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA-kode utløper om {} sekunder."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -206,11 +206,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "Returnerer midlertidig token for MFA-bekreftelse eller fullstendige "
-"%(auth_tokens)s hvis MFA er deaktivert."
+"{} hvis MFA er deaktivert."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -233,8 +233,8 @@ msgstr "Krever gyldig midlertidig token fra første trinns autentisering."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Nytt midlertidig token utløper om %(seconds)s sekunder."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Nytt midlertidig token utløper om {} sekunder."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -502,38 +502,38 @@ msgstr "Klarte ikke å veksle kode for tilgangstoken"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Autentiser med %(provider)s ved hjelp av OAuth2/OpenID Connect "
+"Autentiser med {} ved hjelp av OAuth2/OpenID Connect "
 "autorisasjonskode for å få tilgangstokens."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Koble en %(provider)s-konto til den gjeldende brukerens konto. Dette "
-"tillater brukeren å logge inn ved hjelp av deres eksisterende %(provider)s-"
+"Koble en {}-konto til den gjeldende brukerens konto. Dette "
+"tillater brukeren å logge inn ved hjelp av deres eksisterende {}-"
 "konto i fremtiden."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Krever autentisering og en gyldig OAuth2/OpenID Connect autorisasjonskode "
-"fra %(provider)s."
+"fra {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Ved suksess blir %(provider)s-kontoen koblet og kan brukes til fremtidige "
+"Ved suksess blir {}-kontoen koblet og kan brukes til fremtidige "
 "innlogginger."
 
 #: auth_kit/social/social_api_descriptions.py:85

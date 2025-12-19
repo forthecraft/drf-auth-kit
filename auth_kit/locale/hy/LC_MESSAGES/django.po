@@ -208,8 +208,8 @@ msgstr "MFA ծածկագրով էլ. փոստի հաղորդագրություն
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA ծածկագիրը կավարտվի %(seconds)s վայրկյանից:"
+msgid "MFA code expires in {} seconds."
+msgstr "MFA ծածկագիրը կավարտվի {} վայրկյանից:"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -222,11 +222,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "Վերադարձնում է ժամանակավոր նշան MFA ստուգման համար կամ ամբողջական "
-"%(auth_tokens)s, եթե MFA-ն անջատված է:"
+"{}, եթե MFA-ն անջատված է:"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -251,8 +251,8 @@ msgstr "Պահանջում է վավեր ժամանակավոր նշան առա�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Նոր ժամանակավոր նշանը կավարտվի %(seconds)s վայրկյանից:"
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Նոր ժամանակավոր նշանը կավարտվի {} վայրկյանից:"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -527,38 +527,38 @@ msgstr "Չհաջողվեց փոխանակել ծածկագիրը մուտքի ն
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Նույնականացում %(provider)s-ի հետ՝ օգտագործելով OAuth2/OpenID Connect "
+"Նույնականացում {}-ի հետ՝ օգտագործելով OAuth2/OpenID Connect "
 "լիազորման ծածկագիրը՝ մուտքի նշաններ ստանալու համար:"
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Միացնել %(provider)s հաշիվը ընթացիկ օգտատիրոջ հաշվին: Սա թույլ է տալիս "
-"օգտատիրոջը՝ ապագայում մուտք գործել իրենց գոյություն ունեցող %(provider)s "
+"Միացնել {} հաշիվը ընթացիկ օգտատիրոջ հաշվին: Սա թույլ է տալիս "
+"օգտատիրոջը՝ ապագայում մուտք գործել իրենց գոյություն ունեցող {} "
 "հաշվով:"
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Պահանջում է նույնականացում և վավեր OAuth2/OpenID Connect լիազորման ծածկագիր "
-"%(provider)s-ից:"
+"{}-ից:"
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Հաջող գործողության դեպքում՝ %(provider)s հաշիվը կապակցված է և կարող է "
+"Հաջող գործողության դեպքում՝ {} հաշիվը կապակցված է և կարող է "
 "օգտագործվել ապագա մուտքերի համար:"
 
 #: auth_kit/social/social_api_descriptions.py:85

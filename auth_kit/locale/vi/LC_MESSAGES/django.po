@@ -196,8 +196,8 @@ msgstr "Email chứa mã MFA đã được gửi."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Mã MFA hết hạn trong %(seconds)s giây."
+msgid "MFA code expires in {} seconds."
+msgstr "Mã MFA hết hạn trong {} giây."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -210,10 +210,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Trả về token tạm thời để xác minh MFA hoặc %(auth_tokens)s hoàn chỉnh nếu "
+"Trả về token tạm thời để xác minh MFA hoặc {} hoàn chỉnh nếu "
 "MFA bị vô hiệu hóa."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -236,8 +236,8 @@ msgstr "Yêu cầu token tạm thời hợp lệ từ bước xác thực đầu
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Token tạm thời mới hết hạn trong %(seconds)s giây."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Token tạm thời mới hết hạn trong {} giây."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -506,38 +506,38 @@ msgstr "Không thể đổi mã lấy access token"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Xác thực với %(provider)s bằng mã authorization OAuth2/OpenID Connect để lấy "
+"Xác thực với {} bằng mã authorization OAuth2/OpenID Connect để lấy "
 "access token."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Kết nối tài khoản %(provider)s với tài khoản người dùng hiện tại. Điều này "
-"cho phép người dùng đăng nhập bằng tài khoản %(provider)s hiện có trong "
+"Kết nối tài khoản {} với tài khoản người dùng hiện tại. Điều này "
+"cho phép người dùng đăng nhập bằng tài khoản {} hiện có trong "
 "tương lai."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Yêu cầu xác thực và mã authorization OAuth2/OpenID Connect hợp lệ từ "
-"%(provider)s."
+"{}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Khi thành công, tài khoản %(provider)s sẽ được liên kết và có thể được sử "
+"Khi thành công, tài khoản {} sẽ được liên kết và có thể được sử "
 "dụng cho các lần đăng nhập trong tương lai."
 
 #: auth_kit/social/social_api_descriptions.py:85

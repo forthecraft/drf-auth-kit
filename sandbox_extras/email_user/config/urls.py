@@ -26,7 +26,7 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
-from drf_spectacular_extras.views import SpectacularScalarView  #  type: ignore
+from drf_spectacular_extras.views import SpectacularScalarView  # type: ignore
 
 api_urlpatterns = [
     path("schema/", SpectacularAPIView.as_view(), name="schema"),

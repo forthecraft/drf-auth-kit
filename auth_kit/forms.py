@@ -6,7 +6,7 @@ using django-allauth integration.
 """
 
 # pyright: reportMissingTypeStubs=false, reportUnknownVariableType=false
-from typing import Any, cast
+from typing import Any
 from urllib.parse import urlencode
 
 from django.contrib.auth.base_user import AbstractBaseUser
@@ -62,7 +62,7 @@ def password_reset_url_generator(
         )
     else:
         # Use build_absolute_uri with the backend path
-        return cast(str, build_absolute_uri(request, path_with_params))
+        return str(build_absolute_uri(request, path_with_params))
 
 
 class AllAuthPasswordResetForm(DefaultPasswordResetForm):  # type: ignore[misc]

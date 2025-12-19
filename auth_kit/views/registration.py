@@ -6,7 +6,7 @@ and email verification resend functionality.
 """
 
 # pyright: reportMissingTypeStubs=false, reportUnknownVariableType=false
-from typing import Any, NoReturn, cast
+from typing import Any, NoReturn
 from urllib.parse import urlencode
 
 from django.contrib.auth.base_user import AbstractBaseUser
@@ -73,7 +73,7 @@ def get_email_verification_url(request: Request, emailconfirmation: Any) -> str:
         )
     else:
         # Use build_absolute_uri with the backend path
-        return cast(str, build_absolute_uri(request, path_with_params))
+        return str(build_absolute_uri(request, path_with_params))
 
 
 def send_verify_email(request: Request, user: AbstractBaseUser) -> None:

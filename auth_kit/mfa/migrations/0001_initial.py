@@ -26,7 +26,7 @@ def _make_check_constraint() -> models.CheckConstraint:
             condition=constraint_q,
             name="primary_is_active",
         )
-    else:
+    else:  # pragma: no cover
         # Using deprecated 'check' param for Django < 5.1 compatibility
         return models.CheckConstraint(  # pyright: ignore[reportDeprecated]
             check=constraint_q,  # pyright: ignore[reportCallIssue]

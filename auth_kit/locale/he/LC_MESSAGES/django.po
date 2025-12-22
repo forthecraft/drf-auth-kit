@@ -188,8 +188,8 @@ msgstr "הודעת דוא״ל עם קוד אימות רב-שלבי נשלחה."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "קוד האימות הרב-שלבי תפוג בעוד %(seconds)s שניות."
+msgid "MFA code expires in {} seconds."
+msgstr "קוד האימות הרב-שלבי תפוג בעוד {} שניות."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -202,10 +202,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"מחזיר אסימון זמני לאימות רב-שלבי או %(auth_tokens)s מלאים אם אימות רב-שלבי "
+"מחזיר אסימון זמני לאימות רב-שלבי או {} מלאים אם אימות רב-שלבי "
 "מבוטל."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -228,8 +228,8 @@ msgstr "דורש אסימון זמני תקין מהשלב הראשון של ה�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "אסימון זמני חדש תפוג בעוד %(seconds)s שניות."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "אסימון זמני חדש תפוג בעוד {} שניות."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -494,34 +494,34 @@ msgstr "נכשל בהחלפת קוד לאסימון גישה"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"אימות עם %(provider)s באמצעות קוד הרשאה OAuth2/OpenID Connect כדי לקבל "
+"אימות עם {} באמצעות קוד הרשאה OAuth2/OpenID Connect כדי לקבל "
 "אסימוני גישה."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"חיבור חשבון %(provider)s לחשבון המשתמש הנוכחי. זה מאפשר למשתמש להתחבר "
-"באמצעות חשבון %(provider)s הקיים שלו בעתיד."
+"חיבור חשבון {} לחשבון המשתמש הנוכחי. זה מאפשר למשתמש להתחבר "
+"באמצעות חשבון {} הקיים שלו בעתיד."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
-msgstr "דורש אימות וקוד הרשאה OAuth2/OpenID Connect תקין מ-%(provider)s."
+"from {}."
+msgstr "דורש אימות וקוד הרשאה OAuth2/OpenID Connect תקין מ-{}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
-msgstr "בהצלחה, חשבון %(provider)s מקושר וניתן להשתמש בו להתחברויות עתידיות."
+msgstr "בהצלחה, חשבון {} מקושר וניתן להשתמש בו להתחברויות עתידיות."
 
 #: auth_kit/social/social_api_descriptions.py:85
 msgid ""

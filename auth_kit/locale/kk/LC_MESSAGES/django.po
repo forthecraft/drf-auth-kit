@@ -213,8 +213,8 @@ msgstr "MFA кодымен эл.пошта хабары жіберілді."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA кодының мерзімі %(seconds)s секундтан кейін аяқталады."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA кодының мерзімі {} секундтан кейін аяқталады."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -227,11 +227,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "MFA тексеруі үшін уақытша токенді немесе MFA өшірілген болса толық "
-"%(auth_tokens)s қайтарады."
+"{} қайтарады."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -254,8 +254,8 @@ msgstr "Бірінші қадам аутентификациясынан жар�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Жаңа уақытша токеннің мерзімі %(seconds)s секундтан кейін аяқталады."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Жаңа уақытша токеннің мерзімі {} секундтан кейін аяқталады."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -524,38 +524,38 @@ msgstr "Кодты қол жетімділік токеніне айырбаст
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Қол жетімділік токендерін алу үшін %(provider)s арқылы OAuth2/OpenID Connect "
+"Қол жетімділік токендерін алу үшін {} арқылы OAuth2/OpenID Connect "
 "ауторизация кодын пайдаланып аутентификация."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"%(provider)s есептік жазбаны ағымдағы пайдаланушы есептік жазбасына қосу. "
-"Бұл пайдаланушыға болашақта қолданыстағы %(provider)s есептік жазбасын "
+"{} есептік жазбаны ағымдағы пайдаланушы есептік жазбасына қосу. "
+"Бұл пайдаланушыға болашақта қолданыстағы {} есептік жазбасын "
 "пайдаланып кіруге мүмкіндік береді."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
-"Аутентификация және %(provider)s арқылы жарамды OAuth2/OpenID Connect "
+"Аутентификация және {} арқылы жарамды OAuth2/OpenID Connect "
 "ауторизация кодын талап етеді."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Сәтті болған жағдайда, %(provider)s есептік жазбасы байланысты және болашақ "
+"Сәтті болған жағдайда, {} есептік жазбасы байланысты және болашақ "
 "кірулер үшін пайдаланылуы мүмкін."
 
 #: auth_kit/social/social_api_descriptions.py:85

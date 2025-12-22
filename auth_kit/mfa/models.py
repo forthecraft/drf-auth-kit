@@ -214,7 +214,7 @@ class MFAMethod(Model):
                 _check_q  # pyright: ignore[reportArgumentType]
             )
         else:
-            _check_constraint_kwargs["check"] = (
+            _check_constraint_kwargs["check"] = (  # pragma: no cover
                 _check_q  # pyright: ignore[reportArgumentType]
             )
 

@@ -210,8 +210,8 @@ msgstr "Το email με τον κωδικό MFA έχει αποσταλεί."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Ο κωδικός MFA λήγει σε %(seconds)s δευτερόλεπτα."
+msgid "MFA code expires in {} seconds."
+msgstr "Ο κωδικός MFA λήγει σε {} δευτερόλεπτα."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -224,11 +224,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "Επιστρέφει προσωρινό token για επιβεβαίωση MFA ή ολοκληρωμένα "
-"%(auth_tokens)s εάν το MFA είναι απενεργοποιημένο."
+"{} εάν το MFA είναι απενεργοποιημένο."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -253,8 +253,8 @@ msgstr "Απαιτεί έγκυρο προσωρινό token από την πι�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Το νέο προσωρινό token λήγει σε %(seconds)s δευτερόλεπτα."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Το νέο προσωρινό token λήγει σε {} δευτερόλεπτα."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -528,38 +528,38 @@ msgstr "Απέτυχε η ανταλλαγή κωδικού για access token"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Πιστοποίηση με %(provider)s χρησιμοποιώντας OAuth2/OpenID Connect κωδικό "
+"Πιστοποίηση με {} χρησιμοποιώντας OAuth2/OpenID Connect κωδικό "
 "εξουσιοδότησης για απόκτηση access tokens."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Σύνδεση ενός %(provider)s λογαριασμού με τον τρέχοντα λογαριασμό χρήστη. "
+"Σύνδεση ενός {} λογαριασμού με τον τρέχοντα λογαριασμό χρήστη. "
 "Αυτό επιτρέπει στον χρήστη να συνδεθεί χρησιμοποιώντας τον υπάρχοντα "
-"%(provider)s λογαριασμό του στο μέλλον."
+"{} λογαριασμό του στο μέλλον."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Απαιτεί πιστοποίηση και έγκυρο OAuth2/OpenID Connect κωδικό εξουσιοδότησης "
-"από %(provider)s."
+"από {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Επιτυχώς, ο %(provider)s λογαριασμός συνδέεται και μπορεί να χρησιμοποιηθεί "
+"Επιτυχώς, ο {} λογαριασμός συνδέεται και μπορεί να χρησιμοποιηθεί "
 "για μελλοντικές συνδέσεις."
 
 #: auth_kit/social/social_api_descriptions.py:85

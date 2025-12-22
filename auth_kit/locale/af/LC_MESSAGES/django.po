@@ -201,8 +201,8 @@ msgstr "E-pos boodskap met MFA-kode is gestuur."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA-kode verval in %(seconds)s sekondes."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA-kode verval in {} sekondes."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -215,10 +215,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Gee kortstondige token vir MFA-verifikasie of volledige %(auth_tokens)s as "
+"Gee kortstondige token vir MFA-verifikasie of volledige {} as "
 "MFA gedeaktiveer is."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -241,8 +241,8 @@ msgstr "Vereis geldige kortstondige token van eerste stap verifikasie."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Nuwe kortstondige token verval in %(seconds)s sekondes."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Nuwe kortstondige token verval in {} sekondes."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -508,38 +508,38 @@ msgstr "Kon nie kode vir toegangstoken uitruil nie"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Verifieer met %(provider)s deur OAuth2/OpenID Connect magtigingskode te "
+"Verifieer met {} deur OAuth2/OpenID Connect magtigingskode te "
 "gebruik om toegangstokens te verkry."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Verbind 'n %(provider)s-rekening aan die huidige gebruiker se rekening. Dit "
-"laat die gebruiker toe om in die toekoms met hul bestaande %(provider)s-"
+"Verbind 'n {}-rekening aan die huidige gebruiker se rekening. Dit "
+"laat die gebruiker toe om in die toekoms met hul bestaande {}-"
 "rekening in te teken."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Vereis verifikasie en 'n geldige OAuth2/OpenID Connect magtigingskode van "
-"%(provider)s."
+"{}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Met sukses word die %(provider)s-rekening gekoppel en kan vir toekomstige "
+"Met sukses word die {}-rekening gekoppel en kan vir toekomstige "
 "intekeninge gebruik word."
 
 #: auth_kit/social/social_api_descriptions.py:85

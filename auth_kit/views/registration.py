@@ -6,14 +6,13 @@ and email verification resend functionality.
 """
 
 # pyright: reportMissingTypeStubs=false, reportUnknownVariableType=false
-from typing import Any, NoReturn, cast
+from typing import Any, NoReturn
 from urllib.parse import urlencode
 
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models import QuerySet
 from django.http import HttpResponseBase
 from django.urls import reverse
-from django.utils.functional import lazy
 from django.utils.translation import gettext_lazy as _
 from rest_framework import status
 from rest_framework.exceptions import MethodNotAllowed
@@ -73,7 +72,7 @@ def get_email_verification_url(request: Request, emailconfirmation: Any) -> str:
         )
     else:
         # Use build_absolute_uri with the backend path
-        return cast(str, build_absolute_uri(request, path_with_params))
+        return str(build_absolute_uri(request, path_with_params))
 
 
 def send_verify_email(request: Request, user: AbstractBaseUser) -> None:
@@ -154,7 +153,7 @@ class RegisterView(CreateAPIView[Any]):
             return {"detail": _("Verification e-mail sent.")}
         return {"detail": _("Successfully registered.")}
 
-    @extend_schema(description=lazy(get_register_description, str)())
+    @extend_schema(description=get_register_description())
     def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """
         Create a new user account.

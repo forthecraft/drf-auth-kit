@@ -211,8 +211,8 @@ msgstr "Az MFA kóddal rendelkező e-mail üzenet elküldve."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Az MFA kód %(seconds)s másodperc múlva lejár."
+msgid "MFA code expires in {} seconds."
+msgstr "Az MFA kód {} másodperc múlva lejár."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -225,11 +225,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "Ideiglenes tokent ad vissza az MFA ellenőrzéshez, vagy teljes "
-"%(auth_tokens)s-t, ha az MFA le van tiltva."
+"{}-t, ha az MFA le van tiltva."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -253,8 +253,8 @@ msgstr "Érvényes ideiglenes tokent igényel az első lépéses hitelesítésb�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Az új ideiglenes token %(seconds)s másodperc múlva lejár."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Az új ideiglenes token {} másodperc múlva lejár."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -529,38 +529,38 @@ msgstr "Nem sikerült kicserélni a kódot hozzáférési tokenre"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Hitelesítés %(provider)s szolgáltatóval OAuth2/OpenID Connect engedélyezési "
+"Hitelesítés {} szolgáltatóval OAuth2/OpenID Connect engedélyezési "
 "kód használatával a hozzáférési tokenek megszerzéséhez."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"%(provider)s fiók csatlakoztatása a jelenlegi felhasználó fiókjához. Ez "
-"lehetővé teszi a felhasználó számára, hogy a jövőben a meglévő %(provider)s "
+"{} fiók csatlakoztatása a jelenlegi felhasználó fiókjához. Ez "
+"lehetővé teszi a felhasználó számára, hogy a jövőben a meglévő {} "
 "fiókjával jelentkezzen be."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Hitelesítést és érvényes OAuth2/OpenID Connect engedélyezési kódot igényel "
-"%(provider)s szolgáltatótól."
+"{} szolgáltatótól."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Sikeres esetben a %(provider)s fiók összekapcsolódik és használható lesz a "
+"Sikeres esetben a {} fiók összekapcsolódik és használható lesz a "
 "jövőbeli bejelentkezésekhez."
 
 #: auth_kit/social/social_api_descriptions.py:85

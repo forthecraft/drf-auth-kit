@@ -190,8 +190,8 @@ msgstr "MFA 코드가 포함된 이메일 메시지가 전송되었습니다."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA 코드는 %(seconds)s초 후에 만료됩니다."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA 코드는 {}초 후에 만료됩니다."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -204,11 +204,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "MFA 확인을 위한 임시 토큰을 반환하거나 MFA가 비활성화된 경우 완전한 "
-"%(auth_tokens)s를 반환합니다."
+"{}를 반환합니다."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -230,8 +230,8 @@ msgstr "첫 번째 단계 인증의 유효한 임시 토큰이 필요합니다."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "새로운 임시 토큰은 %(seconds)s초 후에 만료됩니다."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "새로운 임시 토큰은 {}초 후에 만료됩니다."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -495,37 +495,37 @@ msgstr "코드를 액세스 토큰으로 교환하는 데 실패했습니다"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
 "액세스 토큰을 얻기 위해 OAuth2/OpenID Connect 인증 코드를 사용하여 "
-"%(provider)s로 인증하세요."
+"{}로 인증하세요."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"%(provider)s 계정을 현재 사용자의 계정에 연결합니다. 이를 통해 사용자는 향후 "
-"기존 %(provider)s 계정을 사용하여 로그인할 수 있습니다."
+"{} 계정을 현재 사용자의 계정에 연결합니다. 이를 통해 사용자는 향후 "
+"기존 {} 계정을 사용하여 로그인할 수 있습니다."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
-"인증과 %(provider)s로부터 유효한 OAuth2/OpenID Connect 인증 코드가 필요합니"
+"인증과 {}로부터 유효한 OAuth2/OpenID Connect 인증 코드가 필요합니"
 "다."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"성공하면 %(provider)s 계정이 연결되어 향후 로그인에 사용할 수 있습니다."
+"성공하면 {} 계정이 연결되어 향후 로그인에 사용할 수 있습니다."
 
 #: auth_kit/social/social_api_descriptions.py:85
 msgid ""

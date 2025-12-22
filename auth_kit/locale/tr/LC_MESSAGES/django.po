@@ -207,8 +207,8 @@ msgstr "MFA kodu ile e-posta mesajı gönderildi."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA kodu %(seconds)s saniye içinde süresi dolacak."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA kodu {} saniye içinde süresi dolacak."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -221,11 +221,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "MFA doğrulaması için geçici token döner veya MFA devre dışıysa tam "
-"%(auth_tokens)s döner."
+"{} döner."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -248,8 +248,8 @@ msgstr "İlk adım kimlik doğrulamasından geçerli geçici token gerektirir."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Yeni geçici token %(seconds)s saniye içinde süresi dolacak."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Yeni geçici token {} saniye içinde süresi dolacak."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -518,38 +518,38 @@ msgstr "Kod erişim tokeni ile değiştirilemedi"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
 "Erişim tokenları elde etmek için OAuth2/OpenID Connect yetkilendirme kodunu "
-"kullanarak %(provider)s ile kimlik doğrulaması yapar."
+"kullanarak {} ile kimlik doğrulaması yapar."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"%(provider)s hesabını mevcut kullanıcının hesabına bağlar. Bu, kullanıcının "
-"gelecekte mevcut %(provider)s hesabını kullanarak giriş yapmasına olanak "
+"{} hesabını mevcut kullanıcının hesabına bağlar. Bu, kullanıcının "
+"gelecekte mevcut {} hesabını kullanarak giriş yapmasına olanak "
 "tanır."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
-"Kimlik doğrulaması ve %(provider)s'den geçerli OAuth2/OpenID Connect "
+"Kimlik doğrulaması ve {}'den geçerli OAuth2/OpenID Connect "
 "yetkilendirme kodu gerektirir."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"Başarı durumunda, %(provider)s hesabı bağlanır ve gelecekteki girişler için "
+"Başarı durumunda, {} hesabı bağlanır ve gelecekteki girişler için "
 "kullanılabilir."
 
 #: auth_kit/social/social_api_descriptions.py:85

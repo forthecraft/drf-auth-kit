@@ -179,8 +179,8 @@ msgstr "包含MFA代码的邮件已发送。"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA代码将在%(seconds)s秒后过期。"
+msgid "MFA code expires in {} seconds."
+msgstr "MFA代码将在{}秒后过期。"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -191,9 +191,9 @@ msgstr "启用MFA身份验证的第一步。验证凭据并启动MFA流程。"
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
-msgstr "返回MFA验证的临时令牌，或在MFA禁用时返回完整的%(auth_tokens)s。"
+msgstr "返回MFA验证的临时令牌，或在MFA禁用时返回完整的{}。"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -215,8 +215,8 @@ msgstr "需要来自第一步身份验证的有效临时令牌。"
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "新的临时令牌将在%(seconds)s秒后过期。"
+msgid "New ephemeral token expires in {} seconds."
+msgstr "新的临时令牌将在{}秒后过期。"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -475,33 +475,33 @@ msgstr "无法交换代码获取访问令牌"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"使用OAuth2/OpenID Connect授权代码通过%(provider)s进行身份验证以获取访问令牌。"
+"使用OAuth2/OpenID Connect授权代码通过{}进行身份验证以获取访问令牌。"
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"将%(provider)s账户连接到当前用户的账户。这允许用户在未来使用他们现有"
-"的%(provider)s账户登录。"
+"将{}账户连接到当前用户的账户。这允许用户在未来使用他们现有"
+"的{}账户登录。"
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
-msgstr "需要身份验证和来自%(provider)s的有效OAuth2/OpenID Connect授权代码。"
+"from {}."
+msgstr "需要身份验证和来自{}的有效OAuth2/OpenID Connect授权代码。"
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
-msgstr "成功后，%(provider)s账户将被链接并可用于未来的登录。"
+msgstr "成功后，{}账户将被链接并可用于未来的登录。"
 
 #: auth_kit/social/social_api_descriptions.py:85
 msgid ""

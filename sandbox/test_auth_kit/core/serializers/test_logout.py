@@ -42,7 +42,7 @@ class TestGetLogoutSerializer(SimpleTestCase):
 
     @override_auth_kit_settings(
         AUTH_TYPE="custom",
-        LOGOUT_SERIALIZER="test_auth_kit.serializers.test_logout.CustomLogoutSerializer",
+        LOGOUT_SERIALIZER="test_auth_kit.core.serializers.test_logout.CustomLogoutSerializer",
     )
     def test_get_logout_serializer_custom_serializer_override(self) -> None:
         """Test get_logout_serializer returns custom serializer when LOGOUT_SERIALIZER is overridden"""

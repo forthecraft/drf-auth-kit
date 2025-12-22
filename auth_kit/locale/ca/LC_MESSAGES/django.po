@@ -212,8 +212,8 @@ msgstr "S'ha enviat un missatge de correu amb el codi MFA."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "El codi MFA expira en %(seconds)s segons."
+msgid "MFA code expires in {} seconds."
+msgstr "El codi MFA expira en {} segons."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -226,10 +226,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Retorna un token efímer per a la verificació MFA o %(auth_tokens)s complets "
+"Retorna un token efímer per a la verificació MFA o {} complets "
 "si MFA està desactivada."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -255,8 +255,8 @@ msgstr "Requereix un token efímer vàlid del primer pas d'autenticació."
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "El nou token efímer expira en %(seconds)s segons."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "El nou token efímer expira en {} segons."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -532,38 +532,38 @@ msgstr "Ha fallat l'intercanvi de codi per token d'accés"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Autentica amb %(provider)s utilitzant el codi d'autorització OAuth2/OpenID "
+"Autentica amb {} utilitzant el codi d'autorització OAuth2/OpenID "
 "Connect per obtenir tokens d'accés."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Connecta un compte %(provider)s al compte de l'usuari actual. Això permet a "
-"l'usuari iniciar sessió utilitzant el seu compte %(provider)s existent en el "
+"Connecta un compte {} al compte de l'usuari actual. Això permet a "
+"l'usuari iniciar sessió utilitzant el seu compte {} existent en el "
 "futur."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Requereix autenticació i un codi d'autorització OAuth2/OpenID Connect vàlid "
-"de %(provider)s."
+"de {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"En cas d'èxit, el compte %(provider)s es vincula i es pot utilitzar per a "
+"En cas d'èxit, el compte {} es vincula i es pot utilitzar per a "
 "futurs inicis de sessió."
 
 #: auth_kit/social/social_api_descriptions.py:85

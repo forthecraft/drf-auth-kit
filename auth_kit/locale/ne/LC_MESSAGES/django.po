@@ -188,8 +188,8 @@ msgstr "MFA कोडसहित इमेल सन्देश पठाइ�
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA कोड %(seconds)s सेकेन्डमा समाप्त हुन्छ।"
+msgid "MFA code expires in {} seconds."
+msgstr "MFA कोड {} सेकेन्डमा समाप्त हुन्छ।"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -201,11 +201,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "MFA प्रमाणीकरणको लागि अस्थायी टोकन फिर्ता गर्दछ वा MFA निष्क्रिय भएमा पूर्ण "
-"%(auth_tokens)s।"
+"{}।"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -227,8 +227,8 @@ msgstr "पहिलो चरण प्रमाणीकरणबाट वै
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "नयाँ अस्थायी टोकन %(seconds)s सेकेन्डमा समाप्त हुन्छ।"
+msgid "New ephemeral token expires in {} seconds."
+msgstr "नयाँ अस्थायी टोकन {} सेकेन्डमा समाप्त हुन्छ।"
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -493,36 +493,36 @@ msgstr "पहुँच टोकनको लागि कोड आदान�
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
 "पहुँच टोकनहरू प्राप्त गर्न OAuth2/OpenID Connect प्राधिकरण कोड प्रयोग गरेर "
-"%(provider)s सँग प्रमाणीकरण गर्नुहोस्।"
+"{} सँग प्रमाणीकरण गर्नुहोस्।"
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"हालको प्रयोगकर्ताको खातामा %(provider)s खाता जडान गर्नुहोस्। यसले प्रयोगकर्तालाई "
-"भविष्यमा आफ्नो अवस्थित %(provider)s खाता प्रयोग गरेर लगिन गर्न अनुमति दिन्छ।"
+"हालको प्रयोगकर्ताको खातामा {} खाता जडान गर्नुहोस्। यसले प्रयोगकर्तालाई "
+"भविष्यमा आफ्नो अवस्थित {} खाता प्रयोग गरेर लगिन गर्न अनुमति दिन्छ।"
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
-"प्रमाणीकरण र %(provider)s बाट वैध OAuth2/OpenID Connect प्राधिकरण कोड आवश्यक छ।"
+"प्रमाणीकरण र {} बाट वैध OAuth2/OpenID Connect प्राधिकरण कोड आवश्यक छ।"
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"सफलतामा, %(provider)s खाता लिङ्क गरिन्छ र भविष्यका लगिनहरूको लागि प्रयोग गर्न "
+"सफलतामा, {} खाता लिङ्क गरिन्छ र भविष्यका लगिनहरूको लागि प्रयोग गर्न "
 "सकिन्छ।"
 
 #: auth_kit/social/social_api_descriptions.py:85

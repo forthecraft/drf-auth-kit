@@ -195,8 +195,8 @@ msgstr "MFA கோடுடன் மின்னஞ்சல் செய்த
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "MFA கோட் %(seconds)s விநாடிகளில் காலாவதி முடிவடையும்."
+msgid "MFA code expires in {} seconds."
+msgstr "MFA கோட் {} விநாடிகளில் காலாவதி முடிவடையும்."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -209,11 +209,11 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
 "MFA சரிபார்ப்பிற்கான தற்காலிக டோக்கனை வழங்குகிறது அல்லது MFA செயலற்ற நிலையில் "
-"%(auth_tokens)s முடிவு வழங்குகிறது."
+"{} முடிவு வழங்குகிறது."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
 msgid ""
@@ -235,8 +235,8 @@ msgstr "முதல் கட்ட அங்கீகாரத்திலி�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "புதிய தற்காலிக டோக்கன் %(seconds)s விநாடிகளில் காலாவதி முடிவடையும்."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "புதிய தற்காலிக டோக்கன் {} விநாடிகளில் காலாவதி முடிவடையும்."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -503,37 +503,37 @@ msgstr "அணுகல் டோக்கனுக்காக கோடை ம
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
 "அணுகல் டோக்கன்களைப் பெற OAuth2/OpenID Connect அங்கீகார கோடைப் பயன்படுத்தி "
-"%(provider)s உடன் அங்கீகரிக்கவும்."
+"{} உடன் அங்கீகரிக்கவும்."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"%(provider)s கணக்கை தற்போதைய பயனரின் கணக்குடன் இணைக்கவும். இது பயனர் எதிர்காலத்தில் "
-"அவர்களின் ஏற்கனவே உள்ள %(provider)s கணக்கைப் பயன்படுத்தி உள்நுழைவ அனுமதிக்கிறது."
+"{} கணக்கை தற்போதைய பயனரின் கணக்குடன் இணைக்கவும். இது பயனர் எதிர்காலத்தில் "
+"அவர்களின் ஏற்கனவே உள்ள {} கணக்கைப் பயன்படுத்தி உள்நுழைவ அனுமதிக்கிறது."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
-"%(provider)s இலிருந்து அங்கீகாரம் மற்றும் செல்லுபடியான OAuth2/OpenID Connect அங்கீகார "
+"{} இலிருந்து அங்கீகாரம் மற்றும் செல்லுபடியான OAuth2/OpenID Connect அங்கீகார "
 "கோட் தேவை."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"வெற்றிகரமாக இருந்தால், %(provider)s கணக்கு இணைக்கப்பட்டு எதிர்காலத்தில் உள்நுழைவுகளுக்கு "
+"வெற்றிகரமாக இருந்தால், {} கணக்கு இணைக்கப்பட்டு எதிர்காலத்தில் உள்நுழைவுகளுக்கு "
 "பயன்படுத்தப்படலாம்."
 
 #: auth_kit/social/social_api_descriptions.py:85

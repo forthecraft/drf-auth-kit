@@ -213,8 +213,8 @@ msgstr "Сообщение электронной почты с кодом MFA �
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "Код MFA истекает через %(seconds)s секунд."
+msgid "MFA code expires in {} seconds."
+msgstr "Код MFA истекает через {} секунд."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -227,10 +227,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"Возвращает временный токен для проверки MFA или завершает %(auth_tokens)s, "
+"Возвращает временный токен для проверки MFA или завершает {}, "
 "если MFA отключена."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -254,8 +254,8 @@ msgstr "Требует действительный временный токе�
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "Новый временный токен истекает через %(seconds)s секунд."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "Новый временный токен истекает через {} секунд."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -526,38 +526,38 @@ msgstr "Не удалось обменять код на токен доступ
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"Пройдите аутентификацию с %(provider)s, используя код авторизации OAuth2/"
+"Пройдите аутентификацию с {}, используя код авторизации OAuth2/"
 "OpenID Connect для получения токенов доступа."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"Подключить аккаунт %(provider)s к аккаунту текущего пользователя. Это "
+"Подключить аккаунт {} к аккаунту текущего пользователя. Это "
 "позволяет пользователю входить в систему, используя существующий аккаунт "
-"%(provider)s в будущем."
+"{} в будущем."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
 "Требует аутентификацию и действительный код авторизации OAuth2/OpenID "
-"Connect от %(provider)s."
+"Connect от {}."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"При успехе аккаунт %(provider)s связывается и может использоваться для "
+"При успехе аккаунт {} связывается и может использоваться для "
 "будущих входов в систему."
 
 #: auth_kit/social/social_api_descriptions.py:85

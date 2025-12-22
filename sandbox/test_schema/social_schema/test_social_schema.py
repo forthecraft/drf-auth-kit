@@ -25,7 +25,7 @@ class SocialSchemaTests(TestCase):
             path("auth/", include(urls)),
         ]
         schema = generate_schema(None, patterns=urlpatterns)
-        assert_schema(schema, "test_social/schema/social_jwt.yml")
+        assert_schema(schema, "test_schema/social_schema/social_jwt.yml")
 
     @override_auth_kit_settings(AUTH_TYPE="token", USE_MFA=False)
     def test_social_token_auth_schema(self) -> None:
@@ -35,7 +35,7 @@ class SocialSchemaTests(TestCase):
             path("auth/", include(urls)),
         ]
         schema = generate_schema(None, patterns=urlpatterns)
-        assert_schema(schema, "test_social/schema/social_token.yml")
+        assert_schema(schema, "test_schema/social_schema/social_token.yml")
 
     @override_auth_kit_settings(USE_AUTH_COOKIE=False, USE_MFA=False)
     def test_social_no_auth_cookie_schema(self) -> None:
@@ -45,7 +45,7 @@ class SocialSchemaTests(TestCase):
             path("auth/", include(urls)),
         ]
         schema = generate_schema(None, patterns=urlpatterns)
-        assert_schema(schema, "test_social/schema/social_no_auth_cookie.yml")
+        assert_schema(schema, "test_schema/social_schema/social_no_auth_cookie.yml")
 
     @override_auth_kit_settings(USE_MFA=False, SOCIAL_LOGIN_AUTH_TYPE="token")
     def test_social_token_auth_type_schema(self) -> None:
@@ -55,4 +55,4 @@ class SocialSchemaTests(TestCase):
             path("auth/", include(urls)),
         ]
         schema = generate_schema(None, patterns=urlpatterns)
-        assert_schema(schema, "test_social/schema/social_token_auth_type.yml")
+        assert_schema(schema, "test_schema/social_schema/social_token_auth_type.yml")

@@ -194,8 +194,8 @@ msgstr "پیام ایمیل همراه با کد MFA ارسال شده است."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:28
 #, python-format
-msgid "MFA code expires in %(seconds)s seconds."
-msgstr "کد MFA در %(seconds)s ثانیه منقضی می‌شود."
+msgid "MFA code expires in {} seconds."
+msgstr "کد MFA در {} ثانیه منقضی می‌شود."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:36
 msgid ""
@@ -207,10 +207,10 @@ msgstr ""
 #: auth_kit/mfa/mfa_api_descriptions.py:41
 #, python-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete %(auth_tokens)s if "
+"Returns ephemeral token for MFA verification or complete {} if "
 "MFA is disabled."
 msgstr ""
-"توکن موقت برای تأیید MFA یا %(auth_tokens)s کامل در صورت غیرفعال بودن MFA "
+"توکن موقت برای تأیید MFA یا {} کامل در صورت غیرفعال بودن MFA "
 "برگردانده می‌شود."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:51
@@ -233,8 +233,8 @@ msgstr "توکن موقت معتبر از مرحله اول احراز هویت 
 #: auth_kit/mfa/mfa_api_descriptions.py:72
 #: auth_kit/mfa/mfa_api_descriptions.py:87
 #, python-format
-msgid "New ephemeral token expires in %(seconds)s seconds."
-msgstr "توکن موقت جدید در %(seconds)s ثانیه منقضی می‌شود."
+msgid "New ephemeral token expires in {} seconds."
+msgstr "توکن موقت جدید در {} ثانیه منقضی می‌شود."
 
 #: auth_kit/mfa/mfa_api_descriptions.py:81
 msgid "Resend MFA verification code using existing ephemeral token."
@@ -499,37 +499,37 @@ msgstr "تبدیل کد به توکن دسترسی ناموفق بود"
 #: auth_kit/social/social_api_descriptions.py:31
 #, python-format
 msgid ""
-"Authenticate with %(provider)s using OAuth2/OpenID Connect authorization "
+"Authenticate with {} using OAuth2/OpenID Connect authorization "
 "code to obtain access tokens."
 msgstr ""
-"احراز هویت با %(provider)s با استفاده از کد مجوز OAuth2/OpenID Connect برای "
+"احراز هویت با {} با استفاده از کد مجوز OAuth2/OpenID Connect برای "
 "دریافت توکن‌های دسترسی."
 
 #: auth_kit/social/social_api_descriptions.py:53
 #, python-format
 msgid ""
-"Connect a %(provider)s account to the current user's account. This allows "
-"the user to login using their existing %(provider)s account in the future."
+"Connect a {} account to the current user's account. This allows "
+"the user to login using their existing {} account in the future."
 msgstr ""
-"اتصال حساب %(provider)s به حساب کاربر فعلی. این امکان ورود کاربر با استفاده "
-"از حساب %(provider)s موجود در آینده را فراهم می‌کند."
+"اتصال حساب {} به حساب کاربر فعلی. این امکان ورود کاربر با استفاده "
+"از حساب {} موجود در آینده را فراهم می‌کند."
 
 #: auth_kit/social/social_api_descriptions.py:58
 #, python-format
 msgid ""
 "Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from %(provider)s."
+"from {}."
 msgstr ""
-"احراز هویت و کد مجوز OAuth2/OpenID Connect معتبر از %(provider)s مورد نیاز "
+"احراز هویت و کد مجوز OAuth2/OpenID Connect معتبر از {} مورد نیاز "
 "است."
 
 #: auth_kit/social/social_api_descriptions.py:62
 #, python-format
 msgid ""
-"On success, the %(provider)s account is linked and can be used for future "
+"On success, the {} account is linked and can be used for future "
 "logins."
 msgstr ""
-"در صورت موفقیت، حساب %(provider)s پیوند داده می‌شود و می‌تواند برای ورود‌های "
+"در صورت موفقیت، حساب {} پیوند داده می‌شود و می‌تواند برای ورود‌های "
 "آینده استفاده شود."
 
 #: auth_kit/social/social_api_descriptions.py:85

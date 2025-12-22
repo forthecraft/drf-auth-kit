@@ -27,7 +27,7 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
-from drf_spectacular_extras.views import SpectacularScalarView  #  type: ignore
+from drf_spectacular_extras.views import SpectacularScalarView  # type: ignore
 
 from status.views import StatusView
 

@@ -26,4 +26,6 @@ def generate_backup_codes(
     Returns:
         Set of unique backup code strings
     """
-    return {get_random_string(code_length, allowed_chars) for _ in range(num_of_codes)}
+    return {
+        get_random_string(code_length, allowed_chars) for _item in range(num_of_codes)
+    }

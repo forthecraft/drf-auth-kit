@@ -37,7 +37,13 @@ if [ "$RUN_COVERAGE" = true ]; then
 
     pytest --cov=auth_kit --cov-append --cov-report= sandbox_extras/custom_username
 
-    pytest --cov=auth_kit --cov-append --cov-report=xml --cov-report=term-missing sandbox
+    pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/core_schema
+
+    pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/mfa_schema
+
+    pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/social_schema
+
+    pytest --cov=auth_kit --cov-append --cov-report=xml --cov-report=term-missing sandbox/test_auth_kit
 else
     echo "Running tests without coverage..."
 
@@ -47,5 +53,11 @@ else
 
     pytest sandbox_extras/custom_username
 
-    pytest sandbox
+    pytest sandbox/test_schema/core_schema
+
+    pytest sandbox/test_schema/mfa_schema
+
+    pytest sandbox/test_schema/social_schema
+
+    pytest sandbox/test_auth_kit
 fi

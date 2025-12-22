@@ -1,3 +1,13 @@
+## v1.1.0 (2025-12-22)
+
+### Fix
+
+- **test**: refactor auth kit tests to improve schema isolation
+- use format_lazy instead of gettext lazy with variable for api description
+- update Python version requirement to 3.11
+- downgrade Python requirement to 3.10 and adjust Django dependency range
+- fix support for django 6
+
 ## v1.0.1 (2025-12-16)
 
 ### Fix

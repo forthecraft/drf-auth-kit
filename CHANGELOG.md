@@ -1,3 +1,9 @@
+## v1.1.1 (2025-12-23)
+
+### Fix
+
+- **social**: catch all database errors during URL initialization
+
 ## v1.1.0 (2025-12-22)
 
 ### Fix

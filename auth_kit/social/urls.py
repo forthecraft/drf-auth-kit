@@ -8,7 +8,7 @@ providers, creating login and account connection endpoints for each provider.
 import importlib
 from typing import Any
 
-from django.db import ProgrammingError
+from django.db import DatabaseError
 from django.urls import URLPattern, URLResolver, path
 from rest_framework import routers
 
@@ -51,8 +51,9 @@ def create_social_provider_urls() -> list[Any]:
 
     try:
         social_apps = social_adapter.list_apps(None)
-    except ProgrammingError:  # pragma: no cover
-        # Database tables may not exist yet (e.g., during migrations)
+    except DatabaseError:  # pragma: no cover
+        # Database is not available or tables don't exist yet
+        # (e.g., during migrations, initial setup, or when database is not ready)
         return social_urls
 
     for social_app in social_apps:

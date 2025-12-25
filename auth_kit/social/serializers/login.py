@@ -148,11 +148,13 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
 
         adapter_class = view.adapter_class
 
+        # Check if adapter is OpenID Connect based on class type, not provider_id
         provider_id = view.kwargs.get("provider_id")
-        if provider_id:
-            adapter_class = cast(type[OpenIDConnectOAuth2Adapter], adapter_class)
+        if provider_id and issubclass(adapter_class, OpenIDConnectOAuth2Adapter):
+            # OpenID Connect adapters require provider_id to identify the specific app
             adapter = adapter_class(request, provider_id)
         else:
+            # Standard OAuth2 adapters don't accept provider_id
             adapter = adapter_class(request)
 
         app = adapter.get_provider().app
@@ -261,11 +263,13 @@ class SocialLoginWithCodeRequestSerializer(SocialLoginWithTokenRequestSerializer
 
         adapter_class = view.adapter_class
 
+        # Check if adapter is OpenID Connect based on class type, not provider_id
         provider_id = view.kwargs.get("provider_id")
-        if provider_id:
-            adapter_class = cast(type[OpenIDConnectOAuth2Adapter], adapter_class)
+        if provider_id and issubclass(adapter_class, OpenIDConnectOAuth2Adapter):
+            # OpenID Connect adapters require provider_id to identify the specific app
             adapter = adapter_class(request, provider_id)
         else:
+            # Standard OAuth2 adapters don't accept provider_id
             adapter = adapter_class(request)
 
         app = adapter.get_provider().app

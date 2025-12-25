@@ -122,16 +122,20 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
         Set the appropriate user for the social login.
 
         If a user with the same email exists, use that user. Otherwise,
-        ensure the new user has a proper username.
+        ensure the new user has a proper username field value.
 
         Args:
             login: The SocialLogin instance to configure
         """
-        if not login.user.username and getattr(UserModel, "USERNAME_FIELD", None):
-            username_field = UserModel.USERNAME_FIELD
-            setattr(
-                login.user, username_field, login.user.email
-            )  # pyright: ignore[reportUnknownArgumentType]
+        username_field = getattr(UserModel, "USERNAME_FIELD", None)
+        if username_field:
+            # Get the current value of the username field, if it exists
+            current_username_value = getattr(login.user, username_field, None)
+            if not current_username_value:
+                # Set the username field to the user's email if it's empty
+                setattr(
+                    login.user, username_field, login.user.email  # type: ignore[attr-defined]
+                )  # pyright: ignore[reportUnknownArgumentType]
 
     def get_login_from_token(self, tokens_to_parse: dict[str, Any]) -> SocialLogin:
         """

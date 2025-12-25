@@ -10,7 +10,7 @@ from typing import Any, TypeAlias, cast
 from urllib.parse import urlencode
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser
 from django.forms import Form
 from django.urls import URLPattern, URLResolver
 from django.utils.decorators import method_decorator
@@ -20,9 +20,9 @@ import structlog
 
 from auth_kit.app_settings import auth_kit_settings
 
-UserModel: type[User] = get_user_model()  # type: ignore[assignment, unused-ignore]
-UserNameField: str = UserModel.USERNAME_FIELD
-UserModelType: TypeAlias = User
+UserModel: type[AbstractBaseUser] = get_user_model()  # type: ignore[assignment, unused-ignore]
+UserNameField: str = UserModel.USERNAME_FIELD  # type: ignore[attr-defined]
+UserModelType: TypeAlias = AbstractBaseUser
 
 sensitive_post_parameters_m = method_decorator(
     sensitive_post_parameters(

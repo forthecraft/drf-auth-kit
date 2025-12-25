@@ -87,9 +87,9 @@ class LoginRequestSerializer(serializers.Serializer[dict[str, Any]]):
             Authenticated user instance or None
         """
         # Authentication through email
-        if UserModel.USERNAME_FIELD == "email":
+        if UserModel.USERNAME_FIELD == "email":  # type: ignore[attr-defined]
             return self.authenticate(email=email, password=password)
-        elif UserModel.USERNAME_FIELD == "username":
+        elif UserModel.USERNAME_FIELD == "username":  # type: ignore[attr-defined]
             return self.authenticate(username=username, password=password)
         else:
             creds = {
@@ -137,7 +137,7 @@ class LoginRequestSerializer(serializers.Serializer[dict[str, Any]]):
             ValidationError: If authentication fails or user is inactive
         """
         super().validate(attrs)
-        username = attrs.get(UserModel.USERNAME_FIELD)
+        username = attrs.get(UserModel.USERNAME_FIELD)  # type: ignore[attr-defined]
         email = attrs.get("email")
         password = attrs.get("password")
         user = self.get_auth_user(username, email, password)

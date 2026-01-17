@@ -1,3 +1,9 @@
+## v1.1.2 (2026-01-17)
+
+### Fix
+
+- **docs**: add dj-rest-auth migration guide
+
 ## v1.1.1 (2025-12-23)
 
 ### Fix

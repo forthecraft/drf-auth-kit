@@ -24,6 +24,7 @@ Contents
     user-guides/social-authentication
     user-guides/mfa
     user-guides/customization
+    user-guides/migration-from-dj-rest-auth
 
 .. toctree::
    :maxdepth: 2

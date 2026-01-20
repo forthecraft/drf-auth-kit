@@ -292,15 +292,33 @@ Configuration Options
         'SOCIAL_HIDE_AUTH_ERROR_DETAILS': True,        # Hide detailed error messages
     }
 
+**SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL Behavior**
+
+When ``SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL`` is ``True`` (the default), DRF Auth Kit automatically connects social accounts to existing users with matching email addresses. This enables a seamless experience for users who:
+
+- Register with email/password, then later login with a social provider using the same email
+- Login with one social provider (e.g., Google), then later login with another provider (e.g., Microsoft) using the same email
+
+**Security Model**: By enabling this setting, you are trusting your configured social providers to provide accurate email information. Major providers like Google, Microsoft, and GitHub verify user emails before returning them. When a user authenticates via a trusted provider, their social account is automatically linked to any existing account with the same email.
+
+**When disabled** (``False``), users attempting social login with an email that already exists in the system will receive an error: "User is already registered with this e-mail address." They must either:
+
+- Login with their existing credentials and manually connect the social account
+- Use a different social account
+
+**Note**: DRF Auth Kit's ``SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL`` works independently of Django Allauth's ``SOCIALACCOUNT_EMAIL_AUTHENTICATION`` setting. You do not need to configure both - the auth_kit setting provides a simpler, single-setting approach for REST API applications.
+
 **Django Allauth Settings**
 
 .. code-block:: python
 
-    # Account linking behavior
-    SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
-    SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+    # Basic allauth configuration (recommended)
     SOCIALACCOUNT_AUTO_SIGNUP = True
     SOCIALACCOUNT_QUERY_EMAIL = True
+
+    # Note: SOCIALACCOUNT_EMAIL_AUTHENTICATION is NOT required when using
+    # auth_kit's SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL setting. Auth Kit handles
+    # email-based account linking independently for REST API flows.
 
 Frontend Integration
 --------------------

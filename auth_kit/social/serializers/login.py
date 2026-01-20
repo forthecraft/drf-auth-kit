@@ -14,6 +14,9 @@ from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 
 import structlog
+from allauth.account.utils import (  # pyright: ignore[reportMissingTypeStubs]
+    filter_users_by_email,
+)
 from allauth.socialaccount.models import (  # pyright: ignore[reportMissingTypeStubs]
     SocialApp,
     SocialToken,
@@ -94,9 +97,61 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
             login: The SocialLogin instance to process
         """
         login.lookup()
+
+        # If allauth's lookup didn't find a user (e.g., because
+        # SOCIALACCOUNT_EMAIL_AUTHENTICATION=False), do our own lookup
+        # when auto-connect is enabled
+        if auth_kit_settings.SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL:
+            if not login.user.pk and not login.account.pk:
+                self._lookup_user_by_verified_email(login)
+
         self.check_social_login_account(login)
         self.set_login_user(login)
         login.save(request, connect=True)
+
+    def _lookup_user_by_verified_email(self, login: SocialLogin) -> None:
+        """
+        Look up existing user by email from social provider.
+
+        This enables SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL to work independently
+        of allauth's SOCIALACCOUNT_EMAIL_AUTHENTICATION setting.
+
+        Security model: The user has explicitly enabled auto-connect by email,
+        indicating they trust their configured social providers. We use the
+        email from the provider to find and connect to existing accounts.
+
+        This protects legitimate email owners: if an attacker registers with
+        someone's email (unverified), the real owner can still reclaim the
+        account by logging in via a trusted social provider.
+
+        Args:
+            login: The SocialLogin instance to update with found user
+        """
+        # Collect emails to check for existing users
+        emails_to_check: list[str] = []
+
+        # First, consider verified emails from email_addresses
+        for ea in login.email_addresses:
+            if ea.verified and ea.email:
+                emails_to_check.append(cast(str, ea.email))
+
+        # If no verified emails in email_addresses, use login.user.email
+        # The user has enabled SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL, indicating
+        # they trust their configured providers. Major providers (Google,
+        # Microsoft, etc.) only return emails they have verified.
+        if not emails_to_check and login.user.email:
+            emails_to_check.append(login.user.email)  # pyright: ignore
+
+        for email in emails_to_check:
+            users = filter_users_by_email(email, prefer_verified=True)
+            if users:
+                login.user = users[0]
+                logger.info(
+                    "social_login_email_match",
+                    email=email,
+                    user_id=login.user.pk,
+                )
+                return
 
     def check_social_login_account(self, login: SocialLogin) -> None:
         """
@@ -112,7 +167,18 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
             ValidationError: If user already exists and auto-connect is disabled
         """
         if not auth_kit_settings.SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL:
-            if login.user.pk and not login.account.pk:  # has not connected yet
+            # Check if user already exists (either found by allauth or not)
+            user_exists = login.user.pk is not None
+            account_connected = login.account.pk is not None
+
+            # If allauth didn't find a user, check manually by email
+            if not user_exists and not account_connected and login.user.email:
+                existing_users: list[str] = filter_users_by_email(
+                    login.user.email, prefer_verified=True  # pyright: ignore
+                )
+                user_exists = len(existing_users) > 0
+
+            if user_exists and not account_connected:
                 raise serializers.ValidationError(
                     _("User is already registered with this e-mail address."),
                 )

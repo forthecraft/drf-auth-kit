@@ -195,7 +195,10 @@ See full configuration: https://django-rest-framework-simplejwt.readthedocs.io/e
 
     ACCOUNT_EMAIL_VERIFICATION = "mandatory"
     ACCOUNT_SIGNUP_FIELDS = ["email*", "username*"]
-    SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+
+    # Note: SOCIALACCOUNT_EMAIL_AUTHENTICATION is NOT required for DRF Auth Kit.
+    # Auth Kit handles email-based account linking independently via the
+    # SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL setting (default: True).
 
     SOCIALACCOUNT_PROVIDERS = {
         "google": {
@@ -542,6 +545,18 @@ Social Authentication
 
 **SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL** (default: ``True``)
     Automatically connect social accounts to existing users by email.
+
+    When ``True``: If a user logs in with a social provider and their email matches an existing
+    account, the social account is automatically linked to that user. This enables seamless
+    multi-provider login (e.g., a user can log in with Google one day and Microsoft the next,
+    using the same email).
+
+    When ``False``: Users cannot social login if an account with their email already exists.
+    They will receive an error message and must login with their existing credentials first,
+    then manually connect the social account.
+
+    **Note**: This setting works independently of Django Allauth's ``SOCIALACCOUNT_EMAIL_AUTHENTICATION``.
+    You do not need to configure allauth's email authentication settings when using DRF Auth Kit.
 
 **SOCIAL_LOGIN_CALLBACK_BASE_URL** (default: ``''``)
     Base URL for social login callbacks.

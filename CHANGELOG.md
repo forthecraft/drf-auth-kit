@@ -1,3 +1,9 @@
+## v1.1.3 (2026-01-20)
+
+### Fix
+
+- **social**: ensure cross-provider login works with same email
+
 ## v1.1.2 (2026-01-17)
 
 ### Fix

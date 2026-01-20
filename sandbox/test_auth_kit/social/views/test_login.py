@@ -434,3 +434,189 @@ class TestSocialLoginWithCodeView(SocialLoginTestCase):
         }
         actual_fields = set(response.data.keys())
         assert expected_fields.issubset(actual_fields)
+
+
+class TestCrossProviderLogin(SocialLoginTestCase):
+    """Test logging in with multiple providers using the same email."""
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
+    def test_login_with_google_then_github_same_email(self) -> None:
+        """
+        Test that a user who logs in with Google can later login with GitHub
+        using the same email, and both social accounts are linked to one user.
+        """
+        # Step 1: Login with Google first
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        data = {"code": "test-authorization-code"}
+        response: Response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+
+        # Verify user was created with Google
+        user = User.objects.get(email="test@example.com")
+        google_account = SocialAccount.objects.get(user=user, provider="google")
+        assert google_account.uid == self.GOOGLE_USER_INFO["id"]
+
+        # Step 2: Login with GitHub using the same email
+        self.mock_oauth_responses("github")
+
+        url = reverse("rest_social_github_login")
+        data = {"code": "test-authorization-code"}
+        response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+
+        # Verify GitHub account was linked to the SAME user (not a new user)
+        assert User.objects.filter(email="test@example.com").count() == 1
+        github_account = SocialAccount.objects.get(user=user, provider="github")
+        assert github_account.uid == str(self.GITHUB_USER_INFO["id"])
+
+        # Verify both social accounts exist for this user
+        user_social_accounts = SocialAccount.objects.filter(user=user)
+        assert user_social_accounts.count() == 2
+        providers = set(user_social_accounts.values_list("provider", flat=True))
+        assert providers == {"google", "github"}
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=False)
+    def test_login_with_google_then_github_same_email_auto_connect_disabled(
+        self,
+    ) -> None:
+        """
+        Test that when auto-connect is disabled, logging in with a second
+        provider using the same email returns an error.
+        """
+        # Step 1: Login with Google first
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        data = {"code": "test-authorization-code"}
+        response: Response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+
+        # Verify user was created with Google
+        user = User.objects.get(email="test@example.com")
+        assert SocialAccount.objects.filter(user=user, provider="google").exists()
+
+        # Step 2: Try to login with GitHub using the same email - should fail
+        self.mock_oauth_responses("github")
+
+        url = reverse("rest_social_github_login")
+        data = {"code": "test-authorization-code"}
+        response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "User is already registered with this e-mail address" in str(
+            response.data
+        )
+
+        # Verify no GitHub account was created
+        assert not SocialAccount.objects.filter(user=user, provider="github").exists()
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
+    def test_login_with_email_password_then_social_same_email(self) -> None:
+        """
+        Test that a user who registered with email/password can later login
+        with a social provider using the same email.
+        """
+        # Step 1: Create user with email/password
+        user = User.objects.create_user(
+            username="testuser", email="test@example.com", password="password123"
+        )
+        initial_user_count = User.objects.count()
+
+        # Step 2: Login with Google using the same email
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        data = {"code": "test-authorization-code"}
+        response: Response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+
+        # Verify Google account was linked to the existing user
+        assert User.objects.count() == initial_user_count  # No new user created
+        google_account = SocialAccount.objects.get(user=user, provider="google")
+        assert google_account.uid == self.GOOGLE_USER_INFO["id"]
+
+        # Verify the response user matches the original user
+        assert response.data["user"]["email"] == user.email
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
+    def test_cross_provider_login_with_allauth_email_auth_disabled(self) -> None:
+        """
+        Test that auth_kit's SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL works independently
+        of allauth's SOCIALACCOUNT_EMAIL_AUTHENTICATION setting.
+
+        This specifically tests the _lookup_user_by_verified_email code path which
+        runs when allauth's own email lookup is disabled.
+        """
+        from django.test import override_settings
+
+        # Step 1: Login with Google first (creates user)
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        data = {"code": "test-authorization-code"}
+        response: Response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+        user = User.objects.get(email="test@example.com")
+        assert SocialAccount.objects.filter(user=user, provider="google").exists()
+
+        # Step 2: Login with GitHub with allauth's email authentication disabled
+        # This forces auth_kit's _lookup_user_by_verified_email to be used
+        self.mock_oauth_responses("github")
+
+        with override_settings(SOCIALACCOUNT_EMAIL_AUTHENTICATION=False):
+            url = reverse("rest_social_github_login")
+            data = {"code": "test-authorization-code"}
+            response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+
+        # Verify GitHub account was linked to the SAME user
+        assert User.objects.filter(email="test@example.com").count() == 1
+        github_account = SocialAccount.objects.get(user=user, provider="github")
+        assert github_account.uid == str(self.GITHUB_USER_INFO["id"])
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
+    def test_email_password_user_then_social_with_allauth_email_auth_disabled(
+        self,
+    ) -> None:
+        """
+        Test that a user who registered with email/password can login with social
+        even when allauth's SOCIALACCOUNT_EMAIL_AUTHENTICATION is disabled.
+
+        This tests the _lookup_user_by_verified_email fallback to login.user.email.
+        """
+        from django.test import override_settings
+
+        # Step 1: Create user with email/password
+        user = User.objects.create_user(
+            username="testuser", email="test@example.com", password="password123"
+        )
+        initial_user_count = User.objects.count()
+
+        # Step 2: Login with Google with allauth's email auth disabled
+        self.mock_oauth_responses("google")
+
+        with override_settings(SOCIALACCOUNT_EMAIL_AUTHENTICATION=False):
+            url = reverse("rest_social_google_login")
+            data = {"code": "test-authorization-code"}
+            response: Response = self.client.post(url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+
+        # Verify Google account was linked to the existing user
+        assert User.objects.count() == initial_user_count
+        google_account = SocialAccount.objects.get(user=user, provider="google")
+        assert google_account.uid == self.GOOGLE_USER_INFO["id"]
+        assert response.data["user"]["email"] == user.email

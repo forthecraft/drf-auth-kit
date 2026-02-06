@@ -1,3 +1,9 @@
+## v1.1.4 (2026-02-06)
+
+### Fix
+
+- **social**: Accept user models w/o usernames
+
 ## v1.1.3 (2026-01-20)
 
 ### Fix

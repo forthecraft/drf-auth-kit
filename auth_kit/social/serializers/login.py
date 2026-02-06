@@ -193,7 +193,9 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
         Args:
             login: The SocialLogin instance to configure
         """
-        if not login.user.username and getattr(UserModel, "USERNAME_FIELD", None):
+        if not getattr(login.user, "username", None) and getattr(
+            UserModel, "USERNAME_FIELD", None
+        ):
             username_field = UserModel.USERNAME_FIELD
             setattr(
                 login.user, username_field, login.user.email

@@ -1,3 +1,9 @@
+## v1.1.5 (2026-04-18)
+
+### Fix
+
+- **social**: wipe password on email-authenticated social login
+
 ## v1.1.4 (2026-02-06)
 
 ### Fix

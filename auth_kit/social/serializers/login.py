@@ -17,6 +17,9 @@ import structlog
 from allauth.account.utils import (  # pyright: ignore[reportMissingTypeStubs]
     filter_users_by_email,
 )
+from allauth.socialaccount.internal.flows.email_authentication import (  # pyright: ignore[reportMissingTypeStubs]
+    wipe_password,
+)
 from allauth.socialaccount.models import (  # pyright: ignore[reportMissingTypeStubs]
     SocialApp,
     SocialToken,
@@ -97,6 +100,11 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
             login: The SocialLogin instance to process
         """
         login.lookup()
+
+        # Mirror allauth's _accept_login: wipe password when authenticated by email
+        # to prevent attacker account-takeover via unverified email registration.
+        if login._did_authenticate_by_email:
+            wipe_password(request, login.user, login._did_authenticate_by_email)
 
         # If allauth's lookup didn't find a user (e.g., because
         # SOCIALACCOUNT_EMAIL_AUTHENTICATION=False), do our own lookup

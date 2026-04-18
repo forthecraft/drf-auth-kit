@@ -549,6 +549,31 @@ class TestCrossProviderLogin(SocialLoginTestCase):
 
     @responses.activate
     @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
+    def test_social_login_wipes_password_when_authenticated_by_email(self) -> None:
+        """
+        Social login that matches an existing account by email must wipe the
+        password to prevent the attacker account-takeover scenario described in
+        allauth's wipe_password docs (forthecraft/drf-auth-kit#47).
+        """
+        user = User.objects.create_user(
+            username="testuser", email="test@example.com", password="attacker_password"
+        )
+        assert user.has_usable_password()
+
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        response: Response = self.client.post(
+            url, {"code": "test-authorization-code"}, format="json"
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+
+        user.refresh_from_db()
+        assert not user.has_usable_password()
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
     def test_cross_provider_login_with_allauth_email_auth_disabled(self) -> None:
         """
         Test that auth_kit's SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL works independently

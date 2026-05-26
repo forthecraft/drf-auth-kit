@@ -1,3 +1,9 @@
+## v1.2.0 (2026-05-26)
+
+### Feat
+
+- **auth**: add POST_SIGNUP_FUNC hook for post-registration logic
+
 ## v1.1.5 (2026-04-18)
 
 ### Fix

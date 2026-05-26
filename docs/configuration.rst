@@ -83,6 +83,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'PASSWORD_RESET_CONFIRM_VIEW': 'auth_kit.views.PasswordResetConfirmView',
         'PASSWORD_RESET_CONFIRM_PATH': None,
         'PASSWORD_RESET_URL_GENERATOR': 'auth_kit.forms.password_reset_url_generator',
+        'SEND_PASSWORD_RESET_EMAIL_FUNC': 'auth_kit.forms.send_password_reset_email',
         'OLD_PASSWORD_FIELD_ENABLED': False,
         'PASSWORD_RESET_PREVENT_ENUMERATION': True,
 
@@ -391,6 +392,10 @@ Password Management
 
 **PASSWORD_RESET_URL_GENERATOR** (default: :func:`~auth_kit.forms.password_reset_url_generator`)
     Function for generating password reset URLs.
+
+**SEND_PASSWORD_RESET_EMAIL_FUNC** (default: :func:`~auth_kit.forms.send_password_reset_email`)
+    Function for sending password reset emails. Override this to customize the email sending logic
+    (e.g., to send emails asynchronously via Celery). Receives ``(request, user, email, temp_key)`` arguments.
 
 JWT-Specific Components
 ~~~~~~~~~~~~~~~~~~~~~~~

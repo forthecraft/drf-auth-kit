@@ -65,6 +65,32 @@ def password_reset_url_generator(
         return str(build_absolute_uri(request, path_with_params))
 
 
+def send_password_reset_email(
+    request: HttpRequest, user: AbstractBaseUser, email: str, temp_key: str
+) -> None:
+    """
+    Send password reset email to user.
+
+    Args:
+        request: The HTTP request object
+        user: The user requesting password reset
+        email: The email address to send the reset email to
+        temp_key: Temporary token for password reset
+    """
+    url: str = auth_kit_settings.PASSWORD_RESET_URL_GENERATOR(request, user, temp_key)
+    uid: str = user_pk_to_url_str(user)
+
+    context: dict[str, Any] = {
+        "user": user,
+        "password_reset_url": url,
+        "request": request,
+        "token": temp_key,
+        "uid": uid,
+        "username": user_username(user),
+    }
+    get_adapter(request).send_mail("account/email/password_reset_key", email, context)
+
+
 class AllAuthPasswordResetForm(DefaultPasswordResetForm):  # type: ignore[misc]
     """
     Custom password reset form integrated with django-allauth.
@@ -92,7 +118,7 @@ class AllAuthPasswordResetForm(DefaultPasswordResetForm):  # type: ignore[misc]
 
         Args:
             request: The HTTP request object
-            **kwargs: Additional keyword arguments including token_generator and url_generator
+            **kwargs: Additional keyword arguments including token_generator
 
         Returns:
             Email address that the reset email was sent to
@@ -104,23 +130,7 @@ class AllAuthPasswordResetForm(DefaultPasswordResetForm):  # type: ignore[misc]
 
         for user in users:
             temp_key: str = token_generator.make_token(user)
-
-            # send the password reset email
-            url_generator = kwargs.get(
-                "url_generator", auth_kit_settings.PASSWORD_RESET_URL_GENERATOR
-            )
-            url: str = url_generator(request, user, temp_key)
-            uid: str = user_pk_to_url_str(user)
-
-            context: dict[str, Any] = {
-                "user": user,
-                "password_reset_url": url,
-                "request": request,
-                "token": temp_key,
-                "uid": uid,
-                "username": user_username(user),
-            }
-            get_adapter(request).send_mail(
-                "account/email/password_reset_key", email, context
+            auth_kit_settings.SEND_PASSWORD_RESET_EMAIL_FUNC(
+                request, user, email, temp_key
             )
         return str(self.cleaned_data["email"])

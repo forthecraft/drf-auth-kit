@@ -171,6 +171,9 @@ class MySetting:
     PASSWORD_RESET_URL_GENERATOR: Callable[..., str] = ImportStr(
         "auth_kit.forms.password_reset_url_generator"
     )
+    SEND_PASSWORD_RESET_EMAIL_FUNC: Callable[..., None] = ImportStr(
+        "auth_kit.forms.send_password_reset_email"
+    )
     OLD_PASSWORD_FIELD_ENABLED: bool = False
     PASSWORD_RESET_PREVENT_ENUMERATION: bool = True
 

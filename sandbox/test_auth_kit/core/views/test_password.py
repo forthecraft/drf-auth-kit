@@ -214,6 +214,37 @@ class TestPasswordResetView(APITestCase):
         urls: list[Any] = re.findall(url_pattern, str(email_body))
         assert len(urls) >= 1
 
+    @patch("auth_kit.forms.auth_kit_settings.SEND_PASSWORD_RESET_EMAIL_FUNC")
+    def test_password_reset_custom_send_func(self, mock_send: MagicMock) -> None:
+        """Test password reset uses SEND_PASSWORD_RESET_EMAIL_FUNC"""
+        UserFactory.create_with_email_address(self.user_data)
+
+        data = {"email": "test@example.com"}
+        response: Response = self.client.post(self.url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data["detail"] == "Password reset e-mail has been sent."
+
+        # Default email should NOT be sent since we patched the func
+        assert len(mail.outbox) == 0
+        # Custom func should have been called with correct args
+        mock_send.assert_called_once()
+        call_kwargs = mock_send.call_args
+        assert call_kwargs[0][2] == "test@example.com"  # email arg
+        assert call_kwargs[0][3]  # temp_key is non-empty
+
+    @patch("auth_kit.forms.auth_kit_settings.SEND_PASSWORD_RESET_EMAIL_FUNC")
+    def test_password_reset_custom_send_func_nonexistent_email(
+        self, mock_send: MagicMock
+    ) -> None:
+        """Test send func is not called for non-existent email"""
+        data = {"email": "nonexistent@example.com"}
+        response: Response = self.client.post(self.url, data, format="json")
+
+        assert response.status_code == status.HTTP_200_OK
+        # Should NOT have been called since no user exists
+        mock_send.assert_not_called()
+
 
 class TestPasswordResetConfirmView(APITestCase):
     def setUp(self) -> None:

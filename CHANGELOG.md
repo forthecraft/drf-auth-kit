@@ -1,3 +1,9 @@
+## v1.4.0 (2026-05-26)
+
+### Feat
+
+- **cookie**: add AUTH_COOKIE_PARTITIONED setting for CHIPS compatibility
+
 ## v1.3.0 (2026-05-26)
 
 ### Feat

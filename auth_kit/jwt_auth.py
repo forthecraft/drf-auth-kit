@@ -16,6 +16,28 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from .app_settings import auth_kit_settings
 
 
+def _apply_partitioned_flag(response: Response, cookie_name: str) -> None:
+    """
+    Append the Partitioned attribute to a Set-Cookie header.
+
+    Django does not natively support the Partitioned cookie attribute yet
+    (pending Django ticket #34613, blocked on Python 3.14's stdlib support).
+    This patches the cookie's Morsel to recognize ``Partitioned`` as a
+    boolean flag, the same way ``Secure`` and ``HttpOnly`` work.
+
+    Args:
+        response: The HTTP response object
+        cookie_name: Name of the cookie to patch
+    """
+    if cookie_name in response.cookies:
+        morsel = response.cookies[cookie_name]
+        # Register "partitioned" as a known boolean flag on the Morsel,
+        # mirroring how "secure" and "httponly" are handled internally.
+        morsel._reserved["partitioned"] = "Partitioned"  # type: ignore[attr-defined]
+        morsel._flags.add("partitioned")  # type: ignore[attr-defined]
+        morsel["partitioned"] = True  # pyright: ignore[reportIndexIssue]
+
+
 def set_auth_kit_cookie(
     response: Response,
     cookie_name: str,
@@ -47,6 +69,9 @@ def set_auth_kit_cookie(
         domain=auth_kit_settings.AUTH_COOKIE_DOMAIN,
     )
 
+    if auth_kit_settings.AUTH_COOKIE_PARTITIONED:
+        _apply_partitioned_flag(response, cookie_name)
+
 
 def unset_jwt_cookies(response: Response) -> None:
     """
@@ -70,6 +95,12 @@ def unset_jwt_cookies(response: Response) -> None:
         domain=cookie_domain,
     )
 
+    if auth_kit_settings.AUTH_COOKIE_PARTITIONED:
+        _apply_partitioned_flag(response, auth_kit_settings.AUTH_JWT_COOKIE_NAME)
+        _apply_partitioned_flag(
+            response, auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME
+        )
+
 
 def unset_token_cookie(response: Response) -> None:
     """
@@ -86,6 +117,9 @@ def unset_token_cookie(response: Response) -> None:
         samesite=cookie_samesite,
         domain=cookie_domain,
     )
+
+    if auth_kit_settings.AUTH_COOKIE_PARTITIONED:
+        _apply_partitioned_flag(response, auth_kit_settings.AUTH_TOKEN_COOKIE_NAME)
 
 
 def jwt_encode(user: AbstractBaseUser) -> tuple[AccessToken, RefreshToken]:

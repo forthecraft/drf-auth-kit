@@ -26,6 +26,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'AUTH_COOKIE_HTTPONLY': True,          # Prevent JavaScript access
         'AUTH_COOKIE_SAMESITE': 'Lax',         # 'Lax', 'Strict', or 'None'
         'AUTH_COOKIE_DOMAIN': None,            # Cookie domain
+        'AUTH_COOKIE_PARTITIONED': False,      # Enable CHIPS Partitioned attribute
 
         # ===================================================================
         # JWT AUTHENTICATION SETTINGS
@@ -283,6 +284,21 @@ Cookie Configuration
 
 **AUTH_COOKIE_DOMAIN** (default: ``None``)
     Domain for authentication cookies. Leave as ``None`` for current domain.
+
+**AUTH_COOKIE_PARTITIONED** (default: ``False``)
+    Enable the ``Partitioned`` cookie attribute for CHIPS (Cookies Having Independent
+    Partitioned State) compatibility. Required for cross-site authentication when
+    third-party cookies are blocked by the browser.
+
+    When enabled, cookies include the ``Partitioned`` attribute::
+
+        Set-Cookie: auth-jwt=...; Secure; HttpOnly; SameSite=None; Partitioned
+
+    .. note::
+
+        CHIPS requires ``AUTH_COOKIE_SAMESITE`` to be ``"None"`` and ``AUTH_COOKIE_SECURE``
+        to be ``True``. A Django system check warning will be raised if these conditions
+        are not met.
 
 JWT-Specific Settings
 ~~~~~~~~~~~~~~~~~~~~~

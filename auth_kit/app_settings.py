@@ -69,6 +69,7 @@ class MySetting:
     AUTH_COOKIE_HTTPONLY: bool = True
     AUTH_COOKIE_SAMESITE: Literal["Lax", "Strict", "None"] = "Lax"
     AUTH_COOKIE_DOMAIN: str | None = None
+    AUTH_COOKIE_PARTITIONED: bool = False
 
     # ===================================================================
     # JWT AUTHENTICATION SETTINGS

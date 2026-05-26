@@ -1,3 +1,9 @@
+## v1.3.0 (2026-05-26)
+
+### Feat
+
+- **password**: add SEND_PASSWORD_RESET_EMAIL_FUNC setting for customizable reset emails
+
 ## v1.2.0 (2026-05-26)
 
 ### Feat

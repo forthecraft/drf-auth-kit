@@ -16,7 +16,7 @@ from allauth.socialaccount.models import (  # pyright: ignore[reportMissingTypeS
 )
 from auth_kit.social.utils import get_social_login_callback_url
 from auth_kit.social.views import SocialLoginView
-from auth_kit.test_utils import override_auth_kit_settings
+from auth_kit.test_utils import override_auth_kit_settings, settings_context  # noqa
 
 from .helper import SocialTestMixin
 
@@ -645,3 +645,42 @@ class TestCrossProviderLogin(SocialLoginTestCase):
         google_account = SocialAccount.objects.get(user=user, provider="google")
         assert google_account.uid == self.GOOGLE_USER_INFO["id"]
         assert response.data["user"]["email"] == user.email
+
+
+class TestPostSignupFunc(SocialLoginTestCase):
+    """Test that POST_SIGNUP_FUNC is called for new social signups only."""
+
+    @responses.activate
+    def test_post_signup_func_called_on_new_social_signup(self) -> None:
+        mock_post_signup = MagicMock()
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        with settings_context(POST_SIGNUP_FUNC=mock_post_signup):
+            response: Response = self.client.post(
+                url, {"code": "test-authorization-code"}, format="json"
+            )
+
+        assert response.status_code == status.HTTP_200_OK
+        mock_post_signup.assert_called_once()
+        assert mock_post_signup.call_args[0][1].email == "test@example.com"
+
+    @responses.activate
+    @override_auth_kit_settings(SOCIAL_LOGIN_AUTO_CONNECT_BY_EMAIL=True)
+    def test_post_signup_func_not_called_on_existing_social_login(self) -> None:
+        mock_post_signup = MagicMock()
+        user = User.objects.create_user(
+            username="existinguser", email="test@example.com", password="password123"
+        )
+        SocialAccount.objects.create(user=user, provider="google", uid="123456789")
+
+        self.mock_oauth_responses("google")
+
+        url = reverse("rest_social_google_login")
+        with settings_context(POST_SIGNUP_FUNC=mock_post_signup):
+            response: Response = self.client.post(
+                url, {"code": "test-authorization-code"}, format="json"
+            )
+
+        assert response.status_code == status.HTTP_200_OK
+        mock_post_signup.assert_not_called()

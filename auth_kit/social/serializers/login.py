@@ -115,7 +115,11 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
 
         self.check_social_login_account(login)
         self.set_login_user(login)
+        is_new = not login.is_existing
         login.save(request, connect=True)
+
+        if is_new:
+            auth_kit_settings.POST_SIGNUP_FUNC(request, login.account.user)
 
     def _lookup_user_by_verified_email(self, login: SocialLogin) -> None:
         """
@@ -266,24 +270,9 @@ class SocialLoginWithTokenRequestSerializer(serializers.Serializer[dict[str, Any
 
         login = self.get_login_from_token(tokens_to_parse)
 
-        self.post_signup(login, attrs)
-
         self.context["user"] = login.account.user
 
         return attrs
-
-    def post_signup(self, login: SocialLogin, attrs: dict[str, Any]) -> None:
-        """
-        Hook for custom behavior after social account signup.
-
-        Override this method to inject custom behavior when a user
-        signs up with a social account.
-
-        Args:
-            login: The SocialLogin instance being registered
-            attrs: The serializer attributes
-        """
-        pass
 
 
 class SocialLoginWithCodeRequestSerializer(SocialLoginWithTokenRequestSerializer):
@@ -382,8 +371,6 @@ class SocialLoginWithCodeRequestSerializer(SocialLoginWithTokenRequestSerializer
                 tokens_to_parse[key] = token[key]
 
         login = self.get_login_from_token(tokens_to_parse)
-
-        self.post_signup(login, attrs)
 
         self.context["user"] = login.account.user
 

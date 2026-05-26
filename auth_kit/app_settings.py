@@ -138,6 +138,9 @@ class MySetting:
     SEND_VERIFY_EMAIL_FUNC: Callable[..., None] = ImportStr(
         "auth_kit.views.registration.send_verify_email"
     )
+    POST_SIGNUP_FUNC: Callable[..., None] = ImportStr(
+        "auth_kit.views.registration.default_post_signup"
+    )
 
     # ===================================================================
     # PASSWORD MANAGEMENT SERIALIZERS & VIEWS

@@ -1,4 +1,5 @@
 from typing import cast
+from unittest.mock import MagicMock
 from urllib.parse import quote_plus
 
 from django.contrib.auth.models import User
@@ -13,7 +14,7 @@ from allauth.account.models import (  # pyright: ignore[reportMissingTypeStubs]
     EmailAddress,
     get_emailconfirmation_model,
 )
-from auth_kit.test_utils import override_auth_kit_settings
+from auth_kit.test_utils import override_auth_kit_settings, settings_context  # noqa
 
 from test_utils.user_factory import UserFactory
 
@@ -268,6 +269,18 @@ class TestRegisterView(APITestCase):
             "https://frontend.example.com/api/auth/registration/verify-email?key="
             in register_email.body
         )
+
+    def test_register_calls_post_signup_func(self) -> None:
+        mock_post_signup = MagicMock()
+        with settings_context(POST_SIGNUP_FUNC=mock_post_signup):
+            url = reverse("rest_register")
+            response: Response = self.client.post(
+                url, self.registration_data, format="json"
+            )
+
+        assert response.status_code == status.HTTP_201_CREATED
+        mock_post_signup.assert_called_once()
+        assert mock_post_signup.call_args[0][1].email == self.registration_data["email"]
 
     @override_auth_kit_settings(
         FRONTEND_BASE_URL="https://frontend.example.com",

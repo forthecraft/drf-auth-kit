@@ -70,6 +70,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'REGISTER_EMAIL_CONFIRM_PATH': None,
         'GET_EMAIL_VERIFICATION_URL_FUNC': 'auth_kit.views.registration.get_email_verification_url',
         'SEND_VERIFY_EMAIL_FUNC': 'auth_kit.views.registration.send_verify_email',
+        'POST_SIGNUP_FUNC': 'auth_kit.views.registration.default_post_signup',
 
         # ===================================================================
         # PASSWORD MANAGEMENT SERIALIZERS & VIEWS
@@ -362,6 +363,10 @@ Registration & Email Verification
 
 **SEND_VERIFY_EMAIL_FUNC** (default: :func:`~auth_kit.views.registration.send_verify_email`)
     Function for sending verification emails.
+
+**POST_SIGNUP_FUNC** (default: :func:`~auth_kit.views.registration.default_post_signup`)
+    Callback invoked after a new user account is created (both email registration and social signup).
+    Receives ``(request, user)`` arguments. Default is a no-op.
 
 Password Management
 ~~~~~~~~~~~~~~~~~~~

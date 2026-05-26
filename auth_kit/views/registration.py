@@ -109,6 +109,10 @@ def send_verify_email(request: Request, user: AbstractBaseUser) -> None:
     )
 
 
+def default_post_signup(request: Request, user: AbstractBaseUser) -> None:
+    """Default no-op post-signup callback. Override via ``AUTH_KIT["POST_SIGNUP_FUNC"]``."""
+
+
 class RegisterView(CreateAPIView[Any]):
     """
     User Registration
@@ -169,6 +173,7 @@ class RegisterView(CreateAPIView[Any]):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+        auth_kit_settings.POST_SIGNUP_FUNC(self.request, user)
         auth_kit_settings.SEND_VERIFY_EMAIL_FUNC(self.request, user)
         headers = self.get_success_headers(serializer.data)
         data = self.get_response_data(user)

@@ -92,7 +92,7 @@ def create_social_provider_urls() -> list[Any]:
             {"provider_id": social_app.provider_id},
             name=f"rest_social_{app_slug}_login",
         )
-        social_urls.append(login_pattern)
+        social_urls.append(login_pattern)  # pyright: ignore[reportUnknownArgumentType]
 
         # Generate social connect view class with dynamic description
         social_connect_class_name = f"{app_name}ConnectView"
@@ -118,7 +118,9 @@ def create_social_provider_urls() -> list[Any]:
             {"provider_id": social_app.provider_id},
             name=f"rest_social_{app_slug}_connect",
         )
-        social_urls.append(connect_pattern)
+        social_urls.append(
+            connect_pattern  # pyright: ignore[reportUnknownArgumentType]
+        )
 
     return social_urls
 

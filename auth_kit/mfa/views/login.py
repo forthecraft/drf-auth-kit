@@ -21,13 +21,17 @@ from drf_spectacular.utils import (
 )
 
 from auth_kit.mfa.mfa_api_descriptions import (
+    get_mfa_login_challenge_description,
     get_mfa_login_change_method_description,
     get_mfa_login_first_step_description,
     get_mfa_login_resend_description,
     get_mfa_login_second_step_description,
 )
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
-from auth_kit.mfa.utils import get_mfa_login_first_step_response_schemas
+from auth_kit.mfa.utils import (
+    get_login_challenge_schemas,
+    get_mfa_login_first_step_response_schemas,
+)
 from auth_kit.views import LoginView
 
 
@@ -188,3 +192,42 @@ class LoginMFAResendView(GenericAPIView[Any]):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data)
+
+
+class LoginMFAChallengeView(GenericAPIView[Any]):
+    """
+    Get a login challenge for the pending MFA method.
+
+    Challenge-response methods such as WebAuthn need a server-issued
+    challenge before the user can answer the second factor. The challenge
+    is scoped to the user identified by the ephemeral token.
+    """
+
+    permission_classes = (AllowAny,)
+    authentication_classes: list[Any] = []
+    throttle_scope = "auth_kit"
+    serializer_class = auth_kit_mfa_settings.MFA_LOGIN_CHALLENGE_SERIALIZER
+
+    @extend_schema(
+        description=get_mfa_login_challenge_description(),
+        responses=PolymorphicProxySerializer(
+            component_name="MFALoginChallenge",
+            serializers=get_login_challenge_schemas(),
+            resource_type_field_name=None,
+        ),
+    )
+    def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
+        """
+        Return the method-specific login challenge.
+
+        Args:
+            request: HTTP request with ephemeral token
+            *args: Variable length argument list
+            **kwargs: Arbitrary keyword arguments
+
+        Returns:
+            Response with challenge data for the pending MFA method
+        """
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.validated_data)

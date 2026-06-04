@@ -577,6 +577,13 @@
                         MFA Enabled
                     </span>
                 {% endif %}
+
+                {% if use_passwordless %}
+                    <span class="status-badge info">
+                        <i class="fas fa-fingerprint"></i>
+                        Passwordless Enabled
+                    </span>
+                {% endif %}
             </div>
         </div>
 
@@ -643,6 +650,109 @@
                                     </a>
                                 {% endfor %}
                             </div>
+                        {% endif %}
+
+                        {% if use_passwordless and passwordless_handlers %}
+                            <div class="divider"><span>PASSWORDLESS</span></div>
+
+                            {% for handler in passwordless_handlers %}
+                                {% if handler.name == 'email' %}
+                                <div style="margin-bottom: 15px;">
+                                    <div class="endpoint-info">
+                                        <span class="method-badge method-post">POST</span>
+                                        <code>/api/auth/passwordless/email/initiate/</code>
+                                    </div>
+                                    <form id="passwordlessEmailForm">
+                                        <div class="form-group">
+                                            <label class="form-label">Email (Magic Link)</label>
+                                            <input type="email" class="form-input" id="passwordlessEmail" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">
+                                            <i class="fas fa-magic"></i>
+                                            Send Magic Link
+                                        </button>
+                                    </form>
+                                    <div class="response-viewer" id="passwordlessEmailResponse"></div>
+
+                                    <div style="margin-top: 10px;">
+                                        <form id="passwordlessEmailVerifyForm">
+                                            <div class="form-group">
+                                                <label class="form-label">Magic Link Token</label>
+                                                <input type="text" class="form-input" id="passwordlessEmailToken" placeholder="Paste token from email">
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-block">
+                                                <i class="fas fa-check"></i>
+                                                Verify Token
+                                            </button>
+                                        </form>
+                                        <div class="response-viewer" id="passwordlessEmailVerifyResponse"></div>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                {% if handler.name == 'webauthn' %}
+                                <div style="margin-bottom: 15px;">
+                                    <div class="endpoint-info">
+                                        <span class="method-badge method-post">POST</span>
+                                        <code>/api/auth/passwordless/webauthn/initiate/</code>
+                                    </div>
+                                    <button onclick="webauthnLogin()" class="btn btn-primary btn-block">
+                                        <i class="fas fa-fingerprint"></i>
+                                        Login with Passkey
+                                    </button>
+                                    <div class="response-viewer" id="webauthnLoginResponse"></div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if use_mfa %}
+                        <!-- MFA Verification (shown when any login method returns mfa_enabled) -->
+                        <div id="mfaVerifySection" style="display: none;">
+                            <div class="divider"><span>MFA VERIFICATION</span></div>
+
+                            <div class="endpoint-info">
+                                <span class="method-badge method-post">POST</span>
+                                <code>/api/auth/login/verify/</code>
+                            </div>
+
+                            <form id="mfaVerifyForm">
+                                <input type="hidden" id="mfaEphemeralToken">
+
+                                <div class="alert alert-info">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>MFA required. Enter a verification code or use a passkey/security key.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">MFA Code</label>
+                                    <input type="text" class="form-input" id="mfaCode" placeholder="Enter 6-digit code" required autocomplete="one-time-code">
+                                </div>
+
+                                <button type="submit" class="btn btn-success btn-block">
+                                    <i class="fas fa-check-circle"></i>
+                                    Verify MFA Code
+                                </button>
+                            </form>
+
+                            <div class="divider"><span>OR</span></div>
+
+                            <button onclick="mfaVerifyWithPasskey()" class="btn btn-primary btn-block">
+                                <i class="fas fa-fingerprint"></i>
+                                Verify with Passkey / Security Key
+                            </button>
+
+                            <div style="margin-top: 10px; display: flex; gap: 10px;">
+                                <button onclick="mfaResend()" class="btn btn-secondary" style="flex: 1;">
+                                    <i class="fas fa-redo"></i> Resend Code
+                                </button>
+                                <button onclick="mfaChangeMethod()" class="btn btn-secondary" style="flex: 1;">
+                                    <i class="fas fa-exchange-alt"></i> Change Method
+                                </button>
+                            </div>
+
+                            <div class="response-viewer" id="mfaVerifyResponse"></div>
+                        </div>
                         {% endif %}
                     </div>
                 {% else %}
@@ -925,6 +1035,122 @@
                 {% endif %}
             </div>
 
+            <!-- MFA Management (Authenticated Users) -->
+            {% if is_authenticated and use_mfa %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon indigo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2 class="card-title">Multi-Factor Authentication</h2>
+                </div>
+
+                <!-- Methods list (auto-loaded) -->
+                <div id="mfaMethodsList">
+                    <p style="color: #999; text-align: center; padding: 15px;">
+                        <span class="loading" style="color: #666;"></span> Loading methods...
+                    </p>
+                </div>
+
+                <div class="response-viewer" id="mfaListResponse"></div>
+
+                <!-- Confirm MFA (shown after setup) -->
+                <div id="mfaConfirmSection" style="display: none; margin-top: 15px;">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span id="mfaConfirmMessage">Save your backup codes, then confirm to activate.</span>
+                    </div>
+
+                    <input type="hidden" id="mfaConfirmMethod">
+
+                    <!-- TOTP/Email confirm (code input) -->
+                    <div id="mfaConfirmCode_section">
+                        <form id="mfaConfirmForm">
+                            <div class="form-group">
+                                <label class="form-label">Verification Code</label>
+                                <input type="text" class="form-input" id="mfaConfirmCode" placeholder="Enter 6-digit code" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i>
+                                Confirm & Activate
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- WebAuthn confirm (browser prompt) -->
+                    <div id="mfaConfirmWebauthn_section" style="display: none;">
+                        <button onclick="mfaConfirmWebauthn()" class="btn btn-success btn-block">
+                            <i class="fas fa-fingerprint"></i>
+                            Tap Security Key / Use Passkey to Activate
+                        </button>
+                    </div>
+
+                    <div class="response-viewer" id="mfaListResponse"></div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- WebAuthn Credentials (Authenticated Users) -->
+            {% if is_authenticated %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon purple">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h2 class="card-title">Passkeys & Security Keys</h2>
+                </div>
+
+                {% if webauthn_credentials %}
+                    <h3 style="font-size: 16px; margin-bottom: 15px; color: #666;">
+                        <i class="fas fa-key" style="color: var(--primary-color);"></i>
+                        Registered Credentials
+                    </h3>
+
+                    {% for cred in webauthn_credentials %}
+                        <div class="social-connection">
+                            <div class="social-connection-info">
+                                <div class="card-icon purple" style="width: 35px; height: 35px; font-size: 16px;">
+                                    <i class="fas fa-{% if cred.discoverable %}fingerprint{% else %}usb{% endif %}"></i>
+                                </div>
+                                <div>
+                                    <strong>{{ cred.name|default:"Unnamed credential" }}</strong>
+                                    <p style="font-size: 12px; color: #666; margin: 0;">
+                                        {% if cred.discoverable %}Passkey{% else %}Security Key{% endif %}
+                                        {% if cred.last_used_at %} &middot; Last used: {{ cred.last_used_at|date:"M d, Y" }}{% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button onclick="renameWebAuthnCredential({{ cred.id }})"
+                                        class="btn btn-secondary" style="padding: 8px 16px; font-size: 12px;">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button onclick="deleteWebAuthnCredential({{ cred.id }}, '{{ cred.name|default:"this credential"|escapejs }}')"
+                                        class="btn btn-danger" style="padding: 8px 16px; font-size: 12px;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div class="divider"><span>Add New</span></div>
+                {% endif %}
+
+                <div class="endpoint-info">
+                    <span class="method-badge method-post">POST</span>
+                    <code>/api/auth/webauthn/credentials/register_options/</code>
+                </div>
+
+                <button onclick="registerWebAuthnCredential()" class="btn btn-success btn-block">
+                    <i class="fas fa-plus-circle"></i>
+                    Register New Passkey / Security Key
+                </button>
+
+                <div class="response-viewer" id="webauthnCredentialResponse"></div>
+            </div>
+            {% endif %}
+
             <!-- Social Connections (Authenticated Users) -->
             {% if is_authenticated and has_social_auth and social_providers %}
             <div class="card">
@@ -952,7 +1178,7 @@
                                     <p style="font-size: 12px; color: #666; margin: 0;">{{ connection.uid }}</p>
                                 </div>
                             </div>
-                            <button onclick="disconnectSocial({{ connection.id }}, '{{ connection.name }}')"
+                            <button onclick="disconnectSocial({{ connection.id }}, '{{ connection.name|escapejs }}')"
                                     class="btn btn-danger" style="padding: 8px 16px; font-size: 12px;">
                                 <i class="fas fa-unlink"></i>
                                 Disconnect
@@ -993,6 +1219,27 @@
             return '';
         }
 
+        // Show MFA verification step and hide all login methods
+        function showMfaStep(ephemeralToken) {
+            document.getElementById('mfaEphemeralToken').value = ephemeralToken;
+            // Hide all login forms/sections
+            document.getElementById('loginForm')?.style.setProperty('display', 'none');
+            document.querySelectorAll('.social-providers, .social-btn').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.divider').forEach(el => {
+                if (el.closest('#mfaVerifySection')) return;
+                const card = el.closest('.card');
+                if (card && card.querySelector('#mfaVerifySection')) el.style.display = 'none';
+            });
+            // Hide passwordless sections
+            document.getElementById('passwordlessEmailForm')?.closest('div[style]')?.style.setProperty('display', 'none');
+            document.getElementById('passwordlessEmailVerifyForm')?.closest('div[style]')?.style.setProperty('display', 'none');
+            // Show MFA section and scroll to it
+            const mfaSection = document.getElementById('mfaVerifySection');
+            mfaSection.style.display = 'block';
+            mfaSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            showAlert('MFA verification required. Enter your code.', 'info');
+        }
+
         function showResponse(elementId, response, isError = false) {
             const element = document.getElementById(elementId);
             element.innerHTML = `<pre>${JSON.stringify(response, null, 2)}</pre>`;
@@ -1027,7 +1274,8 @@
                 }
 
                 const response = await fetch(url, options);
-                const responseData = await response.json();
+                const text = await response.text();
+                const responseData = text ? JSON.parse(text) : {};
 
                 if (responseElementId) {
                     showResponse(responseElementId, responseData, !response.ok);
@@ -1083,8 +1331,13 @@
             const result = await apiRequest('/api/auth/login/', 'POST', formData, 'loginResponse');
 
             if (result.success) {
-                showAlert('Login successful! Reloading...', 'success');
-                setTimeout(() => window.location.reload(), 1500);
+                // Check if MFA is required
+                if (result.data.mfa_enabled) {
+                    showMfaStep(result.data.ephemeral_token);
+                } else {
+                    showAlert('Login successful! Reloading...', 'success');
+                    setTimeout(() => window.location.reload(), 1500);
+                }
             } else {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -1256,6 +1509,640 @@
             btn.innerHTML = originalText;
             btn.disabled = false;
         });
+
+        // MFA Verification (second step of login)
+        document.getElementById('mfaVerifyForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Verifying...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/login/verify/', 'POST', {
+                ephemeral_token: document.getElementById('mfaEphemeralToken').value,
+                code: document.getElementById('mfaCode').value,
+            }, 'mfaVerifyResponse');
+
+            if (result.success) {
+                showAlert('MFA verified! Reloading...', 'success');
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                showAlert('Invalid MFA code.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // MFA Resend Code
+        async function mfaResend() {
+            const result = await apiRequest('/api/auth/login/resend/', 'POST', {
+                ephemeral_token: document.getElementById('mfaEphemeralToken').value,
+            }, 'mfaVerifyResponse');
+
+            if (result.success) {
+                // Update ephemeral token (it gets refreshed)
+                if (result.data.ephemeral_token) {
+                    document.getElementById('mfaEphemeralToken').value = result.data.ephemeral_token;
+                }
+                showAlert('MFA code resent!', 'success');
+            } else {
+                showAlert('Failed to resend code.', 'error');
+            }
+        }
+
+        // MFA Verify with Passkey / Security Key
+        async function mfaVerifyWithPasskey() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Requesting...';
+            btn.disabled = true;
+
+            try {
+                // First, switch MFA method to webauthn to get a fresh ephemeral token
+                const changeResult = await apiRequest('/api/auth/login/change-method/', 'POST', {
+                    ephemeral_token: document.getElementById('mfaEphemeralToken').value,
+                    new_method: 'webauthn',
+                });
+
+                if (changeResult.success && changeResult.data.ephemeral_token) {
+                    document.getElementById('mfaEphemeralToken').value = changeResult.data.ephemeral_token;
+                }
+
+                // Challenge is scoped to the pending MFA user
+                const authOptions = await apiRequest('/api/auth/login/challenge/', 'POST', {
+                    ephemeral_token: document.getElementById('mfaEphemeralToken').value,
+                });
+                if (!authOptions.success) {
+                    throw new Error('Failed to get WebAuthn options');
+                }
+
+                const options = authOptions.data;
+
+                // Call WebAuthn browser API
+                const publicKeyOptions = {
+                    challenge: base64urlToBuffer(options.challenge),
+                    rpId: options.rpId,
+                    timeout: options.timeout,
+                    userVerification: options.userVerification || 'preferred',
+                };
+
+                if (options.allowCredentials && options.allowCredentials.length > 0) {
+                    publicKeyOptions.allowCredentials = options.allowCredentials.map(cred => ({
+                        id: base64urlToBuffer(cred.id),
+                        type: cred.type,
+                        transports: cred.transports,
+                    }));
+                }
+
+                const assertion = await navigator.credentials.get({ publicKey: publicKeyOptions });
+
+                // Build credential JSON with session_id for the MFA handler
+                const credentialData = {
+                    id: bufferToBase64url(assertion.rawId),
+                    rawId: bufferToBase64url(assertion.rawId),
+                    type: assertion.type,
+                    session_id: options.session_id,
+                    response: {
+                        clientDataJSON: bufferToBase64url(assertion.response.clientDataJSON),
+                        authenticatorData: bufferToBase64url(assertion.response.authenticatorData),
+                        signature: bufferToBase64url(assertion.response.signature),
+                        userHandle: assertion.response.userHandle ? bufferToBase64url(assertion.response.userHandle) : '',
+                    },
+                };
+
+                // Submit as MFA code (JSON-stringified credential)
+                const verifyResult = await apiRequest('/api/auth/login/verify/', 'POST', {
+                    ephemeral_token: document.getElementById('mfaEphemeralToken').value,
+                    code: JSON.stringify(credentialData),
+                }, 'mfaVerifyResponse');
+
+                if (verifyResult.success) {
+                    showAlert('MFA verified with passkey! Reloading...', 'success');
+                    setTimeout(() => window.location.reload(), 1500);
+                } else {
+                    showAlert('Passkey MFA verification failed.', 'error');
+                }
+            } catch (error) {
+                showResponse('mfaVerifyResponse', { error: error.message }, true);
+                showAlert('Passkey verification failed: ' + error.message, 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        // MFA Change Method
+        async function mfaChangeMethod() {
+            const newMethod = prompt('Enter method name (e.g., app, email):');
+            if (!newMethod) return;
+
+            const result = await apiRequest('/api/auth/login/change-method/', 'POST', {
+                ephemeral_token: document.getElementById('mfaEphemeralToken').value,
+                new_method: newMethod,
+            }, 'mfaVerifyResponse');
+
+            if (result.success) {
+                if (result.data.ephemeral_token) {
+                    document.getElementById('mfaEphemeralToken').value = result.data.ephemeral_token;
+                }
+                showAlert(`Switched to ${newMethod} method. Enter the new code.`, 'success');
+            } else {
+                showAlert('Failed to change method.', 'error');
+            }
+        }
+
+        // MFA List Methods (auto-loaded)
+        async function listMfaMethods() {
+            const result = await apiRequest('/api/auth/mfa/', 'GET');
+            const container = document.getElementById('mfaMethodsList');
+            if (!container) return;
+
+            if (result.success && Array.isArray(result.data)) {
+                if (result.data.length === 0) {
+                    container.innerHTML = '<p style="color: #999; text-align: center; padding: 15px;">No MFA methods configured.</p>';
+                    return;
+                }
+
+                container.innerHTML = result.data.map(m => {
+                    const icon = m.name === 'app' ? 'mobile-alt' : m.name === 'email' ? 'envelope' : 'key';
+                    const statusColor = m.is_active ? 'green' : (m.is_setup ? 'red' : '');
+                    const statusText = m.is_active ? 'Active' : (m.is_setup ? 'Inactive' : 'Not setup');
+                    const btnStyle = 'padding: 6px 10px; font-size: 11px;';
+
+                    let buttons = '';
+                    if (!m.is_setup) {
+                        buttons = `<button onclick="mfaSetup('${m.name}')" class="btn btn-success" style="${btnStyle}" title="Setup"><i class="fas fa-plus"></i> Setup</button>`;
+                    } else {
+                        if (m.is_active && !m.is_primary) {
+                            buttons += `<button onclick="mfaAction('primary', '${m.name}')" class="btn btn-secondary" style="${btnStyle}" title="Set as primary"><i class="fas fa-star"></i></button>`;
+                            buttons += `<button onclick="mfaAction('deactivate', '${m.name}')" class="btn btn-secondary" style="${btnStyle}" title="Deactivate"><i class="fas fa-pause"></i></button>`;
+                        }
+                        buttons += `<button onclick="mfaAction('delete', '${m.name}')" class="btn btn-danger" style="${btnStyle}" title="Delete"><i class="fas fa-trash"></i></button>`;
+                    }
+
+                    return `
+                        <div class="social-connection" style="margin-bottom: 8px;">
+                            <div class="social-connection-info">
+                                <div class="card-icon ${statusColor}" style="width: 35px; height: 35px; font-size: 14px;">
+                                    <i class="fas fa-${icon}"></i>
+                                </div>
+                                <div>
+                                    <strong>${m.name}</strong>
+                                    ${m.is_primary ? ' <span style="color: var(--warning-color); font-size: 12px;"><i class="fas fa-star"></i> Primary</span>' : ''}
+                                    <p style="font-size: 12px; color: #666; margin: 0;">${statusText}</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 6px;">${buttons}</div>
+                        </div>`;
+                }).join('');
+            } else {
+                container.innerHTML = '<p style="color: #999; text-align: center; padding: 15px;">Failed to load methods.</p>';
+            }
+        }
+
+        // MFA inline actions
+        async function mfaAction(action, method) {
+            if (action === 'delete' && !confirm(`Delete MFA method "${method}"?`)) return;
+
+            let data = { method };
+            if (action === 'deactivate') {
+                const code = prompt('Enter verification code:');
+                if (!code) return;
+                data.code = code;
+            }
+
+            const result = await apiRequest(`/api/auth/mfa/${action}/`, 'POST', data, 'mfaListResponse');
+            if (result.success) {
+                showAlert(`${method}: ${action} successful!`, 'success');
+                listMfaMethods();
+            } else {
+                showAlert(`Failed to ${action} ${method}.`, 'error');
+            }
+        }
+
+        // Auto-load MFA methods on page load
+        if (document.getElementById('mfaMethodsList')) {
+            listMfaMethods();
+        }
+
+        // MFA Setup Method (called from inline button)
+        let mfaWebauthnSetupData = null;
+
+        async function mfaSetup(method) {
+            const result = await apiRequest('/api/auth/mfa/', 'POST', {
+                method: method,
+            }, 'mfaListResponse');
+
+            if (result.success) {
+                showAlert('Method created! Save your backup codes, then confirm to activate.', 'success');
+                document.getElementById('mfaConfirmMethod').value = method;
+
+                // Show the right confirm UI based on method
+                const codeSection = document.getElementById('mfaConfirmCode_section');
+                const webauthnSection = document.getElementById('mfaConfirmWebauthn_section');
+
+                if (method === 'webauthn') {
+                    codeSection.style.display = 'none';
+                    webauthnSection.style.display = 'block';
+                    document.getElementById('mfaConfirmMessage').textContent =
+                        'Save your backup codes, then tap your security key or use your passkey to activate.';
+                    // Store the registration options for the WebAuthn ceremony
+                    mfaWebauthnSetupData = result.data.setup_data?.options || null;
+                } else {
+                    codeSection.style.display = 'block';
+                    webauthnSection.style.display = 'none';
+                    document.getElementById('mfaConfirmMessage').textContent =
+                        'Save your backup codes, then enter the verification code to activate.';
+                }
+
+                document.getElementById('mfaConfirmSection').style.display = 'block';
+                document.getElementById('mfaConfirmSection').scrollIntoView({ behavior: 'smooth' });
+                listMfaMethods();
+            } else {
+                showAlert('Setup failed.', 'error');
+            }
+        }
+
+        // MFA Confirm with WebAuthn (browser prompt)
+        async function mfaConfirmWebauthn() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Waiting for device...';
+            btn.disabled = true;
+
+            try {
+                if (!mfaWebauthnSetupData) {
+                    throw new Error('No WebAuthn setup data available');
+                }
+
+                const options = mfaWebauthnSetupData;
+
+                // Call WebAuthn browser API for registration
+                const publicKeyOptions = {
+                    challenge: base64urlToBuffer(options.challenge),
+                    rp: options.rp,
+                    user: {
+                        id: base64urlToBuffer(options.user.id),
+                        name: options.user.name,
+                        displayName: options.user.displayName,
+                    },
+                    pubKeyCredParams: options.pubKeyCredParams,
+                    timeout: options.timeout,
+                    attestation: options.attestation || 'none',
+                    authenticatorSelection: options.authenticatorSelection,
+                };
+
+                if (options.excludeCredentials) {
+                    publicKeyOptions.excludeCredentials = options.excludeCredentials.map(cred => ({
+                        id: base64urlToBuffer(cred.id),
+                        type: cred.type,
+                    }));
+                }
+
+                const credential = await navigator.credentials.create({ publicKey: publicKeyOptions });
+
+                // Build credential JSON and send as the "code" for MFA confirm
+                const credentialData = {
+                    id: bufferToBase64url(credential.rawId),
+                    rawId: bufferToBase64url(credential.rawId),
+                    type: credential.type,
+                    response: {
+                        clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
+                        attestationObject: bufferToBase64url(credential.response.attestationObject),
+                    },
+                };
+
+                const result = await apiRequest('/api/auth/mfa/confirm/', 'POST', {
+                    method: 'webauthn',
+                    code: JSON.stringify(credentialData),
+                }, 'mfaListResponse');
+
+                if (result.success) {
+                    showAlert('WebAuthn MFA activated!', 'success');
+                    document.getElementById('mfaConfirmSection').style.display = 'none';
+                    listMfaMethods();
+                } else {
+                    showAlert('Activation failed.', 'error');
+                }
+            } catch (error) {
+                showResponse('mfaListResponse', { error: error.message }, true);
+                showAlert('WebAuthn confirmation failed: ' + error.message, 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        // MFA Confirm Method
+        document.getElementById('mfaConfirmForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Confirming...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/mfa/confirm/', 'POST', {
+                method: document.getElementById('mfaConfirmMethod').value,
+                code: document.getElementById('mfaConfirmCode').value,
+            }, 'mfaListResponse');
+
+            if (result.success) {
+                showAlert('MFA method activated! Reloading...', 'success');
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                showAlert('Confirmation failed. Check the code.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Passwordless Email Magic Link
+        document.getElementById('passwordlessEmailForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Sending...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/passwordless/email/initiate/', 'POST', {
+                email: document.getElementById('passwordlessEmail').value,
+            }, 'passwordlessEmailResponse');
+
+            if (result.success) {
+                showAlert('Magic link sent! Check your email.', 'success');
+            } else {
+                showAlert('Failed to send magic link.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // Passwordless Email Verify
+        document.getElementById('passwordlessEmailVerifyForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Verifying...';
+            btn.disabled = true;
+
+            const result = await apiRequest('/api/auth/passwordless/email/verify/', 'POST', {
+                token: document.getElementById('passwordlessEmailToken').value,
+            }, 'passwordlessEmailVerifyResponse');
+
+            if (result.success) {
+                if (result.data.mfa_enabled) {
+                    showMfaStep(result.data.ephemeral_token);
+                } else {
+                    showAlert('Login successful! Reloading...', 'success');
+                    setTimeout(() => window.location.reload(), 1500);
+                }
+            } else {
+                showAlert('Verification failed.', 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+
+        // WebAuthn Passwordless Login (Passkey)
+        async function webauthnLogin() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Requesting...';
+            btn.disabled = true;
+
+            try {
+                // Step 1: Get authentication options from server
+                const optionsResult = await apiRequest('/api/auth/passwordless/webauthn/initiate/', 'POST', {});
+                if (!optionsResult.success) {
+                    showResponse('webauthnLoginResponse', optionsResult.error, true);
+                    throw new Error('Failed to get authentication options');
+                }
+
+                const options = optionsResult.data;
+                const sessionId = options.session_id;
+
+                // Step 2: Call WebAuthn browser API
+                const publicKeyOptions = {
+                    challenge: base64urlToBuffer(options.challenge),
+                    rpId: options.rpId,
+                    timeout: options.timeout,
+                    userVerification: options.userVerification || 'preferred',
+                };
+
+                if (options.allowCredentials && options.allowCredentials.length > 0) {
+                    publicKeyOptions.allowCredentials = options.allowCredentials.map(cred => ({
+                        id: base64urlToBuffer(cred.id),
+                        type: cred.type,
+                        transports: cred.transports,
+                    }));
+                }
+
+                const assertion = await navigator.credentials.get({ publicKey: publicKeyOptions });
+
+                // Step 3: Send assertion to server
+                const credentialData = {
+                    id: bufferToBase64url(assertion.rawId),
+                    rawId: bufferToBase64url(assertion.rawId),
+                    type: assertion.type,
+                    response: {
+                        clientDataJSON: bufferToBase64url(assertion.response.clientDataJSON),
+                        authenticatorData: bufferToBase64url(assertion.response.authenticatorData),
+                        signature: bufferToBase64url(assertion.response.signature),
+                        userHandle: assertion.response.userHandle ? bufferToBase64url(assertion.response.userHandle) : '',
+                    },
+                };
+
+                const verifyResult = await apiRequest('/api/auth/passwordless/webauthn/verify/', 'POST', {
+                    credential: credentialData,
+                    session_id: sessionId,
+                }, 'webauthnLoginResponse');
+
+                if (verifyResult.success) {
+                    showAlert('Passkey login successful! Reloading...', 'success');
+                    setTimeout(() => window.location.reload(), 1500);
+                } else {
+                    showAlert('Passkey verification failed.', 'error');
+                }
+            } catch (error) {
+                showResponse('webauthnLoginResponse', { error: error.message }, true);
+                showAlert('Passkey login failed: ' + error.message, 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        // WebAuthn Credential Registration (for authenticated users)
+        async function registerWebAuthnCredential() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Registering...';
+            btn.disabled = true;
+
+            try {
+                // Step 1: Get registration options
+                const optionsResult = await apiRequest('/api/auth/webauthn/credentials/register_options/', 'POST');
+                if (!optionsResult.success) {
+                    showResponse('webauthnCredentialResponse', optionsResult.error, true);
+                    throw new Error('Failed to get registration options');
+                }
+
+                const options = optionsResult.data;
+
+                // Step 2: Call WebAuthn browser API
+                const publicKeyOptions = {
+                    challenge: base64urlToBuffer(options.challenge),
+                    rp: options.rp,
+                    user: {
+                        id: base64urlToBuffer(options.user.id),
+                        name: options.user.name,
+                        displayName: options.user.displayName,
+                    },
+                    pubKeyCredParams: options.pubKeyCredParams,
+                    timeout: options.timeout,
+                    attestation: options.attestation || 'none',
+                    authenticatorSelection: options.authenticatorSelection,
+                };
+
+                if (options.excludeCredentials) {
+                    publicKeyOptions.excludeCredentials = options.excludeCredentials.map(cred => ({
+                        id: base64urlToBuffer(cred.id),
+                        type: cred.type,
+                        transports: cred.transports,
+                    }));
+                }
+
+                const credential = await navigator.credentials.create({ publicKey: publicKeyOptions });
+
+                // Step 3: Send credential to server
+                const credentialData = {
+                    id: bufferToBase64url(credential.rawId),
+                    rawId: bufferToBase64url(credential.rawId),
+                    type: credential.type,
+                    response: {
+                        clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
+                        attestationObject: bufferToBase64url(credential.response.attestationObject),
+                    },
+                    authenticatorAttachment: credential.authenticatorAttachment || 'platform',
+                };
+
+                // Add transports if available
+                if (credential.response.getTransports) {
+                    credentialData.response.transports = credential.response.getTransports();
+                }
+
+                const createResult = await apiRequest('/api/auth/webauthn/credentials/', 'POST', {
+                    credential: credentialData,
+                }, 'webauthnCredentialResponse');
+
+                // Auto-rename with browser-detected info
+                if (createResult.success && createResult.data.id) {
+                    const autoName = getCredentialAutoName(credential);
+                    if (autoName) {
+                        await apiRequest(
+                            `/api/auth/webauthn/credentials/${createResult.data.id}/rename/`,
+                            'PATCH', { name: autoName }
+                        );
+                    }
+                }
+
+                if (createResult.success) {
+                    showAlert('Passkey registered successfully! Reloading...', 'success');
+                    setTimeout(() => window.location.reload(), 1500);
+                } else {
+                    showAlert('Failed to register passkey.', 'error');
+                }
+            } catch (error) {
+                showResponse('webauthnCredentialResponse', { error: error.message }, true);
+                showAlert('Registration failed: ' + error.message, 'error');
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        // Rename WebAuthn Credential
+        async function renameWebAuthnCredential(credentialId) {
+            const newName = prompt('Enter a name for this credential:');
+            if (!newName) return;
+
+            const result = await apiRequest(
+                `/api/auth/webauthn/credentials/${credentialId}/rename/`,
+                'PATCH', { name: newName }, 'webauthnCredentialResponse'
+            );
+
+            if (result.success) {
+                showAlert('Credential renamed! Reloading...', 'success');
+                setTimeout(() => window.location.reload(), 1000);
+            } else {
+                showAlert('Failed to rename credential.', 'error');
+            }
+        }
+
+        // Delete WebAuthn Credential
+        async function deleteWebAuthnCredential(credentialId, credentialName) {
+            if (!confirm(`Delete ${credentialName}? This cannot be undone.`)) return;
+
+            const result = await apiRequest(`/api/auth/webauthn/credentials/${credentialId}/`, 'DELETE', null, 'webauthnCredentialResponse');
+
+            if (result.success) {
+                showAlert('Credential deleted! Reloading...', 'success');
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                showAlert('Failed to delete credential.', 'error');
+            }
+        }
+
+        // Auto-generate a credential name from browser info
+        function getCredentialAutoName(credential) {
+            const attachment = credential.authenticatorAttachment;
+            const transports = credential.response.getTransports
+                ? credential.response.getTransports()
+                : [];
+
+            if (attachment === 'platform') {
+                // Platform authenticator — try to detect type from UA
+                const ua = navigator.userAgent.toLowerCase();
+                if (ua.includes('mac')) return 'Mac Touch ID';
+                if (ua.includes('iphone') || ua.includes('ipad')) return 'iPhone Face ID';
+                if (ua.includes('android')) return 'Android Biometric';
+                if (ua.includes('windows')) return 'Windows Hello';
+                return 'Platform Passkey';
+            }
+
+            if (transports.includes('usb')) return 'USB Security Key';
+            if (transports.includes('nfc')) return 'NFC Security Key';
+            if (transports.includes('ble')) return 'Bluetooth Security Key';
+
+            if (attachment === 'cross-platform') return 'Security Key';
+
+            return 'Passkey';
+        }
+
+        // WebAuthn utility functions
+        function base64urlToBuffer(base64url) {
+            const padding = '='.repeat((4 - base64url.length % 4) % 4);
+            const base64 = base64url.replace(/-/g, '+').replace(/_/g, '/') + padding;
+            const binary = atob(base64);
+            const buffer = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                buffer[i] = binary.charCodeAt(i);
+            }
+            return buffer.buffer;
+        }
+
+        function bufferToBase64url(buffer) {
+            const bytes = new Uint8Array(buffer);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+        }
 
         // Disconnect Social Account
         async function disconnectSocial(accountId, providerName) {

@@ -240,6 +240,47 @@ class MFAChangeMethodSerializer(serializers.Serializer[MFAChangeMethodAttrs]):
         return attrs
 
 
+class MFALoginChallengeSerializer(serializers.Serializer[dict[str, Any]]):
+    """
+    Serializer for fetching a login challenge for the current MFA method.
+
+    Lets challenge-response methods such as WebAuthn obtain a
+    server-issued challenge scoped to the pending MFA user.
+
+    Attributes:
+        ephemeral_token: Current ephemeral token
+    """
+
+    ephemeral_token = serializers.CharField(write_only=True)
+
+    def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
+        """
+        Resolve the pending user and build the method's login challenge.
+
+        Args:
+            attrs: Input attributes dictionary
+
+        Returns:
+            Method-specific challenge data
+
+        Raises:
+            ValidationError: If token is invalid
+        """
+        user_and_method = ephemeral_token_service.check_token(
+            token=attrs["ephemeral_token"]
+        )
+
+        if not user_and_method:
+            raise ValidationError(_("Invalid token"))
+
+        user, method_name = user_and_method
+        mfa_method = auth_kit_mfa_settings.MFA_MODEL.objects.get_by_name(
+            user.pk, method_name
+        )
+        handler = MFAHandlerRegistry.get_handler(mfa_method)
+        return handler.get_login_challenge()
+
+
 class MFAResendSerializer(serializers.Serializer[dict[str, Any]]):
     """
     Serializer for resending MFA verification code.

@@ -46,10 +46,98 @@ else:
     )
 
 
-class ImportStr(str):
-    """String subclass that marks a setting as requiring import resolution."""
+class Importable:
+    """Base class for marking settings as requiring import resolution."""
 
     pass
+
+
+class StringImport(Importable, str):
+    """String import marker for individual import strings."""
+
+    pass
+
+
+class ListImport(Importable, list[str]):
+    """List import marker for collections of import strings."""
+
+    pass
+
+
+class ImportStr:
+    """
+    Factory for creating importable setting values.
+
+    Automatically detects whether input is a single string or list/tuple
+    and returns appropriate importable type.
+    """
+
+    def __new__(cls, val: str | list[str] | tuple[str], *args: Any, **kwargs: Any) -> StringImport | ListImport:  # type: ignore[misc]
+        """
+        Create appropriate importable type based on input.
+
+        Args:
+            val: Value to make importable
+
+        Returns:
+            Importable wrapper for the value
+        """
+        if isinstance(val, list | tuple):
+            return ListImport(val)
+        return StringImport(val)
+
+
+def create_api_settings_from_model(
+    model_class: type,
+    import_strings: tuple[str, ...],
+    override_value: dict[str, Any] | None = None,
+) -> Any:
+    """
+    Create API settings instance from a model class.
+
+    Args:
+        model_class: The settings model class to use as defaults
+        import_strings: Tuple of setting names that require import resolution
+        override_value: Optional override values for settings
+
+    Returns:
+        Configured settings instance
+    """
+    user_settings = getattr(settings, "AUTH_KIT", override_value)
+
+    defaults_dict = {}
+    for attr_name in dir(model_class):
+        if attr_name.startswith("_"):
+            continue
+
+        attr_value = getattr(model_class, attr_name)
+        if not callable(attr_value):  # pragma: no branch
+            defaults_dict[attr_name] = attr_value
+
+    api_settings = APISettings(
+        user_settings=user_settings,  # type: ignore
+        defaults=defaults_dict,  # type: ignore
+        import_strings=import_strings,
+    )
+
+    return api_settings
+
+
+def get_import_strings(model_class: type) -> tuple[str, ...]:
+    """
+    Extract import string field names from a settings model class.
+
+    Args:
+        model_class: The settings model class
+
+    Returns:
+        Tuple of field names that require import resolution
+    """
+    return tuple(
+        field
+        for field in dir(model_class)
+        if isinstance(getattr(model_class, field), Importable)
+    )
 
 
 class MySetting:
@@ -231,6 +319,11 @@ class MySetting:
     USE_MFA: bool = False
 
     # ===================================================================
+    # PASSWORDLESS AUTHENTICATION
+    # ===================================================================
+    USE_PASSWORDLESS: bool = False
+
+    # ===================================================================
     # URL & UTILITY SETTINGS
     # ===================================================================
     URL_NAMESPACE: str = ""
@@ -241,54 +334,11 @@ class MySetting:
 
 
 # Dynamically generate IMPORT_STRINGS from MySetting class
-IMPORT_STRINGS = tuple(
-    field
-    for field in dir(MySetting)
-    if isinstance(getattr(MySetting, field), ImportStr)
+IMPORT_STRINGS = get_import_strings(MySetting)
+
+auth_kit_settings = cast(
+    MySetting, create_api_settings_from_model(MySetting, IMPORT_STRINGS)
 )
-
-
-def create_api_settings_from_model(
-    model_class: type,
-    import_strings: tuple[str, ...],
-    override_value: dict[str, Any] | None = None,
-) -> MySetting:
-    """
-    Create API settings instance from a model class.
-
-    Args:
-        model_class: The settings model class to use as defaults
-        import_strings: Tuple of setting names that require import resolution
-        override_value: Optional override values for settings
-
-    Returns:
-        Configured MySetting instance
-    """
-    # Get user settings from Django settings
-    user_settings = getattr(settings, "AUTH_KIT", override_value)
-
-    # Get defaults from class variables
-    defaults_dict = {}
-    for attr_name in dir(model_class):
-        if attr_name.startswith("_"):
-            continue
-
-        attr_value = getattr(model_class, attr_name)
-        # Skip methods and other non-setting attributes
-        if not callable(attr_value):
-            defaults_dict[attr_name] = attr_value
-
-    # Create APISettings instance
-    api_settings = APISettings(
-        user_settings=user_settings,  # type: ignore
-        defaults=defaults_dict,  # type: ignore
-        import_strings=import_strings,
-    )
-
-    return cast(MySetting, api_settings)
-
-
-auth_kit_settings = create_api_settings_from_model(MySetting, IMPORT_STRINGS)
 
 
 def reload_api_settings(*args: Any, **kwargs: Any) -> None:

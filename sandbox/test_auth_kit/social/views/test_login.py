@@ -3,6 +3,7 @@ from unittest.mock import MagicMock
 from urllib.parse import parse_qs
 
 from django.contrib.auth.models import User
+from django.test import override_settings
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.response import Response
@@ -582,8 +583,6 @@ class TestCrossProviderLogin(SocialLoginTestCase):
         This specifically tests the _lookup_user_by_verified_email code path which
         runs when allauth's own email lookup is disabled.
         """
-        from django.test import override_settings
-
         # Step 1: Login with Google first (creates user)
         self.mock_oauth_responses("google")
 
@@ -622,8 +621,6 @@ class TestCrossProviderLogin(SocialLoginTestCase):
 
         This tests the _lookup_user_by_verified_email fallback to login.user.email.
         """
-        from django.test import override_settings
-
         # Step 1: Create user with email/password
         user = User.objects.create_user(
             username="testuser", email="test@example.com", password="password123"

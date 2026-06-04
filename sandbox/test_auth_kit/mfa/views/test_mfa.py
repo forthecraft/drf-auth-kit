@@ -34,7 +34,7 @@ class TestMFAMethodViewSet(APITestCase):
         response: Response = self.client.get(reverse("mfa-list"))
 
         assert response.status_code == status.HTTP_200_OK
-        assert len(response.data) == 2  # app and email handlers
+        assert len(response.data) >= 2  # at least app and email handlers
 
         for method in response.data:
             assert not method["is_setup"]

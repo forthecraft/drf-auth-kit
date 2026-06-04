@@ -30,6 +30,22 @@ def get_setup_data_schemas() -> list[type[Serializer[Any]]]:
     ]
 
 
+def get_login_challenge_schemas() -> list[type[Serializer[Any]]]:
+    """
+    Get serializer classes for all handler login challenges.
+
+    Used for generating polymorphic OpenAPI schemas that show
+    different challenge formats for various MFA method types.
+
+    Returns:
+        List of serializer classes for login challenge responses
+    """
+    handlers = MFAHandlerRegistry.get_handlers()
+    return [
+        handler.get_login_challenge_serializer_class() for handler in handlers.values()
+    ]
+
+
 def get_mfa_login_first_step_response_schemas() -> list[type[Serializer[Any]]]:
     """
     Get serializer classes for MFA login first step responses.

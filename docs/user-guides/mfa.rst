@@ -17,6 +17,7 @@ DRF Auth Kit provides a comprehensive MFA system with:
 
 - **Email-based MFA**: Send verification codes via email
 - **Authenticator App MFA**: Generate QR codes for apps like Google Authenticator, Authy
+- **Passkey MFA**: Passkeys and hardware security keys via WebAuthn
 - **Backup Codes**: Recovery codes for account access when primary method unavailable
 - **Extensible System**: Add custom MFA methods
 - **User Management**: Users can enable/disable and manage multiple MFA methods
@@ -52,6 +53,49 @@ Configuration
     AUTH_KIT = {
         'USE_MFA': True,  # Enable MFA system
     }
+
+**Optional: Passkey MFA**
+
+Passkeys and hardware security keys are available as an MFA method, but are not
+enabled by default. Install the extra, add the WebAuthn app, and register the
+handler:
+
+.. code-block:: bash
+
+    pip install drf-auth-kit[webauthn]
+
+.. code-block:: python
+
+    INSTALLED_APPS = [
+        # ...
+        'auth_kit.mfa',
+        'auth_kit.webauthn',
+    ]
+
+    AUTH_KIT = {
+        'USE_MFA': True,
+        'MFA_HANDLERS': [
+            'auth_kit.mfa.handlers.app.MFAAppHandler',
+            'auth_kit.mfa.handlers.email.MFAEmailHandler',
+            'auth_kit.mfa.handlers.webauthn.MFAWebAuthnHandler',
+        ],
+    }
+
+Unlike code-based methods, a passkey answers a server-issued challenge rather
+than a dispatched code. Fetch it during the second step with the ephemeral
+token from the first:
+
+.. code-block:: bash
+
+    POST /auth/login/challenge/
+    {
+        "ephemeral_token": "..."
+    }
+
+Pass the result to ``navigator.credentials.get()`` and submit the assertion as
+the MFA ``code``. Methods that need no challenge return ``{}``, so a client can
+call this for whichever method is active. See :doc:`webauthn` for the full
+ceremony.
 
 **Run Migrations**
 

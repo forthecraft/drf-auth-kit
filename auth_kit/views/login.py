@@ -9,6 +9,7 @@ from typing import Any, cast
 
 from django.contrib.auth import login as django_login
 from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import update_last_login
 from django.http import HttpResponseBase, HttpResponseRedirect
 from django.utils import timezone
 from rest_framework import status
@@ -198,8 +199,12 @@ class LoginView(GenericAPIView[Any]):
         Returns:
             Response: DRF response with login result (cast from HttpResponseRedirect if redirecting)
         """
+        user = serializer.validated_data["user"]
         if auth_kit_settings.SESSION_LOGIN:
-            self.perform_session_login(serializer.validated_data["user"])
+            # django_login sends user_logged_in, which records last_login
+            self.perform_session_login(user)
+        else:
+            update_last_login(user.__class__, user)
 
         # Check for redirect URL if enabled
         redirect_url = None

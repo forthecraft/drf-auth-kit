@@ -50,6 +50,7 @@ api_urlpatterns = [
     ),
     path("auth/", include("auth_kit.urls")),
     path("auth/social/", include("auth_kit.social.urls")),
+    path("auth/webauthn/", include("auth_kit.webauthn.urls")),
     path("status/", StatusView.as_view(), name="status"),
     # UI View for testing all auth features
     path("auth/ui/", AuthKitUIView.as_view(), name="auth_kit_ui"),

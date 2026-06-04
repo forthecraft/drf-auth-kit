@@ -40,9 +40,17 @@ Key Features
 **🔒 Multi-Factor Authentication (MFA)**
 
 - Email-based MFA support
+- Authenticator app (TOTP) support
+- Passkeys and hardware security keys via WebAuthn
 - Backup codes for account recovery
 - Extensible MFA handler system
 - Inspired by django-trench but simplified
+
+**🔑 Passwordless Authentication**
+
+- Email magic links with optional signup on first use
+- Passkey login via WebAuthn, including discoverable credentials
+- Extensible handler system for adding new methods
 
 **🌐 Enhanced Social Authentication**
 
@@ -55,7 +63,7 @@ Key Features
 
 - Built-in support for 57 languages
 - Major languages include: English, Spanish, French, German, Chinese, Japanese, Korean, Vietnamese, Russian, Arabic, Portuguese, Italian, Dutch, and more
-- Translation support for all authentication messages and MFA responses
+- Translation support for all authentication messages, MFA, and passwordless responses
 
 **🚀 Superior Developer Experience**
 

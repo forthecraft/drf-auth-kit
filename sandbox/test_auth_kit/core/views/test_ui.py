@@ -1,5 +1,7 @@
 """Tests for Auth Kit UI view."""
 
+from unittest.mock import MagicMock, patch
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -103,8 +105,6 @@ class TestAuthKitUIViewWithSocial(APITestCase):
 
     def test_without_social_auth_installed(self) -> None:
         """Test UI when social auth is not installed."""
-        from unittest.mock import patch
-
         with patch("auth_kit.views.ui.HAS_SOCIAL_AUTH", False):
             response = self.client.get(reverse("auth_kit_ui"))
 
@@ -114,8 +114,6 @@ class TestAuthKitUIViewWithSocial(APITestCase):
 
     def test_with_no_social_providers_configured(self) -> None:
         """Test when social auth is installed but no providers configured."""
-        from unittest.mock import MagicMock, patch
-
         mock_adapter = MagicMock()
         mock_adapter.list_apps.return_value = []
 
@@ -166,3 +164,19 @@ class TestAuthKitUIViewWithSocial(APITestCase):
         assert connections[0]["name"] == "GitHub"
         assert connections[0]["provider"] == "github"
         assert connections[0]["uid"] == "12345"
+
+    def test_invalid_credentials_render_as_anonymous(self) -> None:
+        """An expired or malformed token must not turn the UI into a 401."""
+        self.client.credentials(HTTP_AUTHORIZATION="Bearer not-a-real-token")
+
+        response = self.client.get(reverse("auth_kit_ui"))
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.context["is_authenticated"] is False
+
+    @override_auth_kit_settings(USE_PASSWORDLESS=False)
+    def test_passwordless_handlers_empty_when_disabled(self) -> None:
+        response = self.client.get(reverse("auth_kit_ui"))
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.context["passwordless_handlers"] == []

@@ -10,6 +10,8 @@ from rest_framework.test import APITestCase
 from allauth.account.forms import default_token_generator
 from allauth.account.models import EmailAddress, get_emailconfirmation_model
 from allauth.account.utils import user_pk_to_url_str
+from auth_kit.passwordless.serializers.email_link import EmailLinkVerifySerializer
+from auth_kit.passwordless.services.token import passwordless_signup_token_service
 from auth_kit.test_utils import override_auth_kit_settings
 from sandbox.test_utils.user_factory import UserFactory
 
@@ -307,3 +309,21 @@ class TestEmailOnlyAuthFlows(APITestCase):
         )
         urls = re.findall(url_pattern, email_body)
         assert len(urls) >= 1
+
+
+class TestPasswordlessSignupWithEmailAsUsername(APITestCase):
+    """Signup must not invent a username when email IS the username field."""
+
+    def test_signup_from_token_uses_email_as_username(self) -> None:
+        token = passwordless_signup_token_service.make_token("fresh@example.com")
+
+        user = EmailLinkVerifySerializer._signup_from_token(token)
+
+        assert user is not None
+        assert user.email == "fresh@example.com"
+        assert User.USERNAME_FIELD == "email"
+        assert not user.has_usable_password()
+        assert EmailAddress.objects.get(user=user, email=user.email).verified
+
+    def test_signup_from_token_rejects_unknown_token(self) -> None:
+        assert EmailLinkVerifySerializer._signup_from_token("nope") is None

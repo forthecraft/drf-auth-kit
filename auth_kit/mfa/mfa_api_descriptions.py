@@ -96,6 +96,21 @@ def get_mfa_login_resend_description() -> _StrOrPromise:
     return format_lazy("{} {} {}", base, handlers_part, expiry_part)
 
 
+def get_mfa_login_challenge_description() -> _StrOrPromise:
+    """Generate description for the MFA login challenge endpoint."""
+    base = _(
+        "Get a login challenge for the pending MFA method "
+        "using an existing ephemeral token."
+    )
+
+    handlers_part = _(
+        "Only applicable for challenge-response methods (e.g., passkeys). "
+        "Other methods return an empty object."
+    )
+
+    return format_lazy("{} {}", base, handlers_part)
+
+
 # MFA Method Management Descriptions
 MFA_METHOD_LIST_DESCRIPTION = _(
     "List all available MFA methods with their setup and activation status. "

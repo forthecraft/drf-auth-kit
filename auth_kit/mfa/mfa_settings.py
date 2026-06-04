@@ -12,10 +12,14 @@ classes based on user settings.
 from collections.abc import Callable
 from typing import TYPE_CHECKING, Any, cast
 
-from django.conf import settings
 from django.core.signals import setting_changed
 from rest_framework.serializers import Serializer
-from rest_framework.settings import APISettings
+
+from auth_kit.app_settings import (
+    ImportStr,
+    create_api_settings_from_model,
+    get_import_strings,
+)
 
 if TYPE_CHECKING:
     from auth_kit.mfa.handlers.base import MFABaseHandler
@@ -23,6 +27,7 @@ if TYPE_CHECKING:
     from auth_kit.mfa.serializers.login_factors import (
         MFAChangeMethodSerializer,
         MFAFirstStepResponseSerializer,
+        MFALoginChallengeSerializer,
         MFAResendSerializer,
         MFASecondStepRequestSerializer,
     )
@@ -38,51 +43,11 @@ if TYPE_CHECKING:
     from auth_kit.mfa.views import (
         LoginChangeMethodView,
         LoginFirstStepView,
+        LoginMFAChallengeView,
         LoginMFAResendView,
         LoginSecondStepView,
         MFAMethodViewSet,
     )
-
-
-class Importable:
-    """Base class for marking settings as requiring import resolution."""
-
-    pass
-
-
-class StringImport(Importable, str):
-    """String import marker for individual import strings."""
-
-    pass
-
-
-class ListImport(Importable, list[str]):
-    """List import marker for collections of import strings."""
-
-    pass
-
-
-class ImportStr:
-    """
-    Factory for creating importable setting values.
-
-    Automatically detects whether input is a single string or list/tuple
-    and returns appropriate importable type.
-    """
-
-    def __new__(cls, val: str | list[str] | tuple[str], *args: Any, **kwargs: Any) -> StringImport | ListImport:  # type: ignore[misc]
-        """
-        Create appropriate importable type based on input.
-
-        Args:
-            val: Value to make importable
-
-        Returns:
-            Importable wrapper for the value
-        """
-        if isinstance(val, list | tuple):
-            return ListImport(val)
-        return StringImport(val)
 
 
 class MFASetting:
@@ -142,6 +107,9 @@ class MFASetting:
     LOGIN_MFA_RESEND_VIEW: type["LoginMFAResendView"] = ImportStr(
         "auth_kit.mfa.views.LoginMFAResendView"
     )
+    LOGIN_MFA_CHALLENGE_VIEW: type["LoginMFAChallengeView"] = ImportStr(
+        "auth_kit.mfa.views.LoginMFAChallengeView"
+    )
     LOGIN_MFA_METHOD_VIEW_SET: type["MFAMethodViewSet"] = ImportStr(
         "auth_kit.mfa.views.MFAMethodViewSet"
     )
@@ -162,6 +130,9 @@ class MFASetting:
     )
     MFA_RESEND_SERIALIZER: type["MFAResendSerializer"] = ImportStr(
         "auth_kit.mfa.serializers.login_factors.MFAResendSerializer"
+    )
+    MFA_LOGIN_CHALLENGE_SERIALIZER: type["MFALoginChallengeSerializer"] = ImportStr(
+        "auth_kit.mfa.serializers.login_factors.MFALoginChallengeSerializer"
     )
 
     # Serializer Factories
@@ -205,71 +176,22 @@ class MFASetting:
     user_settings: dict[str, Any] = {}
 
 
-# Dynamically generate IMPORT_STRINGS from MFASetting class
-IMPORT_STRINGS = tuple(
-    field
-    for field in dir(MFASetting)
-    if isinstance(getattr(MFASetting, field), Importable)
+IMPORT_STRINGS = get_import_strings(MFASetting)
+
+auth_kit_mfa_settings = cast(
+    MFASetting, create_api_settings_from_model(MFASetting, IMPORT_STRINGS)
 )
 
 
-def create_api_settings_from_model(
-    model_class: type,
-    import_strings: tuple[str, ...],
-    override_value: dict[str, Any] | None = None,
-) -> MFASetting:
-    """
-    Create API settings instance from a model class.
-
-    Args:
-        model_class: The settings model class to use as defaults
-        import_strings: Tuple of setting names that require import resolution
-        override_value: Optional override values for settings
-
-    Returns:
-        Configured MySetting instance
-    """
-    # Get user settings from Django settings
-    user_settings = getattr(settings, "AUTH_KIT", override_value)
-
-    # Get defaults from class variables
-    defaults_dict = {}
-    for attr_name in dir(model_class):
-        if attr_name.startswith("_"):
-            continue
-
-        attr_value = getattr(model_class, attr_name)
-        # Skip methods and other non-setting attributes
-        if not callable(attr_value):
-            defaults_dict[attr_name] = attr_value
-
-    # Create APISettings instance
-    api_settings = APISettings(
-        user_settings=user_settings,  # type: ignore
-        defaults=defaults_dict,  # type: ignore
-        import_strings=import_strings,
-    )
-
-    return cast(MFASetting, api_settings)
-
-
-auth_kit_mfa_settings = create_api_settings_from_model(MFASetting, IMPORT_STRINGS)
-
-
 def reload_api_settings(*args: Any, **kwargs: Any) -> None:
-    """
-    Reload API settings when Django settings change.
-
-    Args:
-        *args: Variable length argument list
-        **kwargs: Arbitrary keyword arguments including 'setting' and 'value'
-    """
+    """Reload API settings when Django settings change."""
     global auth_kit_mfa_settings  # noqa
 
     setting, value = kwargs["setting"], kwargs["value"]
     if setting == "AUTH_KIT":
-        auth_kit_mfa_settings = create_api_settings_from_model(
-            MFASetting, IMPORT_STRINGS, value
+        auth_kit_mfa_settings = cast(
+            MFASetting,
+            create_api_settings_from_model(MFASetting, IMPORT_STRINGS, value),
         )
 
 

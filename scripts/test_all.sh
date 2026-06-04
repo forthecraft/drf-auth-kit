@@ -27,6 +27,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Schema tests reload modules and mutate shared settings state via
+# override_auth_kit_settings + reload(), which is not safe with xdist
+# parallel workers. They must run without xdist (-o "addopts=").
+SCHEMA_OPTS='-o addopts='
+
 # Run tests based on coverage flag
 if [ "$RUN_COVERAGE" = true ]; then
     echo "Running tests with coverage..."
@@ -39,11 +44,11 @@ if [ "$RUN_COVERAGE" = true ]; then
 
     pytest --cov=auth_kit --cov-append --cov-report= sandbox_extras/integrations/axes
 
-    pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/core_schema
+    pytest --cov=auth_kit --cov-append --cov-report= $SCHEMA_OPTS sandbox/test_schema/core_schema
 
-    pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/mfa_schema
+    pytest --cov=auth_kit --cov-append --cov-report= $SCHEMA_OPTS sandbox/test_schema/mfa_schema
 
-    pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/social_schema
+    pytest --cov=auth_kit --cov-append --cov-report= $SCHEMA_OPTS sandbox/test_schema/social_schema
 
     pytest --cov=auth_kit --cov-append --cov-report=xml --cov-report=term-missing sandbox/test_auth_kit
 else
@@ -57,11 +62,11 @@ else
 
     pytest sandbox_extras/integrations/axes
 
-    pytest sandbox/test_schema/core_schema
+    pytest $SCHEMA_OPTS sandbox/test_schema/core_schema
 
-    pytest sandbox/test_schema/mfa_schema
+    pytest $SCHEMA_OPTS sandbox/test_schema/mfa_schema
 
-    pytest sandbox/test_schema/social_schema
+    pytest $SCHEMA_OPTS sandbox/test_schema/social_schema
 
     pytest sandbox/test_auth_kit
 fi

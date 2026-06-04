@@ -1,6 +1,7 @@
 from .login import (
     LoginChangeMethodView,
     LoginFirstStepView,
+    LoginMFAChallengeView,
     LoginMFAResendView,
     LoginSecondStepView,
 )
@@ -11,5 +12,6 @@ __all__ = [
     "LoginFirstStepView",
     "LoginSecondStepView",
     "LoginMFAResendView",
+    "LoginMFAChallengeView",
     "LoginChangeMethodView",
 ]

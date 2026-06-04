@@ -6,12 +6,6 @@ This document outlines planned features and enhancements for DRF Auth Kit. These
 Enhanced Multi-Factor Authentication
 ------------------------------------
 
-**Hardware Security Keys**
-
-- ☐ **YubiKey Support**: Full integration with YubiKey hardware security keys
-- ☐ **FIDO2/WebAuthn**: Standards-compliant WebAuthn implementation for phishing-resistant authentication
-- ☐ **Biometric Authentication**: Support for fingerprint, facial recognition, and other biometric methods
-
 **SMS & Voice Integration**
 
 - ☐ **Twilio Integration**: Built-in SMS and voice-based MFA delivery via Twilio
@@ -26,18 +20,6 @@ Enhanced Multi-Factor Authentication
 
 Passwordless Authentication
 ---------------------------
-
-**WebAuthn Integration**
-
-- ☐ **Biometric Login**: Fingerprint, facial recognition, and other biometric authentication
-- ☐ **Hardware Keys**: Use YubiKey and other FIDO2 devices for passwordless login
-- ☐ **Platform Integration**: Native support for Touch ID, Face ID, and Windows Hello
-
-**Magic Links**
-
-- ☐ **Email-Based Login**: Secure, one-time login links sent via email
-- ☐ **Customizable Templates**: Branded email templates for magic link delivery
-- ☐ **Expiration Control**: Configurable link expiration times
 
 **SMS-Based Login**
 

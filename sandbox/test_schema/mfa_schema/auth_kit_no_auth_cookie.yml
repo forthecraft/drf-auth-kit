@@ -31,6 +31,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/FirstStepResponse'
           description: ''
+  /auth/login/challenge/:
+    post:
+      operationId: login_challenge_create
+      description: Get a login challenge for the pending MFA method using an existing
+        ephemeral token. Only applicable for challenge-response methods (e.g., passkeys).
+        Other methods return an empty object.
+      tags:
+      - login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFALoginChallengeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFALoginChallengeRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFALoginChallenge'
+          description: ''
   /auth/login/change-method/:
     post:
       operationId: login_change_method_create
@@ -113,8 +139,9 @@ paths:
     post:
       operationId: logout_create
       description: Logout user and invalidate authentication tokens. Blacklists JWT
-        refresh tokens to prevent further use. Requires authentication to ensure only
-        valid sessions can be logged out.
+        refresh tokens to prevent further use. Clears authentication cookies from
+        the browser. Requires authentication to ensure only valid sessions can be
+        logged out.
       tags:
       - logout
       requestBody:
@@ -389,6 +416,107 @@ paths:
               schema:
                 $ref: '#/components/schemas/PasswordResetConfirm'
           description: ''
+  /auth/passwordless/email/initiate/:
+    post:
+      operationId: passwordless_email_initiate
+      description: Initiate passwordless authentication via Email Magic Link. This
+        is the first step of the passwordless login flow.
+      tags:
+      - passwordless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailLinkInitiateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailLinkInitiateRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailLinkInitiate'
+          description: ''
+  /auth/passwordless/email/verify/:
+    post:
+      operationId: passwordless_email_verify
+      description: Complete passwordless authentication via Email Magic Link. Verify
+        the credential/token from the initiate step. Returns user details along with
+        JWT access and refresh tokens with expiration times.
+      tags:
+      - passwordless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordlessEmailVerifyRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordlessEmailVerifyRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordlessEmailVerify'
+          description: ''
+  /auth/passwordless/webauthn/initiate/:
+    post:
+      operationId: passwordless_webauthn_initiate
+      description: Initiate passwordless authentication via Passkey / Security Key.
+        This is the first step of the passwordless login flow.
+      tags:
+      - passwordless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebAuthnInitiateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WebAuthnInitiateRequest'
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebAuthnInitiate'
+          description: ''
+  /auth/passwordless/webauthn/verify/:
+    post:
+      operationId: passwordless_webauthn_verify
+      description: Complete passwordless authentication via Passkey / Security Key.
+        Verify the credential/token from the initiate step. Returns user details along
+        with JWT access and refresh tokens with expiration times.
+      tags:
+      - passwordless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordlessWebauthnVerifyRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordlessWebauthnVerifyRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordlessWebauthnVerify'
+          description: ''
   /auth/registration/:
     post:
       operationId: registration_create
@@ -478,8 +606,9 @@ paths:
     post:
       operationId: token_refresh_create
       description: Generate new JWT access tokens using refresh tokens. Refresh tokens
-        must be provided in the request data. Returns new access tokens with updated
-        expiration times.
+        can be provided in request data or extracted automatically from HTTP cookies.
+        Returns new access tokens with updated expiration times. New tokens are automatically
+        set in HTTP cookies for secure storage.
       tags:
       - token
       requestBody:
@@ -592,6 +721,92 @@ components:
         qr_link:
           type: string
           readOnly: true
+    AttestationEnum:
+      enum:
+      - none
+      - indirect
+      - direct
+      - enterprise
+      type: string
+      description: |-
+        * `none` - none
+        * `indirect` - indirect
+        * `direct` - direct
+        * `enterprise` - enterprise
+    AuthenticatorAttachmentEnum:
+      enum:
+      - platform
+      - cross-platform
+      type: string
+      description: |-
+        * `platform` - platform
+        * `cross-platform` - cross-platform
+    AuthenticatorSelection:
+      type: object
+      description: Authenticator selection criteria.
+      properties:
+        residentKey:
+          allOf:
+          - $ref: '#/components/schemas/ResidentKeyEnum'
+          description: |-
+            Resident key requirement
+
+            * `discouraged` - discouraged
+            * `preferred` - preferred
+            * `required` - required
+        requireResidentKey:
+          type: boolean
+          description: Whether resident key is required (deprecated, use residentKey)
+        userVerification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          description: |-
+            User verification requirement
+
+            * `required` - required
+            * `preferred` - preferred
+            * `discouraged` - discouraged
+        authenticatorAttachment:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticatorAttachmentEnum'
+          description: |-
+            Authenticator attachment
+
+            * `platform` - platform
+            * `cross-platform` - cross-platform
+    AuthenticatorSelectionRequest:
+      type: object
+      description: Authenticator selection criteria.
+      properties:
+        residentKey:
+          allOf:
+          - $ref: '#/components/schemas/ResidentKeyEnum'
+          description: |-
+            Resident key requirement
+
+            * `discouraged` - discouraged
+            * `preferred` - preferred
+            * `required` - required
+        requireResidentKey:
+          type: boolean
+          description: Whether resident key is required (deprecated, use residentKey)
+        userVerification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          description: |-
+            User verification requirement
+
+            * `required` - required
+            * `preferred` - preferred
+            * `discouraged` - discouraged
+        authenticatorAttachment:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticatorAttachmentEnum'
+          description: |-
+            Authenticator attachment
+
+            * `platform` - platform
+            * `cross-platform` - cross-platform
     CookieTokenRefresh:
       type: object
       description: JWT token refresh with cookie and request data support.
@@ -611,6 +826,40 @@ components:
           type: string
           writeOnly: true
           description: Will override cookie.
+    EmailLinkInitiate:
+      type: object
+      description: |-
+        Serializer for the email magic link initiate step.
+
+        Accepts the address to send the magic link to and returns the
+        confirmation message.
+
+        Attributes:
+            email: Email address to send the magic link to
+            detail: Confirmation message
+      properties:
+        detail:
+          type: string
+          readOnly: true
+    EmailLinkInitiateRequest:
+      type: object
+      description: |-
+        Serializer for the email magic link initiate step.
+
+        Accepts the address to send the magic link to and returns the
+        confirmation message.
+
+        Attributes:
+            email: Email address to send the magic link to
+            detail: Confirmation message
+      properties:
+        email:
+          type: string
+          format: email
+          writeOnly: true
+          minLength: 1
+      required:
+      - email
     FirstStepResponse:
       oneOf:
       - $ref: '#/components/schemas/MFAFirstStepResponse'
@@ -706,6 +955,26 @@ components:
           type: boolean
           readOnly: true
           default: true
+    MFALoginChallenge:
+      oneOf:
+      - $ref: '#/components/schemas/WebAuthnAuthenticationOptions'
+    MFALoginChallengeRequest:
+      type: object
+      description: |-
+        Serializer for fetching a login challenge for the current MFA method.
+
+        Lets challenge-response methods such as WebAuthn obtain a
+        server-issued challenge scoped to the pending MFA user.
+
+        Attributes:
+            ephemeral_token: Current ephemeral token
+      properties:
+        ephemeral_token:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - ephemeral_token
     MFAMethodConfig:
       type: object
       description: |-
@@ -954,6 +1223,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AppSetup'
       - $ref: '#/components/schemas/SetupMethod'
+      - $ref: '#/components/schemas/WebAuthnMFASetup'
     MFAMethodSetupDataRequest:
       oneOf: []
     MFAResend:
@@ -1026,18 +1296,22 @@ components:
       enum:
       - app
       - email
+      - webauthn
       type: string
       description: |-
         * `app` - app
         * `email` - email
+        * `webauthn` - webauthn
     NewMethodEnum:
       enum:
       - app
       - email
+      - webauthn
       type: string
       description: |-
         * `app` - app
         * `email` - email
+        * `webauthn` - webauthn
     NoMFALoginResponse:
       type: object
       description: Login response serializer with MFA disabled indicator.
@@ -1140,6 +1414,66 @@ components:
           minLength: 1
       required:
       - email
+    PasswordlessEmailVerify:
+      type: object
+      description: Passwordless verify step serializer.
+      properties:
+        ephemeral_token:
+          type: string
+          readOnly: true
+        method:
+          allOf:
+          - $ref: '#/components/schemas/MethodEnum'
+          readOnly: true
+        mfa_enabled:
+          type: boolean
+          readOnly: true
+          default: true
+    PasswordlessEmailVerifyRequest:
+      type: object
+      description: Passwordless verify step serializer.
+      properties:
+        token:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - token
+    PasswordlessWebauthnVerify:
+      type: object
+      description: Passwordless verify step serializer.
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+        access_expiration:
+          type: string
+          format: date-time
+          readOnly: true
+        refresh_expiration:
+          type: string
+          format: date-time
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+    PasswordlessWebauthnVerifyRequest:
+      type: object
+      description: Passwordless verify step serializer.
+      properties:
+        credential:
+          writeOnly: true
+        session_id:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - credential
+      - session_id
     PatchedUserRequest:
       type: object
       description: User profile information and updates.
@@ -1157,6 +1491,122 @@ components:
         last_name:
           type: string
           maxLength: 150
+    PubKeyCredParam:
+      type: object
+      description: A public-key credential parameter (algorithm).
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          default: public-key
+          description: |-
+            Credential type
+
+            * `public-key` - public-key
+        alg:
+          type: integer
+          description: COSE algorithm identifier (e.g., -7 for ES256)
+      required:
+      - alg
+    PubKeyCredParamRequest:
+      type: object
+      description: A public-key credential parameter (algorithm).
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          default: public-key
+          description: |-
+            Credential type
+
+            * `public-key` - public-key
+        alg:
+          type: integer
+          description: COSE algorithm identifier (e.g., -7 for ES256)
+      required:
+      - alg
+    PublicKeyCredentialDescriptor:
+      type: object
+      description: A credential descriptor used in allowCredentials / excludeCredentials.
+      properties:
+        id:
+          type: string
+          description: Base64URL-encoded credential ID
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          default: public-key
+          description: |-
+            Credential type
+
+            * `public-key` - public-key
+        transports:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportsEnum'
+          description: Transport hints for reaching the authenticator
+      required:
+      - id
+    PublicKeyCredentialDescriptorRequest:
+      type: object
+      description: A credential descriptor used in allowCredentials / excludeCredentials.
+      properties:
+        id:
+          type: string
+          minLength: 1
+          description: Base64URL-encoded credential ID
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          default: public-key
+          description: |-
+            Credential type
+
+            * `public-key` - public-key
+        transports:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportsEnum'
+          description: Transport hints for reaching the authenticator
+      required:
+      - id
+    PublicKeyCredentialUser:
+      type: object
+      description: User account information for credential creation.
+      properties:
+        id:
+          type: string
+          description: Base64URL-encoded user handle
+        name:
+          type: string
+          description: User account name
+        displayName:
+          type: string
+          description: User display name
+      required:
+      - displayName
+      - id
+      - name
+    PublicKeyCredentialUserRequest:
+      type: object
+      description: User account information for credential creation.
+      properties:
+        id:
+          type: string
+          minLength: 1
+          description: Base64URL-encoded user handle
+        name:
+          type: string
+          minLength: 1
+          description: User account name
+        displayName:
+          type: string
+          minLength: 1
+          description: User display name
+      required:
+      - displayName
+      - id
+      - name
     Register:
       type: object
       description: User registration with email verification.
@@ -1196,6 +1646,34 @@ components:
       - password1
       - password2
       - username
+    RelyingParty:
+      type: object
+      description: Relying Party identity.
+      properties:
+        name:
+          type: string
+          description: Human-readable RP name
+        id:
+          type: string
+          description: RP ID (domain)
+      required:
+      - id
+      - name
+    RelyingPartyRequest:
+      type: object
+      description: Relying Party identity.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable RP name
+        id:
+          type: string
+          minLength: 1
+          description: RP ID (domain)
+      required:
+      - id
+      - name
     ResendEmailVerification:
       type: object
       description: Request new email verification message.
@@ -1214,6 +1692,16 @@ components:
           minLength: 1
       required:
       - email
+    ResidentKeyEnum:
+      enum:
+      - discouraged
+      - preferred
+      - required
+      type: string
+      description: |-
+        * `discouraged` - discouraged
+        * `preferred` - preferred
+        * `required` - required
     SetupMethod:
       type: object
       description: Default serializer for MFA method initial setup responses.
@@ -1230,6 +1718,29 @@ components:
           minLength: 1
       required:
       - token
+    TransportsEnum:
+      enum:
+      - usb
+      - nfc
+      - ble
+      - smart-card
+      - internal
+      - cable
+      - hybrid
+      type: string
+      description: |-
+        * `usb` - usb
+        * `nfc` - nfc
+        * `ble` - ble
+        * `smart-card` - smart-card
+        * `internal` - internal
+        * `cable` - cable
+        * `hybrid` - hybrid
+    TypeEnum:
+      enum:
+      - public-key
+      type: string
+      description: '* `public-key` - public-key'
     User:
       type: object
       description: User profile information and updates.
@@ -1276,6 +1787,16 @@ components:
           maxLength: 150
       required:
       - username
+    UserVerificationEnum:
+      enum:
+      - required
+      - preferred
+      - discouraged
+      type: string
+      description: |-
+        * `required` - required
+        * `preferred` - preferred
+        * `discouraged` - discouraged
     VerifyEmail:
       type: object
       description: Email address verification with confirmation key.
@@ -1293,6 +1814,174 @@ components:
           minLength: 1
       required:
       - key
+    WebAuthnAuthenticationOptions:
+      type: object
+      description: |-
+        Structured serializer for WebAuthn authentication ceremony options.
+
+        Returned by ``services.begin_authentication()`` and consumed by
+        the browser's ``navigator.credentials.get()`` API.
+      properties:
+        challenge:
+          type: string
+          readOnly: true
+          description: Base64URL-encoded challenge
+        timeout:
+          type: integer
+          readOnly: true
+          description: Ceremony timeout in milliseconds
+        rpId:
+          type: string
+          readOnly: true
+          description: Relying Party ID (domain)
+        allowCredentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
+          readOnly: true
+          description: Allowed credentials for this authentication
+        userVerification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          readOnly: true
+          description: |-
+            User verification requirement
+
+            * `required` - required
+            * `preferred` - preferred
+            * `discouraged` - discouraged
+        session_id:
+          type: string
+          readOnly: true
+          description: Opaque session token for the verify step
+    WebAuthnInitiate:
+      type: object
+      description: |-
+        Serializer for the WebAuthn initiate step.
+
+        Optionally accepts an email to filter credentials for
+        non-discoverable (security key) flows. If omitted,
+        discoverable credential (passkey) flow is used. Inherits the
+        ceremony options that make up the response.
+
+        Attributes:
+            email: Optional email to look up user credentials
+      properties:
+        challenge:
+          type: string
+          readOnly: true
+          description: Base64URL-encoded challenge
+        timeout:
+          type: integer
+          readOnly: true
+          description: Ceremony timeout in milliseconds
+        rpId:
+          type: string
+          readOnly: true
+          description: Relying Party ID (domain)
+        allowCredentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
+          readOnly: true
+          description: Allowed credentials for this authentication
+        userVerification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          readOnly: true
+          description: |-
+            User verification requirement
+
+            * `required` - required
+            * `preferred` - preferred
+            * `discouraged` - discouraged
+        session_id:
+          type: string
+          readOnly: true
+          description: Opaque session token for the verify step
+    WebAuthnInitiateRequest:
+      type: object
+      description: |-
+        Serializer for the WebAuthn initiate step.
+
+        Optionally accepts an email to filter credentials for
+        non-discoverable (security key) flows. If omitted,
+        discoverable credential (passkey) flow is used. Inherits the
+        ceremony options that make up the response.
+
+        Attributes:
+            email: Optional email to look up user credentials
+      properties:
+        email:
+          type: string
+          format: email
+          writeOnly: true
+          minLength: 1
+          description: Optional email for non-discoverable credential flow. Omit for
+            passkey (discoverable) flow.
+    WebAuthnMFASetup:
+      type: object
+      description: Serializer for WebAuthn MFA method setup response.
+      properties:
+        options:
+          allOf:
+          - $ref: '#/components/schemas/WebAuthnRegistrationOptions'
+          readOnly: true
+          description: Registration options for navigator.credentials.create()
+    WebAuthnRegistrationOptions:
+      type: object
+      description: |-
+        Structured serializer for WebAuthn registration ceremony options.
+
+        Returned by ``services.begin_registration()`` and consumed by
+        the browser's ``navigator.credentials.create()`` API.
+      properties:
+        rp:
+          allOf:
+          - $ref: '#/components/schemas/RelyingParty'
+          readOnly: true
+          description: Relying Party identity
+        user:
+          allOf:
+          - $ref: '#/components/schemas/PublicKeyCredentialUser'
+          readOnly: true
+          description: User account information
+        challenge:
+          type: string
+          readOnly: true
+          description: Base64URL-encoded challenge
+        pubKeyCredParams:
+          type: array
+          items:
+            $ref: '#/components/schemas/PubKeyCredParam'
+          readOnly: true
+          description: Supported public-key credential parameters
+        timeout:
+          type: integer
+          readOnly: true
+          description: Ceremony timeout in milliseconds
+        excludeCredentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
+          readOnly: true
+          description: Credentials to exclude (already registered)
+        authenticatorSelection:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticatorSelection'
+          readOnly: true
+          description: Authenticator selection criteria
+        attestation:
+          allOf:
+          - $ref: '#/components/schemas/AttestationEnum'
+          readOnly: true
+          description: |-
+            Attestation conveyance preference
+
+            * `none` - none
+            * `indirect` - indirect
+            * `direct` - direct
+            * `enterprise` - enterprise
   securitySchemes:
     JWTAuthentication:
       type: http

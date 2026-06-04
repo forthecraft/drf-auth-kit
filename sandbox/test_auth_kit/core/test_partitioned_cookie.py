@@ -2,10 +2,13 @@ from django.contrib.auth import get_user_model
 from django.core.checks import Warning
 from django.urls import reverse
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.test import APITestCase
 
 from auth_kit.checks import check_partitioned_cookie_config
+from auth_kit.serializers import get_login_serializer
+from auth_kit.serializers.logout import get_logout_serializer
 from auth_kit.test_utils import override_auth_kit_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -64,8 +67,6 @@ class TestPartitionedCookieLogin(APITestCase):
         AUTH_COOKIE_SAMESITE="None",
     )
     def test_login_sets_partitioned_on_token_cookie(self) -> None:
-        from auth_kit.serializers import get_login_serializer
-
         get_login_serializer.cache_clear()
 
         response: Response = self.client.post(self.url, self.login_data, format="json")
@@ -117,10 +118,6 @@ class TestPartitionedCookieLogout(APITestCase):
         AUTH_COOKIE_SAMESITE="None",
     )
     def test_logout_sets_partitioned_on_cleared_token_cookie(self) -> None:
-        from rest_framework.authtoken.models import Token
-
-        from auth_kit.serializers.logout import get_logout_serializer
-
         get_logout_serializer.cache_clear()
 
         token = Token.objects.create(user=self.user)

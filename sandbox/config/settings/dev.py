@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     "auth_kit",
     "auth_kit.social",
     "auth_kit.mfa",
+    "auth_kit.webauthn",
     "rest_framework_simplejwt.token_blacklist",
     "knox",
     "utils",
@@ -304,6 +305,19 @@ AUTH_KIT = {
     # "LOGOUT_VIEW": "custom_auth.views.KnoxLogoutView",
     "AUTH_TYPE": "jwt",
     "USE_MFA": True,
+    "USE_PASSWORDLESS": True,
+    "MFA_HANDLERS": [
+        "auth_kit.mfa.handlers.app.MFAAppHandler",
+        "auth_kit.mfa.handlers.email.MFAEmailHandler",
+        "auth_kit.mfa.handlers.webauthn.MFAWebAuthnHandler",
+    ],
+    "PASSWORDLESS_HANDLERS": [
+        "auth_kit.passwordless.handlers.email_link.EmailLinkHandler",
+        "auth_kit.passwordless.handlers.webauthn.WebAuthnHandler",
+    ],
+    "WEBAUTHN_RP_ID": "localhost",
+    "WEBAUTHN_RP_NAME": "DRF Auth Kit Dev",
+    "WEBAUTHN_ORIGIN": "http://localhost:8000",
 }
 
 # =========================================================================

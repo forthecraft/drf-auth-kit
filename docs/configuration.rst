@@ -125,6 +125,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'MFA_HANDLERS': [                      # Available MFA handlers
             'auth_kit.mfa.handlers.app.MFAAppHandler',
             'auth_kit.mfa.handlers.email.MFAEmailHandler',
+            # 'auth_kit.mfa.handlers.webauthn.MFAWebAuthnHandler',  # Passkeys
         ],
 
         # Application Settings
@@ -154,6 +155,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'LOGIN_SECOND_STEP_VIEW': 'auth_kit.mfa.views.LoginSecondStepView',
         'LOGIN_CHANGE_METHOD_VIEW': 'auth_kit.mfa.views.LoginChangeMethodView',
         'LOGIN_MFA_RESEND_VIEW': 'auth_kit.mfa.views.LoginMFAResendView',
+        'LOGIN_MFA_CHALLENGE_VIEW': 'auth_kit.mfa.views.LoginMFAChallengeView',
         'LOGIN_MFA_METHOD_VIEW_SET': 'auth_kit.mfa.views.MFAMethodViewSet',
 
         # MFA Response Serializers
@@ -161,6 +163,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'MFA_SECOND_STEP_REQUEST_SERIALIZER': 'auth_kit.mfa.serializers.login_factors.MFASecondStepRequestSerializer',
         'MFA_CHANGE_METHOD_SERIALIZER': 'auth_kit.mfa.serializers.login_factors.MFAChangeMethodSerializer',
         'MFA_RESEND_SERIALIZER': 'auth_kit.mfa.serializers.login_factors.MFAResendSerializer',
+        'MFA_LOGIN_CHALLENGE_SERIALIZER': 'auth_kit.mfa.serializers.login_factors.MFALoginChallengeSerializer',
 
         # MFA Serializer Factories
         'GET_NO_MFA_LOGIN_RESPONSE_SERIALIZER': 'auth_kit.mfa.serializers.login_factors.get_no_mfa_login_response_serializer',
@@ -175,6 +178,53 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'MFA_METHOD_DELETE_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodDeleteSerializer',
         'MFA_METHOD_PRIMARY_UPDATE_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodPrimaryUpdateSerializer',
         'MFA_METHOD_SEND_CODE_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodSendCodeSerializer',
+
+        # ===================================================================
+        # PASSWORDLESS AUTHENTICATION
+        # ===================================================================
+        'USE_PASSWORDLESS': False,             # Enable passwordless login
+
+        # Passwordless Handlers
+        'PASSWORDLESS_HANDLERS': [             # Available passwordless handlers
+            'auth_kit.passwordless.handlers.email_link.EmailLinkHandler',
+            # 'auth_kit.passwordless.handlers.webauthn.WebAuthnHandler',
+        ],
+
+        # Token Expiry
+        'PASSWORDLESS_EPHEMERAL_TOKEN_EXPIRY': 900,  # 15 minutes in seconds
+
+        # Email Magic Link
+        'PASSWORDLESS_EMAIL_SUBJECT': 'Your login link',
+        'PASSWORDLESS_EMAIL_PLAIN_TEMPLATE': 'auth_kit/passwordless/email/magic_link.txt',
+        'PASSWORDLESS_EMAIL_HTML_TEMPLATE': 'auth_kit/passwordless/email/magic_link.html',
+        'PASSWORDLESS_MAGIC_LINK_URL': '',     # Frontend URL the link points to
+        'PASSWORDLESS_EMAIL_SIGNUP': False,    # Create an account on first magic link use
+
+        # Passwordless Views
+        'PASSWORDLESS_INITIATE_VIEW': 'auth_kit.passwordless.views.PasswordlessInitiateView',
+        'PASSWORDLESS_VERIFY_VIEW': 'auth_kit.passwordless.views.PasswordlessVerifyView',
+
+        # ===================================================================
+        # WEBAUTHN / PASSKEYS
+        # ===================================================================
+        # Relying Party
+        'WEBAUTHN_RP_ID': 'localhost',         # Must match the site domain
+        'WEBAUTHN_RP_NAME': 'My Application',  # Shown in the browser prompt
+        'WEBAUTHN_ORIGIN': 'http://localhost:8000',  # str or list of origins
+
+        # Ceremony
+        'WEBAUTHN_TIMEOUT': 60000,             # Milliseconds
+        'WEBAUTHN_ATTESTATION': 'none',        # none, indirect, direct, enterprise
+        'WEBAUTHN_USER_VERIFICATION': 'preferred',  # required, preferred, discouraged
+        'WEBAUTHN_RESIDENT_KEY': 'preferred',  # required, preferred, discouraged
+        'WEBAUTHN_CHALLENGE_EXPIRY': 300,      # Seconds
+
+        # WebAuthn Model, View & Serializers
+        'WEBAUTHN_CREDENTIAL_MODEL': 'auth_kit.webauthn.models.WebAuthnCredential',
+        'WEBAUTHN_CREDENTIAL_VIEW_SET': 'auth_kit.webauthn.views.WebAuthnCredentialViewSet',
+        'WEBAUTHN_CREDENTIAL_SERIALIZER': 'auth_kit.webauthn.serializers.credential.WebAuthnCredentialSerializer',
+        'WEBAUTHN_CREDENTIAL_CREATE_SERIALIZER': 'auth_kit.webauthn.serializers.credential.WebAuthnCredentialCreateSerializer',
+        'WEBAUTHN_CREDENTIAL_UPDATE_SERIALIZER': 'auth_kit.webauthn.serializers.credential.WebAuthnCredentialUpdateSerializer',
 
         # ===================================================================
         # URL & UTILITY SETTINGS
@@ -241,6 +291,35 @@ See the django-axes documentation for installation and configuration: https://dj
 
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # For development
     # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  # For production
+
+.. _Cache Configuration:
+
+**Cache Configuration (for passwordless and WebAuthn)**
+
+Some features keep short-lived state in Django's cache. Django's default cache is
+``LocMemCache``, which is **per process** — with more than one worker, a value written
+while serving one request is invisible to the next. Configure a shared cache in
+production if you use these features:
+
+.. code-block:: python
+
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": "redis://127.0.0.1:6379",
+        }
+    }
+
+What depends on it:
+
+- **WebAuthn** stores the ceremony challenge between the options and verify steps.
+  Without a shared cache, registration and authentication fail.
+- **Passwordless signup** (``PASSWORDLESS_EMAIL_SIGNUP``) holds the pending email
+  address until the magic link is clicked. Without a shared cache, the link is
+  rejected as expired.
+- **Passwordless magic links** mark tokens as used. Single use is also enforced
+  through ``last_login``, which is part of the token signature, so a cache miss
+  narrows to a race between simultaneous requests rather than allowing replay.
 
 Basic Configuration
 -------------------
@@ -515,7 +594,9 @@ Basic MFA Settings
     Model class for storing MFA methods.
 
 **MFA_HANDLERS** (default: ``['auth_kit.mfa.handlers.app.MFAAppHandler', 'auth_kit.mfa.handlers.email.MFAEmailHandler']``)
-    List of available MFA handler classes.
+    List of available MFA handler classes. Add
+    ``'auth_kit.mfa.handlers.webauthn.MFAWebAuthnHandler'`` to offer passkeys and
+    hardware security keys as a second factor.
 
 **MFA_APPLICATION_NAME** (default: ``'MyApplication'``)
     Application name displayed in authenticator apps.
@@ -621,6 +702,120 @@ MFA Views & Serializers
 
 **MFA_METHOD_SEND_CODE_SERIALIZER** (default: :class:`~auth_kit.mfa.serializers.mfa.MFAMethodSendCodeSerializer`)
     Serializer for sending MFA verification codes.
+
+Passwordless Authentication
+---------------------------
+
+Basic Passwordless Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**USE_PASSWORDLESS** (default: ``False``)
+    Enable passwordless login. Adds an initiate/verify endpoint pair per handler.
+
+**PASSWORDLESS_HANDLERS** (default: ``['auth_kit.passwordless.handlers.email_link.EmailLinkHandler']``)
+    List of available passwordless handler classes. Add
+    ``'auth_kit.passwordless.handlers.webauthn.WebAuthnHandler'`` for passkey login.
+
+**PASSWORDLESS_EPHEMERAL_TOKEN_EXPIRY** (default: ``900``)
+    Lifetime in seconds of the magic link token.
+
+Email Magic Link
+~~~~~~~~~~~~~~~~
+
+**PASSWORDLESS_EMAIL_SUBJECT** (default: ``'Your login link'``)
+    Subject line of the magic link email.
+
+**PASSWORDLESS_EMAIL_PLAIN_TEMPLATE** (default: ``'auth_kit/passwordless/email/magic_link.txt'``)
+    Plain text template for the magic link email.
+
+**PASSWORDLESS_EMAIL_HTML_TEMPLATE** (default: ``'auth_kit/passwordless/email/magic_link.html'``)
+    HTML template for the magic link email.
+
+**PASSWORDLESS_MAGIC_LINK_URL** (default: ``''``)
+    Frontend URL the emailed link points to. The token is appended as a
+    ``?token=`` query parameter. When empty, the raw token is sent instead.
+
+**PASSWORDLESS_EMAIL_SIGNUP** (default: ``False``)
+    Create an account for an unrecognised address. The account is only created
+    once the link is clicked, so requesting a link never writes a user row. The
+    address is marked verified at that point, since clicking proves ownership.
+
+    The response is identical for known and unknown addresses either way, so it
+    cannot be used to discover which addresses have accounts.
+
+Passwordless Views
+~~~~~~~~~~~~~~~~~~
+
+**PASSWORDLESS_INITIATE_VIEW** (default: :class:`~auth_kit.passwordless.views.login.PasswordlessInitiateView`)
+    View handling the initiate step.
+
+**PASSWORDLESS_VERIFY_VIEW** (default: :class:`~auth_kit.passwordless.views.login.PasswordlessVerifyView`)
+    View handling the verify step.
+
+.. note::
+
+    Per-handler serializers are not settings. Override
+    :meth:`get_initiate_serializer_class` or :meth:`get_verify_serializer_class`
+    on a handler subclass and register it in ``PASSWORDLESS_HANDLERS``. Because
+    handlers are pluggable, this is the only extension point that works for
+    custom handlers too.
+
+WebAuthn / Passkeys
+-------------------
+
+Relying Party Settings
+~~~~~~~~~~~~~~~~~~~~~~
+
+**WEBAUTHN_RP_ID** (default: ``'localhost'``)
+    Relying Party ID. Must be the site's domain with no scheme or port, and must
+    match the domain serving the page.
+
+**WEBAUTHN_RP_NAME** (default: ``'My Application'``)
+    Human readable name shown in the browser prompt.
+
+**WEBAUTHN_ORIGIN** (default: ``'http://localhost:8000'``)
+    Expected origin, or a list of origins, including scheme and port.
+
+Ceremony Settings
+~~~~~~~~~~~~~~~~~
+
+**WEBAUTHN_TIMEOUT** (default: ``60000``)
+    Time in milliseconds the browser waits for the user.
+
+**WEBAUTHN_ATTESTATION** (default: ``'none'``)
+    Attestation conveyance: ``'none'``, ``'indirect'``, ``'direct'``, or
+    ``'enterprise'``.
+
+**WEBAUTHN_USER_VERIFICATION** (default: ``'preferred'``)
+    User verification requirement: ``'required'``, ``'preferred'``, or
+    ``'discouraged'``.
+
+**WEBAUTHN_RESIDENT_KEY** (default: ``'preferred'``)
+    Discoverable credential requirement: ``'required'``, ``'preferred'``, or
+    ``'discouraged'``. Passkey login without an email needs a discoverable
+    credential.
+
+**WEBAUTHN_CHALLENGE_EXPIRY** (default: ``300``)
+    Lifetime in seconds of a stored ceremony challenge. Requires a shared cache
+    in production, see `Cache Configuration`_.
+
+WebAuthn Model, View & Serializers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**WEBAUTHN_CREDENTIAL_MODEL** (default: :class:`~auth_kit.webauthn.models.credential.WebAuthnCredential`)
+    Model storing registered credentials.
+
+**WEBAUTHN_CREDENTIAL_VIEW_SET** (default: :class:`~auth_kit.webauthn.views.credential.WebAuthnCredentialViewSet`)
+    ViewSet for listing, registering, renaming, and deleting credentials.
+
+**WEBAUTHN_CREDENTIAL_SERIALIZER** (default: :class:`~auth_kit.webauthn.serializers.credential.WebAuthnCredentialSerializer`)
+    Serializer for reading credentials.
+
+**WEBAUTHN_CREDENTIAL_CREATE_SERIALIZER** (default: :class:`~auth_kit.webauthn.serializers.credential.WebAuthnCredentialCreateSerializer`)
+    Serializer for registering a new credential.
+
+**WEBAUTHN_CREDENTIAL_UPDATE_SERIALIZER** (default: :class:`~auth_kit.webauthn.serializers.credential.WebAuthnCredentialUpdateSerializer`)
+    Serializer for renaming a credential.
 
 Social Authentication
 ---------------------

@@ -135,7 +135,5 @@ def jwt_encode(user: AbstractBaseUser) -> tuple[AccessToken, RefreshToken]:
     Returns:
         Tuple containing (access_token, refresh_token)
     """
-    from auth_kit.app_settings import auth_kit_settings
-
     refresh: RefreshToken = auth_kit_settings.JWT_TOKEN_CLAIMS_SERIALIZER.get_token(user)  # type: ignore
     return refresh.access_token, refresh

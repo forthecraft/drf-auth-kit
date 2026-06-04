@@ -55,28 +55,27 @@ urlpatterns: list[URLPattern | URLResolver] = [
 ]
 
 if not auth_kit_settings.USE_MFA:
-    urlpatterns.extend(
-        [
-            re_path(
-                r"login/?$", auth_kit_settings.LOGIN_VIEW.as_view(), name="rest_login"
-            ),
-        ]
-    )
+    login_urls: list[URLPattern | URLResolver] = [
+        re_path(r"login/?$", auth_kit_settings.LOGIN_VIEW.as_view(), name="rest_login"),
+    ]
+    urlpatterns.extend(login_urls)
 else:
 
     urlpatterns.extend([re_path("", include("auth_kit.mfa.urls"))])
 
+if auth_kit_settings.USE_PASSWORDLESS:
+    urlpatterns.extend([re_path("", include("auth_kit.passwordless.urls"))])
+
 if auth_kit_settings.AUTH_TYPE == "jwt":
-    urlpatterns.extend(
-        [
-            re_path(r"token/verify/?$", TokenVerifyView.as_view(), name="token_verify"),
-            re_path(
-                r"token/refresh/?$",
-                auth_kit_settings.JWT_REFRESH_VIEW.as_view(),
-                name="token_refresh",
-            ),
-        ]
-    )
+    jwt_urls: list[URLPattern | URLResolver] = [
+        re_path(r"token/verify/?$", TokenVerifyView.as_view(), name="token_verify"),
+        re_path(
+            r"token/refresh/?$",
+            auth_kit_settings.JWT_REFRESH_VIEW.as_view(),
+            name="token_refresh",
+        ),
+    ]
+    urlpatterns.extend(jwt_urls)
 
 # Apply URL exclusion filtering
 urlpatterns = filter_excluded_urls(urlpatterns)

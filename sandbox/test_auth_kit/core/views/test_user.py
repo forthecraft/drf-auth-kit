@@ -4,6 +4,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.test import APITestCase
 
+from auth_kit.views.user import UserView
+
 from test_utils.user_factory import UserFactory
 
 User = get_user_model()
@@ -333,8 +335,6 @@ class TestUserViewEdgeCases(APITestCase):
 
     def test_get_queryset_returns_empty(self) -> None:
         """Test that get_queryset returns empty queryset"""
-        from auth_kit.views.user import UserView
-
         view = UserView()
         queryset = view.get_queryset()
 

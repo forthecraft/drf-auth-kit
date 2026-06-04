@@ -50,10 +50,24 @@ Install with social authentication support:
 
     pip install drf-auth-kit[social]
 
+With WebAuthn / Passkeys
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Install with WebAuthn support, used for passkey login and as an MFA method:
+
+.. code-block:: bash
+
+    pip install drf-auth-kit[webauthn]
+
+.. note::
+
+    Passwordless email magic links need no extra dependency. Only the
+    WebAuthn (passkey) parts require this install.
+
 All Features
 ~~~~~~~~~~~~
 
-Install with all features (MFA + Social Authentication):
+Install with all features (MFA + Social Authentication + WebAuthn):
 
 .. code-block:: bash
 

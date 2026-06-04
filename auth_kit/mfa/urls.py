@@ -34,6 +34,11 @@ urlpatterns = [
         name="rest_login_change_method",
     ),
     re_path(
+        r"login/challenge/?$",
+        auth_kit_mfa_settings.LOGIN_MFA_CHALLENGE_VIEW.as_view(),
+        name="rest_login_mfa_challenge",
+    ),
+    re_path(
         r"login/resend/?$",
         auth_kit_mfa_settings.LOGIN_MFA_RESEND_VIEW.as_view(),
         name="rest_login_resend",

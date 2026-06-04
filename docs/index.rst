@@ -23,6 +23,8 @@ Contents
     user-guides/basic-usage
     user-guides/social-authentication
     user-guides/mfa
+    user-guides/passwordless
+    user-guides/webauthn
     user-guides/customization
     user-guides/migration-from-dj-rest-auth
 
@@ -34,6 +36,8 @@ Contents
    reference/serializers
    reference/views
    reference/mfa
+   reference/passwordless
+   reference/webauthn
    reference/social
 
 .. toctree::

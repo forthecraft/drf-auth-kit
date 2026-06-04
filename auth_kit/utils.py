@@ -16,8 +16,6 @@ from django.urls import URLPattern, URLResolver
 from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
 
-import structlog
-
 from auth_kit.app_settings import auth_kit_settings
 
 UserModel: type[User] = get_user_model()  # type: ignore[assignment, unused-ignore]
@@ -34,6 +32,28 @@ sensitive_post_parameters_m = method_decorator(
         "password2",
     ),
 )
+
+
+def find_user_by_email(email: str) -> UserModelType | None:
+    """
+    Look up a user by email address, ignoring case.
+
+    Django's ``normalize_email`` only lowercases the domain half, so an
+    address stored as ``User@example.com`` will not match an exact query for
+    ``user@example.com``.
+
+    Args:
+        email: Email address to look up
+
+    Returns:
+        Matching user, or None if no user has that address
+    """
+    email_field = UserModel.get_email_field_name()
+    return (
+        UserModel.objects.filter(**{f"{email_field}__iexact": email})
+        .order_by("pk")
+        .first()
+    )
 
 
 def cast_dict(arg: Any) -> dict[str, Any]:
@@ -74,9 +94,6 @@ def filter_excluded_urls(
             and pattern.name in excluded_names
         )
     ]
-
-
-logger: structlog.stdlib.BoundLogger = structlog.get_logger("chanx")
 
 
 def convert_form_errors_to_drf(form: Form) -> dict[str, list[str]]:

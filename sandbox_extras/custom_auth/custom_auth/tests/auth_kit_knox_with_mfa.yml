@@ -30,6 +30,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/FirstStepResponse'
           description: ''
+  /auth/login/challenge/:
+    post:
+      operationId: login_challenge_create
+      description: Get a login challenge for the pending MFA method using an existing
+        ephemeral token. Only applicable for challenge-response methods (e.g., passkeys).
+        Other methods return an empty object.
+      tags:
+      - login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFALoginChallengeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFALoginChallengeRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFALoginChallenge'
+          description: ''
   /auth/login/change-method/:
     post:
       operationId: login_change_method_create
@@ -628,6 +654,25 @@ components:
           type: boolean
           readOnly: true
           default: true
+    MFALoginChallenge:
+      oneOf: []
+    MFALoginChallengeRequest:
+      type: object
+      description: |-
+        Serializer for fetching a login challenge for the current MFA method.
+
+        Lets challenge-response methods such as WebAuthn obtain a
+        server-issued challenge scoped to the pending MFA user.
+
+        Attributes:
+            ephemeral_token: Current ephemeral token
+      properties:
+        ephemeral_token:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - ephemeral_token
     MFAMethodConfig:
       type: object
       description: |-

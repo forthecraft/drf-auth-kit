@@ -358,3 +358,30 @@ class TestLoginView(APITestCase):
 
         assert not isinstance(response, HttpResponseRedirect)
         assert response.status_code == 400
+
+    def test_login_records_last_login(self) -> None:
+        """Every login path must record last_login, session or not."""
+        user, _ = UserFactory.create_with_email_address(self.user_data)
+        assert user.last_login is None
+
+        response = self.client.post(
+            reverse("rest_login"), self.login_data, format="json"
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        user.refresh_from_db()
+        assert user.last_login is not None
+
+    @override_auth_kit_settings(SESSION_LOGIN=True)
+    def test_session_login_records_last_login(self) -> None:
+        """django_login sends user_logged_in, so it must not be double-handled."""
+        user, _ = UserFactory.create_with_email_address(self.user_data)
+        assert user.last_login is None
+
+        response = self.client.post(
+            reverse("rest_login"), self.login_data, format="json"
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        user.refresh_from_db()
+        assert user.last_login is not None

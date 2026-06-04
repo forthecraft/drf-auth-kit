@@ -140,9 +140,9 @@ class MFAMethodConfirmSerializer(MFAMethodGenericSerializer):
             str(request.user.pk), attrs["method"], is_active=False
         )
         handler = MFAHandlerRegistry.get_handler(method)
-        is_code_valid = handler.validate_otp_code(attrs["code"])
+        is_code_valid = handler.confirm_setup(attrs["code"])
         if not is_code_valid:
-            raise serializers.ValidationError(_("Invalid OTP code"))
+            raise serializers.ValidationError(_("Invalid verification code"))
 
         method.is_active = True
         if not auth_kit_mfa_settings.MFA_MODEL.objects.filter(

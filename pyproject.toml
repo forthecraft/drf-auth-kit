@@ -93,13 +93,17 @@ version = "1.7.0"
 [project.optional-dependencies]
 all = [
   "django-allauth[socialaccount]>=65.5.0",
-  "pyotp>=2.9.0"
+  "pyotp>=2.9.0",
+  "webauthn>=2.0.0"
 ]
 mfa = [
   "pyotp>=2.9.0"
 ]
 social = [
   "django-allauth[socialaccount]>=65.5.0"
+]
+webauthn = [
+  "webauthn>=2.0.0"
 ]
 
 [project.urls]

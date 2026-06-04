@@ -11,6 +11,7 @@ from typing import Any, cast
 from urllib.parse import urlencode
 
 from django.conf import settings
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
@@ -260,6 +261,21 @@ class AuthKitUIView(APIView):
     template_name = "auth_kit/ui.html"
     permission_classes = ()
 
+    def perform_authentication(self, request: Any) -> None:
+        """
+        Silently ignore authentication errors.
+
+        The UI should always render — if the token is invalid/expired,
+        treat as unauthenticated rather than returning 401.
+        """
+        try:
+            super().perform_authentication(request)
+        except Exception:
+            request._authenticator = None  # pyright: ignore[reportAttributeAccessIssue]
+            request._user = (
+                AnonymousUser()
+            )  # pyright: ignore[reportAttributeAccessIssue]
+
     def get(self, request: HttpRequest) -> HttpResponse:
         """
         Render the comprehensive test UI.
@@ -281,6 +297,7 @@ class AuthKitUIView(APIView):
             "auth_type": auth_kit_settings.AUTH_TYPE,
             "use_auth_cookie": auth_kit_settings.USE_AUTH_COOKIE,
             "use_mfa": auth_kit_settings.USE_MFA,
+            "use_passwordless": auth_kit_settings.USE_PASSWORDLESS,
             "has_social_auth": HAS_SOCIAL_AUTH,
             "username_field": UserNameField,
             "username_field_value": username_field_value,
@@ -295,6 +312,42 @@ class AuthKitUIView(APIView):
             "has_first_name": hasattr(UserModel, "first_name"),
             "has_last_name": hasattr(UserModel, "last_name"),
         }
+
+        # Add passwordless handler names
+        if auth_kit_settings.USE_PASSWORDLESS:
+            try:
+                from auth_kit.passwordless.handlers.base import (
+                    PasswordlessHandlerRegistry,
+                )
+
+                context["passwordless_handlers"] = [
+                    {
+                        "name": name,
+                        "display_name": handler.DISPLAY_NAME,
+                    }
+                    for name, handler in (
+                        PasswordlessHandlerRegistry.get_handlers().items()
+                    )
+                ]
+            except Exception:  # pragma: no cover
+                context["passwordless_handlers"] = []
+        else:
+            context["passwordless_handlers"] = []
+
+        # Add WebAuthn credentials for authenticated users
+        if request.user.is_authenticated:
+            try:
+                from auth_kit.webauthn.models import WebAuthnCredential
+
+                context["webauthn_credentials"] = list(
+                    WebAuthnCredential.objects.get_for_user(
+                        cast(int, request.user.pk)
+                    ).values("id", "name", "created_at", "last_used_at", "discoverable")
+                )
+            except Exception:  # pragma: no cover
+                context["webauthn_credentials"] = []
+        else:
+            context["webauthn_credentials"] = []
 
         # Add social providers if social auth is available
         if HAS_SOCIAL_AUTH:

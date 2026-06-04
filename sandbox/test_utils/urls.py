@@ -23,6 +23,16 @@ def reload_necessary_modules_and_get_urls() -> ModuleType:
     import auth_kit.mfa.urls
 
     reload(auth_kit.mfa.urls)
+
+    # passwordless URLs bake settings-dependent descriptions at import time,
+    # so they must be rebuilt whenever auth settings change
+    import auth_kit.passwordless.passwordless_settings
+
+    reload(auth_kit.passwordless.passwordless_settings)
+    import auth_kit.passwordless.urls
+
+    reload(auth_kit.passwordless.urls)
+
     import auth_kit.urls
 
     reload(auth_kit.urls)

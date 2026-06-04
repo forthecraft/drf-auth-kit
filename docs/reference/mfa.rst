@@ -48,6 +48,11 @@ Login Views
    :undoc-members:
    :show-inheritance:
 
+.. autoclass:: auth_kit.mfa.views.LoginMFAChallengeView
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 MFA Management Views
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -88,6 +93,11 @@ Login Serializers
    :show-inheritance:
 
 .. autoclass:: auth_kit.mfa.serializers.login_factors.MFAResendSerializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: auth_kit.mfa.serializers.login_factors.MFALoginChallengeSerializer
    :members:
    :undoc-members:
    :show-inheritance:
@@ -165,6 +175,15 @@ App Handler
    :members:
    :undoc-members:
 
+WebAuthn Handler
+~~~~~~~~~~~~~~~~
+
+.. module:: auth_kit.mfa.handlers.webauthn
+
+.. autoclass:: auth_kit.mfa.handlers.webauthn.MFAWebAuthnHandler
+   :members:
+   :undoc-members:
+
 Services
 --------
 
@@ -195,6 +214,8 @@ Utilities
 .. autofunction:: auth_kit.mfa.utils.get_setup_data_schemas
 
 .. autofunction:: auth_kit.mfa.utils.get_mfa_login_first_step_response_schemas
+
+.. autofunction:: auth_kit.mfa.utils.get_login_challenge_schemas
 
 Exceptions
 ----------

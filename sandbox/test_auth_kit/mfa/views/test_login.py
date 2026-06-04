@@ -10,6 +10,7 @@ from rest_framework.test import APITestCase
 from auth_kit.mfa.handlers.app import MFAAppHandler
 from auth_kit.mfa.handlers.base import MFAHandlerRegistry
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
+from auth_kit.mfa.services.user_token import ephemeral_token_service
 from auth_kit.test_utils import override_auth_kit_settings
 from freezegun import freeze_time
 
@@ -479,6 +480,46 @@ class TestMFALoginView(APITestCase):
         resend_data = {"ephemeral_token": "invalid"}
         response = self.client.post(
             reverse("rest_login_resend"), resend_data, format="json"
+        )
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "Invalid token" in str(response.data)
+
+    def test_login_challenge_webauthn_is_scoped_to_pending_user(self) -> None:
+        """WebAuthn MFA must get its challenge without the passwordless app."""
+        user = UserFactory.create()
+        MFAMethodFactory.create(user=user, name="webauthn", is_active=True)
+        token = ephemeral_token_service.make_token(user, "webauthn")
+
+        response = self.client.post(
+            reverse("rest_login_mfa_challenge"),
+            {"ephemeral_token": token},
+            format="json",
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        assert "challenge" in response.data
+        assert "session_id" in response.data
+
+    def test_login_challenge_is_empty_for_code_based_methods(self) -> None:
+        user = UserFactory.create()
+        MFAMethodFactory.create(user=user, name="app", is_active=True)
+        token = ephemeral_token_service.make_token(user, "app")
+
+        response = self.client.post(
+            reverse("rest_login_mfa_challenge"),
+            {"ephemeral_token": token},
+            format="json",
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data == {}
+
+    def test_login_challenge_invalid_token(self) -> None:
+        response = self.client.post(
+            reverse("rest_login_mfa_challenge"),
+            {"ephemeral_token": "invalid"},
+            format="json",
         )
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST

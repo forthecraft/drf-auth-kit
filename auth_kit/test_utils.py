@@ -14,6 +14,8 @@ from typing import Any, TypeVar, cast
 
 from auth_kit.app_settings import auth_kit_settings
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
+from auth_kit.passwordless.passwordless_settings import auth_kit_passwordless_settings
+from auth_kit.webauthn.webauthn_settings import auth_kit_webauthn_settings
 
 T = TypeVar("T", bound=Callable[..., Any])
 
@@ -96,46 +98,48 @@ def settings_context(**settings: Any) -> Iterator[None]:  # noqa
     """Context manager for overriding auth kit settings temporarily."""
     # Initialize user_settings if it doesn't exist
 
-    if not hasattr(auth_kit_settings, "user_settings"):
-        auth_kit_settings.user_settings = {}
-        auth_kit_mfa_settings.user_settings = {}
+    all_settings = [
+        auth_kit_settings,
+        auth_kit_mfa_settings,
+        auth_kit_passwordless_settings,
+        auth_kit_webauthn_settings,
+    ]
+
+    for s in all_settings:
+        if not hasattr(s, "user_settings"):
+            s.user_settings = {}  # type: ignore[attr-defined]
+
+    def _find_settings_obj(key: str) -> Any:
+        for s in all_settings:
+            if hasattr(s, key):
+                return s
+        return None
 
     # Save original settings
-    old_settings = {}
+    old_settings: dict[str, tuple[Any, Any]] = {}
     for key in settings:
-        old_settings[key] = auth_kit_settings.user_settings.get(
-            key
-        ) or auth_kit_mfa_settings.user_settings.get(key)
+        obj = _find_settings_obj(key)
+        if obj:
+            old_settings[key] = (obj, obj.user_settings.get(key))
 
     # Apply new settings and clear cached properties
     for key, value in settings.items():
-        if hasattr(auth_kit_settings, key):
-            auth_kit_settings.user_settings[key] = value
+        obj = _find_settings_obj(key)
+        if obj:
+            obj.user_settings[key] = value
             with contextlib.suppress(AttributeError):
-                delattr(auth_kit_settings, key)
-        elif hasattr(auth_kit_mfa_settings, key):
-            auth_kit_mfa_settings.user_settings[key] = value
-            with contextlib.suppress(AttributeError):
-                delattr(auth_kit_mfa_settings, key)
+                delattr(obj, key)
 
     try:
         yield
     finally:
         # Restore original settings
         for key in settings:
-            if old_settings[key] is not None:
-                if hasattr(auth_kit_settings, key):
-                    auth_kit_settings.user_settings[key] = old_settings[key]
-                elif hasattr(auth_kit_mfa_settings, key):
-                    auth_kit_mfa_settings.user_settings[key] = old_settings[key]
-            elif hasattr(auth_kit_settings, key):
-                auth_kit_settings.user_settings.pop(key, None)
-            elif hasattr(auth_kit_mfa_settings, key):
-                auth_kit_mfa_settings.user_settings.pop(key, None)
-
-            # Clear cached properties again
-            with contextlib.suppress(AttributeError):
-                if hasattr(auth_kit_settings, key):
-                    delattr(auth_kit_settings, key)
-                elif hasattr(auth_kit_mfa_settings, key):
-                    delattr(auth_kit_mfa_settings, key)
+            if key in old_settings:
+                obj, old_value = old_settings[key]
+                if old_value is not None:
+                    obj.user_settings[key] = old_value
+                else:
+                    obj.user_settings.pop(key, None)
+                with contextlib.suppress(AttributeError):
+                    delattr(obj, key)

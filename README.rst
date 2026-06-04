@@ -35,7 +35,8 @@ Features
 - **Multiple Authentication Types**: JWT (default), DRF Token, or Custom
 - **Cookie-Based Security**: HTTP-only cookies
 - **Complete User Management**: Registration, password reset, email verification
-- **Multi-Factor Authentication**: Support multiple MFAs with backup codes
+- **Multi-Factor Authentication**: Support multiple MFAs with backup codes, including passkeys and hardware security keys
+- **Passwordless Authentication**: Email magic links and passkey (WebAuthn) login
 - **Social Authentication**: Django Allauth integration with 50+ providers, support for both OAuth2 and OpenID connect.
 - **Internationalization**: Built-in support for 57 languages including English, Spanish, French, German, Chinese, Japanese, Korean, Vietnamese, and more
 - **Full Type Safety**: Complete type hints with mypy and pyright
@@ -59,7 +60,10 @@ Installation
     # For social authentication
     pip install drf-auth-kit[social]
 
-    # For both MFA and social
+    # For passkeys / WebAuthn (passwordless and MFA)
+    pip install drf-auth-kit[webauthn]
+
+    # For everything
     pip install drf-auth-kit[all]
 
 **Core Dependencies:** Django 5.0+, DRF 3.0+, Django Allauth, DRF SimpleJWT
@@ -81,6 +85,7 @@ Quick Start
         'auth_kit',
         # 'auth_kit.social',  # For social authentication
         # 'auth_kit.mfa',  # For MFA support
+        # 'auth_kit.webauthn',  # For passkeys (passwordless login and MFA)
     ]
 
     REST_FRAMEWORK = {
@@ -92,6 +97,7 @@ Quick Start
     # Override only if needed:
     # AUTH_KIT = {
     #     'USE_MFA': True,  # Enable MFA
+    #     'USE_PASSWORDLESS': True,  # Enable passwordless login
     # }
 
     # Google OAuth2 settings (for social login)
@@ -116,10 +122,11 @@ Quick Start
     urlpatterns = [
         path('api/auth/', include('auth_kit.urls')),
         # path('api/auth/social/', include('auth_kit.social.urls')),  # For social auth
+        # path('api/auth/webauthn/', include('auth_kit.webauthn.urls')),  # For passkey management
         # ... your other URLs
     ]
 
-3. Run migrations (only needed if using MFA):
+3. Run migrations (needed if using MFA or WebAuthn):
 
 .. code-block:: bash
 
@@ -158,15 +165,12 @@ Upcoming Features
 
 **Enhanced Multi-Factor Authentication**
 
-- ☐ **Hardware Security Keys**: YubiKey and FIDO2/WebAuthn support
 - ☐ **SMS & Voice**: Twilio integration for SMS and voice-based MFA
 - ☐ **Authenticator Apps**: Enhanced TOTP support (Google Authenticator, Authy, etc.)
 - ☐ **Trusted Devices**: Remember MFA verification for trusted browsers/sessions
 
 **Passwordless Authentication**
 
-- ☐ **WebAuthn**: Biometric and hardware key authentication
-- ☐ **Magic Links**: Email-based passwordless login
 - ☐ **SMS Login**: One-time password via SMS
 
 **Advanced Security Features**

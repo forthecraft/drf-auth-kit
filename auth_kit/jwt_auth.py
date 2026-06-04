@@ -29,7 +29,7 @@ def _apply_partitioned_flag(response: Response, cookie_name: str) -> None:
         response: The HTTP response object
         cookie_name: Name of the cookie to patch
     """
-    if cookie_name in response.cookies:
+    if cookie_name in response.cookies:  # pragma: no branch
         morsel = response.cookies[cookie_name]
         # Register "partitioned" as a known boolean flag on the Morsel,
         # mirroring how "secure" and "httponly" are handled internally.

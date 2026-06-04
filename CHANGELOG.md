@@ -1,3 +1,13 @@
+## v1.5.0 (2026-06-04)
+
+### Feat
+
+- **login**: add django-axes brute force protection support
+
+### Refactor
+
+- **jwt_auth**: exclude unreachable defensive branch from coverage
+
 ## v1.4.0 (2026-05-26)
 
 ### Feat

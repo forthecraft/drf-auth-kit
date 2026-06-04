@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
 from django.test import override_settings
@@ -303,6 +305,43 @@ class TestLoginView(APITestCase):
         assert response.url == redirect_url
         # No cookies should be set when USE_AUTH_COOKIE is False
         assert len(response.cookies) == 0
+
+    def test_login_axes_lockout_returns_429(self) -> None:
+        """Test that axes lockout returns 429 instead of generic 400"""
+        UserFactory.create_with_email_address(self.user_data)
+
+        url = reverse("rest_login")
+        invalid_data = {
+            "username": "testuser",
+            "password": "wrongpass123",
+        }
+
+        def set_axes_locked_out(request, **credentials):  # type: ignore[no-untyped-def]
+            request.axes_locked_out = True
+
+        with patch(
+            "auth_kit.serializers.login_factors.authenticate",
+            side_effect=set_axes_locked_out,
+        ):
+            response: Response = self.client.post(url, invalid_data, format="json")
+
+        assert response.status_code == status.HTTP_429_TOO_MANY_REQUESTS
+        assert "Account locked" in str(response.data)
+
+    def test_login_without_axes_returns_400(self) -> None:
+        """Test that failed login without axes still returns generic 400"""
+        UserFactory.create_with_email_address(self.user_data)
+
+        url = reverse("rest_login")
+        invalid_data = {
+            "username": "testuser",
+            "password": "wrongpass123",
+        }
+
+        response: Response = self.client.post(url, invalid_data, format="json")
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "Unable to log in" in str(response.data)
 
     @override_auth_kit_settings(ALLOW_LOGIN_REDIRECT=True)
     def test_login_redirect_with_invalid_credentials(self) -> None:

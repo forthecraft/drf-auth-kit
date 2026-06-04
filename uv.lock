@@ -633,6 +633,19 @@ socialaccount = [
 ]
 
 [[package]]
+name = "django-axes"
+version = "8.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "asgiref" },
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f0/b4/00c701a22d46288e3eb1340a1c141f5b4002572ce836a3e8d069f1e1de8a/django_axes-8.3.1.tar.gz", hash = "sha256:d57e923c0ba33cf45275253dd1313c3a3ff04bec686b38d677beb2b3d43c7bcd", size = 254715 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/46/f6/777a5df7d5698eeb23c7c496cc268c0181f0489dbc5b5f2b235b30e5d8dd/django_axes-8.3.1-py3-none-any.whl", hash = "sha256:f7887582fd12713064f1602091ff6152752becae5e891a15bf802746cab0f51a", size = 74213 },
+]
+
+[[package]]
 name = "django-cleanup"
 version = "9.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -845,6 +858,7 @@ social = [
 dev = [
     { name = "commitizen" },
     { name = "coveralls" },
+    { name = "django-axes" },
     { name = "django-cleanup" },
     { name = "django-cors-headers" },
     { name = "django-debug-toolbar" },
@@ -912,6 +926,7 @@ provides-extras = ["all", "mfa", "social"]
 dev = [
     { name = "commitizen", specifier = ">=4.5.0,<5" },
     { name = "coveralls", specifier = ">=4.0.1,<5" },
+    { name = "django-axes", specifier = ">=7.0.0" },
     { name = "django-cleanup", specifier = ">=9.0.0,<10" },
     { name = "django-cors-headers", specifier = ">=4.7.0,<5" },
     { name = "django-debug-toolbar", specifier = ">=5.1.0,<6" },

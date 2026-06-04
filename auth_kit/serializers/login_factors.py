@@ -13,6 +13,7 @@ from django.db.models import QuerySet
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from rest_framework import exceptions, serializers
+from rest_framework.exceptions import Throttled
 
 from allauth.account import (  # pyright: ignore[reportMissingTypeStubs]
     app_settings as allauth_account_settings,
@@ -143,6 +144,17 @@ class LoginRequestSerializer(serializers.Serializer[dict[str, Any]]):
         user = self.get_auth_user(username, email, password)
 
         if not user:
+            # Check if django-axes has flagged this request as locked out.
+            # axes sets request.axes_locked_out = True after too many
+            # failed login attempts, and authenticate() returns None.
+            request = self.context["request"]
+            if getattr(request, "axes_locked_out", False):
+                raise Throttled(
+                    detail=_(
+                        "Account locked due to too many failed login attempts. "
+                        "Please try again later."
+                    )
+                )
             msg = _("Unable to log in with provided credentials.")
             raise exceptions.ValidationError(msg)
 

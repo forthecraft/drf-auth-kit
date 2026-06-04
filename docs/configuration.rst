@@ -221,6 +221,15 @@ See full configuration:
 - Account settings: https://docs.allauth.org/en/latest/account/configuration.html
 - Social account settings: https://docs.allauth.org/en/latest/socialaccount/configuration.html
 
+**Django Axes** (optional, for brute force protection)
+
+DRF Auth Kit supports `django-axes <https://django-axes.readthedocs.io/>`_ out of the box.
+When axes locks out a user after repeated failed login attempts, the login endpoint returns
+**HTTP 429** (Too Many Requests) instead of the generic 400 error, allowing the frontend to
+show an appropriate lockout message.
+
+See the django-axes documentation for installation and configuration: https://django-axes.readthedocs.io/
+
 **Email Configuration (for MFA and verification)**
 
 .. code-block:: python

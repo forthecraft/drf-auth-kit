@@ -37,6 +37,8 @@ if [ "$RUN_COVERAGE" = true ]; then
 
     pytest --cov=auth_kit --cov-append --cov-report= sandbox_extras/custom_username
 
+    pytest --cov=auth_kit --cov-append --cov-report= sandbox_extras/integrations/axes
+
     pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/core_schema
 
     pytest --cov=auth_kit --cov-append --cov-report= sandbox/test_schema/mfa_schema
@@ -52,6 +54,8 @@ else
     pytest sandbox_extras/email_user
 
     pytest sandbox_extras/custom_username
+
+    pytest sandbox_extras/integrations/axes
 
     pytest sandbox/test_schema/core_schema
 

@@ -14,7 +14,7 @@ from rest_framework_simplejwt.exceptions import InvalidToken
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.settings import api_settings as jwt_settings
 
-from auth_kit.app_settings import auth_kit_settings
+from auth_kit.cookie_profiles import resolve_cookie_profile
 
 
 class JWTSerializer(serializers.Serializer[dict[str, str]]):
@@ -63,7 +63,8 @@ class CookieTokenRefreshSerializer(TokenRefreshSerializer, JWTSerializer):
         request = self.context["request"]
         if "refresh" in request.data and request.data["refresh"] != "":
             return str(request.data["refresh"])
-        cookie_name = auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME
+        profile = resolve_cookie_profile(request)
+        cookie_name = profile.refresh_cookie_name
         if cookie_name and cookie_name in request.COOKIES:
             return str(request.COOKIES.get(cookie_name))
         else:

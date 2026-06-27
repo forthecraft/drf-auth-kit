@@ -18,6 +18,7 @@ from drf_spectacular.plumbing import (
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from auth_kit.app_settings import auth_kit_settings
+from auth_kit.cookie_profiles import resolve_cookie_profile
 
 
 class AuthKitCookieAuthentication(JWTAuthentication):
@@ -103,9 +104,8 @@ class TokenCookieAuthentication(TokenAuthentication, AuthKitCookieAuthentication
         Returns:
             Tuple of (user, token) if authentication succeeds, None otherwise
         """
-        return self.authenticate_with_cookie(
-            request, auth_kit_settings.AUTH_TOKEN_COOKIE_NAME
-        )
+        profile = resolve_cookie_profile(request)
+        return self.authenticate_with_cookie(request, profile.token_cookie_name)
 
 
 class TokenCookieAuthenticationScheme(SimpleJWTScheme):  # type: ignore[no-untyped-call]
@@ -157,9 +157,8 @@ class JWTCookieAuthentication(AuthKitCookieAuthentication):
         Returns:
             Tuple of (user, token) if authentication succeeds, None otherwise
         """
-        return self.authenticate_with_cookie(
-            request, auth_kit_settings.AUTH_JWT_COOKIE_NAME
-        )
+        profile = resolve_cookie_profile(request)
+        return self.authenticate_with_cookie(request, profile.jwt_cookie_name)
 
 
 class JWTCookieAuthenticationScheme(SimpleJWTScheme):  # type: ignore[no-untyped-call]

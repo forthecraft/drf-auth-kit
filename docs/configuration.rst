@@ -29,6 +29,11 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'AUTH_COOKIE_PARTITIONED': False,      # Enable CHIPS Partitioned attribute
 
         # ===================================================================
+        # COOKIE PROFILES
+        # ===================================================================
+        'AUTH_COOKIE_PROFILES': {},            # Per-request cookie name/path overrides
+
+        # ===================================================================
         # JWT AUTHENTICATION SETTINGS
         # ===================================================================
         'AUTH_JWT_COOKIE_NAME': 'auth-jwt',
@@ -308,6 +313,51 @@ Cookie Configuration
         CHIPS requires ``AUTH_COOKIE_SAMESITE`` to be ``"None"`` and ``AUTH_COOKIE_SECURE``
         to be ``True``. A Django system check warning will be raised if these conditions
         are not met.
+
+Cookie Profiles
+~~~~~~~~~~~~~~~~~
+
+A *cookie profile* groups the auth cookie names and paths (JWT access/refresh
+and the DRF token cookie) so a single backend host can issue and read several
+independent cookie-based sessions without them overwriting each other in the
+browser. The common case is several SPAs on different origins talking to one
+API: each frontend gets its own session cookie under the API's domain.
+
+Profiles are declared by a single setting:
+
+**AUTH_COOKIE_PROFILES** (default: ``{}``)
+    A mapping of request ``Origin`` to cookie overrides. Each value may set any
+    of ``AUTH_JWT_COOKIE_NAME``, ``AUTH_JWT_COOKIE_PATH``,
+    ``AUTH_JWT_REFRESH_COOKIE_NAME``, ``AUTH_JWT_REFRESH_COOKIE_PATH``,
+    ``AUTH_TOKEN_COOKIE_NAME``, ``AUTH_TOKEN_COOKIE_PATH``; omitted keys fall
+    back to the top-level setting.
+
+Each request is matched against its ``Origin`` header (the exact
+``scheme://host[:port]`` the browser sends — include the scheme, and note that
+``http`` vs ``https`` and the port are distinct origins). If the origin is not
+listed, or the request carries no ``Origin`` (e.g. a same-origin ``GET``), the
+default cookies are used. The browser sets ``Origin`` itself on cross-origin
+requests, so frontends need no extra cooperation, and the same selection applies
+to authentication and the login, refresh, and logout views, giving a profile a
+full issue/refresh/clear lifecycle.
+
+Example — a primary session plus a per-origin ``app-b`` session::
+
+    AUTH_KIT = {
+        'AUTH_COOKIE_PROFILES': {
+            'https://app-b.example.com': {
+                'AUTH_JWT_COOKIE_NAME': 'app-b-auth-jwt',
+                'AUTH_JWT_REFRESH_COOKIE_NAME': 'app-b-auth-refresh-jwt',
+            },
+        },
+    }
+
+Because the API sets all cookies under its own domain, the browser sends every
+profile's cookie on each request; the profile only chooses which one to read or
+write. For cross-origin SPAs this also requires ``AUTH_COOKIE_SAMESITE='None'``
+with ``AUTH_COOKIE_SECURE=True`` and the origins on your CORS credentialed
+allowlist. A profile is a cookie selector, not a security boundary — each
+cookie is an independently signed token.
 
 JWT-Specific Settings
 ~~~~~~~~~~~~~~~~~~~~~

@@ -19,6 +19,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 from auth_kit.api_descriptions import get_jwt_refresh_description
 from auth_kit.app_settings import auth_kit_settings
+from auth_kit.cookie_profiles import resolve_cookie_profile
 from auth_kit.jwt_auth import set_auth_kit_cookie
 from auth_kit.serializers import CookieTokenRefreshSerializer
 
@@ -53,27 +54,30 @@ class RefreshViewWithCookieSupport(TokenRefreshView):
         Returns:
             The finalized DRF response with cookies set
         """
-        if response.status_code == status.HTTP_200_OK and "access" in response.data:
+        is_ok = response.status_code == status.HTTP_200_OK
+        profile = resolve_cookie_profile(request) if is_ok else None
+
+        if profile is not None and "access" in response.data:
             response.data["access_expiration"] = (
                 timezone.now() + jwt_settings.ACCESS_TOKEN_LIFETIME
             )
             set_auth_kit_cookie(
                 response,
-                auth_kit_settings.AUTH_JWT_COOKIE_NAME,
+                profile.jwt_cookie_name,
                 response.data["access"],
-                auth_kit_settings.AUTH_JWT_COOKIE_PATH,
+                profile.jwt_cookie_path,
                 response.data["access_expiration"],
             )
 
-        if response.status_code == status.HTTP_200_OK and "refresh" in response.data:
+        if profile is not None and "refresh" in response.data:
             response.data["refresh_expiration"] = (
                 timezone.now() + jwt_settings.REFRESH_TOKEN_LIFETIME
             )
             set_auth_kit_cookie(
                 response,
-                auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME,
+                profile.refresh_cookie_name,
                 response.data["refresh"],
-                auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_PATH,
+                profile.refresh_cookie_path,
                 response.data["refresh_expiration"],
             )
 

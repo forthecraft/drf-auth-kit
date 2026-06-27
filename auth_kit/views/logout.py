@@ -26,6 +26,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from auth_kit.api_descriptions import get_logout_description
 from auth_kit.app_settings import auth_kit_settings
+from auth_kit.cookie_profiles import resolve_cookie_profile
 from auth_kit.jwt_auth import unset_jwt_cookies, unset_token_cookie
 from auth_kit.serializers.logout import get_logout_serializer
 
@@ -63,7 +64,7 @@ class LogoutView(GenericAPIView[Any]):
             **kwargs: Arbitrary keyword arguments
         """
         super().initial(request, *args, **kwargs)
-        cookie_name = auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME
+        cookie_name = resolve_cookie_profile(request).refresh_cookie_name
 
         if cookie_name and cookie_name in request.COOKIES:
             self.request.data["refresh"] = request.COOKIES.get(cookie_name)
@@ -91,8 +92,9 @@ class LogoutView(GenericAPIView[Any]):
             request: The DRF request object
             response: The DRF response object
         """
+        profile = resolve_cookie_profile(request)
         if auth_kit_settings.USE_AUTH_COOKIE:
-            unset_jwt_cookies(response)
+            unset_jwt_cookies(response, profile)
 
         if "rest_framework_simplejwt.token_blacklist" in settings.INSTALLED_APPS:
             try:
@@ -100,9 +102,7 @@ class LogoutView(GenericAPIView[Any]):
                 if auth_kit_settings.USE_AUTH_COOKIE:
                     try:
                         token = RefreshToken(
-                            request.COOKIES[  # type: ignore
-                                auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME
-                            ]
+                            request.COOKIES[profile.refresh_cookie_name]  # type: ignore
                         )
                     except KeyError:
                         response.data = {
@@ -157,7 +157,7 @@ class LogoutView(GenericAPIView[Any]):
             except (AttributeError, ObjectDoesNotExist):
                 pass
             if auth_kit_settings.USE_AUTH_COOKIE:
-                unset_token_cookie(response)
+                unset_token_cookie(response, resolve_cookie_profile(request))
         else:
             self.logout_custom(request, response)
         return response

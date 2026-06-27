@@ -24,6 +24,7 @@ if TYPE_CHECKING:
 
     from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+    from auth_kit.cookie_profiles import CookieProfileConfig
     from auth_kit.serializers.login_factors import BaseLoginResponseSerializer
     from auth_kit.social.views import SocialConnectView, SocialLoginView
     from auth_kit.views import (
@@ -70,6 +71,12 @@ class MySetting:
     AUTH_COOKIE_SAMESITE: Literal["Lax", "Strict", "None"] = "Lax"
     AUTH_COOKIE_DOMAIN: str | None = None
     AUTH_COOKIE_PARTITIONED: bool = False
+
+    # ===================================================================
+    # COOKIE PROFILES
+    # ===================================================================
+    # Cookie name/path overrides keyed by request Origin.
+    AUTH_COOKIE_PROFILES: dict[str, "CookieProfileConfig"] = {}
 
     # ===================================================================
     # JWT AUTHENTICATION SETTINGS

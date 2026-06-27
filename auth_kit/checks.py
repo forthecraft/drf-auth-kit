@@ -7,6 +7,7 @@ from typing import Any
 from django.core.checks import Warning, register
 
 from auth_kit.app_settings import auth_kit_settings
+from auth_kit.cookie_profiles import PROFILE_OVERRIDE_KEYS
 
 
 @register()
@@ -48,5 +49,24 @@ def check_partitioned_cookie_config(**kwargs: Any) -> list[Warning]:
                 id="auth_kit.W002",
             )
         )
+
+    return errors
+
+
+@register()
+def check_cookie_profiles(**kwargs: Any) -> list[Warning]:
+    """Validate the AUTH_COOKIE_PROFILES override keys at startup."""
+    errors: list[Warning] = []
+
+    for origin, overrides in auth_kit_settings.AUTH_COOKIE_PROFILES.items():
+        unknown = sorted(set(overrides) - set(PROFILE_OVERRIDE_KEYS))
+        if unknown:
+            errors.append(
+                Warning(
+                    f"Auth cookie profile {origin!r} has unknown keys {unknown}.",
+                    hint=f"Allowed keys: {list(PROFILE_OVERRIDE_KEYS)}.",
+                    id="auth_kit.W003",
+                )
+            )
 
     return errors

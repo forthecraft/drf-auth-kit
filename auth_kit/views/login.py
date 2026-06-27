@@ -24,6 +24,7 @@ from drf_spectacular.utils import (
 
 from auth_kit.api_descriptions import get_login_description
 from auth_kit.app_settings import auth_kit_settings
+from auth_kit.cookie_profiles import resolve_cookie_profile
 from auth_kit.jwt_auth import set_auth_kit_cookie
 from auth_kit.utils import sensitive_post_parameters_m
 
@@ -97,20 +98,21 @@ class LoginView(GenericAPIView[Any]):
         data = serializer.data
         validated_data = serializer.data
         response = Response(data, status=status.HTTP_200_OK)
+        profile = resolve_cookie_profile(self.request)
 
         if auth_kit_settings.AUTH_TYPE == "jwt":
             set_auth_kit_cookie(
                 response,
-                auth_kit_settings.AUTH_JWT_COOKIE_NAME,
+                profile.jwt_cookie_name,
                 data["access"],
-                auth_kit_settings.AUTH_JWT_COOKIE_PATH,
+                profile.jwt_cookie_path,
                 validated_data["access_expiration"],
             )
             set_auth_kit_cookie(
                 response,
-                auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME,
+                profile.refresh_cookie_name,
                 data["refresh"],
-                auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_PATH,
+                profile.refresh_cookie_path,
                 validated_data["refresh_expiration"],
             )
             response.data["refresh"] = ""
@@ -122,9 +124,9 @@ class LoginView(GenericAPIView[Any]):
             )
             set_auth_kit_cookie(
                 response,
-                auth_kit_settings.AUTH_TOKEN_COOKIE_NAME,
+                profile.token_cookie_name,
                 data["key"],
-                auth_kit_settings.AUTH_TOKEN_COOKIE_PATH,
+                profile.token_cookie_path,
                 token_cookie_expire_time,
             )
         else:  # custom

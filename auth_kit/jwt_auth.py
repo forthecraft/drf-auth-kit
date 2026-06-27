@@ -14,6 +14,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
 from .app_settings import auth_kit_settings
+from .cookie_profiles import CookieProfile
 
 
 def _apply_partitioned_flag(response: Response, cookie_name: str) -> None:
@@ -73,53 +74,55 @@ def set_auth_kit_cookie(
         _apply_partitioned_flag(response, cookie_name)
 
 
-def unset_jwt_cookies(response: Response) -> None:
+def unset_jwt_cookies(response: Response, profile: CookieProfile) -> None:
     """
     Remove JWT authentication cookies from the HTTP response.
 
     Args:
         response: The HTTP response object
+        profile: The cookie profile whose JWT cookies should be removed
     """
     cookie_samesite = auth_kit_settings.AUTH_COOKIE_SAMESITE
     cookie_domain = auth_kit_settings.AUTH_COOKIE_DOMAIN
 
     response.delete_cookie(
-        auth_kit_settings.AUTH_JWT_COOKIE_NAME,
+        profile.jwt_cookie_name,
+        path=profile.jwt_cookie_path,
         samesite=cookie_samesite,
         domain=cookie_domain,
     )
     response.delete_cookie(
-        auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME,
-        path=auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_PATH,
+        profile.refresh_cookie_name,
+        path=profile.refresh_cookie_path,
         samesite=cookie_samesite,
         domain=cookie_domain,
     )
 
     if auth_kit_settings.AUTH_COOKIE_PARTITIONED:
-        _apply_partitioned_flag(response, auth_kit_settings.AUTH_JWT_COOKIE_NAME)
-        _apply_partitioned_flag(
-            response, auth_kit_settings.AUTH_JWT_REFRESH_COOKIE_NAME
-        )
+        _apply_partitioned_flag(response, profile.jwt_cookie_name)
+        _apply_partitioned_flag(response, profile.refresh_cookie_name)
 
 
-def unset_token_cookie(response: Response) -> None:
+def unset_token_cookie(response: Response, profile: CookieProfile) -> None:
     """
-    Remove token authentication cookie from the HTTP response.
+    Remove the token authentication cookie from the HTTP response.
 
     Args:
         response: The HTTP response object
+        profile: The cookie profile whose token cookie should be removed
     """
     cookie_samesite = auth_kit_settings.AUTH_COOKIE_SAMESITE
     cookie_domain = auth_kit_settings.AUTH_COOKIE_DOMAIN
 
     response.delete_cookie(
-        auth_kit_settings.AUTH_TOKEN_COOKIE_NAME,
+        profile.token_cookie_name,
+        path=profile.token_cookie_path,
         samesite=cookie_samesite,
         domain=cookie_domain,
     )
 
     if auth_kit_settings.AUTH_COOKIE_PARTITIONED:
-        _apply_partitioned_flag(response, auth_kit_settings.AUTH_TOKEN_COOKIE_NAME)
+        _apply_partitioned_flag(response, profile.token_cookie_name)
 
 
 def jwt_encode(user: AbstractBaseUser) -> tuple[AccessToken, RefreshToken]:

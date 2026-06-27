@@ -1,3 +1,9 @@
+## v1.6.0 (2026-06-27)
+
+### Feat
+
+- **cookie**: add per-origin cookie profiles for isolated sessions
+
 ## v1.5.0 (2026-06-04)
 
 ### Feat

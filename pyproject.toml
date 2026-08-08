@@ -21,6 +21,7 @@ dev = [
   "freezegun>=1.5.1,<2",
   "ipython>=8.35.0",
   "mock>=5.2.0,<6",
+  "polib>=1.2.0",
   "psycopg-pool>=3.2.6,<4",
   "psycopg[binary]>=3.2.6,<4",
   "pytest-cov>=6.1.1,<7",

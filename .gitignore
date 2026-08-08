@@ -109,3 +109,6 @@ ENV/
 static/
 
 *_out.yml
+
+# temp folder
+temp/

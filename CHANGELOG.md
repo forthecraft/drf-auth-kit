@@ -1,3 +1,9 @@
+## v1.7.0 (2026-08-08)
+
+### Feat
+
+- **ci**: add Python 3.14 and Django 5.2 to the test matrix
+
 ## v1.6.0 (2026-06-27)
 
 ### Feat

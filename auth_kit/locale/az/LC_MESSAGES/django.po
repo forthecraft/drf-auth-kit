@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 12:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Azerbaijani\n"
@@ -132,8 +132,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Təqdim edilmiş email ünvanına parol sıfırlama təlimatları göndərin. Əgər "
@@ -152,15 +152,16 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
-msgstr "Cari istifadəçinin parolunu dəyişdirin. Autentifikasiya tələb olunur. "
+msgstr ""
+"Cari istifadəçinin parolunu dəyişdirin. Autentifikasiya tələb olunur. "
 
 #: auth_kit/api_descriptions.py:159
 msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"Email vasitəsilə göndərilmiş təsdiq açarından istifadə edərək email ünvanını "
-"təsdiqləyin. Bu istifadəçi hesabını aktivləşdirir və giriş icazəsi verir."
+"Email vasitəsilə göndərilmiş təsdiq açarından istifadə edərək email ünvanını"
+" təsdiqləyin. Bu istifadəçi hesabını aktivləşdirir və giriş icazəsi verir."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
@@ -175,8 +176,9 @@ msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
-"İstifadəçi adı, email, ad və soyadı da daxil olmaqla autentifikasiya edilmiş "
-"istifadəçinin profil məlumatlarını əldə edin. Parol sahələri istisna edilir."
+"İstifadəçi adı, email, ad və soyadı da daxil olmaqla autentifikasiya edilmiş"
+" istifadəçinin profil məlumatlarını əldə edin. Parol sahələri istisna "
+"edilir."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
@@ -189,13 +191,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"Autentifikasiya edilmiş istifadəçinin profil məlumatlarını qismən yeniləyin. "
-"Yalnız təqdim edilmiş sahələr yenilənəcək. Email sahəsi yalnız oxunaqdır."
+"Autentifikasiya edilmiş istifadəçinin profil məlumatlarını qismən yeniləyin."
+" Yalnız təqdim edilmiş sahələr yenilənəcək. Email sahəsi yalnız oxunaqdır."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Email ünvanı heç bir istifadəçi hesabına təyin edilməyib."
 
@@ -207,73 +209,96 @@ msgstr "Tələb olunan MFA metodu mövcud deyil."
 msgid "Email message with MFA code has been sent."
 msgstr "MFA kodu ilə email mesajı göndərildi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create() üçün qeydiyyat seçimləri"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Təhlükəsizlik Açarı / Keçid Açarı"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA kodu {} saniyədə bitəcək."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr ""
-"MFA-aktiv autentifikasiyasının ilk addımı. Etimadnamələri təsdiqləyir və MFA "
-"axını başladır."
+"MFA-aktiv autentifikasiyasının ilk addımı. Etimadnamələri təsdiqləyir və MFA"
+" axını başladır."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"MFA təsdiqi üçün müvəqqəti token və ya MFA deaktivdirsə tam {} "
-"qaytarır."
+"MFA təsdiqi üçün müvəqqəti token və ya MFA deaktivdirsə tam {} qaytarır."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Təsdiq kodu və müvəqqəti token istifadə edərək MFA autentifikasiyasını "
 "tamamlayın."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Təsdiq üçün həm TOTP kodları, həm də ehtiyati kodları dəstəkləyir."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Autentifikasiya axını zamanı fərqli MFA metoduna keçin."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "İlk addım autentifikasiyasından etibarlı müvəqqəti token tələb edir."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Yeni müvəqqəti token {} saniyədə bitəcək."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Mövcud müvəqqəti token istifadə edərək MFA təsdiq kodunu yenidən göndər."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Yalnız kod göndərmə tələb edən metodlar üçün tətbiq olunur (məs. email)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Mövcud müvəqqəti token istifadə edərək gözləyən MFA metodu üçün giriş "
+"çağırışı əldə edin."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Yalnız çağırış-cavab metodlarına (məs., keçid açarları) aiddir. Digər "
+"metodlar boş obyekt qaytarır."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Quraşdırma və aktivləşdirmə statusu ilə bütün mövcud MFA metodlarını "
 "siyahıla. Hansı metodların konfiqurasiya edildiyini, aktiv olduğunu və əsas "
 "olaraq təyin edildiyini göstərir."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -283,7 +308,7 @@ msgstr ""
 "quraşdırma təlimatları qaytarır (məs. autentifikator tətbiqləri üçün QR "
 "kod). Metod aktivləşdirilmədən əvvəl təsdiq edilməlidir."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -294,7 +319,7 @@ msgstr ""
 "təyin edilir. Metod autentifikasiya üçün istifadə edilməzdən əvvəl tələb "
 "olunur."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -304,7 +329,7 @@ msgstr ""
 "Əsas metodları deaktivləşdirə bilməz - əvvəlcə başqa metodu əsas olaraq "
 "təyin edin."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -312,15 +337,15 @@ msgstr ""
 "Aktiv MFA metodunu əsas autentifikasiya metodu olaraq təyin edin. Giriş "
 "axını zamanı əsas metod varsayılan olaraq istifadə olunur."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Yalnız bir metod eyni vaxtda əsas ola bilər."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Cari əsas metoddan təsdiq kodu tələb edir."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -328,79 +353,79 @@ msgstr ""
 "Kod göndərmə dəstəkləyən metodlar üçün təsdiq kodu göndər. Metod "
 "konfiqurasiyasını test etmək və ya əl ilə kod tələbləri üçün faydalıdır."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "MFA metodunu həmişəlik silin."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Bu əməliyyat geri qaytarıla bilməz."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Aktiv metodları silə bilməz."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Əsas metodları silə bilməz."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Aktiv metodlar üçün təsdiq kodu tələb edir."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "istifadəçi"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Bu MFA metodunun sahibi olan istifadəçi"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "ad"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA metod adı (məsələn, 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "gizli"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Təsdiq kodları yaratmaq üçün TOTP gizli açarı"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "əsasdir"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Bu istifadəçinin əsas MFA metodu olub-olmaması"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "aktivdir"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Bu metodun aktiv olub-olmaması və istifadə edilə bilməsi"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "eçtiyati kodlar"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Hesab bərpası üçün ehtiyati kodları saxlayan JSON sahəsi"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA Metodu"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA Metodları"
 
@@ -410,7 +435,8 @@ msgstr "Yaramaz kod"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Yaramaz token"
 
@@ -422,10 +448,9 @@ msgstr "Zəhmət olmasa yeni metod seçin"
 msgid "This method is already exists"
 msgstr "Bu metod artıq mövcuddur"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Yaramaz OTP kodu"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Yanlış doğrulama kodu"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -434,6 +459,10 @@ msgstr "Aktivləşdirilmiş MFA metodu"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Yalnız əsas olmayan MFA metodunu deaktivləşdira bilərsiniz."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Yaramaz OTP kodu"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -467,19 +496,78 @@ msgstr "Silinmiş MFA metodu"
 msgid "MFA code sent"
 msgstr "MFA kodu göndərildi"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "E-poçt Sehrli Linki"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Giriş linki göndərildi."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Keçid Açarı / Təhlükəsizlik Açarı"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"{} vasitəsilə şifrəsiz autentifikasiyanı başladın. Bu, şifrəsiz giriş "
+"axınının ilk addımıdır."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"{} vasitəsilə şifrəsiz autentifikasiyanı tamamlayın. Başlatma addımından "
+"etibarnamə/tokeni yoxlayın."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Yanlış və ya müddəti bitmiş token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "İstifadəçi hesabı deaktiv edilib."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Kəşf edilə bilməyən etibarnamə axını üçün isteğe bağlı e-poçt. Keçid açarı "
+"(kəşf edilə bilən) axını üçün buraxın."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn autentifikasiyası uğursuz oldu."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Kukini əvəz edəcək."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Etibarlı yenilənmə tokeni tapilmadi."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Email təsdiqlənməyib."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Çox sayda uğursuz giriş cəhdi səbəbindən hesab kilidləndi. Zəhmət olmasa, "
+"sonra yenidən cəhd edin."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Təqdim edilmiş etimadnamilərlə daxil ola bilmir."
 
@@ -491,11 +579,11 @@ msgstr "Yaramaz dəyər"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Köhnə parolunuz səhv daxil edilib. Zəhmət olmasa yenidən daxil edin."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Bu email ünvanı ilə artiq bir istifadəçi qeydiyyatdan keçib."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "İki parol sahəsi uyğun gəlmir."
 
@@ -507,56 +595,54 @@ msgstr "Sosial hesab emaili cari hesab emailinizlə uyğun gəlməlidir."
 msgid "Connected"
 msgstr "Bağlandı"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "OAuth axinını tamamlaya bilmədi"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "İstifadəçi bu email ünvanı ilə artiq qeydiyyatdan keçib."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Kodu giriş tokeni ilə dəyişə bilmədi"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
 "Giriş tokenlərini əldə etmək üçün OAuth2/OpenID Connect avtorizasiya kodu "
 "istifadə edərək {} ilə autentifikasiya edin."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"{} hesabını cari istifadəçi hesabına bağlayın. Bu istifadəçiyə "
-"gələcəkdə mövcud {} hesabı istifadə edərək giriş etmək imkanı "
-"verir."
+"{} hesabını cari istifadəçi hesabına bağlayın. Bu istifadəçiyə gələcəkdə "
+"mövcud {} hesabı istifadə edərək giriş etmək imkanı verir."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
-"{}-dən autentifikasiya və etibarlı OAuth2/OpenID Connect "
-"avtorizasiya kodu tələb edir."
+"{}-dən autentifikasiya və etibarlı OAuth2/OpenID Connect avtorizasiya kodu "
+"tələb edir."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Uğur halında {} hesabı bağlanır və gələcək girişlər üçün istifadə "
-"edilə bilər."
+"Uğur halında {} hesabı bağlanır və gələcək girişlər üçün istifadə edilə "
+"bilər."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -564,33 +650,33 @@ msgstr ""
 "Cari istifadəçiyə bağlanan bütün sosial hesabları siyahıla. Təminatçı, UID "
 "və bağlantı tarixləri də daxil olmaqla hesab təfərrüatlarını göstərir."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
 "Sosial hesabı cari istifadəçidən ayırın. Sosial hesab bağlantısını silir və "
-"həmin təminatçı vasitəsilə gələcək girişləri qarşısını alır. Autentifikasiya "
-"tələb edir və hesab cari istifadəçiyə məxsus olmalıdır."
+"həmin təminatçı vasitəsilə gələcək girişləri qarşısını alır. Autentifikasiya"
+" tələb edir və hesab cari istifadəçiyə məxsus olmalıdır."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class təyin edilməyib"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Yenilənmə tokeni kuki məlumatlarında daxil edilməyib."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Yenilənmə tokeni sorğu məlumatlarında daxil edilməyib."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Xəta baş verdi."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Ugurla çıxış edildi."
 
@@ -598,25 +684,274 @@ msgstr "Ugurla çıxış edildi."
 msgid "Password reset e-mail has been sent."
 msgstr "Parol sıfırlama emaili göndərildi."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Parol yeni parol ilə sıfırlandı."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Yeni parol saxlandı."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Təsdiq emaili göndərildi."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Ugurla qeydiyyatdan keçdi."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Tələb olunan WebAuthn etibarnaməsi mövcud deyil."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn doğrulaması uğursuz oldu."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Bu WebAuthn etibarnaməsinə sahib olan istifadəçi"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "etibarnamə ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Autentikatordan unikal etibarnamə identifikatoru"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "açıq açar"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Qeydiyyatdan COSE açıq açar baytları"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "imza sayğacı"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Təkrar hücum aşkarlanması üçün imza sayğacı"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "nəqliyyat metodları"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Dəstəklənən nəqliyyat metodları (məs., usb, nfc, ble, daxili)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "kəşf edilə bilən"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Bunun kəşf edilə bilən (keçid açarı) etibarnaməsi olub-olmadığı"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Cihaz növünü müəyyənləşdirən Autentikator Attestasiya GUID"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Bu etibarnamə üçün istifadəçi tərəfindən təyin edilmiş dostane ad"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "yaradılma tarixi"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Bu etibarnamənin qeydiyyat tarixi"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "son istifadə tarixi"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Bu etibarnamənin autentifikasiya üçün son istifadə tarixi"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn Etibarnaməsi"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn Etibarnamələri"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Bu etibarnamə üçün isteğe bağlı istifadəçi dostu ad"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Bu etibarnamə üçün istifadəçi dostu ad"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL ilə kodlanmış etibarnamə ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Etibarnamə növü"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Autentikatora çatmaq üçün nəqliyyat göstərişləri"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE alqoritm identifikatoru (məs., ES256 üçün -7)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "İnsan tərəfindən oxuna bilən RP adı"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (domen)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL ilə kodlanmış istifadəçi tanımlayıcısı"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "İstifadəçi hesabı adı"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "İstifadəçi ekran adı"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Rezident açar tələbi"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr ""
+"Rezident açarın tələb edilib-edilmədiyini (köhnəlmiş, residentKey istifadə "
+"edin)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "İstifadəçi doğrulama tələbi"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Autentikator əlavəsi"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Etibar edilən tərəf kimliyi"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "İstifadəçi hesabı məlumatı"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL ilə kodlanmış çağırış"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Dəstəklənən açıq açar etibarnamə parametrləri"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Millisaniyə cinsindən mərasim vaxt aşımı"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Xaric ediləcək etibarnamələr (artıq qeydiyyatdan keçmiş)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Autentikator seçim meyarları"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Attestasiya ötürmə üstünlüyü"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Etibar edilən tərəf ID (domen)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Bu autentifikasiya üçün icazə verilmiş etibarnamələr"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Doğrulama addımı üçün qeyri-şəffaf sessiya tokeni"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Qeydiyyat çağırışının vaxtı bitdi və ya tapılmadı."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Autentifikasiya çağırışının vaxtı bitdi və ya tapılmadı."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Etibarnamə tapılmadı."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Etibarnamə yenidən adlandırıldı."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Autentifikasiya edilmiş istifadəçi üçün qeydiyyatdan keçmiş bütün keçid "
+"açarlarını və təhlükəsizlik açarlarını siyahıla."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Yeni keçid açarı və ya təhlükəsizlik açarı qeydiyyatdan keçirin. "
+"register_options son nöqtəsini çağırdıqdan sonra brauzerdən etibarnaməni "
+"göndərin."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Yeni keçid açarı və ya təhlükəsizlik açarı əlavə etmək üçün qeydiyyat "
+"seçimlərini əldə edin. Brauzer üçün etibarnamə yaratmaq üçün çağırış "
+"qaytarır."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Keçid açarını və ya təhlükəsizlik açarını yenidən adlandırın."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Keçid açarını və ya təhlükəsizlik açarını silin. Bu əməliyyat geri alına "
+"bilməz."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Language: no\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"Returnerer brukerdetaljer sammen med JWT tilgangs- og oppdateringstokens med "
-"utløpstider."
+"Returnerer brukerdetaljer sammen med JWT tilgangs- og oppdateringstokens med"
+" utløpstider."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -115,13 +115,14 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"Send instruksjoner for nullstilling av passord til den oppgitte e-"
-"postadressen. Hvis e-posten er registrert, vil en sikker nullstillingslenke "
-"bli sendt. Lenken utløper etter en begrenset tid av sikkerhetshensyn."
+"Send instruksjoner for nullstilling av passord til den oppgitte "
+"e-postadressen. Hvis e-posten er registrert, vil en sikker "
+"nullstillingslenke bli sendt. Lenken utløper etter en begrenset tid av "
+"sikkerhetshensyn."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -129,9 +130,9 @@ msgid ""
 "Requires the UID and token from the email along with the new password. The "
 "token is single-use and expires for security."
 msgstr ""
-"Fullfør passordnullstillingsprosessen ved hjelp av tokenet fra nullstillings-"
-"e-posten. Krever UID og token fra e-posten sammen med det nye passordet. "
-"Tokenet er for engangsbruk og utløper av sikkerhetshensyn."
+"Fullfør passordnullstillingsprosessen ved hjelp av tokenet fra "
+"nullstillings-e-posten. Krever UID og token fra e-posten sammen med det nye "
+"passordet. Tokenet er for engangsbruk og utløper av sikkerhetshensyn."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -158,27 +159,27 @@ msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
-"Hent den autentiserte brukerens profilinformasjon inkludert brukernavn, e-"
-"post, fornavn og etternavn. Passordfelter er ekskludert."
+"Hent den autentiserte brukerens profilinformasjon inkludert brukernavn, "
+"e-post, fornavn og etternavn. Passordfelter er ekskludert."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
-"Oppdater den autentiserte brukerens profilinformasjon. Tillater modifikasjon "
-"av brukernavn, fornavn og etternavn. E-postfeltet er skrivebeskyttet av "
+"Oppdater den autentiserte brukerens profilinformasjon. Tillater modifikasjon"
+" av brukernavn, fornavn og etternavn. E-postfeltet er skrivebeskyttet av "
 "sikkerhetshensyn."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"Delvis oppdatere den autentiserte brukerens profilinformasjon. Bare oppgitte "
-"felter vil bli oppdatert. E-postfeltet er skrivebeskyttet."
+"Delvis oppdatere den autentiserte brukerens profilinformasjon. Bare oppgitte"
+" felter vil bli oppdatert. E-postfeltet er skrivebeskyttet."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "E-postadressen er ikke tilknyttet noen brukerkonto."
 
@@ -190,81 +191,106 @@ msgstr "Forespurt MFA-metode eksisterer ikke."
 msgid "Email message with MFA code has been sent."
 msgstr "E-postmelding med MFA-kode har blitt sendt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Registreringsalternativer for navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Sikkerhetsnøkkel / Passnøkkel"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA-kode utløper om {} sekunder."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr ""
-"Første trinn i MFA-aktivert autentisering. Validerer legitimasjon og starter "
-"MFA-flyt."
+"Første trinn i MFA-aktivert autentisering. Validerer legitimasjon og starter"
+" MFA-flyt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Returnerer midlertidig token for MFA-bekreftelse eller fullstendige "
-"{} hvis MFA er deaktivert."
+"Returnerer midlertidig token for MFA-bekreftelse eller fullstendige {} hvis "
+"MFA er deaktivert."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
-"Fullfør MFA-autentisering ved hjelp av bekreftelseskode og midlertidig token."
+"Fullfør MFA-autentisering ved hjelp av bekreftelseskode og midlertidig "
+"token."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Støtter både TOTP-koder og backup-koder for bekreftelse."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Bytt til en annen MFA-metode under autentiseringsflyt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Krever gyldig midlertidig token fra første trinns autentisering."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Nytt midlertidig token utløper om {} sekunder."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Send MFA-bekreftelseskode på nytt ved hjelp av eksisterende midlertidig "
 "token."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "Gjelder bare for metoder som krever kodesending (f.eks. e-post)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Hent en innloggingsutfordring for den ventende MFA-metoden ved hjelp av et "
+"eksisterende midlertidig token."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Gjelder bare for utfordring-svar-metoder (f.eks. passnøkler). Andre metoder "
+"returnerer et tomt objekt."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "List alle tilgjengelige MFA-metoder med deres oppsett og aktiveringsstatus. "
 "Viser hvilke metoder som er konfigurert, aktive og satt som primære."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"Initialiser et nytt MFA-metodeoppsett. Oppretter metoden med backup-koder og "
-"returnerer oppsettinstruksjoner (f.eks. QR-kode for autentiseringsapper). "
+"Initialiser et nytt MFA-metodeoppsett. Oppretter metoden med backup-koder og"
+" returnerer oppsettinstruksjoner (f.eks. QR-kode for autentiseringsapper). "
 "Metoden må bekreftes før aktivering."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -274,16 +300,16 @@ msgstr ""
 "Setter automatisk som primær metode hvis ingen annen primær metode "
 "eksisterer. Påkrevd før metoden kan brukes til autentisering."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
-"Deaktiver en aktiv MFA-metode. Krever bekreftelseskode fra metoden selv. Kan "
-"ikke deaktivere primære metoder - sett en annen metode som primær først."
+"Deaktiver en aktiv MFA-metode. Krever bekreftelseskode fra metoden selv. Kan"
+" ikke deaktivere primære metoder - sett en annen metode som primær først."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -291,15 +317,15 @@ msgstr ""
 "Sett en aktiv MFA-metode som den primære autentiseringsmetoden. Primær "
 "metode brukes som standard under innloggingsflyt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Bare én metode kan være primær om gangen."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Krever bekreftelseskode fra gjeldende primære metode."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -307,79 +333,79 @@ msgstr ""
 "Send bekreftelseskode for metoder som støtter kodesending. Nyttig for "
 "testing av metodekonfigurasjon eller manuelle kodeforespørsler."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Permanent slett en MFA-metode."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Denne handlingen kan ikke angres."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Kan ikke slette aktive metoder."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Kan ikke slette primære metoder."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Krever bekreftelseskode for aktive metoder."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "bruker"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Bruker som eier denne MFA-metoden"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "navn"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA-metodenavn (f.eks. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "hemmelighet"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP hemmelig nøkkel for å generere bekreftelseskoder"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "er primær"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Om dette er brukerens primære MFA-metode"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "er aktiv"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Om denne metoden er aktiv og kan brukes"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "backup-koder"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON-felt som lagrer reservekoder for kontogjenoppretting"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA-metode"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA-metoder"
 
@@ -389,7 +415,8 @@ msgstr "Ugyldig kode"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Ugyldig token"
 
@@ -401,10 +428,9 @@ msgstr "Vennligst velg en ny metode"
 msgid "This method is already exists"
 msgstr "Denne metoden eksisterer allerede"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Ugyldig OTP-kode"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Ugyldig bekreftelseskode"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -413,6 +439,10 @@ msgstr "MFA-metode aktivert"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Du kan bare deaktivere ikke-primære MFA-metoder."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Ugyldig OTP-kode"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -446,19 +476,78 @@ msgstr "MFA-metode slettet"
 msgid "MFA code sent"
 msgstr "MFA-kode sendt"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "E-post magisk lenke"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "En innloggingslenke er sendt."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Passnøkkel / Sikkerhetsnøkkel"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Start passordfri autentisering via {}. Dette er det første trinnet i den "
+"passordfrie innloggingsprosessen."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Fullfør passordfri autentisering via {}. Bekreft legitimasjonen/tokenet fra "
+"initialiseringstrinnet."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Ugyldig eller utløpt token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Brukerkontoen er deaktivert."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Valgfri e-post for ikke-oppdagbar legitimasjonsflyt. Utelat for passnøkkel "
+"(oppdagbar) flyt."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn-autentisering mislyktes."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Vil overstyre cookie."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Ingen gyldig oppdateringstoken funnet."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "E-post er ikke bekreftet."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Kontoen er låst på grunn av for mange mislykkede innloggingsforsøk. "
+"Vennligst prøv igjen senere."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Kan ikke logge inn med oppgitte legitimasjon."
 
@@ -471,11 +560,11 @@ msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
 "Ditt gamle passord ble skrevet inn feil. Vennligst skriv det inn igjen."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "En bruker er allerede registrert med denne e-postadressen."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "De to passordeftene stemte ikke overens."
 
@@ -487,56 +576,54 @@ msgstr "Sosial konto e-post må stemme overens med din nåværende konto e-post.
 msgid "Connected"
 msgstr "Tilkoblet"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Klarte ikke å fullføre OAuth-flyt"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Bruker er allerede registrert med denne e-postadressen."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Klarte ikke å veksle kode for tilgangstoken"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Autentiser med {} ved hjelp av OAuth2/OpenID Connect "
-"autorisasjonskode for å få tilgangstokens."
+"Autentiser med {} ved hjelp av OAuth2/OpenID Connect autorisasjonskode for å"
+" få tilgangstokens."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Koble en {}-konto til den gjeldende brukerens konto. Dette "
-"tillater brukeren å logge inn ved hjelp av deres eksisterende {}-"
-"konto i fremtiden."
+"Koble en {}-konto til den gjeldende brukerens konto. Dette tillater brukeren"
+" å logge inn ved hjelp av deres eksisterende {}-konto i fremtiden."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Krever autentisering og en gyldig OAuth2/OpenID Connect autorisasjonskode "
 "fra {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
 "Ved suksess blir {}-kontoen koblet og kan brukes til fremtidige "
 "innlogginger."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -544,7 +631,7 @@ msgstr ""
 "List alle sosiale kontoer som er koblet til den gjeldende brukeren. Viser "
 "kontodetaljer inkludert leverandør, UID og koblingsdatoer."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -558,19 +645,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class er ikke definert"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Oppdateringstoken var ikke inkludert i cookie-data."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Oppdateringstoken var ikke inkludert i forespørselsdata."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "En feil har oppstått."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Logget ut med suksess."
 
@@ -578,25 +665,271 @@ msgstr "Logget ut med suksess."
 msgid "Password reset e-mail has been sent."
 msgstr "E-post for passordnullstilling har blitt sendt."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Passord har blitt nullstilt med det nye passordet."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Nytt passord har blitt lagret."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Bekreftelse e-post sendt."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Registrert med suksess."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Den forespurte WebAuthn-legitimasjonen finnes ikke."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn-bekreftelse mislyktes."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Bruker som eier denne WebAuthn-legitimasjonen"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "legitimasjons-ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Unik legitimasjonsidentifikator fra autentisereren"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "offentlig nøkkel"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE offentlige nøkkelbytes fra registrering"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "signaturteller"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Signaturteller for deteksjon av avspillingsangrep"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transporter"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Støttede transportmetoder (f.eks. usb, nfc, ble, intern)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "oppdagbar"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Om dette er en oppdagbar (passnøkkel) legitimasjon"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Autentiserer-attesteringsGUID som identifiserer enhetstypen"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Brukertildelt brukervennlig navn for denne legitimasjonen"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "opprettet"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Når denne legitimasjonen ble registrert"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "sist brukt"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Når denne legitimasjonen sist ble brukt til autentisering"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn-legitimasjon"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn-legitimasjoner"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Valgfritt brukervennlig navn for denne legitimasjonen"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Brukervennlig navn for denne legitimasjonen"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-kodet legitimasjons-ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Legitimasjonstype"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Transporthint for å nå autentisereren"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE-algoritmeidentifikator (f.eks. -7 for ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Menneskelig lesbart RP-navn"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP-ID (domene)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-kodet brukerhåndtak"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Brukerkontonavn"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Brukervisningsnavn"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Krav til residentnøkkel"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Om residentnøkkel er påkrevd (utdatert, bruk residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Krav til brukerbekreftelse"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Autentiserertilknytning"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Tilbyder-identitet"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Brukerkontoopplysninger"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-kodet utfordring"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Støttede parametere for offentlig nøkkel-legitimasjon"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Seremoni-tidsavbrudd i millisekunder"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Legitimasjoner som skal ekskluderes (allerede registrert)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Kriterier for autentiserervalg"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Preferanse for attesteringsoverføring"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Tilbyder-ID (domene)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Tillatte legitimasjoner for denne autentiseringen"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Ugjennomsiktig sesjonstoken for bekreftelsestrinnet"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Registreringsutfordring utløpt eller ikke funnet."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Autentiseringsutfordring utløpt eller ikke funnet."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Legitimasjon ikke funnet."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Legitimasjon omdøpt."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Vis alle passnøkler og sikkerhetsnøkler registrert for den autentiserte "
+"brukeren."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Registrer en ny passnøkkel eller sikkerhetsnøkkel. Send inn legitimasjonen "
+"fra nettleseren etter å ha kalt register_options-endepunktet."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Hent registreringsalternativer for å legge til en ny passnøkkel eller "
+"sikkerhetsnøkkel. Returnerer en utfordring for nettleseren for å opprette "
+"legitimasjonen."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Gi nytt navn til en passnøkkel eller sikkerhetsnøkkel."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Slett en passnøkkel eller sikkerhetsnøkkel. Denne handlingen kan ikke "
+"angres."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Lithuanian\n"
@@ -15,9 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
-"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
-"1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #: auth_kit/api_descriptions.py:29
 msgid ""
@@ -31,7 +29,8 @@ msgstr ""
 msgid ""
 "Returns user details along with a DRF authentication token for API access."
 msgstr ""
-"Grąžina vartotojo duomenis kartu su DRF autentifikacijos žetonu API prieigai."
+"Grąžina vartotojo duomenis kartu su DRF autentifikacijos žetonu API "
+"prieigai."
 
 #: auth_kit/api_descriptions.py:36
 msgid "Returns user details along with custom authentication tokens."
@@ -100,8 +99,8 @@ msgid ""
 "Refresh tokens can be provided in request data or extracted automatically "
 "from HTTP cookies."
 msgstr ""
-"Atnaujinimo žetonai gali būti pateikti užklausos duomenyse arba automatiškai "
-"ištraukti iš HTTP slapukų."
+"Atnaujinimo žetonai gali būti pateikti užklausos duomenyse arba automatiškai"
+" ištraukti iš HTTP slapukų."
 
 #: auth_kit/api_descriptions.py:110 auth_kit/api_descriptions.py:120
 msgid "Returns new access tokens with updated expiration times."
@@ -124,13 +123,13 @@ msgstr "Registruoti naują vartotojo paskyrą."
 msgid ""
 "Users must verify their email address before the account is fully activated."
 msgstr ""
-"Vartotojai turi patvirtinti savo el. pašto adresą prieš visiškai aktyvuojant "
-"paskyrą."
+"Vartotojai turi patvirtinti savo el. pašto adresą prieš visiškai aktyvuojant"
+" paskyrą."
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Išsiųsti slaptažodžio atstatymo instrukcijas į pateiktą el. pašto adresą. "
@@ -187,13 +186,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Dalinai atnaujinti autentifikuoto vartotojo profilio informaciją. Tik "
 "pateikti laukai bus atnaujinti. El. pašto laukas yra tik skaitomas."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "El. pašto adresas nėra priskirtas jokiai vartotojo paskyrai."
 
@@ -205,12 +204,20 @@ msgstr "Prašomas MFA metodas neegzistuoja."
 msgid "Email message with MFA code has been sent."
 msgstr "El. pašto pranešimas su MFA kodu buvo išsiųstas."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create() registracijos parinktys"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Saugos raktas / Prieigos raktas"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA kodas nebegalioja po {} sekundžių."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -218,59 +225,77 @@ msgstr ""
 "Pirmas MFA-įgalintos autentifikacijos žingsnis. Patikrina kredencialus ir "
 "inicijuoja MFA srautą."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Grąžina laikinąjį žetoną MFA patvirtinimui arba užbaigtą {}, "
-"jei MFA yra išjungtas."
+"Grąžina laikinąjį žetoną MFA patvirtinimui arba užbaigtą {}, jei MFA yra "
+"išjungtas."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
-"Užbaigti MFA autentifikaciją naudojant patvirtinimo kodą ir laikinąjį žetoną."
+"Užbaigti MFA autentifikaciją naudojant patvirtinimo kodą ir laikinąjį "
+"žetoną."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Palaiko ir TOTP kodus, ir atsargos kodus patvirtinimui."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Pereiti prie kito MFA metodo autentifikacijos srauto metu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr ""
 "Reikia galiojančio laikinojo žetono iš pirmo žingsnio autentifikacijos."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Naujas laikinasis žetonas nebegalioja po {} sekundžių."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Iš naujo išsiųsti MFA patvirtinimo kodą naudojant esamą laikinąjį žetoną."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
-msgstr "Taikoma tik metodams, kuriems reikia kodo siuntimo (pvz., el. paštas)."
+msgstr ""
+"Taikoma tik metodams, kuriems reikia kodo siuntimo (pvz., el. paštas)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Gaukite prisijungimo iššūkį laukiančiam MFA metodui naudodami esamą laikiną "
+"prieigos raktą."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Taikoma tik iššūkio-atsako metodams (pvz., prieigos raktams). Kiti metodai "
+"grąžina tuščią objektą."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Išvardinti visus prieinamus MFA metodus su jų nustatymo ir aktyvavimo "
 "būsena. Rodo, kurie metodai yra sukonfigūruoti, aktyvūs ir nustatyti kaip "
 "pirminiai."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -280,7 +305,7 @@ msgstr ""
 "grąžina nustatymo instrukcijas (pvz., QR kodą autentifikatorių programoms). "
 "Metodas turi būti patvirtintas prieš aktyvavimą."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -290,7 +315,7 @@ msgstr ""
 "kodą. Automatiškai nustato kaip pirminį metodą, jei nėra kito pirminio "
 "metodo. Būtina prieš naudojant metodą autentifikacijai."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -300,7 +325,7 @@ msgstr ""
 "Negalima išjungti pirminių metodų - pirmiau nustatykite kitą metodą kaip "
 "pirminį."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -308,15 +333,15 @@ msgstr ""
 "Nustatyti aktyvų MFA metodą kaip pirminį autentifikacijos metodą. Pirminis "
 "metodas naudojamas pagal numatytuosius nustatymus prisijungimo srauto metu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Vienu metu tik vienas metodas gali būti pirminis."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Reikia patvirtinimo kodo iš dabartinio pirminio metodo."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -324,79 +349,79 @@ msgstr ""
 "Siųsti patvirtinimo kodą metodams, kurie palaiko kodo siuntimą. Naudinga "
 "metodo konfigūracijos testavimui arba rankinėms kodo užklausoms."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Visam laikui ištrinti MFA metodą."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Šis veiksmas negali būti atšauktas."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Negalima ištrinti aktyvių metodų."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Negalima ištrinti pirminių metodų."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Reikia patvirtinimo kodo aktyviems metodams."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "vartotojas"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Vartotojas, kuris valdo šį MFA metodą"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "vardas"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA metodo pavadinimas (pvz., 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "slaptas"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP slaptas raktas patvirtinimo kodų generavimui"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "yra pirminis"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Ar tai vartotojo pirminis MFA metodas"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "yra aktyvus"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Ar šis metodas yra aktyvus ir gali būti naudojamas"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "atsargos kodai"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON laukas, saugantis atsargos kodus paskyros atkūrimui"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA metodas"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA metodai"
 
@@ -406,7 +431,8 @@ msgstr "Neteisingas kodas"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Neteisingas žetonas"
 
@@ -418,10 +444,9 @@ msgstr "Pasirinkite naują metodą"
 msgid "This method is already exists"
 msgstr "Šis metodas jau egzistuoja"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Neteisingas OTP kodas"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Neteisingas patvirtinimo kodas"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -430,6 +455,10 @@ msgstr "Aktyvuotas MFA metodas"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Galite išjungti tik ne pirminį MFA metodą."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Neteisingas OTP kodas"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -463,19 +492,78 @@ msgstr "Ištrintas MFA metodas"
 msgid "MFA code sent"
 msgstr "MFA kodas išsiųstas"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "El. pašto magiškoji nuoroda"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Prisijungimo nuoroda išsiųsta."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Prieigos raktas / Saugos raktas"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Pradėkite autentifikavimą be slaptažodžio per {}. Tai pirmas žingsnis "
+"prisijungimo be slaptažodžio eigoje."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Užbaikite autentifikavimą be slaptažodžio per {}. Patvirtinkite kredencialą "
+"/ prieigos raktą iš inicijavimo žingsnio."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Neteisingas arba pasibaigęs prieigos raktas."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Naudotojo paskyra yra išjungta."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Neprivalomas el. paštas neaptinkamo kredencialo eigai. Praleiskite prieigos "
+"rakto (aptinkamo) eigoje."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn autentifikavimas nepavyko."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Perrašys slapuką."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Nerasta galiojančio atnaujinimo žetono."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "El. paštas nepatvirtintas."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Paskyra užblokuota dėl per daug nesėkmingų prisijungimo bandymų. Bandykite "
+"dar kartą vėliau."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Nepavyko prisijungti su pateiktais kredencialais."
 
@@ -488,11 +576,11 @@ msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
 "Jūsų senas slaptažodis buvo įvestas neteisingai. Įveskite jį dar kartą."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Vartotojas jau registruotas su šiuo el. pašto adresu."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Du slaptažodžio laukai nesutapo."
 
@@ -506,55 +594,54 @@ msgstr ""
 msgid "Connected"
 msgstr "Prisijungta"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Nepavyko užbaigti OAuth srauto"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Vartotojas jau registruotas su šiuo el. pašto adresu."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Nepavyko pakeisti kodo į prieigos žetoną"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Autentifikuotis su {} naudojant OAuth2/OpenID Connect "
-"autorizacijos kodą, kad gautumėte prieigos žetonus."
+"Autentifikuotis su {} naudojant OAuth2/OpenID Connect autorizacijos kodą, "
+"kad gautumėte prieigos žetonus."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Prijungti {} paskyrą prie dabartinio vartotojo paskyros. Tai "
-"leidžia vartotojui prisijungti naudojant esamą {} paskyrą ateityje."
+"Prijungti {} paskyrą prie dabartinio vartotojo paskyros. Tai leidžia "
+"vartotojui prisijungti naudojant esamą {} paskyrą ateityje."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Reikia autentifikacijos ir galiojančio OAuth2/OpenID Connect autorizacijos "
 "kodo iš {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
 "Sėkmės atveju {} paskyra susieta ir gali būti naudojama ateities "
 "prisijungimams."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -562,7 +649,7 @@ msgstr ""
 "Išvardinti visas socialines paskyras, prijungtas prie dabartinio vartotojo. "
 "Rodo paskyros detales, įskaitant teikėją, UID ir prisijungimo datas."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -576,19 +663,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class nėra apibrėžtas"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Atnaujinimo žetonas nebuvo įtrauktas į slapuko duomenis."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Atnaujinimo žetonas nebuvo įtrauktas į užklausos duomenis."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Įvyko klaida."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Sėkmingai atsijungta."
 
@@ -596,25 +683,269 @@ msgstr "Sėkmingai atsijungta."
 msgid "Password reset e-mail has been sent."
 msgstr "Slaptažodžio atstatymo el. laiškas buvo išsiųstas."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Slaptažodis atstatytas su nauju slaptažodžiu."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Naujas slaptažodis išsaugotas."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Patvirtinimo el. laiškas išsiųstas."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Sėkmingai registruota."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "gerai"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Prašomas WebAuthn kredencialas neegzistuoja."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn patikrinimas nepavyko."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Naudotojas, kuriam priklauso šis WebAuthn kredencialas"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "kredencialo ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Unikalus kredencialo identifikatorius iš autentifikatoriaus"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "viešasis raktas"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE viešojo rakto baitai iš registracijos"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "parašo skaičius"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Parašo skaitiklis pakartotinių atakų aptikimui"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transportavimo būdai"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Palaikomi transportavimo būdai (pvz., usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "aptinkamas"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Ar tai aptinkamas (prieigos rakto) kredencialas"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Autentifikatoriaus atestacijos GUID, identifikuojantis įrenginio tipą"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Naudotojo priskirtas draugiškas šio kredencialo pavadinimas"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "sukurta"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Kada šis kredencialas buvo užregistruotas"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "paskutinį kartą naudota"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Kada šis kredencialas paskutinį kartą buvo naudotas autentifikavimui"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn kredencialas"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn kredencialai"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Neprivalomas naudotojui patogus šio kredencialo pavadinimas"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Naudotojui patogus šio kredencialo pavadinimas"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL koduotas kredencialo ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Kredencialo tipas"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Transportavimo patarimai autentifikatoriui pasiekti"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE algoritmo identifikatorius (pvz., -7 ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Žmogui skaitomas RP pavadinimas"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (domenas)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL koduotas naudotojo identifikatorius"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Naudotojo paskyros pavadinimas"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Naudotojo rodomas vardas"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Rezidentinio rakto reikalavimas"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Ar reikalingas rezidentinis raktas (pasenę, naudokite residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Naudotojo patikrinimo reikalavimas"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Autentifikatoriaus prijungimo būdas"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Pasikliaujančiosios šalies tapatybė"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Naudotojo paskyros informacija"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL koduotas iššūkis"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Palaikomi viešojo rakto kredencialo parametrai"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Ceremonijos skirtasis laikas milisekundėmis"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Neįtrauktini kredencialai (jau užregistruoti)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Autentifikatoriaus atrankos kriterijai"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Atestacijos perdavimo nuostata"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Pasikliaujančiosios šalies ID (domenas)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Leistini kredencialai šiam autentifikavimui"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Nepermatomas seanso raktas patikrinimo žingsniui"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Registracijos iššūkis pasibaigė arba nerastas."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Autentifikavimo iššūkis pasibaigė arba nerastas."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Kredencialas nerastas."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Kredencialas pervadintas."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Pateikti visus prieigos raktus ir saugos raktus, užregistruotus "
+"autentifikuotam naudotojui."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Užregistruokite naują prieigos raktą arba saugos raktą. Pateikite "
+"kredencialą iš naršyklės po register_options galutinio taško iškvietimo."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Gaukite registracijos parinktis naujo prieigos rakto arba saugos rakto "
+"pridėjimui. Grąžina iššūkį naršyklei kredencialui sukurti."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Pervadinkite prieigos raktą arba saugos raktą."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Ištrinkite prieigos raktą arba saugos raktą. Šio veiksmo negalima atšaukti."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

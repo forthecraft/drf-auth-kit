@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Slovak\n"
@@ -15,8 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
-">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #: auth_kit/api_descriptions.py:29
 msgid ""
@@ -57,7 +56,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:61
 msgid "Blacklists JWT refresh tokens to prevent further use."
-msgstr "Zakáže JWT obnovovacie tokeny, aby sa zabránilo ich ďalšiemu použitiu."
+msgstr ""
+"Zakáže JWT obnovovacie tokeny, aby sa zabránilo ich ďalšiemu použitiu."
 
 #: auth_kit/api_descriptions.py:63
 msgid "Deletes the DRF authentication token from the database."
@@ -127,12 +127,12 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"Pošle pokyny na resetovanie hesla na poskytnutú e-mailovú adresu. Ak je e-"
-"mail registrovaný, pošle sa bezpečný odkaz na resetovanie. Odkaz z "
+"Pošle pokyny na resetovanie hesla na poskytnutú e-mailovú adresu. Ak je "
+"e-mail registrovaný, pošle sa bezpečný odkaz na resetovanie. Odkaz z "
 "bezpečnostných dôvodov vyprší po obmedzenom čase."
 
 #: auth_kit/api_descriptions.py:149
@@ -154,16 +154,16 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"Potvrdí e-mailovú adresu pomocou overovacieho kľúča zaslaného e-mailom. Toto "
-"aktivuje používateľský účet a umožní prístup na prihlásenie."
+"Potvrdí e-mailovú adresu pomocou overovacieho kľúča zaslaného e-mailom. Toto"
+" aktivuje používateľský účet a umožní prístup na prihlásenie."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"Pošle novú správu na overenie e-mailu na neoverené e-mailové adresy. Funguje "
-"len pre e-mailové adresy, ktoré sú registrované, ale ešte neoverené."
+"Pošle novú správu na overenie e-mailu na neoverené e-mailové adresy. Funguje"
+" len pre e-mailové adresy, ktoré sú registrované, ale ešte neoverené."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
@@ -184,13 +184,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Čiastočne aktualizuje informácie o profile autentifikovaného používateľa. "
 "Aktualizujú sa len poskytnuté polia. Pole e-mailu je len na čítanie."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "E-mailová adresa nie je priradená k žiadnemu používateľskému účtu."
 
@@ -202,12 +202,20 @@ msgstr "Požadovaná MFA metóda neexistuje."
 msgid "Email message with MFA code has been sent."
 msgstr "E-mailová správa s MFA kódom bola odoslaná."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Možnosti registrácie pre navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Bezpečnostný kľúč / Prístupový kľúč"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA kód vyprší za {} sekúnd."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -215,56 +223,72 @@ msgstr ""
 "Prvý krok autentifikácie s povolenou MFA. Overuje poverenia a iniciuje MFA "
 "tok."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Vráti dočasný token na MFA overenie alebo kompletné {} ak je "
-"MFA zakázaná."
+"Vráti dočasný token na MFA overenie alebo kompletné {} ak je MFA zakázaná."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Dokončí MFA autentifikáciu pomocou overovacieho kódu a dočasného tokenu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Podporuje TOTP kódy aj záložné kódy na overenie."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Prepne na inú MFA metódu počas autentifikačného toku."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Vyžaduje platný dočasný token z prvého kroku autentifikácie."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Nový dočasný token vyprší za {} sekúnd."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "Znovu pošle MFA overovací kód pomocou existujúceho dočasného tokenu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "Platí len pre metódy, ktoré vyžadujú odoslanie kódu (napr. e-mail)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Získať výzvu na prihlásenie pre čakajúcu metódu MFA pomocou existujúceho "
+"dočasného tokenu."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Platí iba pre metódy výzva-odpoveď (napr. prístupové kľúče). Ostatné metódy "
+"vrátia prázdny objekt."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Zoznam všetkých dostupných MFA metód s ich stavom nastavenia a aktivácie. "
-"Zobrazuje, ktoré metódy sú nakonfigurované, aktívne a nastavené ako primárne."
+"Zobrazuje, ktoré metódy sú nakonfigurované, aktívne a nastavené ako "
+"primárne."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -274,7 +298,7 @@ msgstr ""
 "a vráti pokyny na nastavenie (napr. QR kód pre autentifikačné aplikácie). "
 "Metóda musí byť potvrdená pred aktiváciou."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -284,16 +308,17 @@ msgstr ""
 "Automaticky sa nastaví ako primárna metóda, ak neexistuje žiadna iná "
 "primárna metóda. Vyžaduje sa pred použitím metódy na autentifikáciu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
 "Deaktivuje aktívnu MFA metódu. Vyžaduje overovací kód z metódy samotnej. "
-"Nemôže deaktivovať primárne metódy - najprv nastavte inú metódu ako primárnu."
+"Nemôže deaktivovať primárne metódy - najprv nastavte inú metódu ako "
+"primárnu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -301,15 +326,15 @@ msgstr ""
 "Nastaví aktívnu MFA metódu ako primárnu autentifikačnú metódu. Primárna "
 "metóda sa používa predvolene počas prihlasovacieho toku."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Len jedna metóda môže byť primárna naraz."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Vyžaduje overovací kód z aktuálnej primárnej metódy."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -317,79 +342,79 @@ msgstr ""
 "Pošle overovací kód pre metódy, ktoré podporujú odosielanie kódov. Užitočné "
 "na testovanie konfigurácie metódy alebo manuálne požiadavky na kód."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Trvalo odstráni MFA metódu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Túto akciu nie je možné vrátiť späť."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Nemožno odstrániť aktívne metódy."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Nemožno odstrániť primárne metódy."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Vyžaduje overovací kód pre aktívne metódy."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "používateľ"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Používateľ, ktorý vlastní túto MFA metódu"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "názov"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Názov MFA metódy (napr. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "tajomstvo"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP tajný kľúč na generovanie overovacích kódov"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "je primárny"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Či je toto používateľova primárna MFA metóda"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "je aktívny"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Či je táto metóda aktívna a môže sa používať"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "záložné kódy"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON pole uchovávajúce záložné kódy na obnovenie účtu"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA Metóda"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA Metódy"
 
@@ -399,7 +424,8 @@ msgstr "Neplatný kód"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Neplatný token"
 
@@ -411,10 +437,9 @@ msgstr "Prosím, vyberte novú metódu"
 msgid "This method is already exists"
 msgstr "Táto metóda už existuje"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Neplatný OTP kód"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Neplatný overovací kód"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -423,6 +448,10 @@ msgstr "Aktivovaná MFA metóda"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Môžete deaktivovať len neprimárnu MFA metódu."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Neplatný OTP kód"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -456,19 +485,78 @@ msgstr "Odstránená MFA metóda"
 msgid "MFA code sent"
 msgstr "MFA kód odoslaný"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Magický odkaz emailom"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Bol odoslaný prihlasovací odkaz."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Prístupový kľúč / Bezpečnostný kľúč"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Spustiť bezheslové overovanie prostredníctvom {}. Toto je prvý krok procesu "
+"prihlásenia bez hesla."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Dokončiť bezheslové overovanie prostredníctvom {}. Overte poverenie/token z "
+"kroku spustenia."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Neplatný alebo expirovaný token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Používateľský účet je deaktivovaný."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Voliteľný email pre tok neobjaviteľných poverení. Vynechajte pre tok "
+"prístupového kľúča (objaviteľného)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Overovanie WebAuthn zlyhalo."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Prepíše súbor cookie."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Nenašiel sa žiadny platný obnovovací token."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "E-mail nie je overený."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Účet je zablokovaný z dôvodu príliš veľkého počtu neúspešných pokusov o "
+"prihlásenie. Skúste to znova neskôr."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Nie je možné sa prihlásiť s poskytnutými povereniami."
 
@@ -480,11 +568,11 @@ msgstr "Neplatná hodnota"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Vaše staré heslo bolo zadané nesprávne. Prosím, zadajte ho znovu."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Používateľ s touto e-mailovou adresou je už registrovaný."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Dve polia hesla sa nezhodujú."
 
@@ -497,56 +585,53 @@ msgstr ""
 msgid "Connected"
 msgstr "Pripojené"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Nepodarilo sa dokončiť OAuth tok"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Používateľ s touto e-mailovou adresou je už registrovaný."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Nepodarilo sa vymeniť kód za prístupový token"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Autentifikujte sa pomocou {} pomocou autorizačného kódu OAuth2/"
-"OpenID Connect na získanie prístupových tokenov."
+"Autentifikujte sa pomocou {} pomocou autorizačného kódu OAuth2/OpenID "
+"Connect na získanie prístupových tokenov."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Pripojí {} účet k účtu aktuálneho používateľa. Toto umožní "
-"používateľovi prihlásiť sa pomocou existujúceho {} účtu v "
-"budúcnosti."
+"Pripojí {} účet k účtu aktuálneho používateľa. Toto umožní používateľovi "
+"prihlásiť sa pomocou existujúceho {} účtu v budúcnosti."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Vyžaduje autentifikáciu a platný autorizačný kód OAuth2/OpenID Connect od "
 "{}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Pri úspechu je {} účet prepojený a môže sa použiť pre budúce "
-"prihlásenia."
+"Pri úspechu je {} účet prepojený a môže sa použiť pre budúce prihlásenia."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -554,33 +639,33 @@ msgstr ""
 "Zoznam všetkých sociálnych účtov pripojených k aktuálnemu používateľovi. "
 "Zobrazuje detaily účtu vrátane poskytovateľa, UID a dátumov pripojenia."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"Odpojí sociálny účet od aktuálneho používateľa. Odstráni spojenie sociálneho "
-"účtu a zabraňuje budúcim prihlásením cez tohto poskytovateľa. Vyžaduje "
+"Odpojí sociálny účet od aktuálneho používateľa. Odstráni spojenie sociálneho"
+" účtu a zabraňuje budúcim prihlásením cez tohto poskytovateľa. Vyžaduje "
 "autentifikáciu a účet musí patriť aktuálnemu používateľovi."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class nie je definovaný"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Obnovovací token nebol zahrnutý v údajoch súboru cookie."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Obnovovací token nebol zahrnutý v údajoch požiadavky."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Vyskytla sa chyba."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Úspešne odhlásený."
 
@@ -588,25 +673,270 @@ msgstr "Úspešne odhlásený."
 msgid "Password reset e-mail has been sent."
 msgstr "E-mail na resetovanie hesla bol odoslaný."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Heslo bolo resetované novým heslom."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Nové heslo bolo uložené."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Overovací e-mail odoslaný."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Úspešne registrovaný."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Požadované poverenie WebAuthn neexistuje."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Overenie WebAuthn zlyhalo."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Používateľ, ktorý vlastní toto poverenie WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ID poverenia"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Jedinečný identifikátor poverenia od autentifikátora"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "verejný kľúč"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Bajty verejného kľúča COSE z registrácie"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "počet podpisov"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Počítadlo podpisov na detekciu útokov prehrávok"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transporty"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Podporované metódy transportu (napr. usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "objaviteľné"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Či je toto objaviteľné poverenie (prístupový kľúč)"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID atestácie autentifikátora identifikujúci typ zariadenia"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Priateľský názov priradený používateľom pre toto poverenie"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "vytvorené dňa"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Kedy bolo toto poverenie zaregistrované"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "naposledy použité dňa"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Kedy bolo toto poverenie naposledy použité na overovanie"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "Poverenie WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Poverenia WebAuthn"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Voliteľný priateľský názov pre toto poverenie"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Priateľský názov pre toto poverenie"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "ID poverenia kódované v Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Typ poverenia"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Tipy pre transport na dosiahnutie autentifikátora"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Identifikátor algoritmu COSE (napr. -7 pre ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Čitateľný názov RP"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "ID RP (doména)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Popis používateľa kódovaný v Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Názov používateľského účtu"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Zobrazovaný názov používateľa"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Požiadavka na rezidentný kľúč"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Či je rezidentný kľúč povinný (zastarané, použite residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Požiadavka na overenie používateľa"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Pripojenie autentifikátora"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Identita spoliehajúcej sa strany"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Informácie o používateľskom účte"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Výzva kódovaná v Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Podporované parametre poverenia s verejným kľúčom"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Časový limit obradu v milisekundách"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Poverenia na vylúčenie (už zaregistrované)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Kritériá výberu autentifikátora"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Preferencia prenosu atestácie"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ID spoliehajúcej sa strany (doména)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Povolené poverenia pre toto overovanie"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Nepriehľadný token relácie pre krok overenia"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Výzva na registráciu vypršala alebo nebola nájdená."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Výzva na overovanie vypršala alebo nebola nájdená."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Poverenie nebolo nájdené."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Poverenie bolo premenované."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Zobraziť všetky prístupové kľúče a bezpečnostné kľúče zaregistrované pre "
+"overeného používateľa."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Zaregistrovať nový prístupový kľúč alebo bezpečnostný kľúč. Odošlite "
+"poverenie z prehliadača po zavolaní koncového bodu register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Získať možnosti registrácie pre pridanie nového prístupového kľúča alebo "
+"bezpečnostného kľúča. Vráti výzvu pre prehliadač na vytvorenie poverenia."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Premenovať prístupový kľúč alebo bezpečnostný kľúč."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Odstrániť prístupový kľúč alebo bezpečnostný kľúč. Túto akciu nie je možné "
+"vrátiť späť."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

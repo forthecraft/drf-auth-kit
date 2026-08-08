@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Marathi\n"
@@ -75,7 +75,9 @@ msgstr "युजर लॉगआउट करा आणि ऑथेंटि�
 #: auth_kit/api_descriptions.py:93
 msgid ""
 "Requires authentication to ensure only valid sessions can be logged out."
-msgstr "फक्त वैध सेशन्स लॉगआउट करता येतील हे सुनिश्चित करण्यासाठी ऑथेंटिकेशन आवश्यक आहे."
+msgstr ""
+"फक्त वैध सेशन्स लॉगआउट करता येतील हे सुनिश्चित करण्यासाठी ऑथेंटिकेशन आवश्यक "
+"आहे."
 
 #: auth_kit/api_descriptions.py:104
 msgid "Generate new JWT access tokens using refresh tokens."
@@ -86,8 +88,8 @@ msgid ""
 "Refresh tokens can be provided in request data or extracted automatically "
 "from HTTP cookies."
 msgstr ""
-"रिफ्रेश टोकन्स रिक्वेस्ट डेटामध्ये प्रदान केले जाऊ शकतात किंवा HTTP कुकीजमधून आपोआप काढले "
-"जाऊ शकतात."
+"रिफ्रेश टोकन्स रिक्वेस्ट डेटामध्ये प्रदान केले जाऊ शकतात किंवा HTTP "
+"कुकीजमधून आपोआप काढले जाऊ शकतात."
 
 #: auth_kit/api_descriptions.py:110 auth_kit/api_descriptions.py:120
 msgid "Returns new access tokens with updated expiration times."
@@ -95,7 +97,8 @@ msgstr "अपडेटेड एक्सपायरी वेळेसह न
 
 #: auth_kit/api_descriptions.py:112
 msgid "New tokens are automatically set in HTTP cookies for secure storage."
-msgstr "सुरक्षित स्टोरेजसाठी नवीन टोकन्स HTTP कुकीजमध्ये आपोआप सेट केले जातात."
+msgstr ""
+"सुरक्षित स्टोरेजसाठी नवीन टोकन्स HTTP कुकीजमध्ये आपोआप सेट केले जातात."
 
 #: auth_kit/api_descriptions.py:119
 msgid "Refresh tokens must be provided in the request data."
@@ -108,16 +111,19 @@ msgstr "नवीन युजर खाते नोंदणी करा."
 #: auth_kit/api_descriptions.py:134
 msgid ""
 "Users must verify their email address before the account is fully activated."
-msgstr "खाते पूर्णपणे सक्रिय होण्यापूर्वी युजरने त्यांचा ईमेल पत्ता पुष्टी करणे आवश्यक आहे."
+msgstr ""
+"खाते पूर्णपणे सक्रिय होण्यापूर्वी युजरने त्यांचा ईमेल पत्ता पुष्टी करणे "
+"आवश्यक आहे."
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"प्रदान केलेल्या ईमेल पत्त्यावर पासवर्ड रीसेट सूचना पाठवा. ईमेल नोंदणीकृत असल्यास, एक "
-"सुरक्षित रीसेट लिंक पाठवली जाईल. सुरक्षिततेसाठी लिंक मर्यादित वेळेनंतर कालबाह्य होईल."
+"प्रदान केलेल्या ईमेल पत्त्यावर पासवर्ड रीसेट सूचना पाठवा. ईमेल नोंदणीकृत "
+"असल्यास, एक सुरक्षित रीसेट लिंक पाठवली जाईल. सुरक्षिततेसाठी लिंक मर्यादित "
+"वेळेनंतर कालबाह्य होईल."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -125,8 +131,9 @@ msgid ""
 "Requires the UID and token from the email along with the new password. The "
 "token is single-use and expires for security."
 msgstr ""
-"रीसेट ईमेलमधील टोकन वापरून पासवर्ड रीसेट प्रक्रिया पूर्ण करा. नवीन पासवर्डसह ईमेलमधील "
-"UID आणि टोकन आवश्यक आहे. टोकन एकच वापरासाठी आहे आणि सुरक्षिततेसाठी कालबाह्य होते."
+"रीसेट ईमेलमधील टोकन वापरून पासवर्ड रीसेट प्रक्रिया पूर्ण करा. नवीन पासवर्डसह"
+" ईमेलमधील UID आणि टोकन आवश्यक आहे. टोकन एकच वापरासाठी आहे आणि सुरक्षिततेसाठी"
+" कालबाह्य होते."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -137,42 +144,42 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"ईमेलद्वारे पाठवलेल्या वेरिफिकेशन कीचा वापर करून ईमेल पत्ता पुष्टी करा. हे युजर खाते सक्रिय "
-"करते आणि लॉगिन एक्सेसची अनुमती देते."
+"ईमेलद्वारे पाठवलेल्या वेरिफिकेशन कीचा वापर करून ईमेल पत्ता पुष्टी करा. हे "
+"युजर खाते सक्रिय करते आणि लॉगिन एक्सेसची अनुमती देते."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"अपुष्ट ईमेल पत्त्यांवर नवीन ईमेल वेरिफिकेशन संदेश पाठवा. फक्त नोंदणीकृत पण अद्याप पुष्टी न "
-"झालेल्या ईमेल पत्त्यांसाठी काम करते."
+"अपुष्ट ईमेल पत्त्यांवर नवीन ईमेल वेरिफिकेशन संदेश पाठवा. फक्त नोंदणीकृत पण "
+"अद्याप पुष्टी न झालेल्या ईमेल पत्त्यांसाठी काम करते."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
-"युजरनेम, ईमेल, नाव आणि आडनावासह ऑथेंटिकेटेड युजरची प्रोफाइल माहिती मिळवा. पासवर्ड "
-"फील्ड्स वगळले आहेत."
+"युजरनेम, ईमेल, नाव आणि आडनावासह ऑथेंटिकेटेड युजरची प्रोफाइल माहिती मिळवा. "
+"पासवर्ड फील्ड्स वगळले आहेत."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
-"ऑथेंटिकेटेड युजरची प्रोफाइल माहिती अपडेट करा. युजरनेम, नाव आणि आडनाव बदलण्याची अनुमती "
-"देते. सुरक्षिततेसाठी ईमेल फील्ड फक्त वाचण्यासाठी आहे."
+"ऑथेंटिकेटेड युजरची प्रोफाइल माहिती अपडेट करा. युजरनेम, नाव आणि आडनाव "
+"बदलण्याची अनुमती देते. सुरक्षिततेसाठी ईमेल फील्ड फक्त वाचण्यासाठी आहे."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"ऑथेंटिकेटेड युजरची प्रोफाइल माहिती अंशतः अपडेट करा. फक्त प्रदान केलेली फील्ड्स अपडेट होतील. "
-"ईमेल फील्ड फक्त वाचण्यासाठी आहे."
+"ऑथेंटिकेटेड युजरची प्रोफाइल माहिती अंशतः अपडेट करा. फक्त प्रदान केलेली "
+"फील्ड्स अपडेट होतील. ईमेल फील्ड फक्त वाचण्यासाठी आहे."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "ईमेल पत्ता कोणत्याही युजर खात्याला नियुक्त केलेला नाही."
 
@@ -184,189 +191,217 @@ msgstr "विनंती केलेली MFA पद्धत अस्त�
 msgid "Email message with MFA code has been sent."
 msgstr "MFA कोडसह ईमेल संदेश पाठवला गेला आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create() साठी नोंदणी पर्याय"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "सुरक्षा की / पासकी"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA कोड {} सेकंदांत कालबाह्य होतो."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
-msgstr "MFA-सक्षम ऑथेंटिकेशनची पहिली पायरी. क्रेडेंशियल्स वेलिडेट करते आणि MFA फ्लो सुरू करते."
+msgstr ""
+"MFA-सक्षम ऑथेंटिकेशनची पहिली पायरी. क्रेडेंशियल्स वेलिडेट करते आणि MFA फ्लो "
+"सुरू करते."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
 "MFA वेरिफिकेशनसाठी इफेमरल टोकन परत करते किंवा MFA अक्षम असल्यास पूर्ण {}."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "वेरिफिकेशन कोड आणि इफेमरल टोकन वापरून MFA ऑथेंटिकेशन पूर्ण करा."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "वेरिफिकेशनसाठी TOTP कोड आणि बॅकअप कोड दोन्हीला समर्थन देते."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "ऑथेंटिकेशन फ्लो दरम्यान वेगळ्या MFA पद्धतीवर स्विच करा."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "पहिल्या पायरीच्या ऑथेंटिकेशनमधील वैध इफेमरल टोकन आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "नवीन इफेमरल टोकन {} सेकंदांत कालबाह्य होतो."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "विद्यमान इफेमरल टोकन वापरून MFA वेरिफिकेशन कोड पुन्हा पाठवा."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "फक्त कोड पाठवण्याची आवश्यकता असलेल्या पद्धतींसाठी लागू (उदा. ईमेल)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
 msgstr ""
-"त्यांच्या सेटअप आणि सक्रियता स्थितीसह सर्व उपलब्ध MFA पद्धतींची यादी करा. कोणत्या पद्धती "
-"कॉन्फिगर केल्या, सक्रिय आणि प्राथमिक म्हणून सेट केल्या आहेत हे दाखवते."
+"विद्यमान क्षणिक टोकन वापरून प्रलंबित MFA पद्धतीसाठी लॉगिन आव्हान मिळवा."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"फक्त आव्हान-प्रतिसाद पद्धतींसाठी लागू (उदा. passkeys). इतर पद्धती रिकामी "
+"वस्तू परत करतात."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
+msgstr ""
+"त्यांच्या सेटअप आणि सक्रियता स्थितीसह सर्व उपलब्ध MFA पद्धतींची यादी करा. "
+"कोणत्या पद्धती कॉन्फिगर केल्या, सक्रिय आणि प्राथमिक म्हणून सेट केल्या आहेत "
+"हे दाखवते."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"नवीन MFA पद्धत सेटअप सुरू करा. बॅकअप कोड्ससह पद्धत तयार करते आणि सेटअप सूचना परत करते "
-"(उदा. ऑथेंटिकेटर अॅप्ससाठी QR कोड). सक्रिय करण्यापूर्वी पद्धत पुष्टी करणे आवश्यक आहे."
+"नवीन MFA पद्धत सेटअप सुरू करा. बॅकअप कोड्ससह पद्धत तयार करते आणि सेटअप सूचना"
+" परत करते (उदा. ऑथेंटिकेटर अॅप्ससाठी QR कोड). सक्रिय करण्यापूर्वी पद्धत "
+"पुष्टी करणे आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"वेरिफिकेशन कोड वापरून नवीन तयार केलेली MFA पद्धत पुष्टी करा आणि सक्रिय करा. इतर "
-"कोणतीही प्राथमिक पद्धत अस्तित्वात नसल्यास आपोआप प्राथमिक पद्धत म्हणून सेट करते. "
-"ऑथेंटिकेशनसाठी पद्धत वापरण्यापूर्वी आवश्यक आहे."
+"वेरिफिकेशन कोड वापरून नवीन तयार केलेली MFA पद्धत पुष्टी करा आणि सक्रिय करा. "
+"इतर कोणतीही प्राथमिक पद्धत अस्तित्वात नसल्यास आपोआप प्राथमिक पद्धत म्हणून "
+"सेट करते. ऑथेंटिकेशनसाठी पद्धत वापरण्यापूर्वी आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
-"सक्रिय MFA पद्धत निष्क्रिय करा. पद्धतीकडून वेरिफिकेशन कोड आवश्यक आहे. प्राथमिक पद्धती "
-"निष्क्रिय करू शकत नाही - प्रथम दुसरी पद्धत प्राथमिक म्हणून सेट करा."
+"सक्रिय MFA पद्धत निष्क्रिय करा. पद्धतीकडून वेरिफिकेशन कोड आवश्यक आहे. "
+"प्राथमिक पद्धती निष्क्रिय करू शकत नाही - प्रथम दुसरी पद्धत प्राथमिक म्हणून "
+"सेट करा."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
 msgstr ""
-"सक्रिय MFA पद्धत प्राथमिक ऑथेंटिकेशन पद्धत म्हणून सेट करा. लॉगिन फ्लो दरम्यान प्राथमिक "
-"पद्धत डीफॉल्ट म्हणून वापरली जाते."
+"सक्रिय MFA पद्धत प्राथमिक ऑथेंटिकेशन पद्धत म्हणून सेट करा. लॉगिन फ्लो "
+"दरम्यान प्राथमिक पद्धत डीफॉल्ट म्हणून वापरली जाते."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "एकाच वेळी फक्त एकच पद्धत प्राथमिक असू शकते."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "वर्तमान प्राथमिक पद्धतीकडून वेरिफिकेशन कोड आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
-"कोड पाठवण्याला समर्थन देणाऱ्या पद्धतींसाठी वेरिफिकेशन कोड पाठवा. पद्धत कॉन्फिगरेशन "
-"चाचणी किंवा मॅन्युअल कोड विनंत्यांसाठी उपयुक्त."
+"कोड पाठवण्याला समर्थन देणाऱ्या पद्धतींसाठी वेरिफिकेशन कोड पाठवा. पद्धत "
+"कॉन्फिगरेशन चाचणी किंवा मॅन्युअल कोड विनंत्यांसाठी उपयुक्त."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "MFA पद्धत कायमची काढून टाका."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "ही क्रिया पूर्ववत करता येणार नाही."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "सक्रिय पद्धती काढून टाकू शकत नाही."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "प्राथमिक पद्धती काढून टाकू शकत नाही."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "सक्रिय पद्धतींसाठी वेरिफिकेशन कोड आवश्यक आहे."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "युजर"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "या MFA पद्धतीचा मालक असलेला युजर"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "नाव"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA पद्धतीचे नाव (उदा. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "गुप्त"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "वेरिफिकेशन कोड जेनरेट करण्यासाठी TOTP गुप्त की"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "प्राथमिक आहे"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "ही युजरची प्राथमिक MFA पद्धत आहे का"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "सक्रिय आहे"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "ही पद्धत सक्रिय आहे आणि वापरली जाऊ शकते का"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "बॅकअप कोड्स"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "अकाउंट रिकव्हरीसाठी बॅकअप कोड्स स्टोअर करणारे JSON फील्ड"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA पद्धत"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA पद्धती"
 
@@ -376,7 +411,8 @@ msgstr "अवैध कोड"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "अवैध टोकन"
 
@@ -388,10 +424,9 @@ msgstr "कृपया नवीन पद्धत निवडा"
 msgid "This method is already exists"
 msgstr "ही पद्धत आधीच अस्तित्वात आहे"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "अवैध OTP कोड"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "अवैध सत्यापन कोड"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -400,6 +435,10 @@ msgstr "MFA पद्धत सक्रिय केली"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "तुम्ही फक्त गैर-प्राथमिक MFA पद्धत निष्क्रिय करू शकता."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "अवैध OTP कोड"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -433,19 +472,78 @@ msgstr "MFA पद्धत काढून टाकली"
 msgid "MFA code sent"
 msgstr "MFA कोड पाठवला"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "ईमेल मॅजिक लिंक"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "लॉगिन लिंक पाठवली गेली आहे."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "पासकी / सुरक्षा की"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"{} द्वारे पासवर्डरहित प्रमाणीकरण सुरू करा. हे पासवर्डरहित लॉगिन प्रक्रियेचे "
+"पहिले पाऊल आहे."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"{} द्वारे पासवर्डरहित प्रमाणीकरण पूर्ण करा. सुरुवातीच्या टप्प्यातील "
+"क्रेडेन्शियल/टोकन सत्यापित करा."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "अवैध किंवा कालबाह्य टोकन."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "वापरकर्ता खाते अक्षम केले आहे."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"अनावरण न करता येणाऱ्या क्रेडेन्शियल प्रवाहासाठी पर्यायी ईमेल. पासकी "
+"(आढळणारा) प्रवाहासाठी वगळा."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn प्रमाणीकरण अयशस्वी झाले."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "कुकी ओव्हरराइड करेल."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "कोणताही वैध रिफ्रेश टोकन सापडला नाही."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "ईमेल पुष्टी केलेला नाही."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"खूप जास्त अयशस्वी लॉगिन प्रयत्नांमुळे खाते लॉक केले गेले. कृपया नंतर पुन्हा "
+"प्रयत्न करा."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "प्रदान केलेल्या क्रेडेंशियल्ससह लॉग इन करू शकत नाही."
 
@@ -457,11 +555,11 @@ msgstr "अवैध मूल्य"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "तुमचा जुना पासवर्ड चुकीचा एंटर केला होता. कृपया तो पुन्हा एंटर करा."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "या ईमेल पत्त्यासह युजर आधीच नोंदणीकृत आहे."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "दोन पासवर्ड फील्ड्स जुळत नाहीत."
 
@@ -473,88 +571,87 @@ msgstr "सामाजिक खाते ईमेल तुमच्या �
 msgid "Connected"
 msgstr "कनेक्ट केले"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "OAuth फ्लो पूर्ण करण्यात अयशस्वी"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "या ईमेल पत्त्यासह युजर आधीच नोंदणीकृत आहे."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "एक्सेस टोकनसाठी कोड एक्सचेंज करण्यात अयशस्वी"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"एक्सेस टोकन्स मिळवण्यासाठी OAuth2/OpenID Connect ऑथोरायजेशन कोड वापरून "
-"{} सह ऑथेंटिकेट करा."
+"एक्सेस टोकन्स मिळवण्यासाठी OAuth2/OpenID Connect ऑथोरायजेशन कोड वापरून {} सह"
+" ऑथेंटिकेट करा."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
 "{} खाते वर्तमान युजरच्या खात्याशी कनेक्ट करा. हे युजरला भविष्यात त्यांचे "
 "विद्यमान {} खाते वापरून लॉगिन करण्याची अनुमती देते."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "{} कडून ऑथेंटिकेशन आणि वैध OAuth2/OpenID Connect ऑथोरायजेशन कोड आवश्यक आहे."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
 "यशस्वी ङाल्यावर, {} खाते लिंक केले जाते आणि भविष्यातील लॉगिनसाठी वापरले जाऊ "
 "शकते."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
 msgstr ""
-"वर्तमान युजरशी कनेक्ट केलेली सर्व सामाजिक खाती यादी करा. प्रावाइडर, UID आणि कनेक्शन "
-"तारखांसह खात्याचे तपशील दाखवते."
+"वर्तमान युजरशी कनेक्ट केलेली सर्व सामाजिक खाती यादी करा. प्रावाइडर, UID आणि "
+"कनेक्शन तारखांसह खात्याचे तपशील दाखवते."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"वर्तमान युजरमधून सामाजिक खाते डिसकनेक्ट करा. सामाजिक खात्याचे कनेक्शन काढून टाकते आणि "
-"त्या प्रावाइडरद्वारे भविष्यातील लॉगिन रोखते. ऑथेंटिकेशन आवश्यक आहे आणि खाते वर्तमान युजरचे "
-"असले पाहिजे."
+"वर्तमान युजरमधून सामाजिक खाते डिसकनेक्ट करा. सामाजिक खात्याचे कनेक्शन काढून "
+"टाकते आणि त्या प्रावाइडरद्वारे भविष्यातील लॉगिन रोखते. ऑथेंटिकेशन आवश्यक आहे"
+" आणि खाते वर्तमान युजरचे असले पाहिजे."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class परिभाषित नाही"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "रिफ्रेश टोकन कुकी डेटामध्ये समाविष्ट नव्हता."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "रिफ्रेश टोकन रिक्वेस्ट डेटामध्ये समाविष्ट नव्हता."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "एक त्रुटी आली आहे."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "यशस्वीरित्या लॉगआउट केले."
 
@@ -562,25 +659,267 @@ msgstr "यशस्वीरित्या लॉगआउट केले."
 msgid "Password reset e-mail has been sent."
 msgstr "पासवर्ड रीसेट ईमेल पाठवला गेला आहे."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "नवीन पासवर्डसह पासवर्ड रीसेट केला गेला आहे."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "नवीन पासवर्ड सेव्ह केला गेला आहे."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "वेरिफिकेशन ईमेल पाठवला."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "यशस्वीरित्या नोंदणी केली."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ठीक"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "विनंती केलेले WebAuthn क्रेडेन्शियल अस्तित्वात नाही."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn सत्यापन अयशस्वी झाले."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "या WebAuthn क्रेडेन्शियलचा मालक असलेला वापरकर्ता"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "क्रेडेन्शियल ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "प्रमाणकर्त्याकडून अद्वितीय क्रेडेन्शियल ओळखकर्ता"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "सार्वजनिक की"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "नोंदणीमधून COSE सार्वजनिक की बाइट्स"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "साइन काउंट"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "रिप्ले हल्ला शोधण्यासाठी सिग्नेचर काउंटर"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "ट्रान्सपोर्ट"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "समर्थित ट्रान्सपोर्ट पद्धती (उदा. usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "आढळणारा"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "हे आढळणारे (पासकी) क्रेडेन्शियल आहे का"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "डिव्हाइस प्रकार ओळखणारा प्रमाणकर्ता प्रमाणीकरण GUID"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "या क्रेडेन्शियलसाठी वापरकर्त्याने नियुक्त केलेले मित्रत्वपूर्ण नाव"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "येथे तयार केले"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "हे क्रेडेन्शियल कधी नोंदवले गेले"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "शेवटी वापरले"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "हे क्रेडेन्शियल प्रमाणीकरणासाठी शेवटी कधी वापरले गेले"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn क्रेडेन्शियल"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn क्रेडेन्शियल्स"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "या क्रेडेन्शियलसाठी पर्यायी वापरकर्ता-अनुकूल नाव"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "या क्रेडेन्शियलसाठी वापरकर्ता-अनुकूल नाव"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-एन्कोड केलेला क्रेडेन्शियल ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "क्रेडेन्शियल प्रकार"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "प्रमाणकर्त्यापर्यंत पोहोचण्यासाठी ट्रान्सपोर्ट संकेत"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE अल्गोरिदम ओळखकर्ता (उदा. ES256 साठी -7)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "मानव-वाचनीय RP नाव"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (डोमेन)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-एन्कोड केलेला वापरकर्ता हँडल"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "वापरकर्ता खात्याचे नाव"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "वापरकर्ता प्रदर्शन नाव"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "रेसिडेंट की आवश्यकता"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "रेसिडेंट की आवश्यक आहे का (कालबाह्य, residentKey वापरा)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "वापरकर्ता सत्यापन आवश्यकता"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "प्रमाणकर्ता संलग्नक"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "अवलंबित पक्षाची ओळख"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "वापरकर्ता खाते माहिती"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-एन्कोड केलेले आव्हान"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "समर्थित सार्वजनिक-की क्रेडेन्शियल पॅरामीटर्स"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "मिलिसेकंदांमध्ये समारंभ कालबाह्यता"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "वगळण्यासाठी क्रेडेन्शियल्स (आधीच नोंदवलेले)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "प्रमाणकर्ता निवड निकष"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "प्रमाणीकरण हस्तांतरण प्राधान्य"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "अवलंबित पक्ष ID (डोमेन)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "या प्रमाणीकरणासाठी परवानगी असलेले क्रेडेन्शियल्स"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "सत्यापन चरणासाठी अपारदर्शक सत्र टोकन"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "नोंदणी आव्हान कालबाह्य झाले किंवा आढळले नाही."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "प्रमाणीकरण आव्हान कालबाह्य झाले किंवा आढळले नाही."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "क्रेडेन्शियल आढळले नाही."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "क्रेडेन्शियल पुनर्नामित केले गेले."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"प्रमाणित वापरकर्त्यासाठी नोंदवलेल्या सर्व पासकी आणि सुरक्षा की ची यादी करा."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"नवीन पासकी किंवा सुरक्षा की नोंदवा. register_options एंडपॉइंट कॉल केल्यानंतर"
+" ब्राउझरमधून क्रेडेन्शियल सबमिट करा."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"नवीन पासकी किंवा सुरक्षा की जोडण्यासाठी नोंदणी पर्याय मिळवा. ब्राउझरला "
+"क्रेडेन्शियल तयार करण्यासाठी आव्हान परत करते."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "पासकी किंवा सुरक्षा की चे नाव बदला."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr "पासकी किंवा सुरक्षा की हटवा. ही क्रिया पूर्ववत करता येत नाही."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

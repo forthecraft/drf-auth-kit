@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 12:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Welsh\n"
@@ -15,8 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != "
-"11) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;\n"
 
 #: auth_kit/api_descriptions.py:29
 msgid ""
@@ -128,13 +127,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"Anfon cyfarwyddiadau ailosod cyfrinair i'r cyfeiriad e-bost a ddarparwyd. Os "
-"yw'r e-bost wedi'i gofrestru, anfonir dolen ailosod ddiogel. Mae'r ddolen yn "
-"dod i ben ar ôl amser cyfyngedig ar gyfer diogelwch."
+"Anfon cyfarwyddiadau ailosod cyfrinair i'r cyfeiriad e-bost a ddarparwyd. Os"
+" yw'r e-bost wedi'i gofrestru, anfonir dolen ailosod ddiogel. Mae'r ddolen "
+"yn dod i ben ar ôl amser cyfyngedig ar gyfer diogelwch."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -155,8 +154,8 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"Cadarnhau cyfeiriad e-bost gan ddefnyddio'r allwedd wirio a anfonwyd trwy e-"
-"bost. Mae hyn yn actifadu'r cyfrif defnyddiwr ac yn caniatáu mynediad "
+"Cadarnhau cyfeiriad e-bost gan ddefnyddio'r allwedd wirio a anfonwyd trwy "
+"e-bost. Mae hyn yn actifadu'r cyfrif defnyddiwr ac yn caniatáu mynediad "
 "mewngofnodi."
 
 #: auth_kit/api_descriptions.py:164
@@ -182,20 +181,20 @@ msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
-"Diweddaru gwybodaeth proffil y defnyddiwr wedi'i ddilysu. Caniatáu newid enw "
-"defnyddiwr, enw cyntaf, a chyfenw. Mae'r maes e-bost yn ddarllen-yn-unig ar "
-"gyfer diogelwch."
+"Diweddaru gwybodaeth proffil y defnyddiwr wedi'i ddilysu. Caniatáu newid enw"
+" defnyddiwr, enw cyntaf, a chyfenw. Mae'r maes e-bost yn ddarllen-yn-unig ar"
+" gyfer diogelwch."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"Diweddaru gwybodaeth proffil y defnyddiwr wedi'i ddilysu yn rhannol. Dim ond "
-"meysydd a ddarperir fydd yn cael eu diweddaru. Mae'r maes e-bost yn ddarllen-"
-"yn-unig."
+"Diweddaru gwybodaeth proffil y defnyddiwr wedi'i ddilysu yn rhannol. Dim ond"
+" meysydd a ddarperir fydd yn cael eu diweddaru. Mae'r maes e-bost yn "
+"ddarllen-yn-unig."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Nid yw'r cyfeiriad e-bost wedi'i neilltuo i unrhyw gyfrif defnyddiwr."
 
@@ -207,89 +206,113 @@ msgstr "Nid yw'r dull MFA a ofynnwyd amdano yn bodoli."
 msgid "Email message with MFA code has been sent."
 msgstr "Mae neges e-bost gyda chod MFA wedi'i hanfon."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Opsiynau cofrestru ar gyfer navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Allwedd Diogelwch / Allwedd Mynediad"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "Mae cod MFA yn dod i ben mewn {} eiliad."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr ""
-"Cam cyntaf dilysiad â MFA wedi'i alluogi. Dilysu cymwysterau a chychwyn llif "
-"MFA."
+"Cam cyntaf dilysiad â MFA wedi'i alluogi. Dilysu cymwysterau a chychwyn llif"
+" MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Dychwelyd tocyn dros dro ar gyfer gwirio MFA neu {} cyflawn os "
-"yw MFA wedi'i analluogi."
+"Dychwelyd tocyn dros dro ar gyfer gwirio MFA neu {} cyflawn os yw MFA wedi'i"
+" analluogi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "Cwblhau dilysiad MFA gan ddefnyddio cod gwirio a thocyn dros dro."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Cefnogi codau TOTP a chodau wrth gefn ar gyfer gwirio."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Newid i ddull MFA gwahanol yn ystod llif dilysiad."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Angen tocyn dros dro dilys o ddilysiad cam cyntaf."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Mae tocyn dros dro newydd yn dod i ben mewn {} eiliad."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "Ail-anfon cod gwirio MFA gan ddefnyddio tocyn dros dro presennol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "Dim ond yn berthnasol i ddulliau sy'n gofyn anfon cod (e.e., e-bost)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Cael her mewngofnodi ar gyfer y dull MFA sy'n aros gan ddefnyddio tocyn dros"
+" dro presennol."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Dim ond ar gyfer dulliau her-ymateb (e.e., allweddi mynediad) y mae hyn yn "
+"berthnasol. Mae dulliau eraill yn dychwelyd gwrthrych gwag."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Rhestr o'r holl ddulliau MFA sydd ar gael gyda'u statws gosod ac actifadu. "
-"Dangos pa ddulliau sydd wedi'u ffurfweddu, yn weithredol, a wedi'u gosod fel "
-"rhai cynradd."
+"Dangos pa ddulliau sydd wedi'u ffurfweddu, yn weithredol, a wedi'u gosod fel"
+" rhai cynradd."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"Cychwyn gosod dull MFA newydd. Creu'r dull gyda chodau wrth gefn a dychwelyd "
-"cyfarwyddiadau gosod (e.e., cod QR ar gyfer apiau dilysydd). Rhaid "
+"Cychwyn gosod dull MFA newydd. Creu'r dull gyda chodau wrth gefn a dychwelyd"
+" cyfarwyddiadau gosod (e.e., cod QR ar gyfer apiau dilysydd). Rhaid "
 "cadarnhau'r dull cyn ei actifadu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
 "Cadarnhau ac actifadu dull MFA newydd a grewyd gan ddefnyddio cod gwirio. "
-"Gosod yn awtomatig fel dull cynradd os nad oes dull cynradd arall yn bodoli. "
-"Angenrheidiol cyn y gellir defnyddio'r dull ar gyfer dilysiad."
+"Gosod yn awtomatig fel dull cynradd os nad oes dull cynradd arall yn bodoli."
+" Angenrheidiol cyn y gellir defnyddio'r dull ar gyfer dilysiad."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -298,7 +321,7 @@ msgstr ""
 "Dadactifadu dull MFA gweithredol. Angen cod gwirio o'r dull ei hun. Methu "
 "dadactifadu dulliau cynradd - gosod dull arall fel un cynradd yn gyntaf."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -306,15 +329,15 @@ msgstr ""
 "Gosod dull MFA gweithredol fel y dull dilysiad cynradd. Defnyddir y dull "
 "cynradd yn ddiofyn yn ystod llif mewngofnodi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Dim ond un dull all fod yn gynradd ar y tro."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Angen cod gwirio o'r dull cynradd cyfredol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -322,79 +345,79 @@ msgstr ""
 "Anfon cod gwirio ar gyfer dulliau sy'n cefnogi anfon cod. Defnyddiol ar "
 "gyfer profi ffurfweddiad dull neu geisiadau cod â llaw."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Dileu dull MFA yn barhaol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Ni ellir dadwneud y weithred hon."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Methu dileu dulliau gweithredol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Methu dileu dulliau cynradd."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Angen cod gwirio ar gyfer dulliau gweithredol."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "defnyddiwr"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Defnyddiwr sy'n berchen ar y dull MFA hwn"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "enw"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Enw dull MFA (e.e., 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "cyfrinach"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Allwedd gyfrinachol TOTP ar gyfer cynhyrchu codau gwirio"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "yn gynradd"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "A yw hwn yn ddull MFA cynradd y defnyddiwr"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "yn weithredol"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "A yw'r dull hwn yn weithredol ac yn gallu cael ei ddefnyddio"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "codau wrth gefn"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Maes JSON sy'n storio codau wrth gefn ar gyfer adfer cyfrif"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "Dull MFA"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "Dulliau MFA"
 
@@ -404,7 +427,8 @@ msgstr "Cod annilys"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Tocyn annilys"
 
@@ -416,10 +440,9 @@ msgstr "Dewiswch ddull newydd"
 msgid "This method is already exists"
 msgstr "Mae'r dull hwn eisoes yn bodoli"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Cod OTP annilys"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Cod dilysu annilys"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -428,6 +451,10 @@ msgstr "Dull MFA wedi'i actifadu"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Gallwch ond dadactifadu dull MFA nad yw'n gynradd."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Cod OTP annilys"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -461,19 +488,78 @@ msgstr "Dull MFA wedi'i ddileu"
 msgid "MFA code sent"
 msgstr "Cod MFA wedi'i anfon"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Dolen Hud E-bost"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Anfonwyd dolen mewngofnodi."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Allwedd Mynediad / Allwedd Diogelwch"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Cychwyn dilysu heb gyfrinair trwy {}. Dyma gam cyntaf llif mewngofnodi heb "
+"gyfrinair."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Cwblhau dilysu heb gyfrinair trwy {}. Dilyswch yr hysbyseb/tocyn o'r cam "
+"cychwyn."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Tocyn annilys neu wedi dod i ben."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Mae cyfrif y defnyddiwr wedi'i analluogi."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"E-bost dewisol ar gyfer llif hysbyseb nad yw'n ddarganfyddadwy. Gadewch "
+"allan ar gyfer llif allwedd mynediad (darganfyddadwy)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Methwyd dilysu WebAuthn."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Bydd yn diystyru cwci."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Dim tocyn adnewyddu dilys wedi'i ganfod."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Nid yw'r e-bost wedi'i wirio."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Mae'r cyfrif wedi'i gloi oherwydd gormod o ymgeisiadau mewngofnodi "
+"aflwyddiannus. Rhowch gynnig arall arni yn ddiweddarach."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Methu mewngofnodi gyda'r cymwysterau a ddarparwyd."
 
@@ -485,11 +571,11 @@ msgstr "Gwerth annilys"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Cafodd eich hen gyfrinair ei nodi'n anghywir. Nodwch ef eto."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Mae defnyddiwr eisoes wedi'i gofrestru gyda'r cyfeiriad e-bost hwn."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Nid oedd y ddau faes cyfrinair yn cydweddu."
 
@@ -502,55 +588,52 @@ msgstr ""
 msgid "Connected"
 msgstr "Wedi cysylltu"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Methu cwblhau llif OAuth"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Mae defnyddiwr eisoes wedi'i gofrestru gyda'r cyfeiriad e-bost hwn."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Methu cyfnewid cod am docyn mynediad"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Dilysu gyda {} gan ddefnyddio cod awdurdodi OAuth2/OpenID Connect "
-"i gael tocynnau mynediad."
+"Dilysu gyda {} gan ddefnyddio cod awdurdodi OAuth2/OpenID Connect i gael "
+"tocynnau mynediad."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Cysylltu cyfrif {} i gyfrif y defnyddiwr cyfredol. Mae hyn yn "
-"caniatáu i'r defnyddiwr fewngofnodi gan ddefnyddio eu cyfrif {} "
-"presennol yn y dyfodol."
+"Cysylltu cyfrif {} i gyfrif y defnyddiwr cyfredol. Mae hyn yn caniatáu i'r "
+"defnyddiwr fewngofnodi gan ddefnyddio eu cyfrif {} presennol yn y dyfodol."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
-msgstr ""
-"Angen dilysu a chod awdurdodi OAuth2/OpenID Connect dilys o {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
+msgstr "Angen dilysu a chod awdurdodi OAuth2/OpenID Connect dilys o {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Ar lwyddiant, mae'r cyfrif {} wedi'i gysylltu a gellir ei "
-"ddefnyddio ar gyfer mewngofnodi yn y dyfodol."
+"Ar lwyddiant, mae'r cyfrif {} wedi'i gysylltu a gellir ei ddefnyddio ar "
+"gyfer mewngofnodi yn y dyfodol."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -559,7 +642,7 @@ msgstr ""
 "cyfredol. Dangos manylion cyfrif gan gynnwys darparwr, UID, a dyddiadau "
 "cysylltu."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -574,19 +657,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "Nid yw adapter_class wedi'i ddiffinio"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Ni chynhwyswyd tocyn adnewyddu yn nata'r cwci."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Ni chynhwyswyd tocyn adnewyddu yn nata'r cais."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Mae gwall wedi digwydd."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Wedi allgofnodi'n llwyddiannus."
 
@@ -594,25 +677,270 @@ msgstr "Wedi allgofnodi'n llwyddiannus."
 msgid "Password reset e-mail has been sent."
 msgstr "Mae e-bost ailosod cyfrinair wedi'i anfon."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Mae'r cyfrinair wedi'i ailosod gyda'r cyfrinair newydd."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Mae'r cyfrinair newydd wedi'i gadw."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "E-bost gwirio wedi'i anfon."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Wedi cofrestru'n llwyddiannus."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "iawn"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Nid yw'r hysbyseb WebAuthn a ofynnwyd amdano yn bodoli."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Methwyd dilysu WebAuthn."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Defnyddiwr sy'n berchen ar yr hysbyseb WebAuthn hon"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ID hysbyseb"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Dynodwr hysbyseb unigryw o'r dilysydd"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "allwedd gyhoeddus"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Bytes allwedd gyhoeddus COSE o gofrestru"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "cyfrif llofnod"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Rhifydd llofnod ar gyfer canfod ymosodiadau ailadrodd"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "trafnidiaeth"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Dulliau trafnidiaeth a gefnogir (e.e., usb, nfc, ble, mewnol)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "darganfyddadwy"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "A yw hon yn hysbyseb ddarganfyddadwy (allwedd mynediad)"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID Tystiolaeth Dilysydd sy'n nodi'r math o ddyfais"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Enw cyfeillgar a neilltuwyd gan y defnyddiwr ar gyfer yr hysbyseb hon"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "crëwyd am"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Pryd y cofrestrwyd yr hysbyseb hon"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "defnyddiwyd diwethaf am"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Pryd y defnyddiwyd yr hysbyseb hon ddiwethaf ar gyfer dilysu"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "Hysbyseb WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Hysbysebion WebAuthn"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Enw cyfeillgar dewisol ar gyfer yr hysbyseb hon"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Enw cyfeillgar ar gyfer yr hysbyseb hon"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "ID hysbyseb wedi'i amgodio â Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Math o hysbyseb"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Awgrymiadau trafnidiaeth ar gyfer cyrraedd y dilysydd"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Dynodwr algorithm COSE (e.e., -7 ar gyfer ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Enw RP darllenadwy gan bobl"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "ID RP (parth)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Handlen defnyddiwr wedi'i amgodio â Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Enw cyfrif defnyddiwr"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Enw arddangos defnyddiwr"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Gofyniad allwedd breswyl"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "A yw allwedd breswyl yn ofynnol (hen, defnyddiwch residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Gofyniad dilysu defnyddiwr"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Atodiad dilysydd"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Hunaniaeth y Parti Dibynnol"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Gwybodaeth cyfrif defnyddiwr"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Her wedi'i hamgodio â Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Paramedrau hysbyseb allwedd gyhoeddus a gefnogir"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Amser-allan seremoni mewn milieiliadau"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Hysbysebion i'w heithrio (eisoes wedi'u cofrestru)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Meini prawf dewis dilysydd"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Dewis trosglwyddo tystiolaeth"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ID Parti Dibynnol (parth)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Hysbysebion a ganiateir ar gyfer y dilysu hwn"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Tocyn sesiwn anhydraidd ar gyfer cam dilysu"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Her gofrestru wedi dod i ben neu heb ei chanfod."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Her ddilysu wedi dod i ben neu heb ei chanfod."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Hysbyseb heb ei chanfod."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Hysbyseb wedi'i hailenwi."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Rhestrwch yr holl allweddi mynediad ac allweddi diogelwch cofrestredig ar "
+"gyfer y defnyddiwr dilysedig."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Cofrestrwch allwedd mynediad neu allwedd diogelwch newydd. Cyflwynwch yr "
+"hysbyseb o'r porwr ar ôl galw pwynt terfyn register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Cael opsiynau cofrestru ar gyfer ychwanegu allwedd mynediad neu allwedd "
+"diogelwch newydd. Dychwelir her i'r porwr greu'r hysbyseb."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Ailenwi allwedd mynediad neu allwedd diogelwch."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Dileu allwedd mynediad neu allwedd diogelwch. Ni ellir dadwneud y weithred "
+"hon."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

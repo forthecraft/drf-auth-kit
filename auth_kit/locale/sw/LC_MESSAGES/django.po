@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Swahili\n"
@@ -130,8 +130,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Inatuma maagizo ya kuweka upya nenosiri kwenye anwani ya barua pepe "
@@ -146,7 +146,8 @@ msgid ""
 msgstr ""
 "Inamalizia mchakato wa kuweka upya nenosiri kwa kutumia alama kutoka kwenye "
 "barua pepe ya kuweka upya. Inahitaji UID na alama kutoka kwenye barua pepe "
-"pamoja na nenosiri jipya. Alama ni ya matumizi moja na inakwisha kwa usalama."
+"pamoja na nenosiri jipya. Alama ni ya matumizi moja na inakwisha kwa "
+"usalama."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -175,9 +176,9 @@ msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
-"Inapata taarifa za profaili ya mtumiaji aliyethibitishwa ikijumuisha jina la "
-"mtumiaji, barua pepe, jina la kwanza, na jina la mwisho. Uwanda wa nenosiri "
-"haujaambatishwa."
+"Inapata taarifa za profaili ya mtumiaji aliyethibitishwa ikijumuisha jina la"
+" mtumiaji, barua pepe, jina la kwanza, na jina la mwisho. Uwanda wa nenosiri"
+" haujaambatishwa."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
@@ -190,13 +191,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Inasasisha kwa sehemu taarifa za profaili ya mtumiaji aliyethibitishwa. Ni "
 "uwanda uliotolewa tu utakao sasishwa. Uwanda wa barua pepe ni wa kusoma tu."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Anwani ya barua pepe haijapangwa kwa akaunti yoyote ya mtumiaji."
 
@@ -208,12 +209,20 @@ msgstr "Njia ya MFA iliyoombwa haipo."
 msgid "Email message with MFA code has been sent."
 msgstr "Ujumbe wa barua pepe wenye msimbo wa MFA umetumwa."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Chaguo za usajili kwa navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Ufunguo wa Usalama / Ufunguo wa Kuingia"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "Msimbo wa MFA unakwisha katika sekunde {}."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -221,86 +230,102 @@ msgstr ""
 "Hatua ya kwanza ya uthibitishaji uliowezeshwa na MFA. Inathibitisha hati za "
 "utambulisho na kuanzisha mtiririko wa MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Inarudisha alama ya muda mfupi kwa uthibitishaji wa MFA au {} "
-"kamili ikiwa MFA imezimwa."
+"Inarudisha alama ya muda mfupi kwa uthibitishaji wa MFA au {} kamili ikiwa "
+"MFA imezimwa."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
-"Inamalizia uthibitishaji wa MFA kwa kutumia msimbo wa uthibitishaji na alama "
-"ya muda mfupi."
+"Inamalizia uthibitishaji wa MFA kwa kutumia msimbo wa uthibitishaji na alama"
+" ya muda mfupi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Inasaidia misimbo ya TOTP na misimbo ya kuhifadhi kwa uthibitishaji."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr ""
 "Inabadilisha kwenda njia nyingine ya MFA wakati wa mtiririko wa "
 "uthibitishaji."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr ""
-"Inahitaji alama halali ya muda mfupi kutoka kwenye uthibitishaji wa hatua ya "
-"kwanza."
+"Inahitaji alama halali ya muda mfupi kutoka kwenye uthibitishaji wa hatua ya"
+" kwanza."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Alama mpya ya muda mfupi inakwisha katika sekunde {}."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Inatuma tena msimbo wa uthibitishaji wa MFA kwa kutumia alama ya muda mfupi "
 "iliyopo."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Inatumika tu kwa njia zinazohitaji utumaji wa msimbo (k.v., barua pepe)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Pata changamoto ya kuingia kwa njia ya MFA inayosubiri kwa kutumia token ya "
+"muda iliyopo."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Inafaa tu kwa njia za changamoto-majibu (mfano, ufunguo wa kuingia). Njia "
+"nyingine zinarudisha kitu tupu."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Inaorodhesha njia zote za MFA zinazopatikana pamoja na hali zao za "
 "mipangilio na uamilishaji. Inaonyesha njia gani zimepangwa, ni amilifu, na "
 "zimewekwa kama za msingi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"Inaanzisha mipangilio ya njia mpya ya MFA. Inaunda njia pamoja na misimbo ya "
-"kuhifadhi na kurudi maagizo ya mipangilio (k.v., msimbo wa QR kwa programu "
+"Inaanzisha mipangilio ya njia mpya ya MFA. Inaunda njia pamoja na misimbo ya"
+" kuhifadhi na kurudi maagizo ya mipangilio (k.v., msimbo wa QR kwa programu "
 "za uthibitishaji). Njia lazima ithibitishwe kabla ya uamilishaji."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"Inathibitisha na kuamilisha njia ya MFA iliyoundwa hivi karibuni kwa kutumia "
-"msimbo wa uthibitishaji. Huweka kiotomatiki kama njia ya msingi ikiwa hakuna "
-"njia nyingine ya msingi. Inahitajika kabla njia haijaweza kutumiwa kwa "
-"uthibitishaji."
+"Inathibitisha na kuamilisha njia ya MFA iliyoundwa hivi karibuni kwa kutumia"
+" msimbo wa uthibitishaji. Huweka kiotomatiki kama njia ya msingi ikiwa "
+"hakuna njia nyingine ya msingi. Inahitajika kabla njia haijaweza kutumiwa "
+"kwa uthibitishaji."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -310,24 +335,24 @@ msgstr ""
 "kwenye njia hiyo hiyo. Haiwezi kuzima njia za msingi - weka njia nyingine "
 "kama ya msingi kwanza."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
 msgstr ""
-"Inaweka njia ya MFA iliyo amilifu kama njia ya msingi ya uthibitishaji. Njia "
-"ya msingi inatumiwa kwa uongozi wakati wa mtiririko wa kuingia."
+"Inaweka njia ya MFA iliyo amilifu kama njia ya msingi ya uthibitishaji. Njia"
+" ya msingi inatumiwa kwa uongozi wakati wa mtiririko wa kuingia."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Njia moja tu inaweza kuwa ya msingi kwa wakati mmoja."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr ""
 "Inahitaji msimbo wa uthibitishaji kutoka kwenye njia ya msingi ya sasa."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -335,79 +360,79 @@ msgstr ""
 "Inatuma msimbo wa uthibitishaji kwa njia zinazosaidia utumaji wa msimbo. Ni "
 "ya manufaa kwa kupima mipangilio ya njia au maombi ya mwongozo ya msimbo."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Inafuta kabisa njia ya MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Kitendo hiki hakiwezi kutendua."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Haiwezi kufuta njia amilifu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Haiwezi kufuta njia za msingi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Inahitaji msimbo wa uthibitishaji kwa njia amilifu."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "mtumiaji"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Mtumiaji anayemiliki njia hii ya MFA"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "jina"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Jina la njia ya MFA (mfano, 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "siri"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Ufunguo wa siri wa TOTP kwa kuzalisha misimbo ya uthibitishaji"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "ni ya msingi"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Iwapo hii ni njia ya msingi ya MFA ya mtumiaji"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "ni amilifu"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Iwapo njia hii ni amilifu na inaweza kutumika"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "misimbo ya kuhifadhi"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Uga wa JSON unahifadhi misimbo ya kuhifadhi kwa kurejesha akaunti"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "Njia ya MFA"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "Njia za MFA"
 
@@ -417,7 +442,8 @@ msgstr "Msimbo si sahihi"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Alama si sahihi"
 
@@ -429,10 +455,9 @@ msgstr "Tafadhali chagua njia mpya"
 msgid "This method is already exists"
 msgstr "Njia hii tayari ipo"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Msimbo wa OTP si sahihi"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Nambari ya uthibitishaji si sahihi"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -441,6 +466,10 @@ msgstr "Njia ya MFA imeamilishwa"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Unaweza kuzima tu njia ya MFA ambayo si ya msingi."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Msimbo wa OTP si sahihi"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -474,19 +503,78 @@ msgstr "Njia ya MFA imefutwa"
 msgid "MFA code sent"
 msgstr "Msimbo wa MFA umetumwa"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Kiungo cha Uchawi cha Barua pepe"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Kiungo cha kuingia kimetumwa."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Ufunguo wa Kuingia / Ufunguo wa Usalama"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Anzisha uthibitishaji bila nenosiri kupitia {}. Hii ni hatua ya kwanza ya "
+"mtiririko wa kuingia bila nenosiri."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Kamilisha uthibitishaji bila nenosiri kupitia {}. Thibitisha hati/token "
+"kutoka hatua ya kuanzisha."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Token si sahihi au imekwisha muda."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Akaunti ya mtumiaji imezimwa."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Barua pepe ya hiari kwa mtiririko wa hati ambazo haziwezi kugunduliwa. Acha "
+"kwa mtiririko wa ufunguo wa kuingia (unaoweza kugunduliwa)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Uthibitishaji wa WebAuthn umeshindwa."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Itasahihisha kidakuzi."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Hakuna alama halali ya ubugarizi imepatikana."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Barua pepe haijathibitishwa."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Akaunti imefungwa kwa sababu ya majaribio mengi ya kuingia yaliyoshindwa. "
+"Tafadhali jaribu tena baadaye."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Haiwezi kuingia kwa hati za utambulisho zilizotolewa."
 
@@ -499,11 +587,11 @@ msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
 "Nenosiri lako la zamani liliingizwa kwa makosa. Tafadhali liingie tena."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Mtumiaji tayari amesajiliwa kwa anwani hii ya barua pepe."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Uwanda mbili wa nenosiri hazikuwa sawa."
 
@@ -517,56 +605,54 @@ msgstr ""
 msgid "Connected"
 msgstr "Imeunganishwa"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Imeshindwa kumalizia mtiririko wa OAuth"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Mtumiaji tayari amesajiliwa kwa anwani hii ya barua pepe."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Imeshindwa kubadilishana msimbo kwa alama ya ufikiaji"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Thibitisha kwa {} kwa kutumia msimbo wa idhini wa OAuth2/OpenID "
-"Connect ili kupata alama za ufikiaji."
+"Thibitisha kwa {} kwa kutumia msimbo wa idhini wa OAuth2/OpenID Connect ili "
+"kupata alama za ufikiaji."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Unganisha akaunti ya {} na akaunti ya mtumiaji wa sasa. Hii "
-"inaruhusu mtumiaji kuingia kwa kutumia akaunti yao ya {} iliyopo "
-"katika siku zijazo."
+"Unganisha akaunti ya {} na akaunti ya mtumiaji wa sasa. Hii inaruhusu "
+"mtumiaji kuingia kwa kutumia akaunti yao ya {} iliyopo katika siku zijazo."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Inahitaji uthibitishaji na msimbo halali wa idhini wa OAuth2/OpenID Connect "
 "kutoka {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Ikiwa imefanikiwa, akaunti ya {} itaunganishwa na inaweza kutumiwa "
-"kwa kuingia katika siku zijazo."
+"Ikiwa imefanikiwa, akaunti ya {} itaunganishwa na inaweza kutumiwa kwa "
+"kuingia katika siku zijazo."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -575,34 +661,34 @@ msgstr ""
 "Inaonyesha maelezo ya akaunti ikijumuisha mtoa huduma, UID, na tarehe za "
 "muunganisho."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
 "Inakatisha muunganisho wa akaunti ya kijamii kutoka kwa mtumiaji wa sasa. "
-"Inaondoa muunganisho wa akaunti ya kijamii na kuzuia kuingia kwa siku zijazo "
-"kupitia mtoa huduma huyo. Inahitaji uthibitishaji na akaunti lazima iwe ya "
+"Inaondoa muunganisho wa akaunti ya kijamii na kuzuia kuingia kwa siku zijazo"
+" kupitia mtoa huduma huyo. Inahitaji uthibitishaji na akaunti lazima iwe ya "
 "mtumiaji wa sasa."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class haijafafanuliwa"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Alama ya ubugarizi haikujumuishwa katika data ya kidakuzi."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Alama ya ubugarizi haikujumuishwa katika data ya ombi."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Kosa limetokea."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Umetoka kwa mafanikio."
 
@@ -610,25 +696,271 @@ msgstr "Umetoka kwa mafanikio."
 msgid "Password reset e-mail has been sent."
 msgstr "Barua pepe ya kuweka upya nenosiri imetumwa."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Nenosiri limewekwa upya kwa nenosiri jipya."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Nenosiri jipya limehifadhiwa."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Barua pepe ya uthibitishaji imetumwa."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Umesajiliwa kwa mafanikio."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "sawa"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Hati ya WebAuthn iliyohitajika haipo."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Uthibitisho wa WebAuthn umeshindwa."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Mtumiaji anayemiliki hati hii ya WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "kitambulisho cha hati"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Kitambulisho cha kipekee cha hati kutoka kwa kithibitishaji"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "ufunguo wa umma"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Baiti za ufunguo wa umma wa COSE kutoka kwa usajili"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "idadi ya saini"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Kihesabu cha saini kwa ugunduzi wa shambulio la kurudia"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "njia za usafirishaji"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Njia za usafirishaji zinazosaidiwa (mfano, usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "inayoweza kugunduliwa"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Ikiwa hii ni hati inayoweza kugunduliwa (ufunguo wa kuingia)"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID ya uthibitisho wa kithibitishaji inayotambua aina ya kifaa"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Jina jema lililotolewa na mtumiaji kwa hati hii"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "iliundwa tarehe"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Wakati hati hii ilisajiliwa"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "ilitumiwa mara ya mwisho tarehe"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Wakati hati hii ilitumiwa mara ya mwisho kwa uthibitishaji"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "Hati ya WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Hati za WebAuthn"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Jina jema la hiari kwa hati hii"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Jina jema kwa hati hii"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Kitambulisho cha hati kilichosimbwa kwa Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Aina ya hati"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Vidokezo vya usafirishaji kwa kufikia kithibitishaji"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Kitambulisho cha algorithm ya COSE (mfano, -7 kwa ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Jina la RP linaloweza kusomwa na binadamu"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "Kitambulisho cha RP (kikoa)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Kishikio cha mtumiaji kilichosimbwa kwa Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Jina la akaunti ya mtumiaji"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Jina la kuonyesha la mtumiaji"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Mahitaji ya ufunguo wa ndani"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr ""
+"Ikiwa ufunguo wa ndani unahitajika (umepitwa na wakati, tumia residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Mahitaji ya uthibitishaji wa mtumiaji"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Kiambatisho cha kithibitishaji"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Utambulisho wa Chama Kinachotegemea"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Maelezo ya akaunti ya mtumiaji"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Changamoto iliyosimbwa kwa Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Vigezo vya hati za ufunguo wa umma vinavyosaidiwa"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Muda wa kuisha kwa sherehe katika milisekunde"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Hati za kutengwa (zilizosajiliwa tayari)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Vigezo vya uteuzi wa kithibitishaji"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Upendeleo wa usafirishaji wa uthibitisho"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Kitambulisho cha Chama Kinachotegemea (kikoa)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Hati zinazoruhusiwa kwa uthibitishaji huu"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Token isiyowazi ya kikao kwa hatua ya uthibitisho"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Changamoto ya usajili imeisha muda au haikupatikana."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Changamoto ya uthibitishaji imeisha muda au haikupatikana."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Hati haikupatikana."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Hati imebadilishwa jina."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Orodhesha ufunguo wote wa kuingia na ufunguo wa usalama uliosajiliwa kwa "
+"mtumiaji aliyethibitishwa."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Sajili ufunguo mpya wa kuingia au ufunguo wa usalama. Tuma hati kutoka kwa "
+"kivinjari baada ya kuita mwisho wa register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Pata chaguo za usajili kwa kuongeza ufunguo mpya wa kuingia au ufunguo wa "
+"usalama. Inarudisha changamoto kwa kivinjari kuunda hati."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Badilisha jina la ufunguo wa kuingia au ufunguo wa usalama."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Futa ufunguo wa kuingia au ufunguo wa usalama. Kitendo hiki hakiwezi "
+"kutenduliwa."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

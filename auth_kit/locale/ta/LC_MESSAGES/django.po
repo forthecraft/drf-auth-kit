@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 12:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Tamil\n"
@@ -22,8 +22,8 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"காலாவதி நேரங்களுடன் JWT அணுகல் மற்றும் புதுப்பிப்பு டோக்கன்களுடன் பயனர் விவரங்களை "
-"வழங்குகிறது."
+"காலாவதி நேரங்களுடன் JWT அணுகல் மற்றும் புதுப்பிப்பு டோக்கன்களுடன் பயனர் "
+"விவரங்களை வழங்குகிறது."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -48,12 +48,15 @@ msgstr "தனிப்பயன் அங்கீகார டோக்கன�
 
 #: auth_kit/api_descriptions.py:53
 msgid "Authentication cookies are set automatically for secure token storage."
-msgstr "பாதுகாப்பான டோக்கன் சேமிப்பிற்காக அங்கீகார குக்கீகள் தானாகவே அமைக்கப்படுகின்றன."
+msgstr ""
+"பாதுகாப்பான டோக்கன் சேமிப்பிற்காக அங்கீகார குக்கீகள் தானாகவே "
+"அமைக்கப்படுகின்றன."
 
 #: auth_kit/api_descriptions.py:61
 msgid "Blacklists JWT refresh tokens to prevent further use."
 msgstr ""
-"மேலும் பயன்பாட்டைத் தடுக்க JWT புதுப்பிப்பு டோக்கன்களை கருப்புப் பட்டியலில் சேர்க்கிறது."
+"மேலும் பயன்பாட்டைத் தடுக்க JWT புதுப்பிப்பு டோக்கன்களை கருப்புப் பட்டியலில் "
+"சேர்க்கிறது."
 
 #: auth_kit/api_descriptions.py:63
 msgid "Deletes the DRF authentication token from the database."
@@ -69,7 +72,9 @@ msgstr "உலாவியில் இருந்து அங்கீகா�
 
 #: auth_kit/api_descriptions.py:77
 msgid "Authenticate with username/email and password to obtain access tokens."
-msgstr "அணுகல் டோக்கன்களைப் பெற பயனர்பெயர்/மின்னஞ்சல் மற்றும் கடவுச்சொல்லுடன் அங்கீகரிக்கவும்."
+msgstr ""
+"அணுகல் டோக்கன்களைப் பெற பயனர்பெயர்/மின்னஞ்சல் மற்றும் கடவுச்சொல்லுடன் "
+"அங்கீகரிக்கவும்."
 
 #: auth_kit/api_descriptions.py:89
 msgid "Logout user and invalidate authentication tokens."
@@ -78,28 +83,33 @@ msgstr "பயனரை வெளியேற்றி அங்கீகார 
 #: auth_kit/api_descriptions.py:93
 msgid ""
 "Requires authentication to ensure only valid sessions can be logged out."
-msgstr "செல்லுபடியான அமர்வுகள் மட்டுமே வெளியேற்றப்படுவதை உறுதிசெய்ய அங்கீகாரம் தேவை."
+msgstr ""
+"செல்லுபடியான அமர்வுகள் மட்டுமே வெளியேற்றப்படுவதை உறுதிசெய்ய அங்கீகாரம் தேவை."
 
 #: auth_kit/api_descriptions.py:104
 msgid "Generate new JWT access tokens using refresh tokens."
-msgstr "புதுப்பிப்பு டோக்கன்களைப் பயன்படுத்தி புதிய JWT அணுகல் டோக்கன்களை உருவாக்குகிறது."
+msgstr ""
+"புதுப்பிப்பு டோக்கன்களைப் பயன்படுத்தி புதிய JWT அணுகல் டோக்கன்களை "
+"உருவாக்குகிறது."
 
 #: auth_kit/api_descriptions.py:108
 msgid ""
 "Refresh tokens can be provided in request data or extracted automatically "
 "from HTTP cookies."
 msgstr ""
-"புதுப்பிப்பு டோக்கன்கள் கோரிக்கை தரவில் வழங்கப்படலாம் அல்லது HTTP குக்கீகளில் இருந்து "
-"தானாகவே பிரித்தெடுக்கப்படலாம்."
+"புதுப்பிப்பு டோக்கன்கள் கோரிக்கை தரவில் வழங்கப்படலாம் அல்லது HTTP "
+"குக்கீகளில் இருந்து தானாகவே பிரித்தெடுக்கப்படலாம்."
 
 #: auth_kit/api_descriptions.py:110 auth_kit/api_descriptions.py:120
 msgid "Returns new access tokens with updated expiration times."
-msgstr "புதுப்பிக்கப்பட்ட காலாவதி நேரங்களுடன் புதிய அணுகல் டோக்கன்களை வழங்குகிறது."
+msgstr ""
+"புதுப்பிக்கப்பட்ட காலாவதி நேரங்களுடன் புதிய அணுகல் டோக்கன்களை வழங்குகிறது."
 
 #: auth_kit/api_descriptions.py:112
 msgid "New tokens are automatically set in HTTP cookies for secure storage."
 msgstr ""
-"பாதுகாப்பான சேமிப்பிற்காக புதிய டோக்கன்கள் HTTP குக்கீகளில் தானாகவே அமைக்கப்படுகின்றன."
+"பாதுகாப்பான சேமிப்பிற்காக புதிய டோக்கன்கள் HTTP குக்கீகளில் தானாகவே "
+"அமைக்கப்படுகின்றன."
 
 #: auth_kit/api_descriptions.py:119
 msgid "Refresh tokens must be provided in the request data."
@@ -113,18 +123,19 @@ msgstr "புதிய பயனர் கணக்கை பதிவு ச�
 msgid ""
 "Users must verify their email address before the account is fully activated."
 msgstr ""
-"கணக்கு முழுவதுமாக செயல்படுத்தப்படுவதற்கு முன்பு பயனர்கள் தங்கள் மின்னஞ்சல் முகவரியை "
-"சரிபார்க்க வேண்டும்."
+"கணக்கு முழுவதுமாக செயல்படுத்தப்படுவதற்கு முன்பு பயனர்கள் தங்கள் மின்னஞ்சல் "
+"முகவரியை சரிபார்க்க வேண்டும்."
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"வழங்கப்பட்ட மின்னஞ்சல் முகவரிக்கு கடவுச்சொல் மீட்டமைப்பு வழிகாட்டுதல்களை அனுப்பவும். மின்னஞ்சல் "
-"பதிவு செய்யப்பட்டிருந்தால், ஒரு பாதுகாப்பான மீட்டமைப்பு இணைப்பு அனுப்பப்படும். இணைப்பு "
-"பாதுகாப்பின் காரணமாக ஒரு குறித்த நேரத்தில் காலாவதி முடிவடையும்."
+"வழங்கப்பட்ட மின்னஞ்சல் முகவரிக்கு கடவுச்சொல் மீட்டமைப்பு வழிகாட்டுதல்களை "
+"அனுப்பவும். மின்னஞ்சல் பதிவு செய்யப்பட்டிருந்தால், ஒரு பாதுகாப்பான "
+"மீட்டமைப்பு இணைப்பு அனுப்பப்படும். இணைப்பு பாதுகாப்பின் காரணமாக ஒரு குறித்த "
+"நேரத்தில் காலாவதி முடிவடையும்."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -132,9 +143,10 @@ msgid ""
 "Requires the UID and token from the email along with the new password. The "
 "token is single-use and expires for security."
 msgstr ""
-"மீட்டமைப்பு மின்னஞ்சலிலிருந்து டோக்கனைப் பயன்படுத்தி கடவுச்சொல் மீட்டமைப்பு செயல்முறையை "
-"முடிக்கவும். மின்னஞ்சலிலிருந்து UID மற்றும் டோக்கன் மற்றும் புதிய கடவுச்சொல்லுடன் தேவை. "
-"டோக்கன் ஒரு முறை மட்டும் பயன்படுத்தி பாதுகாப்பின் காரணமாக காலாவதி முடிவடையும்."
+"மீட்டமைப்பு மின்னஞ்சலிலிருந்து டோக்கனைப் பயன்படுத்தி கடவுச்சொல் மீட்டமைப்பு "
+"செயல்முறையை முடிக்கவும். மின்னஞ்சலிலிருந்து UID மற்றும் டோக்கன் மற்றும் "
+"புதிய கடவுச்சொல்லுடன் தேவை. டோக்கன் ஒரு முறை மட்டும் பயன்படுத்தி "
+"பாதுகாப்பின் காரணமாக காலாவதி முடிவடையும்."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -145,43 +157,47 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"மின்னஞ்சல் வழியாக அனுப்பப்பட்ட சரிபார்ப்பு சாவியைப் பயன்படுத்தி மின்னஞ்சல் முகவரியை உறுதி "
-"செய்யவும். இது பயனர் கணக்கை செயல்படுத்தி உள்நுழைவு அணுகலை அனுமதிக்கிறது."
+"மின்னஞ்சல் வழியாக அனுப்பப்பட்ட சரிபார்ப்பு சாவியைப் பயன்படுத்தி மின்னஞ்சல் "
+"முகவரியை உறுதி செய்யவும். இது பயனர் கணக்கை செயல்படுத்தி உள்நுழைவு அணுகலை "
+"அனுமதிக்கிறது."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"சரிபார்க்கப்படாத மின்னஞ்சல் முகவரிகளுக்கு புதிய மின்னஞ்சல் சரிபார்ப்பு செய்தியை அனுப்பவும். "
-"பதிவு செய்யப்பட்டு ஆனால் இன்னும் சரிபார்க்கப்படாத மின்னஞ்சல் முகவரிகளுக்கு மட்டுமே வேலை "
-"செய்யும்."
+"சரிபார்க்கப்படாத மின்னஞ்சல் முகவரிகளுக்கு புதிய மின்னஞ்சல் சரிபார்ப்பு "
+"செய்தியை அனுப்பவும். பதிவு செய்யப்பட்டு ஆனால் இன்னும் சரிபார்க்கப்படாத "
+"மின்னஞ்சல் முகவரிகளுக்கு மட்டுமே வேலை செய்யும்."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
-"பயனர்பெயர், மின்னஞ்சல், முதல் பெயர் மற்றும் கடைசி பெயர் உள்பட அங்கீகரிக்கப்பட்ட பயனரின் "
-"சுருக்க தகவலை பெறவும். கடவுச்சொல் களங்கள் விலக்கப்பட்டுள்ளன."
+"பயனர்பெயர், மின்னஞ்சல், முதல் பெயர் மற்றும் கடைசி பெயர் உள்பட "
+"அங்கீகரிக்கப்பட்ட பயனரின் சுருக்க தகவலை பெறவும். கடவுச்சொல் களங்கள் "
+"விலக்கப்பட்டுள்ளன."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
-"அங்கீகரிக்கப்பட்ட பயனரின் சுருக்க தகவலை புதுப்பிக்கவும். பயனர்பெயர், முதல் பெயர் மற்றும் "
-"கடைசி பெயரை மாற்ற அனுமதிக்கிறது. பாதுகாப்பின் காரணமாக மின்னஞ்சல் களம் வாசிக்க மட்டும்."
+"அங்கீகரிக்கப்பட்ட பயனரின் சுருக்க தகவலை புதுப்பிக்கவும். பயனர்பெயர், முதல் "
+"பெயர் மற்றும் கடைசி பெயரை மாற்ற அனுமதிக்கிறது. பாதுகாப்பின் காரணமாக "
+"மின்னஞ்சல் களம் வாசிக்க மட்டும்."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"அங்கீகரிக்கப்பட்ட பயனரின் சுருக்க தகவலை பகுதியாக புதுப்பிக்கவும். வழங்கப்பட்ட களங்கள் "
-"மட்டுமே புதுப்பிக்கப்படும். மின்னஞ்சல் களம் வாசிக்க மட்டும்."
+"அங்கீகரிக்கப்பட்ட பயனரின் சுருக்க தகவலை பகுதியாக புதுப்பிக்கவும். "
+"வழங்கப்பட்ட களங்கள் மட்டுமே புதுப்பிக்கப்படும். மின்னஞ்சல் களம் வாசிக்க "
+"மட்டும்."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "மின்னஞ்சல் முகவரி எந்த பயனர் கணக்குக்கும் ஒதுக்கப்படவில்லை."
 
@@ -193,195 +209,225 @@ msgstr "கோரப்பட்ட MFA முறை இல்லை."
 msgid "Email message with MFA code has been sent."
 msgstr "MFA கோடுடன் மின்னஞ்சல் செய்தி அனுப்பப்பட்டது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create() க்கான பதிவு விருப்பங்கள்"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "பாதுகாப்பு திறவுகோல் / பாஸ்கீ"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA கோட் {} விநாடிகளில் காலாவதி முடிவடையும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr ""
-"MFA-செயல்படுத்தப்பட்ட அங்கீகாரத்தின் முதல் கட்டம். அங்கீகார விவரங்களை சரிபார்த்து MFA "
-"ஒழுங்கைத் துவங்குகிறது."
+"MFA-செயல்படுத்தப்பட்ட அங்கீகாரத்தின் முதல் கட்டம். அங்கீகார விவரங்களை "
+"சரிபார்த்து MFA ஒழுங்கைத் துவங்குகிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"MFA சரிபார்ப்பிற்கான தற்காலிக டோக்கனை வழங்குகிறது அல்லது MFA செயலற்ற நிலையில் "
-"{} முடிவு வழங்குகிறது."
+"MFA சரிபார்ப்பிற்கான தற்காலிக டோக்கனை வழங்குகிறது அல்லது MFA செயலற்ற "
+"நிலையில் {} முடிவு வழங்குகிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
-msgstr "சரிபார்ப்பு கோட் மற்றும் தற்காலிக டோக்கனைப் பயன்படுத்தி MFA அங்கீகாரத்தை முடிக்கவும்."
+msgstr ""
+"சரிபார்ப்பு கோட் மற்றும் தற்காலிக டோக்கனைப் பயன்படுத்தி MFA அங்கீகாரத்தை "
+"முடிக்கவும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
-msgstr "சரிபார்ப்பிற்காக TOTP கோட்கள் மற்றும் காப்பு கோட்கள் இரண்டையும் ஆதரிக்கிறது."
+msgstr ""
+"சரிபார்ப்பிற்காக TOTP கோட்கள் மற்றும் காப்பு கோட்கள் இரண்டையும் ஆதரிக்கிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "அங்கீகார ஒழுங்கின் போது வேறு MFA முறைக்கு மாறவும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "முதல் கட்ட அங்கீகாரத்திலிருந்து செல்லுபடியான தற்காலிக டோக்கன் தேவை."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "புதிய தற்காலிக டோக்கன் {} விநாடிகளில் காலாவதி முடிவடையும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
-msgstr "இருக்கும் தற்காலிக டோக்கனைப் பயன்படுத்தி MFA சரிபார்ப்பு கோடை மீண்டும் அனுப்பவும்."
+msgstr ""
+"இருக்கும் தற்காலிக டோக்கனைப் பயன்படுத்தி MFA சரிபார்ப்பு கோடை மீண்டும் "
+"அனுப்பவும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
-msgstr "கோட் அனுப்பல் தேவையான முறைகளுக்கு (உதா: மின்னஞ்சல்) மட்டுமே பயன்படும்."
+msgstr ""
+"கோட் அனுப்பல் தேவையான முறைகளுக்கு (உதா: மின்னஞ்சல்) மட்டுமே பயன்படும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"ஏற்கனவே உள்ள தற்காலிக டோக்கனைப் பயன்படுத்தி நிலுவையில் உள்ள MFA முறைக்கான "
+"உள்நுழைவு சவாலைப் பெறுக."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"சவால்-பதில் முறைகளுக்கு மட்டுமே பொருந்தும் (எ.கா., பாஸ்கீகள்). மற்ற முறைகள் "
+"வெற்று பொருளை திரும்பப் பெறும்."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "அவற்றின் அமைப்பு மற்றும் செயல்பாடு நிலையுடன் கிடைக்கும் எல்லா MFA முறைகளைப் "
-"பட்டியலிடவும். எந்த முறைகள் கான்பிக் செய்யப்பட்டு, செயல்பாட்டில் உள்ளன மற்றும் முக்கியமாக "
-"அமைக்கப்பட்டுள்ளன என்பதைக் காட்டுகிறது."
+"பட்டியலிடவும். எந்த முறைகள் கான்பிக் செய்யப்பட்டு, செயல்பாட்டில் உள்ளன "
+"மற்றும் முக்கியமாக அமைக்கப்பட்டுள்ளன என்பதைக் காட்டுகிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"புதிய MFA முறை அமைப்பைத் துவங்குகிறது. காப்பு கோட்களுடன் முறையை உருவாக்கி அமைப்பு "
-"வழிகாட்டுதல்களை (உதா: அங்கீகரிப்பு அப்லிகேஷன்களுக்கு QR கோட்) வழங்குகிறது. செயல்படுத்தும் "
-"முன் முறை உறுதி செய்யப்பட வேண்டும்."
+"புதிய MFA முறை அமைப்பைத் துவங்குகிறது. காப்பு கோட்களுடன் முறையை உருவாக்கி "
+"அமைப்பு வழிகாட்டுதல்களை (உதா: அங்கீகரிப்பு அப்லிகேஷன்களுக்கு QR கோட்) "
+"வழங்குகிறது. செயல்படுத்தும் முன் முறை உறுதி செய்யப்பட வேண்டும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"சரிபார்ப்பு கோடைப் பயன்படுத்தி புதிதாக உருவாக்கப்பட்ட MFA முறையை உறுதி செய்து "
-"செயல்படுத்தவும். வேறு முக்கிய முறை இல்லைனால் தானாகவே முக்கிய முறையாக அமைக்குகிறது. "
-"அங்கீகாரத்திற்காக முறையைப் பயன்படுத்தும் முன் தேவை."
+"சரிபார்ப்பு கோடைப் பயன்படுத்தி புதிதாக உருவாக்கப்பட்ட MFA முறையை உறுதி "
+"செய்து செயல்படுத்தவும். வேறு முக்கிய முறை இல்லைனால் தானாகவே முக்கிய முறையாக "
+"அமைக்குகிறது. அங்கீகாரத்திற்காக முறையைப் பயன்படுத்தும் முன் தேவை."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
-"செயல்பாட்டில் உள்ள MFA முறையை செயலற்ற நிலையில் வைக்கவும். முறையிலிருந்தே சரிபார்ப்பு "
-"கோட் தேவை. முக்கிய முறைகளை செயலற்ற நிலையில் வைக்க முடியாது - முன்னே வேறு முறையை "
-"முக்கியமாக அமைக்கவும்."
+"செயல்பாட்டில் உள்ள MFA முறையை செயலற்ற நிலையில் வைக்கவும். முறையிலிருந்தே "
+"சரிபார்ப்பு கோட் தேவை. முக்கிய முறைகளை செயலற்ற நிலையில் வைக்க முடியாது - "
+"முன்னே வேறு முறையை முக்கியமாக அமைக்கவும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
 msgstr ""
-"செயல்பாட்டில் உள்ள MFA முறையை முக்கிய அங்கீகார முறையாக அமைக்கவும். முக்கிய முறை "
-"உள்நுழைவு ஒழுங்கின் போது இயல்பிலையாக பயன்படுத்தப்படுகிறது."
+"செயல்பாட்டில் உள்ள MFA முறையை முக்கிய அங்கீகார முறையாக அமைக்கவும். முக்கிய "
+"முறை உள்நுழைவு ஒழுங்கின் போது இயல்பிலையாக பயன்படுத்தப்படுகிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "ஒரு நேரத்தில் ஒரு முறை மட்டுமே முக்கியமாக இருக்க முடியும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "தற்போதைய முக்கிய முறையிலிருந்து சரிபார்ப்பு கோட் தேவை."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
-"கோட் அனுப்பலை ஆதரிக்கும் முறைகளுக்கு சரிபார்ப்பு கோடை அனுப்பவும். முறை கான்பிக்கரேஷனைச் "
-"சோதிக்க அல்லது கையேடு கோட் கோரிக்கைகளுக்கு பயனுள்ளது."
+"கோட் அனுப்பலை ஆதரிக்கும் முறைகளுக்கு சரிபார்ப்பு கோடை அனுப்பவும். முறை "
+"கான்பிக்கரேஷனைச் சோதிக்க அல்லது கையேடு கோட் கோரிக்கைகளுக்கு பயனுள்ளது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "ஒரு MFA முறையை நிரந்தரமாக நீக்கவும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "இந்த செயலை முன்னே செய்ய முடியாது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "செயல்பாட்டில் உள்ள முறைகளை நீக்க முடியாது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "முக்கிய முறைகளை நீக்க முடியாது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "செயல்பாட்டில் உள்ள முறைகளுக்கு சரிபார்ப்பு கோட் தேவை."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "பயனர்"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "இந்த MFA முறைக்கு உரிமையான பயனர்"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "பெயர்"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA முறை பெயர் (எ.கா. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "ரகசியம்"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "சரிபார்ப்பு கோட்கள் உருவாக்க TOTP ரகசிய விசை"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "முக்கியமானது"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "இது பயனரின் முக்கிய MFA முறையா"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "செயல்பாட்டில் உள்ளது"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "இந்த முறை செயல்பாட்டில் உள்ளதா மற்றும் பயன்படுத்த முடியுமா"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "காப்பு கோட்கள்"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "கணக்கு மீட்புக்கு காப்பு கோட்களை சேமிக்கும் JSON புலம்"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA முறை"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA முறைகள்"
 
@@ -391,7 +437,8 @@ msgstr "தவறான கோட்"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "தவறான டோக்கன்"
 
@@ -403,10 +450,9 @@ msgstr "கருணை செய்து புதிய முறையைத
 msgid "This method is already exists"
 msgstr "இந்த முறை ஏற்கனவே இருக்கிறது"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "தவறான OTP கோட்"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "தவறான சரிபார்ப்பு குறியீடு"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -414,7 +460,12 @@ msgstr "MFA முறை செயல்படுத்தப்பட்டத�
 
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
-msgstr "நீங்கள் முக்கியமல்லாத MFA முறையை மட்டுமே செயலற்ற நிலையில் வைக்க முடியும்."
+msgstr ""
+"நீங்கள் முக்கியமல்லாத MFA முறையை மட்டுமே செயலற்ற நிலையில் வைக்க முடியும்."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "தவறான OTP கோட்"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -448,19 +499,78 @@ msgstr "MFA முறை நீக்கப்பட்டது"
 msgid "MFA code sent"
 msgstr "MFA கோட் அனுப்பப்பட்டது"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "மின்னஞ்சல் மேஜிக் இணைப்பு"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "உள்நுழைவு இணைப்பு அனுப்பப்பட்டது."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "பாஸ்கீ / பாதுகாப்பு திறவுகோல்"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"{} வழியாக கடவுச்சொல்-இல்லா அங்கீகாரத்தை தொடங்குக. இது கடவுச்சொல்-இல்லா "
+"உள்நுழைவு வழிமுறையின் முதல் படியாகும்."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"{} வழியாக கடவுச்சொல்-இல்லா அங்கீகாரத்தை நிறைவு செய்க. தொடக்க படியிலிருந்து "
+"நற்சான்றிதழ்/டோக்கனை சரிபார்க்கவும்."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "தவறான அல்லது காலாவதியான டோக்கன்."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "பயனர் கணக்கு முடக்கப்பட்டுள்ளது."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"கண்டுபிடிக்க முடியாத நற்சான்றிதழ் வழிப்பாதைக்கான விருப்பமான மின்னஞ்சல். "
+"பாஸ்கீ (கண்டுபிடிக்கக்கூடிய) வழிப்பாதைக்கு தவிர்க்கவும்."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn அங்கீகாரம் தோல்வியடைந்தது."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "குக்கீயை மீறுவே எழுதும்."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "செல்லுபடியான புதுப்பிப்பு டோக்கன் காணவில்லை."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "மின்னஞ்சல் சரிபார்க்கப்படவில்லை."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"அதிக தோல்வியுற்ற உள்நுழைவு முயற்சிகளால் கணக்கு பூட்டப்பட்டுள்ளது. பிறகு "
+"மீண்டும் முயற்சிக்கவும்."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "வழங்கப்பட்ட அங்கீகார விவரங்களுடன் உள்நுழைவ முடியவில்லை."
 
@@ -470,107 +580,113 @@ msgstr "தவறான மதிப்பு"
 
 #: auth_kit/serializers/password.py:222
 msgid "Your old password was entered incorrectly. Please enter it again."
-msgstr "உங்கள் பழைய கடவுச்சொல் தவறாக உள்ளீடப்பட்டது. கருணை செய்து மீண்டும் உள்ளீடவும்."
+msgstr ""
+"உங்கள் பழைய கடவுச்சொல் தவறாக உள்ளீடப்பட்டது. கருணை செய்து மீண்டும் "
+"உள்ளீடவும்."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
-msgstr "இந்த மின்னஞ்சல் முகவரியில் ஒரு பயனர் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளார்."
+msgstr ""
+"இந்த மின்னஞ்சல் முகவரியில் ஒரு பயனர் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளார்."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "இரண்டு கடவுச்சொல் களங்கள் பொருந்தவில்லை."
 
 #: auth_kit/social/serializers/connect.py:55
 msgid "Social account email must match your current account email."
-msgstr "சாமூக கணக்கு மின்னஞ்சல் உங்கள் தற்போதைய கணக்கு மின்னஞ்சலுடன் பொருந்த வேண்டும்."
+msgstr ""
+"சாமூக கணக்கு மின்னஞ்சல் உங்கள் தற்போதைய கணக்கு மின்னஞ்சலுடன் பொருந்த "
+"வேண்டும்."
 
 #: auth_kit/social/serializers/connect.py:98
 msgid "Connected"
 msgstr "இணைக்கப்பட்டது"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "OAuth ஒழுங்கை முடிக்க முடியவில்லை"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "இந்த மின்னஞ்சல் முகவரியில் பயனர் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளார்."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "அணுகல் டோக்கனுக்காக கோடை மாற்ற முடியவில்லை"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"அணுகல் டோக்கன்களைப் பெற OAuth2/OpenID Connect அங்கீகார கோடைப் பயன்படுத்தி "
-"{} உடன் அங்கீகரிக்கவும்."
+"அணுகல் டோக்கன்களைப் பெற OAuth2/OpenID Connect அங்கீகார கோடைப் பயன்படுத்தி {}"
+" உடன் அங்கீகரிக்கவும்."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
 "{} கணக்கை தற்போதைய பயனரின் கணக்குடன் இணைக்கவும். இது பயனர் எதிர்காலத்தில் "
 "அவர்களின் ஏற்கனவே உள்ள {} கணக்கைப் பயன்படுத்தி உள்நுழைவ அனுமதிக்கிறது."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "{} இலிருந்து அங்கீகாரம் மற்றும் செல்லுபடியான OAuth2/OpenID Connect அங்கீகார "
 "கோட் தேவை."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"வெற்றிகரமாக இருந்தால், {} கணக்கு இணைக்கப்பட்டு எதிர்காலத்தில் உள்நுழைவுகளுக்கு "
-"பயன்படுத்தப்படலாம்."
+"வெற்றிகரமாக இருந்தால், {} கணக்கு இணைக்கப்பட்டு எதிர்காலத்தில் "
+"உள்நுழைவுகளுக்கு பயன்படுத்தப்படலாம்."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
 msgstr ""
-"தற்போதைய பயனருடன் இணைக்கப்பட்ட அனைத்து சாமூக கணக்குகளையும் பட்டியலிடவும். வழங்குநர், "
-"UID, மற்றும் இணைப்பு தேதிகள் உள்பட கணக்கு விவரங்களைக் காட்டுகிறது."
+"தற்போதைய பயனருடன் இணைக்கப்பட்ட அனைத்து சாமூக கணக்குகளையும் பட்டியலிடவும். "
+"வழங்குநர், UID, மற்றும் இணைப்பு தேதிகள் உள்பட கணக்கு விவரங்களைக் "
+"காட்டுகிறது."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"தற்போதைய பயனரிடமிருந்து சாமூக கணக்கை துண்டிக்கவும். சாமூக கணக்கு இணைப்பை நீக்கி அந்த "
-"வழங்குநர் மூலம் எதிர்காலத்தில் உள்நுழைவுகளை தடுக்கிறது. அங்கீகாரம் தேவை மற்றும் கணக்கு "
-"தற்போதைய பயனருக்கு சொந்தமானதாக இருக்க வேண்டும்."
+"தற்போதைய பயனரிடமிருந்து சாமூக கணக்கை துண்டிக்கவும். சாமூக கணக்கு இணைப்பை "
+"நீக்கி அந்த வழங்குநர் மூலம் எதிர்காலத்தில் உள்நுழைவுகளை தடுக்கிறது. "
+"அங்கீகாரம் தேவை மற்றும் கணக்கு தற்போதைய பயனருக்கு சொந்தமானதாக இருக்க "
+"வேண்டும்."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class வரையறுக்கப்படவில்லை"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "குக்கீ தரவில் புதுப்பிப்பு டோக்கன் சேர்க்கப்படவில்லை."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "கோரிக்கை தரவில் புதுப்பிப்பு டோக்கன் சேர்க்கப்படவில்லை."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "ஒரு பிழை ஏற்பட்டது."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "வெற்றிகரமாக வெளியேறப்பட்டது."
 
@@ -578,25 +694,270 @@ msgstr "வெற்றிகரமாக வெளியேறப்பட்�
 msgid "Password reset e-mail has been sent."
 msgstr "கடவுச்சொல் மீட்டமைப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "புதிய கடவுச்சொல்லுடன் கடவுச்சொல் மீட்டமைக்கப்பட்டது."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "புதிய கடவுச்சொல் சேமிக்கப்பட்டது."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "வெற்றிகரமாக பதிவு செய்யப்பட்டது."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "சரி"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "கோரப்பட்ட WebAuthn நற்சான்றிதழ் இல்லை."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn சரிபார்ப்பு தோல்வியடைந்தது."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "இந்த WebAuthn நற்சான்றிதழை சொந்தமாக வைத்திருக்கும் பயனர்"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "நற்சான்றிதழ் ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "அங்கீகாரியிலிருந்து தனித்துவமான நற்சான்றிதழ் அடையாளங்காட்டி"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "பொது திறவுகோல்"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "பதிவிலிருந்து COSE பொது திறவுகோல் பைட்டுகள்"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "கையொப்ப எண்ணிக்கை"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "மறுமுனைப்பு தாக்குதல் கண்டறிதலுக்கான கையொப்ப கவுண்டர்"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "போக்குவரத்துகள்"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "ஆதரிக்கப்படும் போக்குவரத்து முறைகள் (எ.கா., usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "கண்டுபிடிக்கக்கூடியது"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "இது கண்டுபிடிக்கக்கூடிய (பாஸ்கீ) நற்சான்றிதழா என்பது"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "சாதன வகையை அடையாளப்படுத்தும் அங்கீகாரி சான்றளிப்பு GUID"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "இந்த நற்சான்றிதழுக்கு பயனர் ஒதுக்கிய நட்பான பெயர்"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "உருவாக்கப்பட்ட நேரம்"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "இந்த நற்சான்றிதழ் பதிவு செய்யப்பட்ட நேரம்"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "கடைசியாக பயன்படுத்தப்பட்ட நேரம்"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "இந்த நற்சான்றிதழ் கடைசியாக அங்கீகாரத்திற்கு பயன்படுத்தப்பட்ட நேரம்"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn நற்சான்றிதழ்"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn நற்சான்றிதழ்கள்"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "இந்த நற்சான்றிதழுக்கான விருப்பமான பயனர்-நட்பான பெயர்"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "இந்த நற்சான்றிதழுக்கான பயனர்-நட்பான பெயர்"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-குறியாக்கம் செய்யப்பட்ட நற்சான்றிதழ் ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "நற்சான்றிதழ் வகை"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "அங்கீகாரியை அடைவதற்கான போக்குவரத்து குறிப்புகள்"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE வழிமுறை அடையாளங்காட்டி (எ.கா., ES256 க்கு -7)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "மனிதர் படிக்கக்கூடிய RP பெயர்"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (டொமைன்)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-குறியாக்கம் செய்யப்பட்ட பயனர் கைப்பிடி"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "பயனர் கணக்கு பெயர்"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "பயனர் காட்சி பெயர்"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "குடியிருப்பு திறவுகோல் தேவை"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr ""
+"குடியிருப்பு திறவுகோல் தேவையா (பழங்காலமானது, residentKey பயன்படுத்தவும்)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "பயனர் சரிபார்ப்பு தேவை"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "அங்கீகாரி இணைப்பு"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "நம்பிக்கை வைக்கும் தரப்பு அடையாளம்"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "பயனர் கணக்கு தகவல்"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-குறியாக்கம் செய்யப்பட்ட சவால்"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "ஆதரிக்கப்படும் பொது-திறவுகோல் நற்சான்றிதழ் அளவுருக்கள்"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "மில்லி விநாடிகளில் சடங்கு நேர வரம்பு"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "விலக்க வேண்டிய நற்சான்றிதழ்கள் (ஏற்கனவே பதிவு செய்யப்பட்டவை)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "அங்கீகாரி தேர்வு அளவுகோல்கள்"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "சான்றளிப்பு தொடர்பு விருப்பம்"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "நம்பிக்கை வைக்கும் தரப்பு ID (டொமைன்)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "இந்த அங்கீகாரத்திற்கு அனுமதிக்கப்பட்ட நற்சான்றிதழ்கள்"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "சரிபார்ப்பு படிக்கான ஒளிபுகாத அமர்வு டோக்கன்"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "பதிவு சவால் காலாவதியானது அல்லது கண்டுபிடிக்கப்படவில்லை."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "அங்கீகார சவால் காலாவதியானது அல்லது கண்டுபிடிக்கப்படவில்லை."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "நற்சான்றிதழ் கண்டுபிடிக்கப்படவில்லை."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "நற்சான்றிதழ் மறுபெயரிடப்பட்டது."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"அங்கீகரிக்கப்பட்ட பயனருக்கு பதிவு செய்யப்பட்ட அனைத்து பாஸ்கீகள் மற்றும் "
+"பாதுகாப்பு திறவுகோல்களை பட்டியலிடுக."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"புதிய பாஸ்கீ அல்லது பாதுகாப்பு திறவுகோலை பதிவு செய்க. register_options "
+"இறுதிப்புள்ளியை அழைத்த பிறகு உலாவியிலிருந்து நற்சான்றிதழை சமர்பிக்கவும்."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"புதிய பாஸ்கீ அல்லது பாதுகாப்பு திறவுகோலை சேர்ப்பதற்கான பதிவு விருப்பங்களைப் "
+"பெறுக. நற்சான்றிதழை உருவாக்க உலாவிக்கு சவாலை திரும்பப் பெறும்."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "பாஸ்கீ அல்லது பாதுகாப்பு திறவுகோலை மறுபெயரிடுக."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"பாஸ்கீ அல்லது பாதுகாப்பு திறவுகோலை நீக்குக. இந்த செயலை மீட்கட முடியாது."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

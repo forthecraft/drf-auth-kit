@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-09 00:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Chinese\n"
@@ -110,21 +110,17 @@ msgstr "用户必须在账户完全激活之前验证他们的邮箱地址。"
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
-msgstr ""
-"向提供的邮箱地址发送密码重置说明。如果邮箱已注册，将发送安全的重置链接。出于"
-"安全考虑，链接将在有限时间后过期。"
+msgstr "向提供的邮箱地址发送密码重置说明。如果邮箱已注册，将发送安全的重置链接。出于安全考虑，链接将在有限时间后过期。"
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
 "Complete the password reset process using the token from the reset email. "
 "Requires the UID and token from the email along with the new password. The "
 "token is single-use and expires for security."
-msgstr ""
-"使用重置邮件中的令牌完成密码重置过程。需要邮件中的UID和令牌以及新密码。出于安"
-"全考虑，令牌为一次性使用并会过期。"
+msgstr "使用重置邮件中的令牌完成密码重置过程。需要邮件中的UID和令牌以及新密码。出于安全考虑，令牌为一次性使用并会过期。"
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -134,38 +130,33 @@ msgstr "更改当前用户的密码。需要身份验证。 "
 msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
-msgstr ""
-"使用通过邮件发送的验证密钥确认邮箱地址。这将激活用户账户并允许登录访问。"
+msgstr "使用通过邮件发送的验证密钥确认邮箱地址。这将激活用户账户并允许登录访问。"
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
-msgstr ""
-"向未验证的邮箱地址发送新的邮箱验证消息。仅适用于已注册但尚未验证的邮箱地址。"
+msgstr "向未验证的邮箱地址发送新的邮箱验证消息。仅适用于已注册但尚未验证的邮箱地址。"
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
-msgstr ""
-"获取已身份验证用户的资料信息，包括用户名、邮箱、名字和姓氏。密码字段被排除。"
+msgstr "获取已身份验证用户的资料信息，包括用户名、邮箱、名字和姓氏。密码字段被排除。"
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
-msgstr ""
-"更新已身份验证用户的资料信息。允许修改用户名、名字和姓氏。出于安全考虑，邮箱"
-"字段为只读。"
+msgstr "更新已身份验证用户的资料信息。允许修改用户名、名字和姓氏。出于安全考虑，邮箱字段为只读。"
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr "部分更新已身份验证用户的资料信息。仅更新提供的字段。邮箱字段为只读。"
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "该邮箱地址未分配给任何用户账户。"
 
@@ -177,183 +168,195 @@ msgstr "请求的MFA方法不存在。"
 msgid "Email message with MFA code has been sent."
 msgstr "包含MFA代码的邮件已发送。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create() 的注册选项"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "安全密钥 / 通行密钥"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA代码将在{}秒后过期。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr "启用MFA身份验证的第一步。验证凭据并启动MFA流程。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr "返回MFA验证的临时令牌，或在MFA禁用时返回完整的{}。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "使用验证码和临时令牌完成MFA身份验证。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "支持TOTP码和备份码进行验证。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "在身份验证流程中切换到不同的MFA方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "需要来自第一步身份验证的有效临时令牌。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "新的临时令牌将在{}秒后过期。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "使用现有的临时令牌重新发送MFA验证码。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "仅适用于需要代码分发的方法（如邮箱）。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
-msgstr ""
-"列出所有可用的MFA方法及其设置和激活状态。显示哪些方法已配置、激活并设置为主要"
-"方法。"
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr "使用现有的临时令牌获取待处理 MFA 方法的登录挑战。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr "仅适用于挑战-响应方法（例如通行密钥）。其他方法返回空对象。"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
+msgstr "列出所有可用的MFA方法及其设置和激活状态。显示哪些方法已配置、激活并设置为主要方法。"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
-msgstr ""
-"初始化新的MFA方法设置。创建带有备份码的方法并返回设置说明（如验证器应用的二维"
-"码）。激活前必须确认方法。"
+msgstr "初始化新的MFA方法设置。创建带有备份码的方法并返回设置说明（如验证器应用的二维码）。激活前必须确认方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
-msgstr ""
-"使用验证码确认并激活新创建的MFA方法。如果不存在其他主要方法，则自动设置为主要"
-"方法。在用于身份验证之前必须执行。"
+msgstr "使用验证码确认并激活新创建的MFA方法。如果不存在其他主要方法，则自动设置为主要方法。在用于身份验证之前必须执行。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
-msgstr ""
-"停用活跃的MFA方法。需要来自方法本身的验证码。无法停用主要方法 - 请先将其他方"
-"法设置为主要方法。"
+msgstr "停用活跃的MFA方法。需要来自方法本身的验证码。无法停用主要方法 - 请先将其他方法设置为主要方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
 msgstr "将活跃的MFA方法设置为主要身份验证方法。在登录流程中默认使用主要方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "一次只能有一个方法为主要方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "需要来自当前主要方法的验证码。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr "为支持代码分发的方法发送验证码。用于测试方法配置或手动代码请求。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "永久删除MFA方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "此操作无法撤销。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "无法删除活跃的方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "无法删除主要方法。"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "活跃方法需要验证码。"
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "用户"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "拥有这个MFA方法的用户"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "名称"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA方法名称（例如“app”、“email”）"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "密钥"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "用于生成验证代码的TOTP密钥"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "是主要的"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "这是否为用户的主要MFA方法"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "是活跃的"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "这个方法是否活跃并可以使用"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "备份代码"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "存储账户恢复备份代码的JSON字段"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA方法"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA方法"
 
@@ -363,7 +366,8 @@ msgstr "无效代码"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "无效令牌"
 
@@ -375,10 +379,9 @@ msgstr "请选择新方法"
 msgid "This method is already exists"
 msgstr "该方法已存在"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "无效的OTP代码"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "无效的验证码"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -387,6 +390,10 @@ msgstr "已激活MFA方法"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "您只能停用非主要MFA方法。"
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "无效的OTP代码"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -420,19 +427,70 @@ msgstr "已删除MFA方法"
 msgid "MFA code sent"
 msgstr "MFA代码已发送"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "电子邮件魔法链接"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "登录链接已发送。"
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "通行密钥 / 安全密钥"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr "通过 {} 发起无密码认证。这是无密码登录流程的第一步。"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr "通过 {} 完成无密码认证。验证发起步骤中的凭据/令牌。"
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "令牌无效或已过期。"
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "用户账户已被禁用。"
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr "不可发现凭据流程的可选电子邮件。通行密钥（可发现）流程请忽略此项。"
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn 认证失败。"
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "将覆盖cookie。"
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "未找到有效的刷新令牌。"
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "邮箱未验证。"
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr "由于登录失败次数过多，账户已被锁定。请稍后再试。"
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "无法使用提供的凭据登录。"
 
@@ -444,11 +502,11 @@ msgstr "无效值"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "您的旧密码输入错误。请重新输入。"
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "该邮箱地址已注册用户。"
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "两个密码字段不匹配。"
 
@@ -460,82 +518,75 @@ msgstr "社交账户邮箱必须与您当前账户邮箱匹配。"
 msgid "Connected"
 msgstr "已连接"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "无法完成OAuth流程"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "用户已使用此邮箱地址注册。"
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "无法交换代码获取访问令牌"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
-msgstr ""
-"使用OAuth2/OpenID Connect授权代码通过{}进行身份验证以获取访问令牌。"
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
+msgstr "使用OAuth2/OpenID Connect授权代码通过{}进行身份验证以获取访问令牌。"
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
-msgstr ""
-"将{}账户连接到当前用户的账户。这允许用户在未来使用他们现有"
-"的{}账户登录。"
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
+msgstr "将{}账户连接到当前用户的账户。这允许用户在未来使用他们现有的{}账户登录。"
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr "需要身份验证和来自{}的有效OAuth2/OpenID Connect授权代码。"
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr "成功后，{}账户将被链接并可用于未来的登录。"
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
-msgstr ""
-"列出与当前用户连接的所有社交账户。显示账户详情，包括提供商、UID和连接日期。"
+msgstr "列出与当前用户连接的所有社交账户。显示账户详情，包括提供商、UID和连接日期。"
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
-msgstr ""
-"从当前用户断开社交账户的连接。移除社交账户连接并防止通过该提供商的未来登录。"
-"需要身份验证，且账户必须属于当前用户。"
+msgstr "从当前用户断开社交账户的连接。移除社交账户连接并防止通过该提供商的未来登录。需要身份验证，且账户必须属于当前用户。"
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class未定义"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "刷新令牌未包含在cookie数据中。"
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "刷新令牌未包含在请求数据中。"
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "发生了错误。"
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "成功注销。"
 
@@ -543,25 +594,262 @@ msgstr "成功注销。"
 msgid "Password reset e-mail has been sent."
 msgstr "密码重置邮件已发送。"
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "密码已使用新密码重置。"
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "新密码已保存。"
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "验证邮件已发送。"
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "成功注册。"
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "确定"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "请求的 WebAuthn 凭据不存在。"
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn 验证失败。"
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "拥有此 WebAuthn 凭据的用户"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "凭据 ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "来自认证器的唯一凭据标识符"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "公钥"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "注册时的 COSE 公钥字节"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "签名计数"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "用于检测重放攻击的签名计数器"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "传输方式"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "支持的传输方法（例如 usb、nfc、ble、internal）"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "可发现"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "此凭据是否为可发现（通行密钥）凭据"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "标识设备类型的认证器认证 GUID"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "用户为此凭据指定的友好名称"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "创建时间"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "此凭据的注册时间"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "最后使用时间"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "此凭据最后一次用于认证的时间"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn 凭据"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn 凭据"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "此凭据的可选友好名称"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "此凭据的友好名称"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL 编码的凭据 ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "凭据类型"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "连接认证器的传输提示"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE 算法标识符（例如 ES256 对应 -7）"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "可读的 RP 名称"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID（域名）"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL 编码的用户句柄"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "用户账户名称"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "用户显示名称"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "驻留密钥要求"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "是否需要驻留密钥（已弃用，请使用 residentKey）"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "用户验证要求"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "认证器附件"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "依赖方身份"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "用户账户信息"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL 编码的挑战"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "支持的公钥凭据参数"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "仪式超时时间（毫秒）"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "要排除的凭据（已注册）"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "认证器选择标准"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "认证传递偏好"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "依赖方 ID（域名）"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "此次认证允许的凭据"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "验证步骤的不透明会话令牌"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "注册挑战已过期或未找到。"
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "认证挑战已过期或未找到。"
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "未找到凭据。"
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "凭据已重命名。"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr "列出已认证用户注册的所有通行密钥和安全密钥。"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr "注册新的通行密钥或安全密钥。调用 register_options 端点后，从浏览器提交凭据。"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr "获取添加新通行密钥或安全密钥的注册选项。返回供浏览器创建凭据的挑战。"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "重命名通行密钥或安全密钥。"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr "删除通行密钥或安全密钥。此操作无法撤销。"
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

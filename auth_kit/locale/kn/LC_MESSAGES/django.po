@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Kannada\n"
@@ -22,14 +22,15 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"ವಿಕಲ್ಪ ಸಮಯಗಳೊಂದಿಗೆ JWT ಪ್ರವೇಶ ಮತ್ತು ನವೀಕರಣ ಟೋಕನ್‌ಗಳೊಂದಿಗೆ ಬಳಕೆದಾರರ ವಿವರಗಳನ್ನು "
-"ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
+"ವಿಕಲ್ಪ ಸಮಯಗಳೊಂದಿಗೆ JWT ಪ್ರವೇಶ ಮತ್ತು ನವೀಕರಣ ಟೋಕನ್‌ಗಳೊಂದಿಗೆ ಬಳಕೆದಾರರ "
+"ವಿವರಗಳನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
 "Returns user details along with a DRF authentication token for API access."
 msgstr ""
-"API ಪ್ರವೇಶಕ್ಕಾಗಿ DRF ದೃಢೀಕರಣ ಟೋಕನ್‌ನೊಂದಿಗೆ ಬಳಕೆದಾರರ ವಿವರಗಳನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
+"API ಪ್ರವೇಶಕ್ಕಾಗಿ DRF ದೃಢೀಕರಣ ಟೋಕನ್‌ನೊಂದಿಗೆ ಬಳಕೆದಾರರ ವಿವರಗಳನ್ನು "
+"ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:36
 msgid "Returns user details along with custom authentication tokens."
@@ -49,11 +50,13 @@ msgstr "ಕಸ್ಟಮ್ ದೃಢೀಕರಣ ಟೋಕನ್‌ಗಳು"
 
 #: auth_kit/api_descriptions.py:53
 msgid "Authentication cookies are set automatically for secure token storage."
-msgstr "ಸುರಕ್ಷಿತ ಟೋಕನ್ ಸಂಗ್ರಹಣೆಗಾಗಿ ದೃಢೀಕರಣ ಕುಕೀಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಿಸಲಾಗಿದೆ."
+msgstr ""
+"ಸುರಕ್ಷಿತ ಟೋಕನ್ ಸಂಗ್ರಹಣೆಗಾಗಿ ದೃಢೀಕರಣ ಕುಕೀಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಿಸಲಾಗಿದೆ."
 
 #: auth_kit/api_descriptions.py:61
 msgid "Blacklists JWT refresh tokens to prevent further use."
-msgstr "ಮುಂದಿನ ಬಳಕೆಯನ್ನು ತಡೆಯಲು JWT ನವೀಕರಣ ಟೋಕನ್‌ಗಳನ್ನು ಕಪ್ಪುಪಟ್ಟಿಗೆ ಸೇರಿಸುತ್ತದೆ."
+msgstr ""
+"ಮುಂದಿನ ಬಳಕೆಯನ್ನು ತಡೆಯಲು JWT ನವೀಕರಣ ಟೋಕನ್‌ಗಳನ್ನು ಕಪ್ಪುಪಟ್ಟಿಗೆ ಸೇರಿಸುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:63
 msgid "Deletes the DRF authentication token from the database."
@@ -70,7 +73,8 @@ msgstr "ಬ್ರೌಸರ್‌ನಿಂದ ದೃಢೀಕರಣ ಕುಕೀ�
 #: auth_kit/api_descriptions.py:77
 msgid "Authenticate with username/email and password to obtain access tokens."
 msgstr ""
-"ಪ್ರವೇಶ ಟೋಕನ್‌ಗಳನ್ನು ಪಡೆಯಲು ಬಳಕೆದಾರ ಹೆಸರು/ಇಮೇಲ್ ಮತ್ತು ಗುಪ್ತಪದದೊಂದಿಗೆ ದೃಢೀಕರಿಸಿ."
+"ಪ್ರವೇಶ ಟೋಕನ್‌ಗಳನ್ನು ಪಡೆಯಲು ಬಳಕೆದಾರ ಹೆಸರು/ಇಮೇಲ್ ಮತ್ತು ಗುಪ್ತಪದದೊಂದಿಗೆ "
+"ದೃಢೀಕರಿಸಿ."
 
 #: auth_kit/api_descriptions.py:89
 msgid "Logout user and invalidate authentication tokens."
@@ -80,8 +84,8 @@ msgstr "ಬಳಕೆದಾರರನ್ನು ಲಾಗ್‌ಔಟ್ ಮಾಡ�
 msgid ""
 "Requires authentication to ensure only valid sessions can be logged out."
 msgstr ""
-"ಮಾನ್ಯವಾದ ಅಧಿವೇಶನಗಳನ್ನು ಮಾತ್ರ ಲಾಗ್‌ಔಟ್ ಮಾಡಬಹುದು ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ದೃಢೀಕರಣ "
-"ಅಗತ್ಯವಿದೆ."
+"ಮಾನ್ಯವಾದ ಅಧಿವೇಶನಗಳನ್ನು ಮಾತ್ರ ಲಾಗ್‌ಔಟ್ ಮಾಡಬಹುದು ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ದೃಢೀಕರಣ"
+" ಅಗತ್ಯವಿದೆ."
 
 #: auth_kit/api_descriptions.py:104
 msgid "Generate new JWT access tokens using refresh tokens."
@@ -97,12 +101,14 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:110 auth_kit/api_descriptions.py:120
 msgid "Returns new access tokens with updated expiration times."
-msgstr "ನವೀಕರಿಸಿದ ವಿಕಲ್ಪ ಸಮಯಗಳೊಂದಿಗೆ ಹೊಸ ಪ್ರವೇಶ ಟೋಕನ್‌ಗಳನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
+msgstr ""
+"ನವೀಕರಿಸಿದ ವಿಕಲ್ಪ ಸಮಯಗಳೊಂದಿಗೆ ಹೊಸ ಪ್ರವೇಶ ಟೋಕನ್‌ಗಳನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:112
 msgid "New tokens are automatically set in HTTP cookies for secure storage."
 msgstr ""
-"ಸುರಕ್ಷಿತ ಸಂಗ್ರಹಣೆಗಾಗಿ ಹೊಸ ಟೋಕನ್‌ಗಳನ್ನು HTTP ಕುಕೀಗಳಲ್ಲಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಿಸಲಾಗಿದೆ."
+"ಸುರಕ್ಷಿತ ಸಂಗ್ರಹಣೆಗಾಗಿ ಹೊಸ ಟೋಕನ್‌ಗಳನ್ನು HTTP ಕುಕೀಗಳಲ್ಲಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ "
+"ಹೊಂದಿಸಲಾಗಿದೆ."
 
 #: auth_kit/api_descriptions.py:119
 msgid "Refresh tokens must be provided in the request data."
@@ -116,17 +122,18 @@ msgstr "ಹೊಸ ಬಳಕೆದಾರ ಖಾತೆಯನ್ನು ನೋಂದ
 msgid ""
 "Users must verify their email address before the account is fully activated."
 msgstr ""
-"ಖಾತೆಯು ಪೂರ್ಣವಾಗಿ ಸಕ್ರಿಯಗೊಳಿಸುವ ಮುಂದೆ ಬಳಕೆದಾರರು ತಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಪರಿಶೀಲಿಸಬೇಕು."
+"ಖಾತೆಯು ಪೂರ್ಣವಾಗಿ ಸಕ್ರಿಯಗೊಳಿಸುವ ಮುಂದೆ ಬಳಕೆದಾರರು ತಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು "
+"ಪರಿಶೀಲಿಸಬೇಕು."
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "ಒದಗಿಸಿದ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಗುಪ್ತಪದ ಮರುಹೊಂದಿಸುವ ಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಿ. ಇಮೇಲ್ "
-"ನೋಂದಾಯಿಸಿದ್ದರೆ, ಸುರಕ್ಷಿತ ಮರುಹೊಂದಿಸುವ ಲಿಂಕ್ ಅನ್ನು ಕಳುಹಿಸಲಾಗುತ್ತದೆ. ಭದ್ರತೆಗಾಗಿ ಸೀಮಿತ "
-"ಸಮಯದ ನಂತರ ಲಿಂಕ್ ಅವಧಿ ಮುಗಿಯುತ್ತದೆ."
+"ನೋಂದಾಯಿಸಿದ್ದರೆ, ಸುರಕ್ಷಿತ ಮರುಹೊಂದಿಸುವ ಲಿಂಕ್ ಅನ್ನು ಕಳುಹಿಸಲಾಗುತ್ತದೆ. ಭದ್ರತೆಗಾಗಿ"
+" ಸೀಮಿತ ಸಮಯದ ನಂತರ ಲಿಂಕ್ ಅವಧಿ ಮುಗಿಯುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -135,8 +142,8 @@ msgid ""
 "token is single-use and expires for security."
 msgstr ""
 "ಮರುಹೊಂದಿಸುವ ಇಮೇಲ್‌ನಿಂದ ಟೋಕನ್ ಅನ್ನು ಬಳಸಿ ಗುಪ್ತಪದ ಮರುಹೊಂದಿಸುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು "
-"ಪೂರ್ಣಗೊಳಿಸಿ. ಹೊಸ ಗುಪ್ತಪದದೊಂದಿಗೆ ಇಮೇಲ್‌ನಿಂದ UID ಮತ್ತು ಟೋಕನ್ ಅಗತ್ಯವಿದೆ. ಭದ್ರತೆಗಾಗಿ "
-"ಟೋಕನ್ ಒಂದು ಬಾರಿ ಬಳಕೆ ಮತ್ತು ಅವಧಿ ಮುಗಿಯುತ್ತದೆ."
+"ಪೂರ್ಣಗೊಳಿಸಿ. ಹೊಸ ಗುಪ್ತಪದದೊಂದಿಗೆ ಇಮೇಲ್‌ನಿಂದ UID ಮತ್ತು ಟೋಕನ್ ಅಗತ್ಯವಿದೆ. "
+"ಭದ್ರತೆಗಾಗಿ ಟೋಕನ್ ಒಂದು ಬಾರಿ ಬಳಕೆ ಮತ್ತು ಅವಧಿ ಮುಗಿಯುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -155,8 +162,8 @@ msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"ಪರಿಶೀಲಿಸದ ಇಮೇಲ್ ವಿಳಾಸಗಳಿಗೆ ಹೊಸ ಇಮೇಲ್ ಪರಿಶೀಲನಾ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸಿ. ನೋಂದಾಯಿಸಿದ "
-"ಆದರೆ ಇನ್ನೂ ಪರಿಶೀಲಿಸದ ಇಮೇಲ್ ವಿಳಾಸಗಳಿಗೆ ಮಾತ್ರ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ."
+"ಪರಿಶೀಲಿಸದ ಇಮೇಲ್ ವಿಳಾಸಗಳಿಗೆ ಹೊಸ ಇಮೇಲ್ ಪರಿಶೀಲನಾ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸಿ. ನೋಂದಾಯಿಸಿದ"
+" ಆದರೆ ಇನ್ನೂ ಪರಿಶೀಲಿಸದ ಇಮೇಲ್ ವಿಳಾಸಗಳಿಗೆ ಮಾತ್ರ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
@@ -171,18 +178,19 @@ msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
-"ದೃಢೀಕರಿಸಿದ ಬಳಕೆದಾರರ ಪ್ರೊಫೈಲ್ ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ. ಬಳಕೆದಾರ ಹೆಸರು, ಮೊದಲ ಹೆಸರು "
-"ಮತ್ತು ಕೊನೆಯ ಹೆಸರಿನ ಮಾರ್ಪಾಡನ್ನು ಅನುಮತಿಸುತ್ತದೆ. ಭದ್ರತೆಗಾಗಿ ಇಮೇಲ್ ಕ್ಷೇತ್ರವು ಓದಲು ಮಾತ್ರ."
+"ದೃಢೀಕರಿಸಿದ ಬಳಕೆದಾರರ ಪ್ರೊಫೈಲ್ ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ. ಬಳಕೆದಾರ ಹೆಸರು, ಮೊದಲ ಹೆಸರು"
+" ಮತ್ತು ಕೊನೆಯ ಹೆಸರಿನ ಮಾರ್ಪಾಡನ್ನು ಅನುಮತಿಸುತ್ತದೆ. ಭದ್ರತೆಗಾಗಿ ಇಮೇಲ್ ಕ್ಷೇತ್ರವು "
+"ಓದಲು ಮಾತ್ರ."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"ದೃಢೀಕರಿಸಿದ ಬಳಕೆದಾರರ ಪ್ರೊಫೈಲ್ ಮಾಹಿತಿಯನ್ನು ಭಾಗಶಃ ನವೀಕರಿಸಿ. ಒದಗಿಸಿದ ಕ್ಷೇತ್ರಗಳನ್ನು "
-"ಮಾತ್ರ ನವೀಕರಿಸಲಾಗುತ್ತದೆ. ಇಮೇಲ್ ಕ್ಷೇತ್ರವು ಓದಲು ಮಾತ್ರ."
+"ದೃಢೀಕರಿಸಿದ ಬಳಕೆದಾರರ ಪ್ರೊಫೈಲ್ ಮಾಹಿತಿಯನ್ನು ಭಾಗಶಃ ನವೀಕರಿಸಿ. ಒದಗಿಸಿದ "
+"ಕ್ಷೇತ್ರಗಳನ್ನು ಮಾತ್ರ ನವೀಕರಿಸಲಾಗುತ್ತದೆ. ಇಮೇಲ್ ಕ್ಷೇತ್ರವು ಓದಲು ಮಾತ್ರ."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಯಾವುದೇ ಬಳಕೆದಾರ ಖಾತೆಗೆ ನಿಯೋಜಿಸಲಾಗಿಲ್ಲ."
 
@@ -194,89 +202,118 @@ msgstr "ವಿನಂತಿಸಿದ MFA ವಿಧಾನ ಅಸ್ತಿತ್ವ
 msgid "Email message with MFA code has been sent."
 msgstr "MFA ಕೋಡ್‌ನೊಂದಿಗೆ ಇಮೇಲ್ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create() ಗಾಗಿ ನೋಂದಣಿ ಆಯ್ಕೆಗಳು"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "ಭದ್ರತಾ ಕೀ / ಪಾಸ್‌ಕೀ"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA ಕೋಡ್ {} ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಅವಧಿ ಮುಗಿಯುತ್ತದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr ""
-"MFA-ಸಕ್ರಿಯಗೊಳಿಸಿದ ದೃಢೀಕರಣದ ಮೊದಲ ಹಂತ. ಅರ್ಹತೆಗಳನ್ನು ಮಾನ್ಯಗೊಳಿಸುತ್ತದೆ ಮತ್ತು MFA "
-"ಹರಿವನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತದೆ."
+"MFA-ಸಕ್ರಿಯಗೊಳಿಸಿದ ದೃಢೀಕರಣದ ಮೊದಲ ಹಂತ. ಅರ್ಹತೆಗಳನ್ನು ಮಾನ್ಯಗೊಳಿಸುತ್ತದೆ ಮತ್ತು MFA"
+" ಹರಿವನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"MFA ಪರಿಶೀಲನೆಗಾಗಿ ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ ಅಥವಾ MFA ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದ್ದರೆ "
-"ಪೂರ್ಣ {} ಅನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
+"MFA ಪರಿಶೀಲನೆಗಾಗಿ ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ ಅಥವಾ MFA "
+"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದ್ದರೆ ಪೂರ್ಣ {} ಅನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
-msgstr "ಪರಿಶೀಲನಾ ಕೋಡ್ ಮತ್ತು ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅನ್ನು ಬಳಸಿ MFA ದೃಢೀಕರಣವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ."
+msgstr ""
+"ಪರಿಶೀಲನಾ ಕೋಡ್ ಮತ್ತು ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅನ್ನು ಬಳಸಿ MFA ದೃಢೀಕರಣವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
-msgstr "ಪರಿಶೀಲನೆಗಾಗಿ TOTP ಕೋಡ್‌ಗಳು ಮತ್ತು ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳೆರಡನ್ನೂ ಬೆಂಬಲಿಸುತ್ತದೆ."
+msgstr ""
+"ಪರಿಶೀಲನೆಗಾಗಿ TOTP ಕೋಡ್‌ಗಳು ಮತ್ತು ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳೆರಡನ್ನೂ ಬೆಂಬಲಿಸುತ್ತದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "ದೃಢೀಕರಣ ಹರಿವಿನ ಸಮಯದಲ್ಲಿ ಬೇರೆ MFA ವಿಧಾನಕ್ಕೆ ಬದಲಾಯಿಸಿ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "ಮೊದಲ ಹಂತದ ದೃಢೀಕರಣದಿಂದ ಮಾನ್ಯವಾದ ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅಗತ್ಯವಿದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "ಹೊಸ ಅಸ್ಥಾಯಿ ಟೋಕನ್ {} ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಅವಧಿ ಮುಗಿಯುತ್ತದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
-msgstr "ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅನ್ನು ಬಳಸಿ MFA ಪರಿಶೀಲನಾ ಕೋಡ್ ಅನ್ನು ಮರುಕಳುಹಿಸಿ."
-
-#: auth_kit/mfa/mfa_api_descriptions.py:84
-msgid "Only applicable for methods that require code dispatch (e.g., email)."
-msgstr "ಕೋಡ್ ಕಳುಹಿಸುವಿಕೆಯ ಅಗತ್ಯವಿರುವ ವಿಧಾನಗಳಿಗೆ ಮಾತ್ರ ಅನ್ವಯವಾಗುತ್ತದೆ (ಉದಾ., ಇಮೇಲ್)."
-
-#: auth_kit/mfa/mfa_api_descriptions.py:96
-msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
 msgstr ""
-"ಅವರ ಸೆಟಪ್ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸುವ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ MFA ವಿಧಾನಗಳನ್ನು ಪಟ್ಟಿ "
-"ಮಾಡಿ. ಯಾವ ವಿಧಾನಗಳನ್ನು ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾಗಿದೆ, ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಮತ್ತು ಪ್ರಾಥಮಿಕವಾಗಿ "
-"ಹೊಂದಿಸಲಾಗಿದೆ ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ."
+"ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಅಸ್ಥಾಯಿ ಟೋಕನ್ ಅನ್ನು ಬಳಸಿ MFA ಪರಿಶೀಲನಾ ಕೋಡ್ ಅನ್ನು "
+"ಮರುಕಳುಹಿಸಿ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:88
+msgid "Only applicable for methods that require code dispatch (e.g., email)."
+msgstr ""
+"ಕೋಡ್ ಕಳುಹಿಸುವಿಕೆಯ ಅಗತ್ಯವಿರುವ ವಿಧಾನಗಳಿಗೆ ಮಾತ್ರ ಅನ್ವಯವಾಗುತ್ತದೆ (ಉದಾ., ಇಮೇಲ್)."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:102
+msgid ""
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ತಾತ್ಕಾಲಿಕ ಟೋಕನ್ ಬಳಸಿ ಬಾಕಿ ಇರುವ MFA ವಿಧಾನಕ್ಕಾಗಿ ಲಾಗಿನ್ "
+"ಚಾಲೆಂಜ್ ಪಡೆಯಿರಿ."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"ಚಾಲೆಂಜ್-ಪ್ರತಿಕ್ರಿಯೆ ವಿಧಾನಗಳಿಗೆ ಮಾತ್ರ ಅನ್ವಯವಾಗುತ್ತದೆ (ಉದಾ., ಪಾಸ್‌ಕೀಗಳು). ಇತರ "
+"ವಿಧಾನಗಳು ಖಾಲಿ ಆಬ್ಜೆಕ್ಟ್ ಹಿಂತಿರುಗಿಸುತ್ತವೆ."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
+msgstr ""
+"ಅವರ ಸೆಟಪ್ ಮತ್ತು ಸಕ್ರಿಯಗೊಳಿಸುವ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ MFA ವಿಧಾನಗಳನ್ನು "
+"ಪಟ್ಟಿ ಮಾಡಿ. ಯಾವ ವಿಧಾನಗಳನ್ನು ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾಗಿದೆ, ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ ಮತ್ತು "
+"ಪ್ರಾಥಮಿಕವಾಗಿ ಹೊಂದಿಸಲಾಗಿದೆ ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"ಹೊಸ MFA ವಿಧಾನ ಸೆಟಪ್ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿ. ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳೊಂದಿಗೆ ವಿಧಾನವನ್ನು ರಚಿಸುತ್ತದೆ "
-"ಮತ್ತು ಸೆಟಪ್ ಸೂಚನೆಗಳನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ (ಉದಾ., ದೃಢೀಕರಣ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಗೆ QR ಕೋಡ್). "
-"ಸಕ್ರಿಯಗೊಳಿಸುವ ಮೊದಲು ವಿಧಾನವನ್ನು ದೃಢೀಕರಿಸಬೇಕು."
+"ಹೊಸ MFA ವಿಧಾನ ಸೆಟಪ್ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿ. ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳೊಂದಿಗೆ ವಿಧಾನವನ್ನು "
+"ರಚಿಸುತ್ತದೆ ಮತ್ತು ಸೆಟಪ್ ಸೂಚನೆಗಳನ್ನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ (ಉದಾ., ದೃಢೀಕರಣ "
+"ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಗೆ QR ಕೋಡ್). ಸಕ್ರಿಯಗೊಳಿಸುವ ಮೊದಲು ವಿಧಾನವನ್ನು ದೃಢೀಕರಿಸಬೇಕು."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
 "ಪರಿಶೀಲನಾ ಕೋಡ್ ಅನ್ನು ಬಳಸಿ ಹೊಸದಾಗಿ ರಚಿಸಿದ MFA ವಿಧಾನವನ್ನು ದೃಢೀಕರಿಸಿ ಮತ್ತು "
-"ಸಕ್ರಿಯಗೊಳಿಸಿ. ಇತರ ಪ್ರಾಥಮಿಕ ವಿಧಾನ ಇಲ್ಲದಿದ್ದರೆ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪ್ರಾಥಮಿಕ ವಿಧಾನವಾಗಿ "
-"ಹೊಂದಿಸುತ್ತದೆ. ದೃಢೀಕರಣಕ್ಕಾಗಿ ವಿಧಾನವನ್ನು ಬಳಸಬೇಕಾದರೆ ಅಗತ್ಯವಿದೆ."
+"ಸಕ್ರಿಯಗೊಳಿಸಿ. ಇತರ ಪ್ರಾಥಮಿಕ ವಿಧಾನ ಇಲ್ಲದಿದ್ದರೆ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪ್ರಾಥಮಿಕ "
+"ವಿಧಾನವಾಗಿ ಹೊಂದಿಸುತ್ತದೆ. ದೃಢೀಕರಣಕ್ಕಾಗಿ ವಿಧಾನವನ್ನು ಬಳಸಬೇಕಾದರೆ ಅಗತ್ಯವಿದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -286,103 +323,105 @@ msgstr ""
 "ಪ್ರಾಥಮಿಕ ವಿಧಾನಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ - ಮೊದಲು ಇನ್ನೊಂದು ವಿಧಾನವನ್ನು "
 "ಪ್ರಾಥಮಿಕವಾಗಿ ಹೊಂದಿಸಿ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
 msgstr ""
-"ಸಕ್ರಿಯ MFA ವಿಧಾನವನ್ನು ಪ್ರಾಥಮಿಕ ದೃಢೀಕರಣ ವಿಧಾನವಾಗಿ ಹೊಂದಿಸಿ. ಲಾಗಿನ್ ಹರಿವಿನ ಸಮಯದಲ್ಲಿ "
-"ಪ್ರಾಥಮಿಕ ವಿಧಾನವನ್ನು ಡಿಫಾಲ್ಟ್ ಆಗಿ ಬಳಸಲಾಗುತ್ತದೆ."
+"ಸಕ್ರಿಯ MFA ವಿಧಾನವನ್ನು ಪ್ರಾಥಮಿಕ ದೃಢೀಕರಣ ವಿಧಾನವಾಗಿ ಹೊಂದಿಸಿ. ಲಾಗಿನ್ ಹರಿವಿನ "
+"ಸಮಯದಲ್ಲಿ ಪ್ರಾಥಮಿಕ ವಿಧಾನವನ್ನು ಡಿಫಾಲ್ಟ್ ಆಗಿ ಬಳಸಲಾಗುತ್ತದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "ಒಂದು ಸಮಯದಲ್ಲಿ ಕೇವಲ ಒಂದು ವಿಧಾನವನ್ನು ಮಾತ್ರ ಪ್ರಾಥಮಿಕವಾಗಿಸಬಹುದು."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "ಪ್ರಸ್ತುತ ಪ್ರಾಥಮಿಕ ವಿಧಾನದಿಂದ ಪರಿಶೀಲನಾ ಕೋಡ್ ಅಗತ್ಯವಿದೆ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
-"ಕೋಡ್ ಕಳುಹಿಸುವಿಕೆಯನ್ನು ಬೆಂಬಲಿಸುವ ವಿಧಾನಗಳಿಗೆ ಪರಿಶೀಲನಾ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಿ. ವಿಧಾನದ "
-"ಕಾನ್ಫಿಗರೇಶನ್ ಅನ್ನು ಪರೀಕ್ಷಿಸಲು ಅಥವಾ ಹಸ್ತಚಾಲಿತ ಕೋಡ್ ವಿನಂತಿಗಳಿಗೆ ಉಪಯುಕ್ತ."
+"ಕೋಡ್ ಕಳುಹಿಸುವಿಕೆಯನ್ನು ಬೆಂಬಲಿಸುವ ವಿಧಾನಗಳಿಗೆ ಪರಿಶೀಲನಾ ಕೋಡ್ ಅನ್ನು ಕಳುಹಿಸಿ. "
+"ವಿಧಾನದ ಕಾನ್ಫಿಗರೇಶನ್ ಅನ್ನು ಪರೀಕ್ಷಿಸಲು ಅಥವಾ ಹಸ್ತಚಾಲಿತ ಕೋಡ್ ವಿನಂತಿಗಳಿಗೆ "
+"ಉಪಯುಕ್ತ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "MFA ವಿಧಾನವನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "ಈ ಕ್ರಿಯೆಯನ್ನು ರದ್ದುಪಡಿಸಲಾಗುವುದಿಲ್ಲ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "ಸಕ್ರಿಯ ವಿಧಾನಗಳನ್ನು ಅಳಿಸಲಾಗುವುದಿಲ್ಲ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "ಪ್ರಾಥಮಿಕ ವಿಧಾನಗಳನ್ನು ಅಳಿಸಲಾಗುವುದಿಲ್ಲ."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "ಸಕ್ರಿಯ ವಿಧಾನಗಳಿಗೆ ಪರಿಶೀಲನಾ ಕೋಡ್ ಅಗತ್ಯವಿದೆ."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "ಬಳಕೆದಾರ"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "ಈ MFA ವಿಧಾನವನ್ನು ಹೆಂದಿರುವ ಬಳಕೆದಾರ"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "ಹೆಸರು"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA ವಿಧಾನದ ಹೆಸರು (ಉದಾಹರಣೆಗೆ, 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "ಗುಪ್ತ"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "ಪರಿಶೀಲನಾ ಕೋಡ್‌ಗಳನ್ನು ಉತ್ಪಾದಿಸುವುದಕ್ಕಾಗಿ TOTP ಗುಪ್ತ ಕೀಲಿ"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "ಪ್ರಾಥಮಿಕವಾಗಿದೆ"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "ಇದು ಬಳಕೆದಾರರ ಪ್ರಾಥಮಿಕ MFA ವಿಧಾನವಾಗಿದೆಯಾ"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "ಸಕ್ರಿಯವಾಗಿದೆ"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "ಈ ವಿಧಾನವು ಸಕ್ರಿಯವಾಗಿದೆ ಮತ್ತು ಬಳಕೆಯಾಗಬಹುದು"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳು"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
-msgstr "ಖಾತೆಯ ಪುನರ್ಪಾದಿಸುವುದಕ್ಕಾಗಿ ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸುವ JSON ಕ್ಷೇತ್ರ"
+msgstr ""
+"ಖಾತೆಯ ಪುನರ್ಪಾದಿಸುವುದಕ್ಕಾಗಿ ಬ್ಯಾಕಪ್ ಕೋಡ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸುವ JSON ಕ್ಷೇತ್ರ"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA ವಿಧಾನ"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA ವಿಧಾನಗಳು"
 
@@ -392,7 +431,8 @@ msgstr "ಅಮಾನ್ಯ ಕೋಡ್"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "ಅಮಾನ್ಯ ಟೋಕನ್"
 
@@ -404,10 +444,9 @@ msgstr "ದಯವಿಟ್ಟು ಹೊಸ ವಿಧಾನವನ್ನು ಆಯ
 msgid "This method is already exists"
 msgstr "ಈ ವಿಧಾನ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "ಅಮಾನ್ಯ OTP ಕೋಡ್"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "ಅಮಾನ್ಯ ಪರಿಶೀಲನಾ ಕೋಡ್"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -416,6 +455,10 @@ msgstr "MFA ವಿಧಾನ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "ನೀವು ಪ್ರಾಥಮಿಕವಲ್ಲದ MFA ವಿಧಾನವನ್ನು ಮಾತ್ರ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಬಹುದು."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "ಅಮಾನ್ಯ OTP ಕೋಡ್"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -449,19 +492,78 @@ msgstr "MFA ವಿಧಾನ ಅಳಿಸಲಾಗಿದೆ"
 msgid "MFA code sent"
 msgstr "MFA ಕೋಡ್ ಕಳುಹಿಸಲಾಗಿದೆ"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "ಇಮೇಲ್ ಮ್ಯಾಜಿಕ್ ಲಿಂಕ್"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "ಲಾಗಿನ್ ಲಿಂಕ್ ಕಳುಹಿಸಲಾಗಿದೆ."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "ಪಾಸ್‌ಕೀ / ಭದ್ರತಾ ಕೀ"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"{} ಮೂಲಕ ಪಾಸ್‌ವರ್ಡ್‌ರಹಿತ ದೃಢೀಕರಣ ಪ್ರಾರಂಭಿಸಿ. ಇದು ಪಾಸ್‌ವರ್ಡ್‌ರಹಿತ ಲಾಗಿನ್ "
+"ಪ್ರವಾಹದ ಮೊದಲ ಹಂತ."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"{} ಮೂಲಕ ಪಾಸ್‌ವರ್ಡ್‌ರಹಿತ ದೃಢೀಕರಣ ಪೂರ್ಣಗೊಳಿಸಿ. ಪ್ರಾರಂಭ ಹಂತದ ರುಜುವಾತು/ಟೋಕನ್ "
+"ಪರಿಶೀಲಿಸಿ."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "ಅಮಾನ್ಯ ಅಥವಾ ಮೀಯಾದಿ ಮೀರಿದ ಟೋಕನ್."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "ಬಳಕೆದಾರ ಖಾತೆ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"ಪತ್ತೆಯಾಗದ ರುಜುವಾತು ಪ್ರವಾಹಕ್ಕಾಗಿ ಐಚ್ಛಿಕ ಇಮೇಲ್. ಪಾಸ್‌ಕೀ (ಪತ್ತೆಯಾಗುವ) "
+"ಪ್ರವಾಹಕ್ಕಾಗಿ ಬಿಟ್ಟುಬಿಡಿ."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn ದೃಢೀಕರಣ ವಿಫಲವಾಗಿದೆ."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "ಕುಕೀಯನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತದೆ."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "ಮಾನ್ಯವಾದ ನವೀಕರಣ ಟೋಕನ್ ಕಂಡುಬಂದಿಲ್ಲ."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "ಇಮೇಲ್ ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"ಹಲವಾರು ವಿಫಲ ಲಾಗಿನ್ ಪ್ರಯತ್ನಗಳಿಂದ ಖಾತೆ ಲಾಕ್ ಆಗಿದೆ. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "ಒದಗಿಸಿದ ಅರ್ಹತೆಗಳೊಂದಿಗೆ ಲಾಗಿನ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
@@ -471,13 +573,14 @@ msgstr "ಅಮಾನ್ಯ ಮೌಲ್ಯ"
 
 #: auth_kit/serializers/password.py:222
 msgid "Your old password was entered incorrectly. Please enter it again."
-msgstr "ನಿಮ್ಮ ಹಳೆಯ ಗುಪ್ತಪದವನ್ನು ತಪ್ಪಾಗಿ ನಮೂದಿಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಅದನ್ನು ಮತ್ತೆ ನಮೂದಿಸಿ."
+msgstr ""
+"ನಿಮ್ಮ ಹಳೆಯ ಗುಪ್ತಪದವನ್ನು ತಪ್ಪಾಗಿ ನಮೂದಿಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಅದನ್ನು ಮತ್ತೆ ನಮೂದಿಸಿ."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "ಈ ಇಮೇಲ್ ವಿಳಾಸದೊಂದಿಗೆ ಒಬ್ಬ ಬಳಕೆದಾರ ಈಗಾಗಲೇ ನೋಂದಾಯಿಸಲಾಗಿದೆ."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "ಎರಡು ಗುಪ್ತಪದ ಕ್ಷೇತ್ರಗಳು ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ."
 
@@ -489,89 +592,87 @@ msgstr "ಸಾಮಾಜಿಕ ಖಾತೆ ಇಮೇಲ್ ನಿಮ್ಮ ಪ�
 msgid "Connected"
 msgstr "ಸಂಪರ್ಕಿಸಲಾಗಿದೆ"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "OAuth ಹರಿವನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "ಈ ಇಮೇಲ್ ವಿಳಾಸದೊಂದಿಗೆ ಬಳಕೆದಾರ ಈಗಾಗಲೇ ನೋಂದಾಯಿಸಲಾಗಿದೆ."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "ಪ್ರವೇಶ ಟೋಕನ್‌ಗಾಗಿ ಕೋಡ್ ಅನ್ನು ವಿನಿಮಯ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"ಪ್ರವೇಶ ಟೋಕನ್‌ಗಳನ್ನು ಪಡೆಯಲು {} ಮೂಲಕ OAuth2/OpenID Connect ಅಧಿಕಾರ ಕೊಡ್ "
-"ಅನ್ನು ಬಳಸಿ ದೃಢೀಕರಿಸಿ."
+"ಪ್ರವೇಶ ಟೋಕನ್‌ಗಳನ್ನು ಪಡೆಯಲು {} ಮೂಲಕ OAuth2/OpenID Connect ಅಧಿಕಾರ ಕೊಡ್ ಅನ್ನು "
+"ಬಳಸಿ ದೃಢೀಕರಿಸಿ."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"{} ಖಾತೆಯನ್ನು ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರ ಖಾತೆಗೆ ಸಂಬಂಧಿಸಿ. ಇದು ಬಳಕೆದಾರರು "
-"ಭವಿಷ್ಯದಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ {} ಖಾತೆಯನ್ನು ಬಳಸಿ ಲಾಗಿನ್ ಮಾಡಲು ಅನುಮತಿಸುತ್ತದೆ."
+"{} ಖಾತೆಯನ್ನು ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರ ಖಾತೆಗೆ ಸಂಬಂಧಿಸಿ. ಇದು ಬಳಕೆದಾರರು ಭವಿಷ್ಯದಲ್ಲಿ "
+"ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ {} ಖಾತೆಯನ್ನು ಬಳಸಿ ಲಾಗಿನ್ ಮಾಡಲು ಅನುಮತಿಸುತ್ತದೆ."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
-"ದೃಢೀಕರಣ ಮತ್ತು {} ನಿಂದ ಮಾನ್ಯವಾದ OAuth2/OpenID Connect ಅಧಿಕಾರ ಕೊಡ್ "
-"ಅಗತ್ಯವಿದೆ."
+"ದೃಢೀಕರಣ ಮತ್ತು {} ನಿಂದ ಮಾನ್ಯವಾದ OAuth2/OpenID Connect ಅಧಿಕಾರ ಕೊಡ್ ಅಗತ್ಯವಿದೆ."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
 "ಯಶಸ್ಸಿನ ಮೇಲೆ, {} ಖಾತೆಯನ್ನು ಲಿಂಕ್ ಮಾಡಲಾಗಿದೆ ಮತ್ತು ಭವಿಷ್ಯದ ಲಾಗಿನ್‌ಗಳಿಗೆ "
 "ಬಳಸಬಹುದು."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
 msgstr ""
-"ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರೆ ಸಂಬಂಧಿಸಿದ ಎಲ್ಲಾ ಸಾಮಾಜಿಕ ಖಾತೆಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ. ಪ್ರೊವೈಡರ್, UID, "
-"ಮತ್ತು ಸಂಬಂಧ ದಿನಾಂಕಗಳನ್ನು ಒಳಗೊಂಡ ಖಾತೆ ವಿವರಗಳನ್ನು ತೊರಿಸುತ್ತದೆ."
+"ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರೆ ಸಂಬಂಧಿಸಿದ ಎಲ್ಲಾ ಸಾಮಾಜಿಕ ಖಾತೆಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ. ಪ್ರೊವೈಡರ್,"
+" UID, ಮತ್ತು ಸಂಬಂಧ ದಿನಾಂಕಗಳನ್ನು ಒಳಗೊಂಡ ಖಾತೆ ವಿವರಗಳನ್ನು ತೊರಿಸುತ್ತದೆ."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರಿಂದ ಸಾಮಾಜಿಕ ಖಾತೆಯನ್ನು ವಿಲಗಿಸಿ. ಸಾಮಾಜಿಕ ಖಾತೆ ಸಂಬಂಧವನ್ನು ತೆಗೆದು "
-"ಮತ್ತು ಆ ಪ್ರೊವೈಡರ್ ಮೂಲಕ ಭವಿಷ್ಯದ ಲಾಗಿನ್‌ಗಳನ್ನು ತಡೆಯುತ್ತದೆ. ದೃಢೀಕರಣ ಅಗತ್ಯವಿದೆ ಮತ್ತು "
-"ಖಾತೆಯು ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರೆ ಸಂಬಂಧಿಸಿದಿರಬೇಕು."
+"ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರಿಂದ ಸಾಮಾಜಿಕ ಖಾತೆಯನ್ನು ವಿಲಗಿಸಿ. ಸಾಮಾಜಿಕ ಖಾತೆ ಸಂಬಂಧವನ್ನು "
+"ತೆಗೆದು ಮತ್ತು ಆ ಪ್ರೊವೈಡರ್ ಮೂಲಕ ಭವಿಷ್ಯದ ಲಾಗಿನ್‌ಗಳನ್ನು ತಡೆಯುತ್ತದೆ. ದೃಢೀಕರಣ "
+"ಅಗತ್ಯವಿದೆ ಮತ್ತು ಖಾತೆಯು ಪ್ರಸ್ತುತ ಬಳಕೆದಾರರೆ ಸಂಬಂಧಿಸಿದಿರಬೇಕು."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class ಅನ್ನು ವ್ಯಾಖ್ಯಾನಿಸಲಾಗಿಲ್ಲ"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "ನವೀಕರಣ ಟೋಕನ್ ಅನ್ನು ಕುಕೀ ಡೇಟಾದಲ್ಲಿ ಸೇರಿಸಲಾಗಿಲ್ಲ."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "ನವೀಕರಣ ಟೋಕನ್ ಅನ್ನು ವಿನಂತಿ ಡೇಟಾದಲ್ಲಿ ಸೇರಿಸಲಾಗಿಲ್ಲ."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "ಒಂದು ದೋಷ ಸಂಭವಿಸಿದೆ."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "ಯಶಸ್ವಿಯಾಗಿ ಲಾಗ್‌ಔಟ್ ಆಗಿದೆ."
 
@@ -579,25 +680,268 @@ msgstr "ಯಶಸ್ವಿಯಾಗಿ ಲಾಗ್‌ಔಟ್ ಆಗಿದೆ.
 msgid "Password reset e-mail has been sent."
 msgstr "ಗುಪ್ತಪದ ಮರುಹೊಂದಿಸುವ ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "ಹೊಸ ಗುಪ್ತಪದದೊಂದಿಗೆ ಗುಪ್ತಪದವನ್ನು ಮರುಹೊಂದಿಸಲಾಗಿದೆ."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "ಹೊಸ ಗುಪ್ತಪದವನ್ನು ಉಳಿಸಲಾಗಿದೆ."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "ಪರಿಶೀಲನಾ ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ಸರಿ"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "ವಿನಂತಿಸಿದ WebAuthn ರುಜುವಾತು ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn ಪರಿಶೀಲನೆ ವಿಫಲವಾಗಿದೆ."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "ಈ WebAuthn ರುಜುವಾತನ್ನು ಹೊಂದಿರುವ ಬಳಕೆದಾರ"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ರುಜುವಾತು ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "ದೃಢೀಕಾರಕದಿಂದ ಅನನ್ಯ ರುಜುವಾತು ಗುರುತಿಸುವಿಕೆ"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "ಸಾರ್ವಜನಿಕ ಕೀ"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "ನೋಂದಣಿಯಿಂದ COSE ಸಾರ್ವಜನಿಕ ಕೀ ಬೈಟ್‌ಗಳು"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "ಸಹಿ ಎಣಿಕೆ"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "ರಿಪ್ಲೇ ದಾಳಿ ಪತ್ತೆಗಾಗಿ ಸಹಿ ಕೌಂಟರ್"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "ಸಾಗಣೆ ವಿಧಾನಗಳು"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "ಬೆಂಬಲಿತ ಸಾಗಣೆ ವಿಧಾನಗಳು (ಉದಾ., usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "ಪತ್ತೆಯಾಗುವ"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "ಇದು ಪತ್ತೆಯಾಗುವ (ಪಾಸ್‌ಕೀ) ರುಜುವಾತೇ ಎಂದು"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "ಸಾಧನ ಪ್ರಕಾರ ಗುರುತಿಸುವ ದೃಢೀಕಾರಕ ಅಟೆಸ್ಟೇಶನ್ GUID"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "ಈ ರುಜುವಾತಿಗೆ ಬಳಕೆದಾರ ನಿಗದಿಪಡಿಸಿದ ಸ್ನೇಹಪರ ಹೆಸರು"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "ರಚಿಸಿದ ಸಮಯ"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "ಈ ರುಜುವಾತು ನೋಂದಾಯಿಸಿದ ಸಮಯ"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "ಕೊನೆಯ ಬಳಕೆಯ ಸಮಯ"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "ಈ ರುಜುವಾತು ಕೊನೆಯ ಬಾರಿ ದೃಢೀಕರಣಕ್ಕಾಗಿ ಬಳಸಿದ ಸಮಯ"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn ರುಜುವಾತು"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn ರುಜುವಾತುಗಳು"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "ಈ ರುಜುವಾತಿಗೆ ಐಚ್ಛಿಕ ಬಳಕೆದಾರ-ಸ್ನೇಹಪರ ಹೆಸರು"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "ಈ ರುಜುವಾತಿಗೆ ಬಳಕೆದಾರ-ಸ್ನೇಹಪರ ಹೆಸರು"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-ಎನ್‌ಕೋಡ್ ಮಾಡಿದ ರುಜುವಾತು ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "ರುಜುವಾತು ಪ್ರಕಾರ"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "ದೃಢೀಕಾರಕ ತಲುಪಲು ಸಾಗಣೆ ಸುಳಿವುಗಳು"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE ಅಲ್ಗಾರಿದಮ್ ಗುರುತಿಸುವಿಕೆ (ಉದಾ., ES256 ಗಾಗಿ -7)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "ಓದಬಲ್ಲ RP ಹೆಸರು"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (ಡೊಮೇನ್)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-ಎನ್‌ಕೋಡ್ ಮಾಡಿದ ಬಳಕೆದಾರ ಹ್ಯಾಂಡಲ್"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "ಬಳಕೆದಾರ ಖಾತೆ ಹೆಸರು"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "ಬಳಕೆದಾರ ಪ್ರದರ್ಶನ ಹೆಸರು"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "ರೆಸಿಡೆಂಟ್ ಕೀ ಅವಶ್ಯಕತೆ"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "ರೆಸಿಡೆಂಟ್ ಕೀ ಅಗತ್ಯವಿದೆಯೇ (ಅಪ್ರಚಲಿತ, residentKey ಬಳಸಿ)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "ಬಳಕೆದಾರ ಪರಿಶೀಲನಾ ಅವಶ್ಯಕತೆ"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "ದೃಢೀಕಾರಕ ಸಂಲಗ್ನಿಕೆ"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "ರಿಲೈಯಿಂಗ್ ಪಾರ್ಟಿ ಗುರುತು"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "ಬಳಕೆದಾರ ಖಾತೆ ಮಾಹಿತಿ"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-ಎನ್‌ಕೋಡ್ ಮಾಡಿದ ಚಾಲೆಂಜ್"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "ಬೆಂಬಲಿತ ಸಾರ್ವಜನಿಕ-ಕೀ ರುಜುವಾತು ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "ಮಿಲಿಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ ಸೆರೆಮನಿ ಟೈಮ್‌ಔಟ್"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "ಹೊರಗಿಡಬೇಕಾದ ರುಜುವಾತುಗಳು (ಈಗಾಗಲೇ ನೋಂದಾಯಿಸಲಾಗಿದೆ)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "ದೃಢೀಕಾರಕ ಆಯ್ಕೆ ಮಾನದಂಡಗಳು"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "ಅಟೆಸ್ಟೇಶನ್ ಸಾಗಣೆ ಆದ್ಯತೆ"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ರಿಲೈಯಿಂಗ್ ಪಾರ್ಟಿ ID (ಡೊಮೇನ್)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "ಈ ದೃಢೀಕರಣಕ್ಕಾಗಿ ಅನುಮತಿಸಲಾದ ರುಜುವಾತುಗಳು"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "ಪರಿಶೀಲನಾ ಹಂತಕ್ಕಾಗಿ ಅಪಾರದರ್ಶಕ ಸೆಶನ್ ಟೋಕನ್"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "ನೋಂದಣಿ ಚಾಲೆಂಜ್ ಮೀಯಾದಿ ಮೀರಿದೆ ಅಥವಾ ಕಂಡುಬಂದಿಲ್ಲ."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "ದೃಢೀಕರಣ ಚಾಲೆಂಜ್ ಮೀಯಾದಿ ಮೀರಿದೆ ಅಥವಾ ಕಂಡುಬಂದಿಲ್ಲ."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "ರುಜುವಾತು ಕಂಡುಬಂದಿಲ್ಲ."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "ರುಜುವಾತು ಮರುನಾಮಕರಣ ಮಾಡಲಾಗಿದೆ."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"ದೃಢೀಕೃತ ಬಳಕೆದಾರರಿಗೆ ನೋಂದಾಯಿಸಲಾದ ಎಲ್ಲಾ ಪಾಸ್‌ಕೀ ಮತ್ತು ಭದ್ರತಾ ಕೀಗಳನ್ನು ಪಟ್ಟಿ "
+"ಮಾಡಿ."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"ಹೊಸ ಪಾಸ್‌ಕೀ ಅಥವಾ ಭದ್ರತಾ ಕೀ ನೋಂದಾಯಿಸಿ. register_options ಎಂಡ್‌ಪಾಯಿಂಟ್ ಕರೆದ "
+"ನಂತರ ಬ್ರೌಸರ್‌ನಿಂದ ರುಜುವಾತು ಸಲ್ಲಿಸಿ."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"ಹೊಸ ಪಾಸ್‌ಕೀ ಅಥವಾ ಭದ್ರತಾ ಕೀ ಸೇರಿಸಲು ನೋಂದಣಿ ಆಯ್ಕೆಗಳನ್ನು ಪಡೆಯಿರಿ. ಬ್ರೌಸರ್ "
+"ರುಜುವಾತು ರಚಿಸಲು ಚಾಲೆಂಜ್ ಹಿಂತಿರುಗಿಸುತ್ತದೆ."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "ಪಾಸ್‌ಕೀ ಅಥವಾ ಭದ್ರತಾ ಕೀ ಮರುನಾಮಕರಣ ಮಾಡಿ."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr "ಪಾಸ್‌ಕೀ ಅಥವಾ ಭದ್ರತಾ ಕೀ ಅಳಿಸಿ. ಈ ಕ್ರಿಯೆಯನ್ನು ರದ್ದು ಮಾಡಲಾಗುವುದಿಲ್ಲ."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

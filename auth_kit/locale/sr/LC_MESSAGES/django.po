@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Serbian\n"
@@ -15,8 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: auth_kit/api_descriptions.py:29
 msgid ""
@@ -87,8 +86,8 @@ msgstr "Odjavljuje korisnika i poništava autentifikacione tokene."
 msgid ""
 "Requires authentication to ensure only valid sessions can be logged out."
 msgstr ""
-"Zahteva autentifikaciju kako bi se osiguralo da se mogu odjaviti samo važeće "
-"sesije."
+"Zahteva autentifikaciju kako bi se osiguralo da se mogu odjaviti samo važeće"
+" sesije."
 
 #: auth_kit/api_descriptions.py:104
 msgid "Generate new JWT access tokens using refresh tokens."
@@ -128,12 +127,12 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"Šalje instrukcije za resetovanje lozinke na dostavljenu email adresu. Ako je "
-"email registrovan, biće poslana bezbedna veza za resetovanje. Veza ističe "
+"Šalje instrukcije za resetovanje lozinke na dostavljenu email adresu. Ako je"
+" email registrovan, biće poslana bezbedna veza za resetovanje. Veza ističe "
 "nakon ograničenog vremena iz bezbednosnih razloga."
 
 #: auth_kit/api_descriptions.py:149
@@ -143,8 +142,8 @@ msgid ""
 "token is single-use and expires for security."
 msgstr ""
 "Završava proces resetovanja lozinke koristeći token iz email-a za "
-"resetovanje. Zahteva UID i token iz email-a zajedno sa novom lozinkom. Token "
-"je za jednu upotrebu i ističe iz bezbednosnih razloga."
+"resetovanje. Zahteva UID i token iz email-a zajedno sa novom lozinkom. Token"
+" je za jednu upotrebu i ističe iz bezbednosnih razloga."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -155,8 +154,8 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"Potvrđuje email adresu koristeći ključ za verifikaciju poslan putem email-a. "
-"Ovo aktivira korisnički nalog i omogućava pristup za prijavljivanje."
+"Potvrđuje email adresu koristeći ključ za verifikaciju poslan putem email-a."
+" Ovo aktivira korisnički nalog i omogućava pristup za prijavljivanje."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
@@ -185,13 +184,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Delimično ažurira informacije o profilu autentifikovanog korisnika. "
 "Ažuriraće se samo dostavljena polja. Polje email-a je samo za čitanje."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Email adresa nije dodeljena nijednom korisničkom nalogu."
 
@@ -203,12 +202,20 @@ msgstr "Zahtevana MFA metoda ne postoji."
 msgid "Email message with MFA code has been sent."
 msgstr "Email poruka sa MFA kodom je poslana."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Opcije registracije za navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Bezbednosni ključ / Ključ za pristup"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA kod ističe za {} sekundi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -216,59 +223,75 @@ msgstr ""
 "Prvi korak autentifikacije sa omogućenom MFA. Validira pristupne podatke i "
 "pokreće MFA tok."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Vraća privremeni token za MFA verifikaciju ili kompletne {} ako "
-"je MFA onemogućena."
+"Vraća privremeni token za MFA verifikaciju ili kompletne {} ako je MFA "
+"onemogućena."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Završava MFA autentifikaciju koristeći kod za verifikaciju i privremeni "
 "token."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Podržava TOTP kodove i rezervne kodove za verifikaciju."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Prebacuje na drugu MFA metodu tokom toka autentifikacije."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Zahteva važeći privremeni token iz prvog koraka autentifikacije."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Novi privremeni token ističe za {} sekundi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Ponovo šalje MFA kod za verifikaciju koristeći postojeći privremeni token."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "Primenjuje se samo na metode koje zahtevaju slanje koda (npr. email)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Dobijte izazov za prijavu za metodu MFA na čekanju koristeći postojeći "
+"privremeni token."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Primenjuje se samo za metode izazov-odgovor (npr. ključevi za pristup). "
+"Ostale metode vraćaju prazan objekat."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Prikazuje sve dostupne MFA metode sa njihovim statusom podešavanja i "
-"aktivacije. Pokazuje koje metode su konfigurisane, aktivne i postavljene kao "
-"primarne."
+"aktivacije. Pokazuje koje metode su konfigurisane, aktivne i postavljene kao"
+" primarne."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -278,17 +301,17 @@ msgstr ""
 "kodovima i vraća instrukcije za podešavanje (npr. QR kod za aplikacije za "
 "autentifikaciju). Metoda mora biti potvrđena pre aktivacije."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"Potvrđuje i aktivira novo kreiranu MFA metodu koristeći kod za verifikaciju. "
-"Automatski postavlja kao primarnu metodu ako ne postoji druga primarna "
+"Potvrđuje i aktivira novo kreiranu MFA metodu koristeći kod za verifikaciju."
+" Automatski postavlja kao primarnu metodu ako ne postoji druga primarna "
 "metoda. Potrebno pre nego što se metoda može koristiti za autentifikaciju."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -298,7 +321,7 @@ msgstr ""
 "Ne može deaktivirati primarne metode - prvo postavite drugu metodu kao "
 "primarnu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -306,15 +329,15 @@ msgstr ""
 "Postavlja aktivnu MFA metodu kao primarnu metodu autentifikacije. Primarna "
 "metoda se koristi po defaultu tokom toka prijavljivanja."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Samo jedna metoda može biti primarna u isto vreme."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Zahteva kod za verifikaciju iz trenutne primarne metode."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -322,79 +345,79 @@ msgstr ""
 "Šalje kod za verifikaciju za metode koje podržavaju slanje kodova. Korisno "
 "za testiranje konfiguracije metode ili ručne zahteve za kodovima."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Trajno briše MFA metodu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Ova akcija se ne može poništiti."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Ne može brisati aktivne metode."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Ne može brisati primarne metode."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Zahteva kod za verifikaciju za aktivne metode."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "korisnik"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Korisnik koji poseduje ovu MFA metodu"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "naziv"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Naziv MFA metode (npr. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "tajna"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP tajni ključ za generisanje kodova za verifikaciju"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "je primarna"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Da li je ovo korisnikova primarna MFA metoda"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "je aktivna"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Da li je ova metoda aktivna i može se koristiti"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "rezervni kodovi"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON polje koje čuva rezervne kodove za oporavak naloga"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA Metoda"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA Metode"
 
@@ -404,7 +427,8 @@ msgstr "Neispravan kod"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Neispravan token"
 
@@ -416,10 +440,9 @@ msgstr "Molimo izaberite novu metodu"
 msgid "This method is already exists"
 msgstr "Ova metoda već postoji"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Neispravan OTP kod"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Nevažeći verifikacioni kod"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -428,6 +451,10 @@ msgstr "Aktivirana MFA metoda"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Možete deaktivirati samo ne-primarnu MFA metodu."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Neispravan OTP kod"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -461,19 +488,78 @@ msgstr "Obrisana MFA metoda"
 msgid "MFA code sent"
 msgstr "MFA kod poslat"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Magična veza putem e-pošte"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Veza za prijavu je poslata."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Ključ za pristup / Bezbednosni ključ"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Pokrenite autentifikaciju bez lozinke putem {}. Ovo je prvi korak u toku "
+"prijave bez lozinke."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Dovršite autentifikaciju bez lozinke putem {}. Proverite akreditiv/token iz "
+"koraka inicijalizacije."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Nevažeći ili istekli token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Korisnički nalog je onemogućen."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Opcioni e-mail za tok sa nedistributivnim akreditivima. Izostavite za tok sa"
+" ključem za pristup (distributivni)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn autentifikacija nije uspela."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Prepisaće kolačić."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Nije pronađen važeći refresh token."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Email nije verifikovan."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Nalog je zaključan zbog previše neuspelih pokušaja prijave. Pokušajte ponovo"
+" kasnije."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Nije moguće prijaviti se sa dostavljenim pristupnim podacima."
 
@@ -485,72 +571,72 @@ msgstr "Neispravna vrednost"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Vaša stara lozinka je uneta neispravno. Molimo unesite je ponovo."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Korisnik sa ovom email adresom je već registrovan."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Dva polja za lozinku se ne poklapaju."
 
 #: auth_kit/social/serializers/connect.py:55
 msgid "Social account email must match your current account email."
 msgstr ""
-"Email društvenog naloga mora se poklapati sa email-om vašeg trenutnog naloga."
+"Email društvenog naloga mora se poklapati sa email-om vašeg trenutnog "
+"naloga."
 
 #: auth_kit/social/serializers/connect.py:98
 msgid "Connected"
 msgstr "Povezano"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Neuspešno završavanje OAuth toka"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Korisnik sa ovom email adresom je već registrovan."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Neuspešna razmena koda za pristupni token"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Autentifikacija sa {} koristeći autorizacioni kod OAuth2/OpenID "
-"Connect za dobijanje pristupnih tokena."
+"Autentifikacija sa {} koristeći autorizacioni kod OAuth2/OpenID Connect za "
+"dobijanje pristupnih tokena."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Povezuje {} nalog sa nalogom trenutnog korisnika. Ovo omogućava "
-"korisniku da se ubuduće prijavljuje koristeći postojeji {} nalog."
+"Povezuje {} nalog sa nalogom trenutnog korisnika. Ovo omogućava korisniku da"
+" se ubuduće prijavljuje koristeći postojeji {} nalog."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Zahteva autentifikaciju i važeći autorizacioni kod OAuth2/OpenID Connect od "
 "{}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
 "Kod uspeha, {} nalog je povezan i može se koristiti za buduće "
 "prijavljivanja."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -558,7 +644,7 @@ msgstr ""
 "Lista svih društvenih naloga povezanih sa trenutnim korisnikom. Prikazuje "
 "detalje naloga uključujući pružaoca, UID i datume povezivanja."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -572,19 +658,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class nije definisan"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Refresh token nije uključen u podatke kolačića."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Refresh token nije uključen u podatke zahteva."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Došlo je do greške."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Uspešno odjavljen."
 
@@ -592,25 +678,270 @@ msgstr "Uspešno odjavljen."
 msgid "Password reset e-mail has been sent."
 msgstr "Email za resetovanje lozinke je poslat."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Lozinka je resetovana sa novom lozinkom."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Nova lozinka je sačuvana."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Email za verifikaciju poslat."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Uspešno registrovan."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "u redu"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Traženi WebAuthn akreditiv ne postoji."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn verifikacija nije uspela."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Korisnik koji je vlasnik ovog WebAuthn akreditiva"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ID akreditiva"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Jedinstveni identifikator akreditiva od autentifikatora"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "javni ključ"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE bajtovi javnog ključa iz registracije"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "broj potpisa"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Brojač potpisa za otkrivanje napada ponavljanjem"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transporti"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Podržane metode transporta (npr. usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "prepoznatljiv"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Da li je ovo prepoznatljivi (ključ za pristup) akreditiv"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID atestacije autentifikatora koji identifikuje tip uređaja"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Korisnički dodeljeno prijatelјsko ime za ovaj akreditiv"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "kreirano u"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Kada je ovaj akreditiv registrovan"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "poslednji put korišćeno u"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Kada je ovaj akreditiv poslednji put korišćen za autentifikaciju"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn akreditiv"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn akreditivi"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Opciono prijatelјsko ime za ovaj akreditiv"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Prijatelјsko ime za ovaj akreditiv"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "ID akreditiva kodiran Base64URL-om"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Tip akreditiva"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Saveti za transport za dostizanje autentifikatora"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Identifikator COSE algoritma (npr. -7 za ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Čitljivo ime RP"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (domen)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Korisnički identifikator kodiran Base64URL-om"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Ime korisničkog naloga"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Prikazno ime korisnika"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Zahtev za rezidentni ključ"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Da li je rezidentni ključ obavezan (zastarelo, koristite residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Zahtev za verifikaciju korisnika"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Priključak autentifikatora"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Identitet strane koja se oslanja"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Informacije o korisničkom nalogu"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Izazov kodiran Base64URL-om"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Podržani parametri akreditiva sa javnim ključem"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Vremensko ograničenje ceremonije u milisekundama"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Akreditivi koji se isključuju (već registrovani)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Kriterijumi za izbor autentifikatora"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Podešavanje prenosa atestacije"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ID strane koja se oslanja (domen)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Dozvoljeni akreditivi za ovu autentifikaciju"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Neprozirni token sesije za korak verifikacije"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Izazov za registraciju je istekao ili nije pronađen."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Izazov za autentifikaciju je istekao ili nije pronađen."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Akreditiv nije pronađen."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Akreditiv je preimenovan."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Prikažite sve ključeve za pristup i bezbednosne ključeve registrovane za "
+"autentifikovanog korisnika."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Registrujte novi ključ za pristup ili bezbednosni ključ. Pošaljite akreditiv"
+" iz pregledača nakon poziva krajnje tačke register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Dobijte opcije registracije za dodavanje novog ključa za pristup ili "
+"bezbednosnog ključa. Vraća izazov za pregledač da kreira akreditiv."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Preimenujte ključ za pristup ili bezbednosni ključ."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Obrišite ključ za pristup ili bezbednosni ključ. Ova radnja se ne može "
+"poništiti."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Hungarian\n"
@@ -22,8 +22,8 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"Visszaadja a felhasználói adatokat a JWT hozzáférési és frissítő tokenekkel, "
-"lejárati időkkel együtt."
+"Visszaadja a felhasználói adatokat a JWT hozzáférési és frissítő tokenekkel,"
+" lejárati időkkel együtt."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -125,17 +125,17 @@ msgstr "Új felhasználói fiók regisztrálása."
 msgid ""
 "Users must verify their email address before the account is fully activated."
 msgstr ""
-"A felhasználóknak igazolniuk kell az e-mail címüket, mielőtt a fiók teljesen "
-"aktiválódik."
+"A felhasználóknak igazolniuk kell az e-mail címüket, mielőtt a fiók teljesen"
+" aktiválódik."
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"Jelszó visszaállítási utasítások küldése a megadott e-mail címre. Ha az e-"
-"mail cím regisztrálva van, egy biztonságos visszaállítási link lesz "
+"Jelszó visszaállítási utasítások küldése a megadott e-mail címre. Ha az "
+"e-mail cím regisztrálva van, egy biztonságos visszaállítási link lesz "
 "elküldve. A link biztonsági okokból korlátozott ideig érvényes."
 
 #: auth_kit/api_descriptions.py:149
@@ -167,8 +167,8 @@ msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"Új e-mail ellenőrző üzenet küldése el nem igazolt e-mail címekre. Csak olyan "
-"e-mail címekre működik, amelyek regisztrálva vannak, de még nem lettek "
+"Új e-mail ellenőrző üzenet küldése el nem igazolt e-mail címekre. Csak olyan"
+" e-mail címekre működik, amelyek regisztrálva vannak, de még nem lettek "
 "ellenőrizve."
 
 #: auth_kit/api_descriptions.py:169
@@ -177,8 +177,8 @@ msgid ""
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
 "A hitelesített felhasználó profil információinak lekérése, beleértve a "
-"felhasználónevet, e-mail címet, keresztnevet és vezetéknevet. A jelszó mezők "
-"ki vannak zárva."
+"felhasználónevet, e-mail címet, keresztnevet és vezetéknevet. A jelszó mezők"
+" ki vannak zárva."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
@@ -191,13 +191,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "A hitelesített felhasználó profil információinak részleges frissítése. Csak "
 "a megadott mezők lesznek frissítve. Az e-mail mező csak olvasható."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Az e-mail cím nincs hozzárendelve egyetlen felhasználói fiókhoz sem."
 
@@ -209,12 +209,20 @@ msgstr "A kért MFA módszer nem létezik."
 msgid "Email message with MFA code has been sent."
 msgstr "Az MFA kóddal rendelkező e-mail üzenet elküldve."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Regisztrációs beállítások a navigator.credentials.create() számára"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Biztonsági kulcs / Hozzáférési kulcs"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "Az MFA kód {} másodperc múlva lejár."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -222,61 +230,78 @@ msgstr ""
 "Az MFA-engedélyezett hitelesítés első lépése. Érvényesíti a hitelesítő "
 "adatokat és elindítja az MFA folyamatot."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Ideiglenes tokent ad vissza az MFA ellenőrzéshez, vagy teljes "
-"{}-t, ha az MFA le van tiltva."
+"Ideiglenes tokent ad vissza az MFA ellenőrzéshez, vagy teljes {}-t, ha az "
+"MFA le van tiltva."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
-msgstr "Az MFA hitelesítés befejezése ellenőrző kóddal és ideiglenes tokennel."
+msgstr ""
+"Az MFA hitelesítés befejezése ellenőrző kóddal és ideiglenes tokennel."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr ""
 "Mind a TOTP kódokat, mind a biztonsági mentés kódokat támogatja az "
 "ellenőrzéshez."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Váltás másik MFA módszerre a hitelesítési folyamat során."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Érvényes ideiglenes tokent igényel az első lépéses hitelesítésből."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Az új ideiglenes token {} másodperc múlva lejár."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "MFA ellenőrző kód újraküldése a meglévő ideiglenes token használatával."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
-"Csak olyan módszerekre alkalmazható, amelyek kódküldést igényelnek (pl. e-"
-"mail)."
+"Csak olyan módszerekre alkalmazható, amelyek kódküldést igényelnek (pl. "
+"e-mail)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Bejelentkezési kihívás lekérése a függő MFA-módszerhez egy meglévő "
+"ideiglenes token segítségével."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Csak kihívás-válasz módszerekre alkalmazható (pl. hozzáférési kulcsok). Más "
+"módszerek üres objektumot adnak vissza."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Az összes elérhető MFA módszer felsorolása a beállítási és aktiválási "
-"állapotukkal. Megmutatja, hogy mely módszerek vannak konfigurálva, aktiválva "
-"és elsődlegesként beállítva."
+"állapotukkal. Megmutatja, hogy mely módszerek vannak konfigurálva, aktiválva"
+" és elsődlegesként beállítva."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -287,17 +312,17 @@ msgstr ""
 "kód az authenticator alkalmazásokhoz). A módszert megerősíteni kell az "
 "aktiválás előtt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"Újonnan létrehozott MFA módszer megerősítése és aktiválása ellenőrző kóddal. "
-"Automatikusan elsődleges módszerként állítja be, ha nincs más elsődleges "
+"Újonnan létrehozott MFA módszer megerősítése és aktiválása ellenőrző kóddal."
+" Automatikusan elsődleges módszerként állítja be, ha nincs más elsődleges "
 "módszer. Szükséges a módszer hitelesítéshez való használata előtt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -307,7 +332,7 @@ msgstr ""
 "módszertől. Nem lehet deaktiválni az elsődleges módszereket - először "
 "állítson be másik módszert elsődlegesként."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -316,15 +341,15 @@ msgstr ""
 "elsődleges módszer alapértelmezés szerint használatos a bejelentkezési "
 "folyamat során."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Egyszerre csak egy módszer lehet elsődleges."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Ellenőrző kódot igényel a jelenlegi elsődleges módszertől."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -333,79 +358,81 @@ msgstr ""
 "Hasznos a módszer konfigurációjának tesztelésához vagy manuális kód "
 "kérésekhez."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "MFA módszer végleges törlése."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Ez a művelet nem vonható vissza."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Nem lehet törölni az aktív módszereket."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Nem lehet törölni az elsődleges módszereket."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Ellenőrző kódot igényel az aktív módszerekhez."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "felhasználó"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Felhasználó, aki ezt az MFA módszert birtokolja"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "név"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA módszer neve (pl. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "titok"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP titkos kulcs az ellenőrzési kódok generálásához"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "elsődleges"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Hogy ez a felhasználó elsődleges MFA módszere-e"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "aktív"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Hogy ez a módszer aktív-e és használható-e"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "biztonsági mentés kódok"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
-msgstr "JSON mező, amely a fiók helyreállításához szükséges biztonsági kódokat tárolja"
+msgstr ""
+"JSON mező, amely a fiók helyreállításához szükséges biztonsági kódokat "
+"tárolja"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA módszer"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA módszerek"
 
@@ -415,7 +442,8 @@ msgstr "Érvénytelen kód"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Érvénytelen token"
 
@@ -427,10 +455,9 @@ msgstr "Kérjük válasszon új módszert"
 msgid "This method is already exists"
 msgstr "Ez a módszer már létezik"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Érvénytelen OTP kód"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Érvénytelen ellenőrzési kód"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -439,6 +466,10 @@ msgstr "MFA módszer aktiválva"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Csak nem elsődleges MFA módszert tud deaktiválni."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Érvénytelen OTP kód"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -472,19 +503,78 @@ msgstr "MFA módszer törölve"
 msgid "MFA code sent"
 msgstr "MFA kód elküldve"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "E-mail varázshivatkozás"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Bejelentkezési hivatkozás elküldve."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Hozzáférési kulcs / Biztonsági kulcs"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Jelszó nélküli hitelesítés indítása a {} segítségével. Ez a jelszó nélküli "
+"bejelentkezési folyamat első lépése."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Jelszó nélküli hitelesítés befejezése a {} segítségével. Ellenőrizze az "
+"indítási lépésből származó hitelesítési adatot/tokent."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Érvénytelen vagy lejárt token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "A felhasználói fiók le van tiltva."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Opcionális e-mail cím nem felderíthető hitelesítési folyamathoz. Hagyja el "
+"hozzáférési kulcs (felderíthető) folyamatnál."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "A WebAuthn hitelesítés sikertelen."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Felülírja a sütit."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Nem található érvényes frissítő token."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Az e-mail cím nincs ellenőrizve."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"A fiók zárolva van túl sok sikertelen bejelentkezési kísérlet miatt. Kérjük,"
+" próbálkozzon újra később."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Nem sikerült bejelentkezni a megadott hitelesítő adatokkal."
 
@@ -496,11 +586,11 @@ msgstr "Érvénytelen érték"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "A régi jelszó helytelenül lett megadva. Kérjük adja meg újra."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Ezzel az e-mail címmel már regisztrálva van egy felhasználó."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "A két jelszó mező nem egyezik."
 
@@ -514,56 +604,55 @@ msgstr ""
 msgid "Connected"
 msgstr "Csatlakoztatva"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Nem sikerült befejezni az OAuth folyamatot"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Ezzel az e-mail címmel már regisztrálva van felhasználó."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Nem sikerült kicserélni a kódot hozzáférési tokenre"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Hitelesítés {} szolgáltatóval OAuth2/OpenID Connect engedélyezési "
-"kód használatával a hozzáférési tokenek megszerzéséhez."
+"Hitelesítés {} szolgáltatóval OAuth2/OpenID Connect engedélyezési kód "
+"használatával a hozzáférési tokenek megszerzéséhez."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"{} fiók csatlakoztatása a jelenlegi felhasználó fiókjához. Ez "
-"lehetővé teszi a felhasználó számára, hogy a jövőben a meglévő {} "
-"fiókjával jelentkezzen be."
+"{} fiók csatlakoztatása a jelenlegi felhasználó fiókjához. Ez lehetővé teszi"
+" a felhasználó számára, hogy a jövőben a meglévő {} fiókjával jelentkezzen "
+"be."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Hitelesítést és érvényes OAuth2/OpenID Connect engedélyezési kódot igényel "
 "{} szolgáltatótól."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Sikeres esetben a {} fiók összekapcsolódik és használható lesz a "
-"jövőbeli bejelentkezésekhez."
+"Sikeres esetben a {} fiók összekapcsolódik és használható lesz a jövőbeli "
+"bejelentkezésekhez."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -572,7 +661,7 @@ msgstr ""
 "felsorolása. Megjeleníti a fiók részleteit, beleértve a szolgáltatót, UID-t "
 "és csatlakozási dátumokat."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -580,26 +669,26 @@ msgid ""
 msgstr ""
 "Közösségi fiók leválasztása a jelenlegi felhasználóról. Eltávolítja a "
 "közösségi fiók kapcsolatot és megakadályozza a jövőbeli bejelentkezéseket "
-"azon a szolgáltatón keresztül. Hitelesítést igényel és a fióknak a jelenlegi "
-"felhasználóhoz kell tartoznia."
+"azon a szolgáltatón keresztül. Hitelesítést igényel és a fióknak a jelenlegi"
+" felhasználóhoz kell tartoznia."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "az adapter_class nincs definiálva"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "A frissítő token nem volt a süti adatokban."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "A frissítő token nem volt a kérés adatokban."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Hiba történt."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Sikeresen kijelentkezve."
 
@@ -607,25 +696,272 @@ msgstr "Sikeresen kijelentkezve."
 msgid "Password reset e-mail has been sent."
 msgstr "A jelszó visszaállítási e-mail elküldve."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "A jelszó visszaállítása megtörtént az új jelszóval."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Az új jelszó elmentve."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Ellenőrző e-mail elküldve."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Sikeresen regisztrálva."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "rendben"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "A kért WebAuthn hitelesítési adat nem létezik."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "A WebAuthn ellenőrzés sikertelen."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "A WebAuthn hitelesítési adatot birtokló felhasználó"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "hitelesítési adat azonosítója"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Egyedi hitelesítési adat azonosító a hitelesítőtől"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "nyilvános kulcs"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE nyilvános kulcs bájtok a regisztrációból"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "aláírásszámláló"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Aláírásszámláló a visszajátszásos támadások észleléséhez"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "átviteli módok"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Támogatott átviteli módszerek (pl. usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "felderíthető"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Ez felderíthető (hozzáférési kulcs) hitelesítési adat-e"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Hitelesítő tanúsítvány GUID az eszköztípus azonosítására"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr ""
+"Felhasználó által hozzárendelt barátságos név ehhez a hitelesítési adathoz"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "létrehozva"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Mikor lett regisztrálva ez a hitelesítési adat"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "utoljára használva"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Mikor volt utoljára használva ez a hitelesítési adat hitelesítéshez"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn hitelesítési adat"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn hitelesítési adatok"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Opcionális barátságos név ehhez a hitelesítési adathoz"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Barátságos név ehhez a hitelesítési adathoz"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-kódolt hitelesítési adat azonosító"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Hitelesítési adat típusa"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Átviteli tippek a hitelesítő eléréséhez"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE algoritmus azonosító (pl. -7 az ES256 esetén)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Ember által olvasható RP-név"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP azonosító (tartomány)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-kódolt felhasználói azonosító"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Felhasználói fiók neve"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Felhasználó megjelenített neve"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Rezidens kulcs követelménye"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Szükséges-e a rezidens kulcs (elavult, használja a residentKey-t)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Felhasználó-ellenőrzési követelmény"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Hitelesítő csatolása"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Megbízó fél azonossága"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Felhasználói fiók adatai"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-kódolt kihívás"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Támogatott nyilvános kulcsú hitelesítési adat paraméterek"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Ceremónia időkorlátja milliszekundumban"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Kizárandó hitelesítési adatok (már regisztrált)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Hitelesítő kiválasztási feltételek"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Tanúsítvány-átadási preferencia"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Megbízó fél azonosítója (tartomány)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Engedélyezett hitelesítési adatok ehhez a hitelesítéshez"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Átlátszatlan munkamenet token az ellenőrzési lépéshez"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "A regisztrációs kihívás lejárt vagy nem található."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "A hitelesítési kihívás lejárt vagy nem található."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "A hitelesítési adat nem található."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "A hitelesítési adat átnevezve."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Az összes hozzáférési kulcs és biztonsági kulcs listázása, amelyek a "
+"hitelesített felhasználóhoz vannak regisztrálva."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Új hozzáférési kulcs vagy biztonsági kulcs regisztrálása. Küldje be a "
+"hitelesítési adatot a böngészőből a register_options végpont meghívása után."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Regisztrációs beállítások lekérése új hozzáférési kulcs vagy biztonsági "
+"kulcs hozzáadásához. Kihívást ad vissza a böngészőnek a hitelesítési adat "
+"létrehozásához."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Hozzáférési kulcs vagy biztonsági kulcs átnevezése."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Hozzáférési kulcs vagy biztonsági kulcs törlése. Ez a művelet nem vonható "
+"vissza."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

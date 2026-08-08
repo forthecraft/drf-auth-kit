@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Bulgarian\n"
@@ -29,8 +29,8 @@ msgstr ""
 msgid ""
 "Returns user details along with a DRF authentication token for API access."
 msgstr ""
-"Връща подробности за потребителя заедно с DRF токен за удостоверяване за API "
-"достъп."
+"Връща подробности за потребителя заедно с DRF токен за удостоверяване за API"
+" достъп."
 
 #: auth_kit/api_descriptions.py:36
 msgid "Returns user details along with custom authentication tokens."
@@ -77,8 +77,8 @@ msgstr "Изчиства бисквитките за удостоверяван�
 #: auth_kit/api_descriptions.py:77
 msgid "Authenticate with username/email and password to obtain access tokens."
 msgstr ""
-"Удостоверяване с потребителско име/имейл и парола за получаване на токени за "
-"достъп."
+"Удостоверяване с потребителско име/имейл и парола за получаване на токени за"
+" достъп."
 
 #: auth_kit/api_descriptions.py:89
 msgid "Logout user and invalidate authentication tokens."
@@ -100,8 +100,8 @@ msgid ""
 "Refresh tokens can be provided in request data or extracted automatically "
 "from HTTP cookies."
 msgstr ""
-"Токените за обновяване могат да бъдат предоставени в данните на заявката или "
-"извлечени автоматично от HTTP бисквитки."
+"Токените за обновяване могат да бъдат предоставени в данните на заявката или"
+" извлечени автоматично от HTTP бисквитки."
 
 #: auth_kit/api_descriptions.py:110 auth_kit/api_descriptions.py:120
 msgid "Returns new access tokens with updated expiration times."
@@ -130,8 +130,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Изпраща инструкции за нулиране на парола до предоставения имейл адрес. Ако "
@@ -145,8 +145,8 @@ msgid ""
 "token is single-use and expires for security."
 msgstr ""
 "Завършва процеса на нулиране на парола, използвайки токена от имейла за "
-"нулиране. Изисква UID и токен от имейла заедно с новата парола. Токенът е за "
-"еднократна употреба и изтича за сигурност."
+"нулиране. Изисква UID и токен от имейла заедно с новата парола. Токенът е за"
+" еднократна употреба и изтича за сигурност."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -166,8 +166,8 @@ msgid ""
 "works for email addresses that are registered but not yet verified."
 msgstr ""
 "Изпраща ново съобщение за потвърждение на имейл до непотвърдени имейл "
-"адреси. Работи само за имейл адреси, които са регистрирани, но все още не са "
-"потвърдени."
+"адреси. Работи само за имейл адреси, които са регистрирани, но все още не са"
+" потвърдени."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
@@ -184,19 +184,19 @@ msgid ""
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
 "Актуализира информацията за профила на удостоверения потребител. Позволява "
-"промяна на потребителското име, собственото име и фамилията. Полето за имейл "
-"е само за четене за сигурност."
+"промяна на потребителското име, собственото име и фамилията. Полето за имейл"
+" е само за четене за сигурност."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
-"Частично актуализира информацията за профила на удостоверения потребител. Ще "
-"бъдат актуализирани само предоставените полета. Полето за имейл е само за "
+"Частично актуализира информацията за профила на удостоверения потребител. Ще"
+" бъдат актуализирани само предоставените полета. Полето за имейл е само за "
 "четене."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Имейл адресът не е присвоен на никой потребителски акаунт."
 
@@ -208,74 +208,98 @@ msgstr "Заявеният MFA метод не съществува."
 msgid "Email message with MFA code has been sent."
 msgstr "Имейл съобщение с MFA код е изпратено."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Опции за регистрация за navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Ключ за сигурност / Пасключ"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA кодът изтича след {} секунди."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
 msgstr ""
-"Първа стъпка от удостоверяване с активиран MFA. Валидира удостоверяванията и "
-"започва MFA процес."
+"Първа стъпка от удостоверяване с активиран MFA. Валидира удостоверяванията и"
+" започва MFA процес."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Връща временен токен за MFA потвърждение или пълни {}, ако MFA "
-"е деактивиран."
+"Връща временен токен за MFA потвърждение или пълни {}, ако MFA е "
+"деактивиран."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Завършва MFA удостоверяването, използвайки код за потвърждение и временен "
 "токен."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Поддържа както TOTP кодове, така и резервни кодове за потвърждение."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr ""
 "Превключва към различен MFA метод по време на процеса на удостоверяване."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Изисква валиден временен токен от първата стъпка на удостоверяване."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Новият временен токен изтича след {} секунди."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Препраща MFA кода за потвърждение, използвайки съществуващия временен токен."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Приложимо само за методи, които изискват изпращане на код (напр. имейл)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Получаване на предизвикателство за вход за очакващия MFA метод с използване "
+"на съществуващ временен токен."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Приложимо само за методи с предизвикателство-отговор (напр. пасключове). "
+"Другите методи връщат празен обект."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Изброява всички налични MFA методи с техния статус на настройка и "
 "активиране. Показва кои методи са конфигурирани, активни и зададени като "
 "основни."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -285,7 +309,7 @@ msgstr ""
 "и връща инструкции за настройка (напр. QR код за приложения за "
 "удостоверяване). Методът трябва да бъде потвърден преди активиране."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -296,16 +320,16 @@ msgstr ""
 "друг основен метод. Изисква се преди методът да може да бъде използван за "
 "удостоверяване."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
-"Деактивира активен MFA метод. Изисква код за потвърждение от самия метод. Не "
-"може да деактивира основни методи - първо задайте друг метод като основен."
+"Деактивира активен MFA метод. Изисква код за потвърждение от самия метод. Не"
+" може да деактивира основни методи - първо задайте друг метод като основен."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -313,15 +337,15 @@ msgstr ""
 "Задава активен MFA метод като основен метод за удостоверяване. Основният "
 "метод се използва по подразбиране по време на процеса на влизане."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Само един метод може да бъде основен по едно време."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Изисква код за потвърждение от текущия основен метод."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -329,79 +353,79 @@ msgstr ""
 "Изпраща код за потвърждение за методи, които поддържат изпращане на код. "
 "Полезно за тестване на конфигурацията на метода или ръчни заявки за код."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Изтрива окончателно MFA метод."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Това действие не може да бъде отменено."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Не могат да бъдат изтрити активни методи."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Не могат да бъдат изтрити основни методи."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Изисква код за потвърждение за активни методи."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "потребител"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Потребител, който притежава този MFA метод"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "име"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Име на MFA метод (напр. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "тайна"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Таен ключ TOTP за генериране на кодове за потвърждение"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "е основен"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Дали това е основният MFA метод на потребителя"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "е активен"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Дали този метод е активен и може да се използва"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "резервни кодове"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON поле, съхраняващо резервни кодове за възстановяване на акаунта"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA метод"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA методи"
 
@@ -411,7 +435,8 @@ msgstr "Невалиден код"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Невалиден токен"
 
@@ -423,10 +448,9 @@ msgstr "Моля, изберете нов метод"
 msgid "This method is already exists"
 msgstr "Този метод вече съществува"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Невалиден OTP код"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Невалиден код за потвърждение"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -435,6 +459,10 @@ msgstr "Активиран MFA метод"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Можете да деактивирате само неосновни MFA методи."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Невалиден OTP код"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -468,19 +496,78 @@ msgstr "Изтрит MFA метод"
 msgid "MFA code sent"
 msgstr "MFA код изпратен"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Магическа връзка по имейл"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Връзката за вход е изпратена."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Пасключ / Ключ за сигурност"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Иницииране на автентикация без парола чрез {}. Това е първата стъпка в "
+"процеса на вход без парола."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Завършване на автентикация без парола чрез {}. Проверете идентификационните "
+"данни/токена от стъпката за иницииране."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Невалиден или изтекъл токен."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Потребителският акаунт е деактивиран."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Незадължителен имейл за процес с неоткриваеми идентификационни данни. "
+"Пропуснете при процес с пасключ (откривaем)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn автентикацията е неуспешна."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Ще презапише бисквитката."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Не е намерен валиден токен за обновяване."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Имейлът не е потвърден."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Акаунтът е заключен поради твърде много неуспешни опити за вход. Моля, "
+"опитайте отново по-късно."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Невъзможно влизане с предоставените данни за удостоверяване."
 
@@ -492,11 +579,11 @@ msgstr "Невалидна стойност"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Старата ви парола е въведена неправилно. Моля, въведете я отново."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Потребител вече е регистриран с този имейл адрес."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Двете полета за парола не съвпадат."
 
@@ -509,56 +596,53 @@ msgstr ""
 msgid "Connected"
 msgstr "Свързан"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Неуспешно завършване на OAuth процеса"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Потребител вече е регистриран с този имейл адрес."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Неуспешна размяна на код за токен за достъп"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Удостоверяване с {}, използвайки OAuth2/OpenID Connect код за "
-"оторизация за получаване на токени за достъп."
+"Удостоверяване с {}, използвайки OAuth2/OpenID Connect код за оторизация за "
+"получаване на токени за достъп."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Свързва {} акаунт към акаунта на текущия потребител. Това "
-"позволява на потребителя да влиза, използвайки съществуващия си {} "
-"акаунт в бъдеще."
+"Свързва {} акаунт към акаунта на текущия потребител. Това позволява на "
+"потребителя да влиза, използвайки съществуващия си {} акаунт в бъдеще."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Изисква удостоверяване и валиден OAuth2/OpenID Connect код за оторизация от "
 "{}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"При успех {} акаунтът се свързва и може да се използва за бъдещи "
-"влизания."
+"При успех {} акаунтът се свързва и може да се използва за бъдещи влизания."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -566,7 +650,7 @@ msgstr ""
 "Изброява всички социални акаунти, свързани с текущия потребител. Показва "
 "подробности за акаунта, включително доставчик, UID и дати на свързване."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -574,25 +658,26 @@ msgid ""
 msgstr ""
 "Откачва социален акаунт от текущия потребител. Премахва връзката със "
 "социалния акаунт и предотвратява бъдещи влизания чрез този доставчик. "
-"Изисква удостоверяване и акаунтът трябва да принадлежи на текущия потребител."
+"Изисква удостоверяване и акаунтът трябва да принадлежи на текущия "
+"потребител."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class не е дефиниран"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Токенът за обновяване не е включен в данните на бисквитката."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Токенът за обновяване не е включен в данните на заявката."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Възникна грешка."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Успешно излизане."
 
@@ -600,25 +685,273 @@ msgstr "Успешно излизане."
 msgid "Password reset e-mail has been sent."
 msgstr "Имейл за нулиране на парола е изпратен."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Паролата е нулирана с новата парола."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Новата парола е запазена."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Имейл за потвърждение изпратен."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Успешно регистриране."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "добре"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Исканите WebAuthn идентификационни данни не съществуват."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn верификацията е неуспешна."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Потребител, собственик на тези WebAuthn идентификационни данни"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "идентификатор на идентификационните данни"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Уникален идентификатор на идентификационните данни от автентикатора"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "публичен ключ"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE байтове на публичния ключ от регистрацията"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "брой подписи"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Брояч на подписи за засичане на атаки с повторно използване"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "транспорти"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Поддържани методи за транспорт (напр. usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "откривaeм"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Дали това е откривaем (пасключ) идентификационен запис"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID на атестация на автентикатора, идентифициращ типа устройство"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Потребителско приятелско наименование за тези идентификационни данни"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "създадено на"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Кога е регистриран този идентификационен запис"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "последно използвано на"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr ""
+"Кога последно са използвани тези идентификационни данни за автентикация"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn идентификационни данни"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn идентификационни данни (мн.ч.)"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Незадължително приятелско наименование за тези идентификационни данни"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Приятелско наименование за тези идентификационни данни"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Идентификатор на идентификационните данни в Base64URL кодиране"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Тип на идентификационните данни"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Подсказки за транспорт за достигане до автентикатора"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE идентификатор на алгоритъм (напр. -7 за ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Четимо наименование на доверената страна (RP)"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (домейн)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Потребителски хендъл в Base64URL кодиране"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Потребителско име на акаунта"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Показвано потребителско име"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Изискване за резидентен ключ"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Дали се изисква резидентен ключ (остаряло, използвайте residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Изискване за верификация на потребителя"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Прикрепване на автентикатора"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Идентичност на доверената страна"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Информация за потребителския акаунт"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Предизвикателство в Base64URL кодиране"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Поддържани параметри на идентификационните данни с публичен ключ"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Изчакване на церемонията в милисекунди"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Идентификационни данни за изключване (вече регистрирани)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Критерии за избор на автентикатор"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Предпочитание за предаване на атестация"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "RP ID (домейн) на доверената страна"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Разрешени идентификационни данни за тази автентикация"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Непрозрачен токен на сесията за стъпката за верификация"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Предизвикателството за регистрация е изтекло или не е намерено."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Предизвикателството за автентикация е изтекло или не е намерено."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Идентификационните данни не са намерени."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Идентификационните данни са преименувани."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Списък на всички пасключове и ключове за сигурност, регистрирани за "
+"автентикирания потребител."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Регистриране на нов пасключ или ключ за сигурност. Изпратете "
+"идентификационните данни от браузъра след извикване на крайната точка "
+"register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Получаване на опции за регистрация за добавяне на нов пасключ или ключ за "
+"сигурност. Връща предизвикателство за браузъра за създаване на "
+"идентификационните данни."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Преименуване на пасключ или ключ за сигурност."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Изтриване на пасключ или ключ за сигурност. Това действие не може да бъде "
+"отменено."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

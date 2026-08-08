@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-09 00:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Portuguese\n"
@@ -22,8 +22,8 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"Retorna detalhes do usuário junto com tokens de acesso e atualização JWT com "
-"tempos de expiração."
+"Retorna detalhes do usuário junto com tokens de acesso e atualização JWT com"
+" tempos de expiração."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -129,13 +129,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Enviar instruções de redefinição de senha para o endereço de email "
-"fornecido. Se o email estiver registrado, um link seguro de redefinição será "
-"enviado. O link expira após um tempo limitado por segurança."
+"fornecido. Se o email estiver registrado, um link seguro de redefinição será"
+" enviado. O link expira após um tempo limitado por segurança."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -144,8 +144,8 @@ msgid ""
 "token is single-use and expires for security."
 msgstr ""
 "Concluir o processo de redefinição de senha usando o token do email de "
-"redefinição. Requer o UID e token do email junto com a nova senha. O token é "
-"de uso único e expira por segurança."
+"redefinição. Requer o UID e token do email junto com a nova senha. O token é"
+" de uso único e expira por segurança."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -156,16 +156,16 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"Confirmar endereço de email usando a chave de verificação enviada por email. "
-"Isso ativa a conta do usuário e permite acesso de login."
+"Confirmar endereço de email usando a chave de verificação enviada por email."
+" Isso ativa a conta do usuário e permite acesso de login."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"Enviar uma nova mensagem de verificação de email para endereços de email não "
-"verificados. Apenas funciona para endereços de email que estão registrados "
+"Enviar uma nova mensagem de verificação de email para endereços de email não"
+" verificados. Apenas funciona para endereços de email que estão registrados "
 "mas ainda não verificados."
 
 #: auth_kit/api_descriptions.py:169
@@ -173,8 +173,8 @@ msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
 msgstr ""
-"Recuperar as informações do perfil do usuário autenticado, incluindo nome de "
-"usuário, email, primeiro nome e último nome. Campos de senha são excluídos."
+"Recuperar as informações do perfil do usuário autenticado, incluindo nome de"
+" usuário, email, primeiro nome e último nome. Campos de senha são excluídos."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
@@ -187,14 +187,14 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Atualizar parcialmente as informações do perfil do usuário autenticado. "
 "Apenas campos fornecidos serão atualizados. O campo de email é somente "
 "leitura."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "O endereço de email não está atribuído a nenhuma conta de usuário."
 
@@ -206,12 +206,20 @@ msgstr "O método MFA solicitado não existe."
 msgid "Email message with MFA code has been sent."
 msgstr "Mensagem de email com código MFA foi enviada."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Opções de registo para navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Chave de Segurança / Passkey"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "O código MFA expira em {} segundos."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -219,69 +227,85 @@ msgstr ""
 "Primeiro passo da autenticação habilitada para MFA. Valida credenciais e "
 "inicia o fluxo MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Retorna token efêmero para verificação MFA ou completa {} se "
-"MFA estiver desabilitada."
+"Retorna token efêmero para verificação MFA ou completa {} se MFA estiver "
+"desabilitada."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Completar autenticação MFA usando código de verificação e token efêmero."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Suporta códigos TOTP e códigos de backup para verificação."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Mudar para um método MFA diferente durante o fluxo de autenticação."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Requer token efêmero válido da autenticação do primeiro passo."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Novo token efêmero expira em {} segundos."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "Reenviar código de verificação MFA usando token efêmero existente."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Aplicável apenas para métodos que requerem envio de código (por exemplo, "
 "email)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Obter um desafio de autenticação para o método MFA pendente usando um token "
+"efémero existente."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Aplicável apenas para métodos de desafio-resposta (ex.: passkeys). Outros "
+"métodos devolvem um objeto vazio."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Listar todos os métodos MFA disponíveis com seus status de configuração e "
 "ativação. Mostra quais métodos estão configurados, ativos e definidos como "
 "primários."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"Inicializar configuração de um novo método MFA. Cria o método com códigos de "
-"backup e retorna instruções de configuração (por exemplo, código QR para "
+"Inicializar configuração de um novo método MFA. Cria o método com códigos de"
+" backup e retorna instruções de configuração (por exemplo, código QR para "
 "aplicativos autenticadores). O método deve ser confirmado antes da ativação."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -291,7 +315,7 @@ msgstr ""
 "Automaticamente define como método primário se nenhum outro método primário "
 "existir. Obrigatório antes que o método possa ser usado para autenticação."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -301,7 +325,7 @@ msgstr ""
 "método. Não é possível desativar métodos primários - defina outro método "
 "como primário primeiro."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -309,95 +333,95 @@ msgstr ""
 "Definir um método MFA ativo como método de autenticação primário. O método "
 "primário é usado por padrão durante o fluxo de login."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Apenas um método pode ser primário por vez."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Requer código de verificação do método primário atual."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
-"Enviar código de verificação para métodos que suportam envio de código. Útil "
-"para testar configuração de método ou solicitações manuais de código."
+"Enviar código de verificação para métodos que suportam envio de código. Útil"
+" para testar configuração de método ou solicitações manuais de código."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Excluir permanentemente um método MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Esta ação não pode ser desfeita."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Não é possível excluir métodos ativos."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Não é possível excluir métodos primários."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Requer código de verificação para métodos ativos."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "usuário"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Usuário que possui este método MFA"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "nome"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Nome do método MFA (ex: 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "segredo"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Chave secreta TOTP para gerar códigos de verificação"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "é primário"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Se este é o método MFA principal do usuário"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "está ativo"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Se este método está ativo e pode ser usado"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "códigos de backup"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Campo JSON que armazena códigos de backup para recuperação de conta"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "Método MFA"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "Métodos MFA"
 
@@ -407,7 +431,8 @@ msgstr "Código inválido"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Token inválido"
 
@@ -419,10 +444,9 @@ msgstr "Por favor, selecione um novo método"
 msgid "This method is already exists"
 msgstr "Este método já existe"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Código OTP inválido"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Código de verificação inválido"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -431,6 +455,10 @@ msgstr "Método MFA ativado"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Você só pode desativar métodos MFA não primários."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Código OTP inválido"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -464,19 +492,78 @@ msgstr "Método MFA excluído"
 msgid "MFA code sent"
 msgstr "Código MFA enviado"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Link Mágico por Email"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Um link de autenticação foi enviado."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Passkey / Chave de Segurança"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Iniciar autenticação sem senha via {}. Este é o primeiro passo do fluxo de "
+"autenticação sem senha."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Concluir autenticação sem senha via {}. Verifique a credencial/token do "
+"passo de iniciação."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Token inválido ou expirado."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "A conta do utilizador está desativada."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Email opcional para fluxo de credencial não descobrível. Omitir para fluxo "
+"de passkey (descobrível)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Autenticação WebAuthn falhou."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Substituirá o cookie."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Nenhum token de atualização válido encontrado."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "O email não está verificado."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Conta bloqueada devido a demasiadas tentativas de autenticação falhadas. Por"
+" favor, tente mais tarde."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Não foi possível fazer login com as credenciais fornecidas."
 
@@ -489,71 +576,71 @@ msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
 "Sua senha antiga foi inserida incorretamente. Por favor, insira-a novamente."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Um usuário já está registrado com este endereço de email."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Os dois campos de senha não corresponderam."
 
 #: auth_kit/social/serializers/connect.py:55
 msgid "Social account email must match your current account email."
-msgstr "O email da conta social deve corresponder ao email da sua conta atual."
+msgstr ""
+"O email da conta social deve corresponder ao email da sua conta atual."
 
 #: auth_kit/social/serializers/connect.py:98
 msgid "Connected"
 msgstr "Conectado"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Falha ao completar o fluxo OAuth"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "O usuário já está registrado com este endereço de email."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Falha ao trocar código por token de acesso"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Autentique-se com {} usando código de autorização OAuth2/OpenID "
-"Connect para obter tokens de acesso."
+"Autentique-se com {} usando código de autorização OAuth2/OpenID Connect para"
+" obter tokens de acesso."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Conectar uma conta {} à conta do usuário atual. Isso permite ao "
-"usuário fazer login usando sua conta {} existente no futuro."
+"Conectar uma conta {} à conta do usuário atual. Isso permite ao usuário "
+"fazer login usando sua conta {} existente no futuro."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Requer autenticação e um código de autorização OAuth2/OpenID Connect válido "
 "de {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Em caso de sucesso, a conta {} é vinculada e pode ser usada para "
-"logins futuros."
+"Em caso de sucesso, a conta {} é vinculada e pode ser usada para logins "
+"futuros."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -561,7 +648,7 @@ msgstr ""
 "Listar todas as contas sociais conectadas ao usuário atual. Mostra detalhes "
 "da conta incluindo provedor, UID e datas de conexão."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -575,19 +662,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class não está definido"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Token de atualização não foi incluído nos dados do cookie."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Token de atualização não foi incluído nos dados da solicitação."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Ocorreu um erro."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Desconectado com sucesso."
 
@@ -595,25 +682,272 @@ msgstr "Desconectado com sucesso."
 msgid "Password reset e-mail has been sent."
 msgstr "Email de redefinição de senha foi enviado."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "A senha foi redefinida com a nova senha."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "A nova senha foi salva."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Email de verificação enviado."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Registrado com sucesso."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "A credencial WebAuthn solicitada não existe."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Verificação WebAuthn falhou."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Utilizador proprietário desta credencial WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ID de credencial"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Identificador único de credencial proveniente do autenticador"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "chave pública"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Bytes da chave pública COSE do registo"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "contagem de assinaturas"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Contador de assinaturas para deteção de ataques de repetição"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transportes"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Métodos de transporte suportados (ex.: usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "descobrível"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Se esta é uma credencial descobrível (passkey)"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr ""
+"GUID de Atestação do Autenticador que identifica o tipo de dispositivo"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Nome amigável atribuído pelo utilizador para esta credencial"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "criado em"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Quando esta credencial foi registada"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "último uso em"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr ""
+"Quando esta credencial foi utilizada pela última vez para autenticação"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "Credencial WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Credenciais WebAuthn"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Nome amigável opcional para esta credencial"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Nome amigável para esta credencial"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "ID de credencial codificado em Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Tipo de credencial"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Dicas de transporte para alcançar o autenticador"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Identificador de algoritmo COSE (ex.: -7 para ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Nome do RP legível por humanos"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "ID do RP (domínio)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Identificador de utilizador codificado em Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Nome da conta do utilizador"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Nome de exibição do utilizador"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Requisito de chave residente"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Se a chave residente é obrigatória (obsoleto, use residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Requisito de verificação do utilizador"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Anexo do autenticador"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Identidade da Parte Confiante"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Informações da conta do utilizador"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Desafio codificado em Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Parâmetros de credencial de chave pública suportados"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Tempo limite da cerimónia em milissegundos"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Credenciais a excluir (já registadas)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Critérios de seleção do autenticador"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Preferência de transmissão de atestação"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ID da Parte Confiante (domínio)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Credenciais permitidas para esta autenticação"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Token de sessão opaco para o passo de verificação"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Desafio de registo expirado ou não encontrado."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Desafio de autenticação expirado ou não encontrado."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Credencial não encontrada."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Credencial renomeada."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Listar todas as passkeys e chaves de segurança registadas para o utilizador "
+"autenticado."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Registar uma nova passkey ou chave de segurança. Submeta a credencial do "
+"navegador após chamar o endpoint register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Obter opções de registo para adicionar uma nova passkey ou chave de "
+"segurança. Devolve um desafio para o navegador criar a credencial."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Renomear uma passkey ou chave de segurança."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Eliminar uma passkey ou chave de segurança. Esta ação não pode ser "
+"revertida."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

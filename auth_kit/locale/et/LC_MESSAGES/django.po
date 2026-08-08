@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Estonian\n"
@@ -22,8 +22,8 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"Tagastab kasutaja andmed koos JWT juurdepääsu- ja värskendamistokendega ning "
-"aegumisaegadega."
+"Tagastab kasutaja andmed koos JWT juurdepääsu- ja värskendamistokendega ning"
+" aegumisaegadega."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -82,7 +82,8 @@ msgstr "Logi kasutaja välja ja kehtestamd autentimistokendid kehtetuks."
 #: auth_kit/api_descriptions.py:93
 msgid ""
 "Requires authentication to ensure only valid sessions can be logged out."
-msgstr "Nõuab autentimist, et tagada ainult kehtivate seansside väljalogimist."
+msgstr ""
+"Nõuab autentimist, et tagada ainult kehtivate seansside väljalogimist."
 
 #: auth_kit/api_descriptions.py:104
 msgid "Generate new JWT access tokens using refresh tokens."
@@ -123,8 +124,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Saada parooli lähtestamise juhised antud e-posti aadressile. Kui e-post on "
@@ -158,8 +159,8 @@ msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"Saada uus e-posti kinnitamise sõnum kinnitamata e-posti aadressidele. Töötab "
-"ainult e-posti aadressidega, mis on registreeritud, kuid veel kinnitamata."
+"Saada uus e-posti kinnitamise sõnum kinnitamata e-posti aadressidele. Töötab"
+" ainult e-posti aadressidega, mis on registreeritud, kuid veel kinnitamata."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
@@ -180,13 +181,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Osaliselt uuenda autenditud kasutaja profiili andmeid. Uuendatakse ainult "
 "esitatud väljad. E-posti väli on kirjutuskaitstud."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "E-posti aadress ei ole ühegi kasutajakontoga seotud."
 
@@ -198,12 +199,20 @@ msgstr "Soovitud MFA meetod ei eksisteeri."
 msgid "Email message with MFA code has been sent."
 msgstr "E-posti sõnum MFA koodiga on saadetud."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Registreerimisvalikud navigator.credentials.create() jaoks"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Turvavõti / Pääsuvõti"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA kood aegub {} sekundi pärast."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -211,66 +220,83 @@ msgstr ""
 "MFA-ga autentimise esimene samm. Kontrollib mandaate ja alustab MFA "
 "protsessi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Tagastab ajutise tokeni MFA kinnitamiseks või täielikud {}, kui "
-"MFA on keelatud."
+"Tagastab ajutise tokeni MFA kinnitamiseks või täielikud {}, kui MFA on "
+"keelatud."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "Lõpeta MFA autentimine kinnituskoodi ja ajutise tokeni abil."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Toetab nii TOTP koode kui ka varukoode kinnitamiseks."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Lülitu teisele MFA meetodile autentimise protsessi käigus."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Nõuab kehtivat ajutist tokenit esimese sammu autentimisest."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Uus ajutine token aegub {} sekundi pärast."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "Saada MFA kinnituskood uuesti olemasoleva ajutise tokeni abil."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
-msgstr "Kehtib ainult meetodite kohta, mis nõuavad koodi saatmist (nt e-post)."
+msgstr ""
+"Kehtib ainult meetodite kohta, mis nõuavad koodi saatmist (nt e-post)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Hangi sisselogimise väljakutse ootel olevale MFA-meetodile olemasoleva "
+"ajutise tokeni abil."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Rakendatav ainult väljakutse-vastuse meetoditele (nt pääsuvõtmed). Muud "
+"meetodid tagastavad tühja objekti."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Loetleb kõik saadaolevad MFA meetodid koos nende seadistamise ja "
 "aktiveerimise staatusega. Näitab, millised meetodid on seadistatud, "
 "aktiivsed ja määratud peamisteks."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
 "Alusta uue MFA meetodi seadistamist. Loob meetodi varukoodidega ja tagastab "
-"seadistamisjuhised (nt QR kood autentikaatori rakenduste jaoks). Meetod peab "
-"olema kinnitatud enne aktiveerimist."
+"seadistamisjuhised (nt QR kood autentikaatori rakenduste jaoks). Meetod peab"
+" olema kinnitatud enne aktiveerimist."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -280,7 +306,7 @@ msgstr ""
 "automaatselt peamiseks meetodiks, kui muud peamist meetodit ei ole. Nõutav "
 "enne meetodi kasutamist autentimiseks."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -289,7 +315,7 @@ msgstr ""
 "Desaktiveeri aktiivne MFA meetod. Nõuab kinnituskoodi meetodist endast. Ei "
 "saa desaktiveerida peamisi meetodeid - määra enne teine meetod peamiseks."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -297,95 +323,95 @@ msgstr ""
 "Määra aktiivne MFA meetod peamiseks autentimismeetodiks. Peamist meetodit "
 "kasutatakse vaikimisi sisselogimise protsessis."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Korraga saab olla ainult üks meetod peamine."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Nõuab kinnituskoodi praegusest peamisest meetodist."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
-"Saada kinnituskood meetoditele, mis toetavad koodi saatmist. Kasulik meetodi "
-"seadistamise testimiseks või käsitsi koodi taotlemiseks."
+"Saada kinnituskood meetoditele, mis toetavad koodi saatmist. Kasulik meetodi"
+" seadistamise testimiseks või käsitsi koodi taotlemiseks."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Kustuta MFA meetod jäädavalt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Seda tegevust ei saa tagasi võtta."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Aktiivseid meetodeid ei saa kustutada."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Peamisi meetodeid ei saa kustutada."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Nõuab kinnituskoodi aktiivsete meetodite jaoks."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "kasutaja"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Kasutaja, kellele see MFA meetod kuulub"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "nimi"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA meetodi nimi (nt 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "saladus"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP salavõti kinnituskoodide genereerimiseks"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "on peamine"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Kas see on kasutaja peamine MFA meetod"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "on aktiivne"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Kas see meetod on aktiivne ja kasutatav"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "varukoodid"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON väli, mis talletab varukoode konto taastamiseks"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA meetod"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA meetodid"
 
@@ -395,7 +421,8 @@ msgstr "Kehtetu kood"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Kehtetu token"
 
@@ -407,10 +434,9 @@ msgstr "Palun valige uus meetod"
 msgid "This method is already exists"
 msgstr "See meetod on juba olemas"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Kehtetu OTP kood"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Vigane kinnituskood"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -419,6 +445,10 @@ msgstr "MFA meetod aktiveeritud"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Saate desaktiveerida ainult mitte-peamise MFA meetodi."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Kehtetu OTP kood"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -452,19 +482,78 @@ msgstr "MFA meetod kustutatud"
 msgid "MFA code sent"
 msgstr "MFA kood saadetud"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "E-posti maagiline link"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Sisselogimislink on saadetud."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Pääsuvõti / Turvavõti"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Alusta paroolivaba autentimist {} kaudu. See on paroolivaba sisselogimise "
+"voo esimene samm."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Lõpeta paroolivaba autentimine {} kaudu. Kinnita mandaat/token alustamise "
+"sammust."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Vigane või aegunud token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Kasutajakonto on keelatud."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Valikuline e-post mitteleitava mandaatvoo jaoks. Jäta ära pääsuvõtme "
+"(leitava) voo puhul."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn autentimine ebaõnnestus."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Kirjutab küpsise üle."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Kehtivat värskendamistokenit ei leitud."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "E-post ei ole kinnitatud."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Konto on lukustatud liiga paljude ebaõnnestunud sisselogimiskatsete tõttu. "
+"Proovige hiljem uuesti."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Esitatud mandaatidega ei saa sisse logida."
 
@@ -476,11 +565,11 @@ msgstr "Kehtetu väärtus"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Teie vana parool sisestati valesti. Palun sisestage see uuesti."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Kasutaja on juba selle e-posti aadressiga registreeritud."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Kaks parooli välja ei ühtinud."
 
@@ -492,55 +581,54 @@ msgstr "Sotsiaalse konto e-post peab ühtima teie praeguse konto e-postiga."
 msgid "Connected"
 msgstr "Ühendatud"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "OAuth voog ebaõnnestus"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Kasutaja on juba selle e-posti aadressiga registreeritud."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Koodi vahetamine juurdepääsutokeni vastu ebaõnnestus"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Autentimiseks {} abil OAuth2/OpenID Connect autoriseerimiskoodi "
-"kasutades juurdepääsutokende saamiseks."
+"Autentimiseks {} abil OAuth2/OpenID Connect autoriseerimiskoodi kasutades "
+"juurdepääsutokende saamiseks."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Ühenda {} konto praeguse kasutaja kontoga. See võimaldab kasutajal "
-"tulevikus sisse logida oma olemasoleva {} konto abil."
+"Ühenda {} konto praeguse kasutaja kontoga. See võimaldab kasutajal tulevikus"
+" sisse logida oma olemasoleva {} konto abil."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Nõuab autentimist ja kehtivat OAuth2/OpenID Connect autoriseerimiskoodi "
 "{}-ist."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
 "Edu korral on {} konto lingitud ja seda saab kasutada tulevaste "
 "sisselogimiste jaoks."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -548,7 +636,7 @@ msgstr ""
 "Loetleb kõik praeguse kasutajaga ühendatud sotsiaalsed kontod. Näitab konto "
 "üksikasjasid, sealhulgas teenusepakkujat, UID-d ja ühendamise kuupäevi."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -562,19 +650,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class ei ole määratletud"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Värskendamistoken ei olnud küpsise andmetes."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Värskendamistoken ei olnud päringu andmetes."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Ilmnes viga."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Edukalt välja logitud."
 
@@ -582,25 +670,268 @@ msgstr "Edukalt välja logitud."
 msgid "Password reset e-mail has been sent."
 msgstr "Parooli lähtestamise e-post on saadetud."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Parool on uue parooliga lähtestatud."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Uus parool on salvestatud."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Kinnitamise e-post saadetud."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Edukalt registreeritud."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Nõutud WebAuthn mandaat ei ole olemas."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn kinnitamine ebaõnnestus."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Kasutaja, kellele see WebAuthn mandaat kuulub"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "mandaadi ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Autentijailt saadud unikaalne mandaadi identifikaator"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "avalik võti"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Registreerimisel saadud COSE avaliku võtme baidid"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "allkirjaloendur"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Allkirjaloendur kordusrünnakute tuvastamiseks"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transpordid"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Toetatud transpordimeetodid (nt usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "leitav"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Kas see on leitav (pääsuvõtme) mandaat"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Autentija tõendamise GUID, mis tuvastab seadmetüübi"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Kasutaja määratud sõbralik nimi sellele mandaadile"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "loodud"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Millal see mandaat registreeriti"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "viimati kasutatud"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Millal seda mandaati viimati autentimiseks kasutati"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn mandaat"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn mandaadid"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Valikuline kasutajasõbralik nimi sellele mandaadile"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Kasutajasõbralik nimi sellele mandaadile"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-kodeeritud mandaadi ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Mandaadi tüüp"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Transpordinäpunäited autentijani jõudmiseks"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE algoritmi identifikaator (nt -7 ES256 jaoks)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Inimloetav RP nimi"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (domeen)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-kodeeritud kasutajakäepide"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Kasutajakonto nimi"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Kasutaja kuvatav nimi"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Residentsete võtmete nõue"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Kas residentne võti on nõutav (aegunud, kasuta residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Kasutaja kinnitamise nõue"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Autentija ühendusviis"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Toetunud osapoole identiteet"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Kasutajakonto teave"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-kodeeritud väljakutse"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Toetatud avaliku võtme mandaadi parameetrid"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Tseremoonia aegumine millisekundites"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Välistatavad mandaadid (juba registreeritud)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Autentija valiku kriteeriumid"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Tõendamise edastamise eelistus"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Toetunud osapoole ID (domeen)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Selle autentimise jaoks lubatud mandaadid"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Läbipaistmatu seansitoken kinnitamissammu jaoks"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Registreerimise väljakutse on aegunud või ei leitud."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Autentimise väljakutse on aegunud või ei leitud."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Mandaati ei leitud."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Mandaat on ümber nimetatud."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Loetlege kõik autentitud kasutajale registreeritud pääsuvõtmed ja "
+"turvavõtmed."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Registreeri uus pääsuvõti või turvavõti. Esita mandaat brauserist pärast "
+"register_options lõpp-punkti kutsumist."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Hangi registreerimisvalikud uue pääsuvõtme või turvavõtme lisamiseks. "
+"Tagastab väljakutse, et brauser saaks mandaadi luua."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Nimeta pääsuvõti või turvavõti ümber."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr "Kustuta pääsuvõti või turvavõti. Seda toimingut ei saa tagasi võtta."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

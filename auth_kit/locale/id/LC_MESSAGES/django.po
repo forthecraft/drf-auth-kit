@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Indonesian\n"
@@ -125,8 +125,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Mengirim instruksi reset kata sandi ke alamat email yang diberikan. Jika "
@@ -152,8 +152,8 @@ msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
 msgstr ""
-"Mengonfirmasi alamat email menggunakan kunci verifikasi yang dikirim melalui "
-"email. Ini mengaktifkan akun pengguna dan memungkinkan akses masuk."
+"Mengonfirmasi alamat email menggunakan kunci verifikasi yang dikirim melalui"
+" email. Ini mengaktifkan akun pengguna dan memungkinkan akses masuk."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
@@ -161,8 +161,8 @@ msgid ""
 "works for email addresses that are registered but not yet verified."
 msgstr ""
 "Mengirim pesan verifikasi email baru ke alamat email yang belum "
-"diverifikasi. Hanya berfungsi untuk alamat email yang terdaftar tetapi belum "
-"diverifikasi."
+"diverifikasi. Hanya berfungsi untuk alamat email yang terdaftar tetapi belum"
+" diverifikasi."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
@@ -184,13 +184,14 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Memperbarui sebagian informasi profil pengguna yang terautentikasi. Hanya "
-"bidang yang disediakan yang akan diperbarui. Bidang email bersifat baca-saja."
+"bidang yang disediakan yang akan diperbarui. Bidang email bersifat baca-"
+"saja."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Alamat email tidak ditetapkan ke akun pengguna mana pun."
 
@@ -202,12 +203,20 @@ msgstr "Metode MFA yang diminta tidak ada."
 msgid "Email message with MFA code has been sent."
 msgstr "Pesan email dengan kode MFA telah dikirim."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Opsi pendaftaran untuk navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Kunci Keamanan / Kunci Sandi"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "Kode MFA akan kedaluwarsa dalam {} detik."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -215,61 +224,78 @@ msgstr ""
 "Langkah pertama autentikasi yang diaktifkan MFA. Memvalidasi kredensial dan "
 "memulai alur MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Mengembalikan token sementara untuk verifikasi MFA atau {} "
-"lengkap jika MFA dinonaktifkan."
+"Mengembalikan token sementara untuk verifikasi MFA atau {} lengkap jika MFA "
+"dinonaktifkan."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Menyelesaikan autentikasi MFA menggunakan kode verifikasi dan token "
 "sementara."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Mendukung kode TOTP dan kode cadangan untuk verifikasi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Beralih ke metode MFA yang berbeda selama alur autentikasi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr ""
 "Memerlukan token sementara yang valid dari autentikasi langkah pertama."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Token sementara baru akan kedaluwarsa dalam {} detik."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Mengirim ulang kode verifikasi MFA menggunakan token sementara yang ada."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
-"Hanya berlaku untuk metode yang memerlukan pengiriman kode (misalnya, email)."
+"Hanya berlaku untuk metode yang memerlukan pengiriman kode (misalnya, "
+"email)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Dapatkan tantangan masuk untuk metode MFA yang tertunda menggunakan token "
+"sementara yang ada."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Hanya berlaku untuk metode tantangan-respons (misalnya, kunci sandi). Metode"
+" lain mengembalikan objek kosong."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Membuat daftar semua metode MFA yang tersedia dengan status pengaturan dan "
 "aktivasi mereka. Menunjukkan metode mana yang dikonfigurasi, aktif, dan "
 "ditetapkan sebagai utama."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -279,7 +305,7 @@ msgstr ""
 "cadangan dan mengembalikan instruksi pengaturan (misalnya, kode QR untuk "
 "aplikasi autentikator). Metode harus dikonfirmasi sebelum aktivasi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -290,7 +316,7 @@ msgstr ""
 "metode utama lain yang ada. Diperlukan sebelum metode dapat digunakan untuk "
 "autentikasi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -300,7 +326,7 @@ msgstr ""
 "itu sendiri. Tidak dapat menonaktifkan metode utama - tetapkan metode lain "
 "sebagai utama terlebih dahulu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -308,15 +334,15 @@ msgstr ""
 "Menetapkan metode MFA yang aktif sebagai metode autentikasi utama. Metode "
 "utama digunakan secara default selama alur masuk."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Hanya satu metode yang dapat menjadi utama pada satu waktu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Memerlukan kode verifikasi dari metode utama saat ini."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -324,79 +350,79 @@ msgstr ""
 "Mengirim kode verifikasi untuk metode yang mendukung pengiriman kode. "
 "Berguna untuk menguji konfigurasi metode atau permintaan kode manual."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Menghapus metode MFA secara permanen."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Tindakan ini tidak dapat dibatalkan."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Tidak dapat menghapus metode yang aktif."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Tidak dapat menghapus metode utama."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Memerlukan kode verifikasi untuk metode yang aktif."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "pengguna"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Pengguna yang memiliki metode MFA ini"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "nama"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Nama metode MFA (misalnya, 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "rahasia"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Kunci rahasia TOTP untuk menghasilkan kode verifikasi"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "adalah utama"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Apakah ini adalah metode MFA utama pengguna"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "aktif"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Apakah metode ini aktif dan dapat digunakan"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "kode cadangan"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Bidang JSON yang menyimpan kode cadangan untuk pemulihan akun"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "Metode MFA"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "Metode MFA"
 
@@ -406,7 +432,8 @@ msgstr "Kode tidak valid"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Token tidak valid"
 
@@ -418,10 +445,9 @@ msgstr "Silakan pilih metode baru"
 msgid "This method is already exists"
 msgstr "Metode ini sudah ada"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Kode OTP tidak valid"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Kode verifikasi tidak valid"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -430,6 +456,10 @@ msgstr "Metode MFA diaktifkan"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Anda hanya dapat menonaktifkan metode MFA non-utama."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Kode OTP tidak valid"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -463,19 +493,78 @@ msgstr "Metode MFA dihapus"
 msgid "MFA code sent"
 msgstr "Kode MFA dikirim"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Tautan Ajaib Email"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Tautan masuk telah dikirim."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Kunci Sandi / Kunci Keamanan"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Inisiasi autentikasi tanpa kata sandi melalui {}. Ini adalah langkah pertama"
+" dari alur masuk tanpa kata sandi."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Selesaikan autentikasi tanpa kata sandi melalui {}. Verifikasi "
+"kredensial/token dari langkah inisiasi."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Token tidak valid atau telah kedaluwarsa."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Akun pengguna dinonaktifkan."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Email opsional untuk alur kredensial yang tidak dapat ditemukan. Hilangkan "
+"untuk alur kunci sandi (yang dapat ditemukan)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Autentikasi WebAuthn gagal."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Akan menimpa cookie."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Tidak ditemukan token refresh yang valid."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "E-mail belum diverifikasi."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Akun dikunci karena terlalu banyak percobaan masuk yang gagal. Silakan coba "
+"lagi nanti."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Tidak dapat masuk dengan kredensial yang diberikan."
 
@@ -487,11 +576,11 @@ msgstr "Nilai tidak valid"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Kata sandi lama Anda salah. Silakan masukkan kembali."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Pengguna sudah terdaftar dengan alamat e-mail ini."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Kedua bidang kata sandi tidak cocok."
 
@@ -503,56 +592,54 @@ msgstr "Email akun sosial harus sama dengan email akun Anda saat ini."
 msgid "Connected"
 msgstr "Terhubung"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Gagal menyelesaikan alur OAuth"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Pengguna sudah terdaftar dengan alamat e-mail ini."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Gagal menukar kode untuk token akses"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Melakukan autentikasi dengan {} menggunakan kode otorisasi OAuth2/"
-"OpenID Connect untuk mendapatkan token akses."
+"Melakukan autentikasi dengan {} menggunakan kode otorisasi OAuth2/OpenID "
+"Connect untuk mendapatkan token akses."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Menghubungkan akun {} ke akun pengguna saat ini. Ini memungkinkan "
-"pengguna untuk masuk menggunakan akun {} yang sudah ada di masa "
-"depan."
+"Menghubungkan akun {} ke akun pengguna saat ini. Ini memungkinkan pengguna "
+"untuk masuk menggunakan akun {} yang sudah ada di masa depan."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Memerlukan autentikasi dan kode otorisasi OAuth2/OpenID Connect yang valid "
 "dari {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Jika berhasil, akun {} terhubung dan dapat digunakan untuk masuk "
-"di masa depan."
+"Jika berhasil, akun {} terhubung dan dapat digunakan untuk masuk di masa "
+"depan."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -560,33 +647,33 @@ msgstr ""
 "Daftar semua akun sosial yang terhubung ke pengguna saat ini. Menampilkan "
 "detail akun termasuk penyedia, UID, dan tanggal koneksi."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"Memutuskan akun sosial dari pengguna saat ini. Menghapus koneksi akun sosial "
-"dan mencegah masuk di masa depan melalui penyedia tersebut. Memerlukan "
+"Memutuskan akun sosial dari pengguna saat ini. Menghapus koneksi akun sosial"
+" dan mencegah masuk di masa depan melalui penyedia tersebut. Memerlukan "
 "autentikasi dan akun harus milik pengguna saat ini."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class tidak didefinisikan"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Token refresh tidak disertakan dalam data cookie."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Token refresh tidak disertakan dalam data permintaan."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Terjadi kesalahan."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Berhasil keluar."
 
@@ -594,25 +681,269 @@ msgstr "Berhasil keluar."
 msgid "Password reset e-mail has been sent."
 msgstr "E-mail reset kata sandi telah dikirim."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Kata sandi telah direset dengan kata sandi baru."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Kata sandi baru telah disimpan."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "E-mail verifikasi dikirim."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Berhasil terdaftar."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Kredensial WebAuthn yang diminta tidak ada."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Verifikasi WebAuthn gagal."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Pengguna yang memiliki kredensial WebAuthn ini"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ID kredensial"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Pengenal kredensial unik dari autentikator"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "kunci publik"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Byte kunci publik COSE dari pendaftaran"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "jumlah tanda tangan"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Penghitung tanda tangan untuk deteksi serangan pengulangan"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "transportasi"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Metode transportasi yang didukung (misalnya, usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "dapat ditemukan"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Apakah ini adalah kredensial yang dapat ditemukan (kunci sandi)"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID Pengesahan Autentikator yang mengidentifikasi jenis perangkat"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Nama ramah yang ditetapkan pengguna untuk kredensial ini"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "dibuat pada"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Kapan kredensial ini didaftarkan"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "terakhir digunakan pada"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Kapan kredensial ini terakhir digunakan untuk autentikasi"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "Kredensial WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Kredensial WebAuthn"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Nama ramah opsional untuk kredensial ini"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Nama ramah untuk kredensial ini"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "ID kredensial yang dikodekan Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Jenis kredensial"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Petunjuk transportasi untuk mencapai autentikator"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Pengenal algoritma COSE (misalnya, -7 untuk ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Nama RP yang dapat dibaca manusia"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "ID RP (domain)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Pegangan pengguna yang dikodekan Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Nama akun pengguna"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Nama tampilan pengguna"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Persyaratan kunci residen"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Apakah kunci residen diperlukan (usang, gunakan residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Persyaratan verifikasi pengguna"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Lampiran autentikator"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Identitas Pihak Pengandalian"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Informasi akun pengguna"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Tantangan yang dikodekan Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Parameter kredensial kunci publik yang didukung"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Batas waktu seremoni dalam milidetik"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Kredensial yang dikecualikan (sudah terdaftar)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Kriteria pemilihan autentikator"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Preferensi penyampaian pengesahan"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ID Pihak Pengandalian (domain)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Kredensial yang diizinkan untuk autentikasi ini"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Token sesi buram untuk langkah verifikasi"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Tantangan pendaftaran telah kedaluwarsa atau tidak ditemukan."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Tantangan autentikasi telah kedaluwarsa atau tidak ditemukan."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Kredensial tidak ditemukan."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Kredensial telah diubah namanya."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Daftarkan semua kunci sandi dan kunci keamanan yang terdaftar untuk pengguna"
+" yang terautentikasi."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Daftarkan kunci sandi atau kunci keamanan baru. Kirimkan kredensial dari "
+"browser setelah memanggil endpoint register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Dapatkan opsi pendaftaran untuk menambahkan kunci sandi atau kunci keamanan "
+"baru. Mengembalikan tantangan bagi browser untuk membuat kredensial."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Ubah nama kunci sandi atau kunci keamanan."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Hapus kunci sandi atau kunci keamanan. Tindakan ini tidak dapat dibatalkan."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

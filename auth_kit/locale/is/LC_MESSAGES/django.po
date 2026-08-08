@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Icelandic\n"
@@ -122,8 +122,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Senda leiðbeiningar um endurstillingu lykilorðs á gefið tölvupóstfang. Ef "
@@ -179,13 +179,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Uppfæra prófílupplýsingar auðkennds notanda að hluta. Aðeins gefnir reitir "
 "verða uppfærðir. Tölvupóstreitur er lesaðgangur eingöngu."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Tölvupóstfangið er ekki úthlutað neinum notendareikningi."
 
@@ -197,12 +197,20 @@ msgstr "Umbeðin MFA aðferð er ekki til."
 msgid "Email message with MFA code has been sent."
 msgstr "Tölvupóstur með MFA kóða hefur verið sendur."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Skráningarstillingar fyrir navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Öryggislykill / Aðgangslykill"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA kóði rennur út eftir {} sekúndur."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -210,56 +218,72 @@ msgstr ""
 "Fyrsta skref MFA-virkjaðrar auðkenningar. Staðfestir skilríki og byrjar MFA "
 "flæði."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Skilar tímabundnum lykli fyrir MFA staðfestingu eða fullkomnum "
-"{} ef MFA er óvirkt."
+"Skilar tímabundnum lykli fyrir MFA staðfestingu eða fullkomnum {} ef MFA er "
+"óvirkt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "Ljúka MFA auðkenningu með staðfestingarkóða og tímabundnum lykli."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Styður bæði TOTP kóða og varakóða til staðfestingar."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Skipta yfir í aðra MFA aðferð meðan á auðkenningarflæði stendur."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Krefst gildur tímabundins lykils frá fyrsta skref auðkenningar."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Nýr tímabundinn lykill rennur út eftir {} sekúndur."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "Senda MFA staðfestingarkóða aftur með núverandi tímabundnum lykli."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Á aðeins við um aðferðir sem krefjast kóðasendingar (t.d. tölvupóstur)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Sækja innskráningaráskorun fyrir bíðandi MFA-aðferð með því að nota "
+"fyrirliggjandi skammvinn tákn."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Á aðeins við um áskorun-svar aðferðir (t.d. aðgangslykla). Aðrar aðferðir "
+"skila tómu hluti."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Sýna allar tiltækar MFA aðferðir með uppsetningu þeirra og virkjunarstöðu. "
 "Sýnir hvaða aðferðir eru stilltar, virkar og settar sem aðalaðferð."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -269,7 +293,7 @@ msgstr ""
 "skilar uppsetningarleiðbeiningum (t.d. QR kóða fyrir auðkenningarforrit). "
 "Aðferðin verður að vera staðfest áður en hún er virkjuð."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -279,7 +303,7 @@ msgstr ""
 "sjálfkrafa sem aðalaðferð ef engin önnur aðalaðferð er til. Krafist áður en "
 "aðferðin getur verið notuð til auðkenningar."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -288,7 +312,7 @@ msgstr ""
 "Afvirkja virka MFA aðferð. Krefst staðfestingarkóða frá aðferðinni sjálfri. "
 "Getur ekki afvirkjað aðalaðferðir - settu aðra aðferð sem aðalaðferð fyrst."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -296,95 +320,95 @@ msgstr ""
 "Setja virka MFA aðferð sem aðal auðkenningaraðferð. Aðalaðferð er notuð "
 "sjálfgefið í innskráningarflæði."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Aðeins ein aðferð getur verið aðalaðferð í einu."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Krefst staðfestingarkóða frá núverandi aðalaðferð."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
-"Senda staðfestingarkóða fyrir aðferðir sem styðja kóðasendingu. Gagnlegt til "
-"að prófa aðferðarstillingu eða handvirkar kóðabeiðnir."
+"Senda staðfestingarkóða fyrir aðferðir sem styðja kóðasendingu. Gagnlegt til"
+" að prófa aðferðarstillingu eða handvirkar kóðabeiðnir."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Eyða MFA aðferð varanlega."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Þessa aðgerð er ekki hægt að afturkalla."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Getur ekki eytt virkum aðferðum."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Getur ekki eytt aðalaðferðum."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Krefst staðfestingarkóða fyrir virkar aðferðir."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "notandi"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Notandi sem á þessa MFA aðferð"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "nafn"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Nafn MFA aðferðar (t.d., 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "leyndarmál"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP leyndarlykill til að búa til staðfestingarkóða"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "er aðalaðferð"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Hvort þetta er aðal MFA aðferð notandans"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "er virk"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Hvort þessi aðferð er virk og hægt að nota"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "varakóðar"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON svæði sem geymir varakóða fyrir endurheimtu reiknings"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA aðferð"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA aðferðir"
 
@@ -394,7 +418,8 @@ msgstr "Ógildur kóði"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Ógildur lykill"
 
@@ -406,10 +431,9 @@ msgstr "Veldu nýja aðferð"
 msgid "This method is already exists"
 msgstr "Þessi aðferð er þegar til"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Ógildur OTP kóði"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Ógildur staðfestingarkóði"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -418,6 +442,10 @@ msgstr "Virkjaði MFA aðferð"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Þú getur aðeins afvirkjað MFA aðferðir sem eru ekki aðalaðferðir."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Ógildur OTP kóði"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -451,19 +479,78 @@ msgstr "Eyddi MFA aðferð"
 msgid "MFA code sent"
 msgstr "MFA kóði sendur"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Tölvupóst töfratengill"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Innskráningartengill hefur verið sendur."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Aðgangslykill / Öryggislykill"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Hefja lykilorðalausa auðkenningu í gegnum {}. Þetta er fyrsta skref "
+"lykilorðalausa innskráningarferlisins."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Ljúka lykilorðalausri auðkenningu í gegnum {}. Staðfesta skilríki/tákn frá "
+"upphafsskrefinu."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Ógilt eða útrunnið tákn."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Notandareikningur er óvirkur."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Valfrjáls tölvupóstfang fyrir skilríkjaflæði sem er ekki uppgötvanlegur. "
+"Sleppa fyrir aðgangslykils (uppgötvanlegur) flæði."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn auðkenning mistókst."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Mun hneka vöfur."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Enginn gildur endurnýjunarlykill fannst."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Tölvupóstur er ekki staðfestur."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Reikningur læstur vegna of margra misheppnaðra innskráningartilrauna. "
+"Vinsamlegast reyndu aftur síðar."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Getur ekki skráð inn með uppgefnum skilríkjum."
 
@@ -474,13 +561,14 @@ msgstr "Ógilt gildi"
 #: auth_kit/serializers/password.py:222
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
-"Gamla lykilorðið þitt var slegið inn rangt. Vinsamlegast sláðu það inn aftur."
+"Gamla lykilorðið þitt var slegið inn rangt. Vinsamlegast sláðu það inn "
+"aftur."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Notandi er þegar skráður með þetta tölvupóstfang."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Lykilorðsreitirnir tveir stemma ekki."
 
@@ -493,56 +581,53 @@ msgstr ""
 msgid "Connected"
 msgstr "Tengt"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Mistókst að ljúka OAuth flæði"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Notandi er þegar skráður með þetta tölvupóstfang."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Mistókst að skipta kóða fyrir aðgangslykil"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Auðkennið þig með {} með OAuth2/OpenID Connect heimilunarkóða til "
-"að fá aðgangslykla."
+"Auðkennið þig með {} með OAuth2/OpenID Connect heimilunarkóða til að fá "
+"aðgangslykla."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Tengja {} reikning við núverandi notendareikning. Þetta gerir "
-"notandanum kleift að skrá sig inn með núverandi {} reikningi í "
-"framtíðinni."
+"Tengja {} reikning við núverandi notendareikning. Þetta gerir notandanum "
+"kleift að skrá sig inn með núverandi {} reikningi í framtíðinni."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
-"Krefst auðkenningar og gildurs OAuth2/OpenID Connect heimilunarkóða frá "
-"{}."
+"Krefst auðkenningar og gildurs OAuth2/OpenID Connect heimilunarkóða frá {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Við árangur er {} reikningurinn tengdur og hægt að nota hann fyrir "
-"framtíðar innskráningar."
+"Við árangur er {} reikningurinn tengdur og hægt að nota hann fyrir framtíðar"
+" innskráningar."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -550,7 +635,7 @@ msgstr ""
 "Sýna alla samfélagsreikninga sem eru tengdir núverandi notanda. Sýnir "
 "reikningsupplýsingar þar á meðal veitanda, UID og tengingardagsetningar."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -565,19 +650,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class er ekki skilgreint"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Endurnýjunarlykill var ekki innifalinn í vöfurgögnum."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Endurnýjunarlykill var ekki innifalinn í beiðnigögnum."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Villa hefur komið upp."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Skráðist út með góðum árangri."
 
@@ -585,25 +670,269 @@ msgstr "Skráðist út með góðum árangri."
 msgid "Password reset e-mail has been sent."
 msgstr "Tölvupóstur um endurstillingu lykilorðs hefur verið sendur."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Lykilorð hefur verið endurstillt með nýja lykilorðinu."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Nýja lykilorðið hefur verið vistað."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Staðfestingartölvupóstur sendur."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Skráning tókst."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "í lagi"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Umbeðin WebAuthn skilríki eru ekki til."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn staðfesting mistókst."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Notandi sem á þessi WebAuthn skilríki"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "skilríkjaauðkenni"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Einstakt skilríkjaauðkenni frá auðkennaranum"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "opinber lykill"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE opinber lykillbæti frá skráningu"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "undirskriftarfjöldi"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Undirskriftarteljari fyrir uppgötvun endurspilunárása"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "flutningar"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Studdar flutningsaðferðir (t.d. usb, nfc, ble, innbyggður)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "uppgötvanlegur"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Hvort þetta er uppgötvanlegur (aðgangslykill) skilríki"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Auðkennar-vottun GUID sem auðkennir gerð tækisins"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Notandaskilgreint þægilegt nafn fyrir þetta skilríki"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "búið til þann"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Þegar þessum skilríkjum var skráð"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "síðast notað þann"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Þegar þessi skilríki var síðast notuð til auðkenningar"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn skilríki"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn skilríki"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Valfrjálst þægilegt nafn fyrir þetta skilríki"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Þægilegt nafn fyrir þetta skilríki"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-kóðað skilríkjaauðkenni"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Tegund skilríkja"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Flutningsábendingar til að ná í auðkennarann"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE reikniritsauðkenni (t.d. -7 fyrir ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Læsilegt RP-nafn"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP auðkenni (lén)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-kóðað notandahandtak"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Notandareikningsheiti"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Notandasýningarheiti"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Skilyrði búsetulykils"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Hvort búsetulykill er nauðsynlegur (úrelt, notaðu residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Skilyrði notandastaðfestingar"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Auðkennaratenging"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Treystandi aðilseinkenni"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Upplýsingar um notendareikning"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-kóðuð áskorun"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Studdar opinber lykla skilríkjabreytur"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Tímamörk athafnar í millisekúndum"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Skilríki til að útiloka (þegar skráð)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Valskilyrði auðkennarans"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Vottunarsendingarkostur"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Treystandi aðilsauðkenni (lén)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Leyfð skilríki fyrir þessa auðkenningu"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Ógagnsætt lotutákn fyrir staðfestingarskrefið"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Skráningaráskorun er útrunnin eða finnst ekki."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Auðkenningaráskorun er útrunnin eða finnst ekki."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Skilríki finnast ekki."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Skilríki endurnefnd."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Birta lista yfir alla aðgangslykla og öryggislykla sem eru skráðir fyrir "
+"auðkenndan notanda."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Skrá nýjan aðgangslykil eða öryggislykil. Senda skilríki frá vafranum eftir "
+"að hafa kallað á register_options endapunkt."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Sækja skráningarstillingar til að bæta við nýjum aðgangslykli eða "
+"öryggislykli. Skilar áskorun til að vafrinn stofni skilríkin."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Endurnefna aðgangslykil eða öryggislykil."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Eyða aðgangslykli eða öryggislykli. Þessa aðgerð er ekki hægt að afturkalla."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

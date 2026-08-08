@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-09 00:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Filipino\n"
@@ -21,8 +21,8 @@ msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
 msgstr ""
-"Nagbabalik ng mga detalye ng user kasama ang JWT access at refresh tokens na "
-"may mga oras ng pag-expire."
+"Nagbabalik ng mga detalye ng user kasama ang JWT access at refresh tokens na"
+" may mga oras ng pag-expire."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -131,8 +131,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Nagpadala ng mga tagubilin para sa password reset sa naibigay na email "
@@ -191,13 +191,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Bahagyang i-update ang profile information ng authenticated user. Ang mga "
 "fields na naibigay lamang ang ma-update. Ang email field ay read-only."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Ang email address ay hindi naka-assign sa anumang user account."
 
@@ -209,12 +209,20 @@ msgstr "Ang hiniling na MFA method ay hindi umiiral."
 msgid "Email message with MFA code has been sent."
 msgstr "Ang email message na may MFA code ay napadala na."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Mga opsyon sa pagpaparehistro para sa navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Security Key / Passkey"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "Ang MFA code ay mag-expire sa {} segundo."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -222,63 +230,79 @@ msgstr ""
 "Unang hakbang ng MFA-enabled authentication. Vina-validate ang credentials "
 "at sinimulan ang MFA flow."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Nagbabalik ng ephemeral token para sa MFA verification o kumpletong "
-"{} kung ang MFA ay disabled."
+"Nagbabalik ng ephemeral token para sa MFA verification o kumpletong {} kung "
+"ang MFA ay disabled."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Kumpletuhin ang MFA authentication gamit ang verification code at ephemeral "
 "token."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr ""
 "Sumusuporta sa parehong TOTP codes at backup codes para sa verification."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Lumipat sa ibang MFA method sa panahon ng authentication flow."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Kailangan ng valid ephemeral token mula sa first step authentication."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Ang bagong ephemeral token ay mag-expire sa {} segundo."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Muling ipadala ang MFA verification code gamit ang kasalukuyang ephemeral "
 "token."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Nalalapat lamang sa mga methods na nangangailangan ng code dispatch (hal., "
 "email)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Kumuha ng login challenge para sa nakabinbing paraan ng MFA gamit ang isang "
+"umiiral na ephemeral token."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Naaangkop lamang sa mga paraan ng challenge-response (hal., mga passkey). "
+"Ang ibang mga paraan ay nagbabalik ng walang laman na object."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Ilista ang lahat ng available MFA methods kasama ang kanilang setup at "
-"activation status. Ipinipakita kung aling methods ang configured, active, at "
-"naitakda bilang primary."
+"activation status. Ipinipakita kung aling methods ang configured, active, at"
+" naitakda bilang primary."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -288,17 +312,17 @@ msgstr ""
 "at nagbabalik ng setup instructions (hal., QR code para sa authenticator "
 "apps). Dapat kumpirmahin ang method bago ma-activate."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"Kumpirmahin at i-activate ang bagong MFA method gamit ang verification code. "
-"Awtomatikong naitakda bilang primary method kung walang ibang primary "
+"Kumpirmahin at i-activate ang bagong MFA method gamit ang verification code."
+" Awtomatikong naitakda bilang primary method kung walang ibang primary "
 "method. Kailangan bago magamit ang method para sa authentication."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -308,7 +332,7 @@ msgstr ""
 "method mismo. Hindi maaaring i-deactivate ang primary methods - magtakda "
 "muna ng ibang method bilang primary."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -316,96 +340,96 @@ msgstr ""
 "Itakda ang active MFA method bilang primary authentication method. Ang "
 "primary method ay ginagamit sa default sa panahon ng login flow."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Isang method lang ang maaaring maging primary sa isang oras."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Kailangan ng verification code mula sa kasalukuyang primary method."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
 msgstr ""
 "Magpadala ng verification code para sa mga methods na sumusuporta sa code "
-"dispatch. Kapaki-pakinabang para sa testing ng method configuration o manual "
-"code requests."
+"dispatch. Kapaki-pakinabang para sa testing ng method configuration o manual"
+" code requests."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Permanenteng tanggalin ang MFA method."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Ang aksyon na ito ay hindi maaaring bawiin."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Hindi maaaring tanggalin ang active methods."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Hindi maaaring tanggalin ang primary methods."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Kailangan ng verification code para sa active methods."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "user"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "User na may-ari ng MFA method na ito"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "pangalan"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Pangalan ng MFA method (hal. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "lihim"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP secret key para sa pagbuo ng mga verification code"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "ay primary"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Kung ito ba ay primary MFA method ng user"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "ay active"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Kung ang method na ito ay active at maaaring gamitin"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "backup codes"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "JSON field na nag-iimbak ng backup codes para sa account recovery"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA Method"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA Methods"
 
@@ -415,7 +439,8 @@ msgstr "Invalid code"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Invalid token"
 
@@ -427,10 +452,9 @@ msgstr "Pakiselect ang bagong method"
 msgid "This method is already exists"
 msgstr "Ang method na ito ay umiiral na"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Invalid OTP code"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Hindi wastong verification code"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -439,6 +463,10 @@ msgstr "Na-activate ang MFA method"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Maaari mo lamang i-deactivate ang non-primary MFA method."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Invalid OTP code"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -472,19 +500,78 @@ msgstr "Natanggal ang MFA method"
 msgid "MFA code sent"
 msgstr "Napadala na ang MFA code"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Email Magic Link"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Naipadala na ang link sa pag-login."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Passkey / Security Key"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Simulan ang passwordless authentication sa pamamagitan ng {}. Ito ang unang "
+"hakbang ng passwordless login flow."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Kumpletuhin ang passwordless authentication sa pamamagitan ng {}. I-verify "
+"ang credential/token mula sa hakbang ng pagsisimula."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Hindi wasto o nag-expire na ang token."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Ang user account ay naka-disable."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Opsyonal na email para sa non-discoverable credential flow. Alisin para sa "
+"passkey (discoverable) flow."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Nabigo ang WebAuthn authentication."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Papalitan ang cookie."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Walang valid refresh token na nakita."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Hindi na-verify ang e-mail."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Na-lock ang account dahil sa masyadong maraming nabigong pagtatangkang mag-"
+"login. Pakisubukan muli sa ibang pagkakataon."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Hindi makapag-login gamit ang naibigay na credentials."
 
@@ -496,11 +583,11 @@ msgstr "Invalid value"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Ang inyong lumang password ay mali ang pagkakapasok. Pakiulit po."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "May user na nakarehistro sa e-mail address na ito."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Ang dalawang password fields ay hindi magkatugma."
 
@@ -514,56 +601,55 @@ msgstr ""
 msgid "Connected"
 msgstr "Nakaconnect"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Hindi nakumpleto ang OAuth flow"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Ang user ay nakarehistro na sa e-mail address na ito."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Hindi naging matagumpay ang exchange ng code para sa access token"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Mag-authenticate gamit ang {} sa pamamagitan ng OAuth2/OpenID "
-"Connect authorization code para makakuha ng access tokens."
+"Mag-authenticate gamit ang {} sa pamamagitan ng OAuth2/OpenID Connect "
+"authorization code para makakuha ng access tokens."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Mag-connect ng {} account sa kasalukuyang user account. Ito ay "
-"nagbibigay-daan sa user na mag-login gamit ang kanilang existing "
-"{} account sa hinaharap."
+"Mag-connect ng {} account sa kasalukuyang user account. Ito ay nagbibigay-"
+"daan sa user na mag-login gamit ang kanilang existing {} account sa "
+"hinaharap."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Kailangan ng authentication at valid OAuth2/OpenID Connect authorization "
 "code mula sa {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Kapag matagumpay, ang {} account ay ma-link at maaaring gamitin "
-"para sa mga future logins."
+"Kapag matagumpay, ang {} account ay ma-link at maaaring gamitin para sa mga "
+"future logins."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -571,7 +657,7 @@ msgstr ""
 "Ilista ang lahat ng social accounts na nakaconnect sa kasalukuyang user. "
 "Ipinakita ang account details kasama ang provider, UID, at connection dates."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -586,19 +672,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "hindi nadefine ang adapter_class"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Ang refresh token ay hindi kasama sa cookie data."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Ang refresh token ay hindi kasama sa request data."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "May error na naganap."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Matagumpay na nag-logout."
 
@@ -606,25 +692,272 @@ msgstr "Matagumpay na nag-logout."
 msgid "Password reset e-mail has been sent."
 msgstr "Napadala na ang password reset e-mail."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Na-reset na ang password gamit ang bagong password."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Na-save na ang bagong password."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Napadala na ang verification e-mail."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Matagumpay na nakarehistro."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Ang hiniling na WebAuthn credential ay hindi umiiral."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Nabigo ang WebAuthn verification."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "User na nagmamay-ari ng WebAuthn credential na ito"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "credential ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Natatanging identifier ng credential mula sa authenticator"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "pampublikong key"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Mga COSE public key bytes mula sa pagpaparehistro"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "bilang ng lagda"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Counter ng lagda para sa pagtuklas ng replay attack"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "mga transport"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr ""
+"Mga sinusuportahang paraan ng transport (hal., usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "matatagpuan"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Kung ito ay isang discoverable (passkey) na credential"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Authenticator Attestation GUID na nagtatukoy ng uri ng device"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Friendly na pangalan na itinalaga ng user para sa credential na ito"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "nilikha noong"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Kailan nirehistro ang credential na ito"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "huling ginamit noong"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Kailan huling ginamit ang credential na ito para sa authentication"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn Credential"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Mga WebAuthn Credential"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Opsyonal na user-friendly na pangalan para sa credential na ito"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "User-friendly na pangalan para sa credential na ito"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-encoded na credential ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Uri ng credential"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Mga transport hint para maabot ang authenticator"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE algorithm identifier (hal., -7 para sa ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Human-readable na pangalan ng RP"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (domain)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-encoded na user handle"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Pangalan ng user account"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Display name ng user"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Kinakailangan ng resident key"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr ""
+"Kung kinakailangan ang resident key (deprecated, gamitin ang residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Kinakailangan ng user verification"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Attachment ng authenticator"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Pagkakakilanlan ng Relying Party"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Impormasyon ng user account"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-encoded na challenge"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Mga sinusuportahang parameter ng public-key credential"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Ceremony timeout sa millisecond"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Mga credential na ibubukod (narehistro na)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Pamantayan sa pagpili ng authenticator"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Kagustuhan sa paghahatid ng attestation"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Relying Party ID (domain)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Mga pinahintulutang credential para sa authentication na ito"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Opaque session token para sa hakbang ng pag-verify"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Nag-expire o hindi natagpuan ang registration challenge."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Nag-expire o hindi natagpuan ang authentication challenge."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Hindi natagpuan ang credential."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Napalitan na ang pangalan ng credential."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Ilista ang lahat ng passkey at security key na nairehistro para sa "
+"authenticated user."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Magrehistro ng bagong passkey o security key. Isumite ang credential mula sa"
+" browser pagkatapos tawagan ang register_options endpoint."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Kumuha ng mga opsyon sa pagpaparehistro para sa pagdaragdag ng bagong "
+"passkey o security key. Nagbabalik ng challenge para sa browser para likhain"
+" ang credential."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Palitan ang pangalan ng passkey o security key."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Burahin ang passkey o security key. Hindi mababawi ang pagkilos na ito."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

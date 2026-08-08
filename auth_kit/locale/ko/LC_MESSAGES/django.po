@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-09 00:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Korean\n"
@@ -21,9 +21,7 @@ msgstr ""
 msgid ""
 "Returns user details along with JWT access and refresh tokens with "
 "expiration times."
-msgstr ""
-"만료 시간이 있는 JWT 액세스 및 리프레시 토큰과 함께 사용자 세부 정보를 반환합"
-"니다."
+msgstr "만료 시간이 있는 JWT 액세스 및 리프레시 토큰과 함께 사용자 세부 정보를 반환합니다."
 
 #: auth_kit/api_descriptions.py:33
 msgid ""
@@ -87,9 +85,7 @@ msgstr "리프레시 토큰을 사용하여 새로운 JWT 액세스 토큰을 �
 msgid ""
 "Refresh tokens can be provided in request data or extracted automatically "
 "from HTTP cookies."
-msgstr ""
-"리프레시 토큰은 요청 데이터에 제공하거나 HTTP 쿠키에서 자동으로 추출할 수 있"
-"습니다."
+msgstr "리프레시 토큰은 요청 데이터에 제공하거나 HTTP 쿠키에서 자동으로 추출할 수 있습니다."
 
 #: auth_kit/api_descriptions.py:110 auth_kit/api_descriptions.py:120
 msgid "Returns new access tokens with updated expiration times."
@@ -114,13 +110,12 @@ msgstr "계정이 완전히 활성화되기 전에 사용자는 이메일 주소
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"제공된 이메일 주소로 비밀번호 재설정 지침을 보냅니다. 이메일이 등록되어 있으"
-"면 보안 재설정 링크가 전송됩니다. 보안을 위해 링크는 제한된 시간 후에 만료됩"
-"니다."
+"제공된 이메일 주소로 비밀번호 재설정 지침을 보냅니다. 이메일이 등록되어 있으면 보안 재설정 링크가 전송됩니다. 보안을 위해 링크는 "
+"제한된 시간 후에 만료됩니다."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -128,9 +123,8 @@ msgid ""
 "Requires the UID and token from the email along with the new password. The "
 "token is single-use and expires for security."
 msgstr ""
-"재설정 이메일의 토큰을 사용하여 비밀번호 재설정 과정을 완료합니다. 새 비밀번"
-"호와 함께 이메일의 UID와 토큰이 필요합니다. 토큰은 일회용이며 보안을 위해 만"
-"료됩니다."
+"재설정 이메일의 토큰을 사용하여 비밀번호 재설정 과정을 완료합니다. 새 비밀번호와 함께 이메일의 UID와 토큰이 필요합니다. 토큰은 "
+"일회용이며 보안을 위해 만료됩니다."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -140,43 +134,35 @@ msgstr "현재 사용자의 비밀번호를 변경합니다. 인증이 필요합
 msgid ""
 "Confirm email address using the verification key sent via email. This "
 "activates the user account and allows login access."
-msgstr ""
-"이메일로 전송된 인증 키를 사용하여 이메일 주소를 확인합니다. 이것은 사용자 계"
-"정을 활성화하고 로그인 액세스를 허용합니다."
+msgstr "이메일로 전송된 인증 키를 사용하여 이메일 주소를 확인합니다. 이것은 사용자 계정을 활성화하고 로그인 액세스를 허용합니다."
 
 #: auth_kit/api_descriptions.py:164
 msgid ""
 "Send a new email verification message to unverified email addresses. Only "
 "works for email addresses that are registered but not yet verified."
 msgstr ""
-"확인되지 않은 이메일 주소로 새로운 이메일 확인 메시지를 보냅니다. 등록되었지"
-"만 아직 확인되지 않은 이메일 주소에만 작동합니다."
+"확인되지 않은 이메일 주소로 새로운 이메일 확인 메시지를 보냅니다. 등록되었지만 아직 확인되지 않은 이메일 주소에만 작동합니다."
 
 #: auth_kit/api_descriptions.py:169
 msgid ""
 "Retrieve the authenticated user's profile information including username, "
 "email, first name, and last name. Password fields are excluded."
-msgstr ""
-"사용자명, 이메일, 이름 및 성을 포함한 인증된 사용자의 프로필 정보를 검색합니"
-"다. 비밀번호 필드는 제외됩니다."
+msgstr "사용자명, 이메일, 이름 및 성을 포함한 인증된 사용자의 프로필 정보를 검색합니다. 비밀번호 필드는 제외됩니다."
 
 #: auth_kit/api_descriptions.py:174
 msgid ""
 "Update the authenticated user's profile information. Allows modification of "
 "username, first name, and last name. Email field is read-only for security."
 msgstr ""
-"인증된 사용자의 프로필 정보를 업데이트합니다. 사용자명, 이름 및 성의 수정을 "
-"허용합니다. 보안상 이메일 필드는 읽기 전용입니다."
+"인증된 사용자의 프로필 정보를 업데이트합니다. 사용자명, 이름 및 성의 수정을 허용합니다. 보안상 이메일 필드는 읽기 전용입니다."
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
-msgstr ""
-"인증된 사용자의 프로필 정보를 부분적으로 업데이트합니다. 제공된 필드만 업데이"
-"트됩니다. 이메일 필드는 읽기 전용입니다."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
+msgstr "인증된 사용자의 프로필 정보를 부분적으로 업데이트합니다. 제공된 필드만 업데이트됩니다. 이메일 필드는 읽기 전용입니다."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "이메일 주소가 어떤 사용자 계정에도 할당되지 않았습니다."
 
@@ -188,192 +174,203 @@ msgstr "요청된 MFA 방법이 존재하지 않습니다."
 msgid "Email message with MFA code has been sent."
 msgstr "MFA 코드가 포함된 이메일 메시지가 전송되었습니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "navigator.credentials.create()에 대한 등록 옵션"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "보안 키 / 패스키"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA 코드는 {}초 후에 만료됩니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
-msgstr ""
-"MFA 활성화 인증의 첫 번째 단계입니다. 자격 증명을 검증하고 MFA 플로우를 시작"
-"합니다."
+msgstr "MFA 활성화 인증의 첫 번째 단계입니다. 자격 증명을 검증하고 MFA 플로우를 시작합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
-msgstr ""
-"MFA 확인을 위한 임시 토큰을 반환하거나 MFA가 비활성화된 경우 완전한 "
-"{}를 반환합니다."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
+msgstr "MFA 확인을 위한 임시 토큰을 반환하거나 MFA가 비활성화된 경우 완전한 {}를 반환합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "확인 코드와 임시 토큰을 사용하여 MFA 인증을 완료합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "확인을 위해 TOTP 코드와 백업 코드를 모두 지원합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "인증 플로우 중에 다른 MFA 방법으로 전환합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "첫 번째 단계 인증의 유효한 임시 토큰이 필요합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "새로운 임시 토큰은 {}초 후에 만료됩니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "기존 임시 토큰을 사용하여 MFA 확인 코드를 다시 보냅니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "코드 발송이 필요한 방법(예: 이메일)에만 적용됩니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
-msgstr ""
-"설정 및 활성화 상태와 함께 사용 가능한 모든 MFA 방법을 나열합니다. 어떤 방법"
-"이 구성되고 활성화되었으며 기본으로 설정되었는지 보여줍니다."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr "기존 임시 토큰을 사용하여 대기 중인 MFA 방법에 대한 로그인 챌린지를 가져옵니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr "챌린지-응답 방법(예: 패스키)에만 적용됩니다. 다른 방법은 빈 객체를 반환합니다."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
+msgstr ""
+"설정 및 활성화 상태와 함께 사용 가능한 모든 MFA 방법을 나열합니다. 어떤 방법이 구성되고 활성화되었으며 기본으로 설정되었는지 "
+"보여줍니다."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
-"새로운 MFA 방법 설정을 초기화합니다. 백업 코드와 함께 방법을 생성하고 설정 지"
-"침(예: 인증자 앱용 QR 코드)을 반환합니다. 활성화 전에 방법을 확인해야 합니다."
+"새로운 MFA 방법 설정을 초기화합니다. 백업 코드와 함께 방법을 생성하고 설정 지침(예: 인증자 앱용 QR 코드)을 반환합니다. 활성화"
+" 전에 방법을 확인해야 합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
 "Required before the method can be used for authentication."
 msgstr ""
-"확인 코드를 사용하여 새로 생성된 MFA 방법을 확인하고 활성화합니다. 다른 기본 "
-"방법이 없으면 자동으로 기본 방법으로 설정됩니다. 인증에 사용하기 전에 필수입"
-"니다."
+"확인 코드를 사용하여 새로 생성된 MFA 방법을 확인하고 활성화합니다. 다른 기본 방법이 없으면 자동으로 기본 방법으로 설정됩니다. "
+"인증에 사용하기 전에 필수입니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
-"활성 MFA 방법을 비활성화합니다. 방법 자체의 확인 코드가 필요합니다. 기본 방법"
-"은 비활성화할 수 없습니다 - 먼저 다른 방법을 기본으로 설정하세요."
+"활성 MFA 방법을 비활성화합니다. 방법 자체의 확인 코드가 필요합니다. 기본 방법은 비활성화할 수 없습니다 - 먼저 다른 방법을 "
+"기본으로 설정하세요."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
-msgstr ""
-"활성 MFA 방법을 기본 인증 방법으로 설정합니다. 기본 방법은 로그인 플로우 중"
-"에 기본적으로 사용됩니다."
+msgstr "활성 MFA 방법을 기본 인증 방법으로 설정합니다. 기본 방법은 로그인 플로우 중에 기본적으로 사용됩니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "한 번에 하나의 방법만 기본이 될 수 있습니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "현재 기본 방법의 확인 코드가 필요합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
-msgstr ""
-"코드 발송을 지원하는 방법에 대해 확인 코드를 보냅니다. 방법 구성 테스트나 수"
-"동 코드 요청에 유용합니다."
+msgstr "코드 발송을 지원하는 방법에 대해 확인 코드를 보냅니다. 방법 구성 테스트나 수동 코드 요청에 유용합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "MFA 방법을 영구적으로 삭제합니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "이 작업은 실행 취소할 수 없습니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "활성 방법을 삭제할 수 없습니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "기본 방법을 삭제할 수 없습니다."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "활성 방법에 대해 확인 코드가 필요합니다."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "사용자"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "이 MFA 방법을 소유한 사용자"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "이름"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA 방법 이름 (예: 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "시크릿"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "확인 코드 생성을 위한 TOTP 비밀 키"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "기본"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "이것이 사용자의 기본 MFA 방법인지 여부"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "활성"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "이 방법이 활성 상태이고 사용할 수 있는지 여부"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "백업 코드"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "계정 복구를 위한 백업 코드를 저장하는 JSON 필드"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA 방법"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA 방법"
 
@@ -383,7 +380,8 @@ msgstr "잘못된 코드"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "잘못된 토큰"
 
@@ -395,10 +393,9 @@ msgstr "새로운 방법을 선택하세요"
 msgid "This method is already exists"
 msgstr "이 방법은 이미 존재합니다"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "잘못된 OTP 코드"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "유효하지 않은 인증 코드"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -407,6 +404,10 @@ msgstr "MFA 방법이 활성화되었습니다"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "비기본 MFA 방법만 비활성화할 수 있습니다."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "잘못된 OTP 코드"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -440,19 +441,70 @@ msgstr "MFA 방법이 삭제되었습니다"
 msgid "MFA code sent"
 msgstr "MFA 코드가 전송되었습니다"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "이메일 매직 링크"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "로그인 링크가 전송되었습니다."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "패스키 / 보안 키"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr "{}을(를) 통해 패스워드리스 인증을 시작합니다. 이것이 패스워드리스 로그인 흐름의 첫 번째 단계입니다."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr "{}을(를) 통해 패스워드리스 인증을 완료합니다. 시작 단계의 자격 증명/토큰을 확인합니다."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "유효하지 않거나 만료된 토큰입니다."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "사용자 계정이 비활성화되어 있습니다."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr "검색 불가능한 자격 증명 흐름을 위한 선택적 이메일입니다. 패스키(검색 가능) 흐름의 경우 생략합니다."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn 인증에 실패했습니다."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "쿠키를 덮어쓸 것입니다."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "유효한 리프레시 토큰을 찾을 수 없습니다."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "이메일이 확인되지 않았습니다."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr "로그인 시도 실패가 너무 많아 계정이 잠겼습니다. 나중에 다시 시도하세요."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "제공된 자격 증명으로 로그인할 수 없습니다."
 
@@ -464,11 +516,11 @@ msgstr "잘못된 값"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "이전 비밀번호가 잘못 입력되었습니다. 다시 입력해 주세요."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "이 이메일 주소로 이미 등록된 사용자가 있습니다."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "두 비밀번호 필드가 일치하지 않습니다."
 
@@ -480,88 +532,77 @@ msgstr "소셜 계정 이메일은 현재 계정 이메일과 일치해야 합�
 msgid "Connected"
 msgstr "연결됨"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "OAuth 플로우 완료에 실패했습니다"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "사용자가 이미 이 이메일 주소로 등록되어 있습니다."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "코드를 액세스 토큰으로 교환하는 데 실패했습니다"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
-msgstr ""
-"액세스 토큰을 얻기 위해 OAuth2/OpenID Connect 인증 코드를 사용하여 "
-"{}로 인증하세요."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
+msgstr "액세스 토큰을 얻기 위해 OAuth2/OpenID Connect 인증 코드를 사용하여 {}로 인증하세요."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
-msgstr ""
-"{} 계정을 현재 사용자의 계정에 연결합니다. 이를 통해 사용자는 향후 "
-"기존 {} 계정을 사용하여 로그인할 수 있습니다."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
+msgstr "{} 계정을 현재 사용자의 계정에 연결합니다. 이를 통해 사용자는 향후 기존 {} 계정을 사용하여 로그인할 수 있습니다."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
-msgstr ""
-"인증과 {}로부터 유효한 OAuth2/OpenID Connect 인증 코드가 필요합니"
-"다."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
+msgstr "인증과 {}로부터 유효한 OAuth2/OpenID Connect 인증 코드가 필요합니다."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
-msgstr ""
-"성공하면 {} 계정이 연결되어 향후 로그인에 사용할 수 있습니다."
+"On success, the {} account is linked and can be used for future logins."
+msgstr "성공하면 {} 계정이 연결되어 향후 로그인에 사용할 수 있습니다."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
-msgstr ""
-"현재 사용자에게 연결된 모든 소셜 계정을 나열합니다. 제공업체, UID 및 연결 날"
-"짜를 포함한 계정 세부 정보를 표시합니다."
+msgstr "현재 사용자에게 연결된 모든 소셜 계정을 나열합니다. 제공업체, UID 및 연결 날짜를 포함한 계정 세부 정보를 표시합니다."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"현재 사용자에서 소셜 계정을 연결 해제합니다. 소셜 계정 연결을 제거하고 해당 "
-"제공업체를 통한 향후 로그인을 방지합니다. 인증이 필요하며 계정은 현재 사용자"
-"에게 속해야 합니다."
+"현재 사용자에서 소셜 계정을 연결 해제합니다. 소셜 계정 연결을 제거하고 해당 제공업체를 통한 향후 로그인을 방지합니다. 인증이 필요하며"
+" 계정은 현재 사용자에게 속해야 합니다."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class가 정의되지 않았습니다"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "리프레시 토큰이 쿠키 데이터에 포함되지 않았습니다."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "리프레시 토큰이 요청 데이터에 포함되지 않았습니다."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "오류가 발생했습니다."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "성공적으로 로그아웃되었습니다."
 
@@ -569,25 +610,263 @@ msgstr "성공적으로 로그아웃되었습니다."
 msgid "Password reset e-mail has been sent."
 msgstr "비밀번호 재설정 이메일이 전송되었습니다."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "비밀번호가 새 비밀번호로 재설정되었습니다."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "새 비밀번호가 저장되었습니다."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "확인 이메일이 전송되었습니다."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "성공적으로 등록되었습니다."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "확인"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "요청된 WebAuthn 자격 증명이 존재하지 않습니다."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn 검증에 실패했습니다."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "이 WebAuthn 자격 증명을 소유한 사용자"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "자격 증명 ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "인증기에서 제공하는 고유 자격 증명 식별자"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "공개 키"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "등록 시의 COSE 공개 키 바이트"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "서명 횟수"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "재생 공격 감지를 위한 서명 카운터"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "전송 방법"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "지원되는 전송 방법(예: usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "검색 가능"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "검색 가능한(패스키) 자격 증명 여부"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "장치 유형을 식별하는 인증기 증명 GUID"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "이 자격 증명에 사용자가 지정한 이름"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "생성 시간"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "이 자격 증명이 등록된 시간"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "마지막 사용 시간"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "이 자격 증명이 마지막으로 인증에 사용된 시간"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn 자격 증명"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn 자격 증명 목록"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "이 자격 증명의 선택적 사용자 친화적 이름"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "이 자격 증명의 사용자 친화적 이름"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL로 인코딩된 자격 증명 ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "자격 증명 유형"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "인증기에 도달하기 위한 전송 힌트"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE 알고리즘 식별자(예: ES256의 경우 -7)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "사람이 읽을 수 있는 RP 이름"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID(도메인)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL로 인코딩된 사용자 핸들"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "사용자 계정 이름"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "사용자 표시 이름"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "상주 키 요구 사항"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "상주 키 필요 여부(더 이상 사용되지 않음, residentKey 사용)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "사용자 확인 요구 사항"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "인증기 연결 방식"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "신뢰 당사자 신원"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "사용자 계정 정보"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL로 인코딩된 챌린지"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "지원되는 공개 키 자격 증명 매개변수"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "밀리초 단위의 세리머니 타임아웃"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "제외할 자격 증명(이미 등록됨)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "인증기 선택 기준"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "증명 전달 방식 기본 설정"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "신뢰 당사자 ID(도메인)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "이 인증에 허용된 자격 증명"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "검증 단계를 위한 불투명 세션 토큰"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "등록 챌린지가 만료되었거나 찾을 수 없습니다."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "인증 챌린지가 만료되었거나 찾을 수 없습니다."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "자격 증명을 찾을 수 없습니다."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "자격 증명 이름이 변경되었습니다."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr "인증된 사용자에 대해 등록된 모든 패스키와 보안 키를 나열합니다."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"새 패스키 또는 보안 키를 등록합니다. register_options 엔드포인트를 호출한 후 브라우저에서 자격 증명을 제출하세요."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr "새 패스키 또는 보안 키를 추가하기 위한 등록 옵션을 가져옵니다. 브라우저가 자격 증명을 생성할 챌린지를 반환합니다."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "패스키 또는 보안 키의 이름을 변경합니다."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr "패스키 또는 보안 키를 삭제합니다. 이 작업은 취소할 수 없습니다."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

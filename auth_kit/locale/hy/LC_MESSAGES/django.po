@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Armenian\n"
@@ -129,8 +129,8 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
 "Գաղտնաբառի վերականգնման հրահանգներ ուղարկել տրամադրված էլ. փոստի հասցեին: "
@@ -144,8 +144,8 @@ msgid ""
 "token is single-use and expires for security."
 msgstr ""
 "Ավարտել գաղտնաբառի վերականգնման գործընթացը վերականգնման էլ. փոստից ստացված "
-"նշանով: Պահանջում է UID և նշանը էլ. փոստից՝ նոր գաղտնաբառի հետ միասին: Նշանն "
-"մեկանգամյա օգտագործման է և ավարտվում է անվտանգության համար:"
+"նշանով: Պահանջում է UID և նշանը էլ. փոստից՝ նոր գաղտնաբառի հետ միասին: Նշանն"
+" մեկանգամյա օգտագործման է և ավարտվում է անվտանգության համար:"
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -188,13 +188,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Մասնակիորեն թարմացնել նույնականացված օգտատիրոջ պրոֆիլի տեղեկությունները: "
 "Միայն տրամադրված դաշտերը կթարմացվեն: Էլ. փոստի դաշտը կարդալու համար է միայն:"
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Էլ. փոստի հասցեն չի նշանակված որևէ օգտատիրոջ հաշվի:"
 
@@ -206,12 +206,20 @@ msgstr "Պահանջված MFA մեթոդը գոյություն չունի:"
 msgid "Email message with MFA code has been sent."
 msgstr "MFA ծածկագրով էլ. փոստի հաղորդագրությունը ուղարկվել է:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Գրանցման պարամետրեր navigator.credentials.create()-ի համար"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Անվտանգության բանալի / Մուտքային բանալի"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "MFA ծածկագիրը կավարտվի {} վայրկյանից:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -219,63 +227,79 @@ msgstr ""
 "MFA-ակտիվացված նույնականացման առաջին քայլը: Վալիդացնում է իրավունքները և "
 "մեկնարկում է MFA հոսքը:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Վերադարձնում է ժամանակավոր նշան MFA ստուգման համար կամ ամբողջական "
-"{}, եթե MFA-ն անջատված է:"
+"Վերադարձնում է ժամանակավոր նշան MFA ստուգման համար կամ ամբողջական {}, եթե "
+"MFA-ն անջատված է:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr ""
 "Ավարտել MFA նույնականացումը հաստատման ծածկագրի և ժամանակավոր նշանի "
 "օգտագործմամբ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr ""
 "Աջակցում է և՛ TOTP ծածկագրերին, և՛ պահեստային ծածկագրերին հաստատման համար:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Անցնել այլ MFA մեթոդի նույնականացման հոսքի ժամանակ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Պահանջում է վավեր ժամանակավոր նշան առաջին քայլի նույնականացումից:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Նոր ժամանակավոր նշանը կավարտվի {} վայրկյանից:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr ""
 "Վերուղարկել MFA հաստատման ծածկագիրը գոյություն ունեցող ժամանակավոր նշանի "
 "օգտագործմամբ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr ""
 "Կիրառելի է միայն մեթոդների համար, որոնք պահանջում են ծածկագրի առաքում (օր.՝ "
 "էլ. փոստ):"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Ստացեք մուտքի մարտահրավեր սպասող MFA մեթոդի համար` օգտագործելով գոյություն "
+"ունեցող ժամանակավոր թոքեն:"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Կիրառելի է միայն մարտահրավեր-պատասխան մեթոդների համար (օր. մուտքային "
+"բանալիներ): Մյուս մեթոդները վերադարձնում են դատարկ օբյեկտ:"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Ցուցակել բոլոր հասանելի MFA մեթոդները նրանց կարգավորման և ակտիվացման "
 "կարգավիճակով: Ցույց է տալիս, թե որ մեթոդներն են կարգավորված, ակտիվ և "
 "սահմանված որպես առաջնային:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
@@ -286,7 +310,7 @@ msgstr ""
 "նույնականացուցիչ հավելվածների համար): Մեթոդը պետք է հաստատվի ակտիվացումից "
 "առաջ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -297,17 +321,17 @@ msgstr ""
 "առաջնային մեթոդ գոյություն չունի: Պահանջվում է նախքան մեթոդը կարելի է "
 "օգտագործել նույնականացման համար:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
 "first."
 msgstr ""
-"Ապաակտիվացնել ակտիվ MFA մեթոդը: Պահանջում է հաստատման ծածկագիր ինքը մեթոդից: "
-"Չի կարող ապաակտիվացնել առաջնային մեթոդները - առաջ սահմանեք այլ մեթոդ որպես "
+"Ապաակտիվացնել ակտիվ MFA մեթոդը: Պահանջում է հաստատման ծածկագիր ինքը մեթոդից:"
+" Չի կարող ապաակտիվացնել առաջնային մեթոդները - առաջ սահմանեք այլ մեթոդ որպես "
 "առաջնային:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -315,15 +339,15 @@ msgstr ""
 "Սահմանել ակտիվ MFA մեթոդը որպես առաջնային նույնականացման մեթոդ: Առաջնային "
 "մեթոդը կանխադրված կերպով օգտագործվում է մուտքի հոսքի ժամանակ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Միայն մեկ մեթոդ կարող է լինել առաջնային միևնույն ժամանակ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Պահանջում է հաստատման ծածկագիր ընթացիկ առաջնային մեթոդից:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -332,79 +356,81 @@ msgstr ""
 "առաքմանը: Օգտակար է մեթոդի կարգավորման փորձարկման կամ ձեռքի ծածկագրի "
 "հարցումների համար:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Մշտապես ջնջել MFA մեթոդը:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Այս գործողությունը հնարավոր չէ հետարկել:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Հնարավոր չէ ջնջել ակտիվ մեթոդները:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Հնարավոր չէ ջնջել առաջնային մեթոդները:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Պահանջում է հաստատման ծածկագիր ակտիվ մեթոդների համար:"
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "օգտատեր"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Օգտագործող, որը ունի այս MFA մեթոդը"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "անուն"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA մեթոդի անվանումը (օր., 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "գաղտնի"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP գաղտնի բանալի հաստատման կոդեր գեներացնելու համար"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "առաջնային է"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Այսը օգտագործողի հիմնական MFA մեթոդը է"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "ակտիվ է"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Այս մեթոդը ակտիվ է և կարող է օգտագործվել"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "պահեստային ծածկագրեր"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
-msgstr "JSON դաշտ, որը պահին է հաշվարների վերականգնման առաջանծության առաջանծական կոդերը"
+msgstr ""
+"JSON դաշտ, որը պահին է հաշվարների վերականգնման առաջանծության առաջանծական "
+"կոդերը"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "MFA մեթոդ"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "MFA մեթոդներ"
 
@@ -414,7 +440,8 @@ msgstr "Անվավեր ծածկագիր"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Անվավեր նշան"
 
@@ -426,10 +453,9 @@ msgstr "Խնդրում ենք ընտրել նոր մեթոդ"
 msgid "This method is already exists"
 msgstr "Այս մեթոդը արդեն գոյություն ունի"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Անվավեր OTP ծածկագիր"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Անվավեր հաստատման կոդ"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -438,6 +464,10 @@ msgstr "Ակտիվացված MFA մեթոդ"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Դուք կարող եք ապաակտիվացնել միայն ոչ-առաջնային MFA մեթոդը:"
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Անվավեր OTP ծածկագիր"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -471,19 +501,78 @@ msgstr "Ջնջված MFA մեթոդ"
 msgid "MFA code sent"
 msgstr "MFA ծածկագիրը ուղարկված է"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Կախարդական հղում էլ. փոստով"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Մուտքի հղումն ուղարկվել է:"
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Մուտքային բանալի / Անվտանգության բանալի"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Մեկնարկեք առանց գաղտնաբառի նույնականացում {} միջոցով: Սա առանց գաղտնաբառի "
+"մուտքի հոսքի առաջին քայլն է:"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Ավարտեք առանց գաղտնաբառի նույնականացումը {} միջոցով: Հաստատեք մեկնարկի քայլի"
+" հավատարմագիրը/թոքենը:"
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Անվավեր կամ ժամկետանց թոքեն:"
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Օգտատիրոջ հաշիվն անջատված է:"
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Կամընտիր էլ. փոստ չհայտնաբերվող հավատարմագրի հոսքի համար: Բաց թողեք "
+"մուտքային բանալու (հայտնաբերվող) հոսքի դեպքում:"
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "WebAuthn նույնականացումը ձախողվեց:"
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Կվերագրի cookie-ը:"
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Վավեր թարմացման նշան չի գտնվել:"
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Էլ. փոստը հաստատված չէ:"
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Հաշիվն արգելափակված է մուտքի շատ ձախողված փորձերի պատճառով: Խնդրում ենք "
+"փորձել կրկին ավելի ուշ:"
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Հնարավոր չէ մուտք գործել տրամադրված իրավունքներով:"
 
@@ -495,11 +584,11 @@ msgstr "Անվավեր արժեք"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Ձեր հին գաղտնաբառը սխալ է մուտքագրված: Խնդրում ենք նորից մուտքագրել:"
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Օգտատեր արդեն գրանցված է այս էլ. փոստի հասցեով:"
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Երկու գաղտնաբառի դաշտերը չեն համընկնում:"
 
@@ -512,64 +601,62 @@ msgstr ""
 msgid "Connected"
 msgstr "Կապակցված"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Չհաջողվեց ավարտել OAuth հոսքը"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Օգտատերը արդեն գրանցված է այս էլ. փոստի հասցեով:"
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Չհաջողվեց փոխանակել ծածկագիրը մուտքի նշանի համար"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Նույնականացում {}-ի հետ՝ օգտագործելով OAuth2/OpenID Connect "
-"լիազորման ծածկագիրը՝ մուտքի նշաններ ստանալու համար:"
+"Նույնականացում {}-ի հետ՝ օգտագործելով OAuth2/OpenID Connect լիազորման "
+"ծածկագիրը՝ մուտքի նշաններ ստանալու համար:"
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Միացնել {} հաշիվը ընթացիկ օգտատիրոջ հաշվին: Սա թույլ է տալիս "
-"օգտատիրոջը՝ ապագայում մուտք գործել իրենց գոյություն ունեցող {} "
-"հաշվով:"
+"Միացնել {} հաշիվը ընթացիկ օգտատիրոջ հաշվին: Սա թույլ է տալիս օգտատիրոջը՝ "
+"ապագայում մուտք գործել իրենց գոյություն ունեցող {} հաշվով:"
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
 "Պահանջում է նույնականացում և վավեր OAuth2/OpenID Connect լիազորման ծածկագիր "
 "{}-ից:"
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Հաջող գործողության դեպքում՝ {} հաշիվը կապակցված է և կարող է "
-"օգտագործվել ապագա մուտքերի համար:"
+"Հաջող գործողության դեպքում՝ {} հաշիվը կապակցված է և կարող է օգտագործվել "
+"ապագա մուտքերի համար:"
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
 msgstr ""
-"Ցուցակել ընթացիկ օգտատիրոջ հետ կապակցված բոլոր սոցիալական հաշիվները: Ցույց է "
-"տալիս հաշվի մանրամասներ՝ ներառյալ մատակարարը, UID և կապակցման ամսաթվերը:"
+"Ցուցակել ընթացիկ օգտատիրոջ հետ կապակցված բոլոր սոցիալական հաշիվները: Ցույց է"
+" տալիս հաշվի մանրամասներ՝ ներառյալ մատակարարը, UID և կապակցման ամսաթվերը:"
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
@@ -583,19 +670,19 @@ msgstr ""
 msgid "adapter_class is not defined"
 msgstr "adapter_class-ը սահմանված չէ"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Թարմացման նշանը չի ներառվել cookie տվյալներում:"
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Թարմացման նշանը չի ներառվել հարցման տվյալներում:"
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Սխալ է տեղի ունեցել:"
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Հաջողությամբ ելքագրվեց:"
 
@@ -603,25 +690,271 @@ msgstr "Հաջողությամբ ելքագրվեց:"
 msgid "Password reset e-mail has been sent."
 msgstr "Գաղտնաբառի վերականգնման էլ. փոստը ուղարկվել է:"
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Գաղտնաբառը վերականգնվել է նոր գաղտնաբառով:"
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Նոր գաղտնաբառը պահպանվել է:"
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Հաստատման էլ. փոստը ուղարկվել է:"
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Հաջողությամբ գրանցվեց:"
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "լավ"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Պահանջված WebAuthn հավատարմագիրը գոյություն չունի:"
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "WebAuthn հաստատումը ձախողվեց:"
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Օգտատեր, ով տիրապետում է այս WebAuthn հավատարմագրին"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "հավատարմագրի ID"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Նույնականացնողից ստացված եզակի հավատարմագրի նույնացուցիչ"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "հանրային բանալի"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "COSE հանրային բանալու բայթեր գրանցումից"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "ստորագրությունների հաշվիչ"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Ստորագրությունների հաշվիչ կրկնելու հարձակումների հայտնաբերման համար"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "փոխադրումներ"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr "Աջակցվող փոխադրման մեթոդներ (օր. usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "հայտնաբերվող"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr "Արդյո՞ք սա հայտնաբերվող (մուտքային բանալի) հավատարմագիր է"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "Նույնականացնողի հավաստագրման GUID, որը նույնացնում է սարքի տեսակը"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Օգտատիրոջ կողմից նշանակված ընկերական անուն այս հավատարմագրի համար"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "ստեղծվել է"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Երբ է գրանցվել այս հավատարմագիրը"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "վերջին անգամ օգտագործվել է"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Երբ է վերջին անգամ օգտագործվել այս հավատարմագիրը նույնականացման համար"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "WebAuthn հավատարմագիր"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "WebAuthn հավատարմագրեր"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Կամընտիր ընկերական անուն այս հավատարմագրի համար"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Ընկերական անուն այս հավատարմագրի համար"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "Base64URL-կոդավորված հավատարմագրի ID"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Հավատարմագրի տեսակ"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Փոխադրման ակնարկներ նույնականացնողին հասնելու համար"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "COSE ալգորիթմի նույնացուցիչ (օր. -7 ES256-ի համար)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Մարդու կողմից ընթեռնելի RP անուն"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (տիրույթ)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Base64URL-կոդավորված օգտատիրոջ բռնակ"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Օգտատիրոջ հաշվի անուն"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Օգտատիրոջ ցուցադրվող անուն"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Ռեզիդենտ բանալու պահանջ"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr "Պահանջվու՞մ է ռեզիդենտ բանալի (հնացած, օգտագործեք residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Օգտատիրոջ հաստատման պահանջ"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Նույնականացնողի կցում"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Հենարանային կողմի ինքնություն"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Օգտատիրոջ հաշվի տեղեկություններ"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Base64URL-կոդավորված մարտահրավեր"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Աջակցվող հանրային բանալու հավատարմագրի պարամետրեր"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Արարողության ժամանակի սահմանափակումը միլիվայրկյաններով"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Բացառելու ենթակա հավատարմագրեր (արդեն գրանցված)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Նույնականացնողի ընտրության չափանիշներ"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Հավաստագրման փոխանցման նախապատվություն"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "Հենարանային կողմի ID (տիրույթ)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Թույլատրված հավատարմագրեր այս նույնականացման համար"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Անթափանց նստաշրջանի թոքեն հաստատման քայլի համար"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Գրանցման մարտահրավերի ժամկետն անցել է կամ այն չի գտնվել:"
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Նույնականացման մարտահրավերի ժամկետն անցել է կամ այն չի գտնվել:"
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Հավատարմագիրը չի գտնվել:"
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Հավատարմագիրը վերանվանվել է:"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Ցուցակել բոլոր մուտքային բանալիները և անվտանգության բանալիները, որոնք "
+"գրանցված են նույնականացված օգտատիրոջ համար:"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Գրանցեք նոր մուտքային բանալի կամ անվտանգության բանալի: Ներկայացրեք "
+"հավատարմագիրը բրաուզերից register_options ծայրակետին կանչելուց հետո:"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Ստացեք գրանցման պարամետրեր նոր մուտքային բանալի կամ անվտանգության բանալի "
+"ավելացնելու համար: Վերադարձնում է մարտահրավեր բրաուզերին հավատարմագիր "
+"ստեղծելու համար:"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Վերանվանեք մուտքային բանալի կամ անվտանգության բանալի:"
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr ""
+"Ջնջեք մուտքային բանալի կամ անվտանգության բանալի: Այս գործողությունը հնարավոր"
+" չէ հետարկել:"
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

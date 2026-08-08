@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 09:49+0000\n"
+"POT-Creation-Date: 2026-08-08 18:08+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Vietnamese\n"
@@ -81,7 +81,8 @@ msgstr "Đăng xuất người dùng và vô hiệu hóa authentication token."
 #: auth_kit/api_descriptions.py:93
 msgid ""
 "Requires authentication to ensure only valid sessions can be logged out."
-msgstr "Yêu cầu xác thực để đảm bảo chỉ các phiên hợp lệ mới có thể đăng xuất."
+msgstr ""
+"Yêu cầu xác thực để đảm bảo chỉ các phiên hợp lệ mới có thể đăng xuất."
 
 #: auth_kit/api_descriptions.py:104
 msgid "Generate new JWT access tokens using refresh tokens."
@@ -101,7 +102,8 @@ msgstr "Trả về access token mới với thời gian hết hạn được c�
 
 #: auth_kit/api_descriptions.py:112
 msgid "New tokens are automatically set in HTTP cookies for secure storage."
-msgstr "Token mới được tự động thiết lập trong HTTP cookie để lưu trữ an toàn."
+msgstr ""
+"Token mới được tự động thiết lập trong HTTP cookie để lưu trữ an toàn."
 
 #: auth_kit/api_descriptions.py:119
 msgid "Refresh tokens must be provided in the request data."
@@ -120,13 +122,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:143
 msgid ""
-"Send password reset instructions to the provided email address. If the email "
-"is registered, a secure reset link will be sent. The link expires after a "
+"Send password reset instructions to the provided email address. If the email"
+" is registered, a secure reset link will be sent. The link expires after a "
 "limited time for security."
 msgstr ""
-"Gửi hướng dẫn đặt lại mật khẩu đến địa chỉ email được cung cấp. Nếu email đã "
-"được đăng ký, một liên kết đặt lại an toàn sẽ được gửi. Liên kết sẽ hết hạn "
-"sau một thời gian giới hạn để đảm bảo an toàn."
+"Gửi hướng dẫn đặt lại mật khẩu đến địa chỉ email được cung cấp. Nếu email đã"
+" được đăng ký, một liên kết đặt lại an toàn sẽ được gửi. Liên kết sẽ hết hạn"
+" sau một thời gian giới hạn để đảm bảo an toàn."
 
 #: auth_kit/api_descriptions.py:149
 msgid ""
@@ -135,8 +137,8 @@ msgid ""
 "token is single-use and expires for security."
 msgstr ""
 "Hoàn thành quá trình đặt lại mật khẩu bằng token từ email đặt lại. Yêu cầu "
-"UID và token từ email cùng với mật khẩu mới. Token chỉ sử dụng một lần và có "
-"thời gian hết hạn để đảm bảo an toàn."
+"UID và token từ email cùng với mật khẩu mới. Token chỉ sử dụng một lần và có"
+" thời gian hết hạn để đảm bảo an toàn."
 
 #: auth_kit/api_descriptions.py:155
 msgid "Change the current user's password. Requires authentication. "
@@ -176,13 +178,13 @@ msgstr ""
 
 #: auth_kit/api_descriptions.py:180
 msgid ""
-"Partially update the authenticated user's profile information. Only provided "
-"fields will be updated. Email field is read-only."
+"Partially update the authenticated user's profile information. Only provided"
+" fields will be updated. Email field is read-only."
 msgstr ""
 "Cập nhật một phần thông tin hồ sơ người dùng đã xác thực. Chỉ các trường "
 "được cung cấp sẽ được cập nhật. Trường email chỉ đọc."
 
-#: auth_kit/forms.py:78
+#: auth_kit/forms.py:111
 msgid "The email address is not assigned to any user account."
 msgstr "Địa chỉ email không được gán cho bất kỳ tài khoản người dùng nào."
 
@@ -194,12 +196,20 @@ msgstr "Phương thức MFA được yêu cầu không tồn tại."
 msgid "Email message with MFA code has been sent."
 msgstr "Email chứa mã MFA đã được gửi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:28
-#, python-format
+#: auth_kit/mfa/handlers/webauthn.py:39
+msgid "Registration options for navigator.credentials.create()"
+msgstr "Tùy chọn đăng ký cho navigator.credentials.create()"
+
+#: auth_kit/mfa/handlers/webauthn.py:57
+msgid "Security Key / Passkey"
+msgstr "Khóa bảo mật / Passkey"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:29
+#, python-brace-format
 msgid "MFA code expires in {} seconds."
 msgstr "Mã MFA hết hạn trong {} giây."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:36
+#: auth_kit/mfa/mfa_api_descriptions.py:37
 msgid ""
 "First step of MFA-enabled authentication. Validates credentials and "
 "initiates MFA flow."
@@ -207,66 +217,82 @@ msgstr ""
 "Bước đầu tiên của xác thực có MFA. Xác thực thông tin đăng nhập và khởi tạo "
 "quy trình MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:41
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:42
+#, python-brace-format
 msgid ""
-"Returns ephemeral token for MFA verification or complete {} if "
-"MFA is disabled."
+"Returns ephemeral token for MFA verification or complete {} if MFA is "
+"disabled."
 msgstr ""
-"Trả về token tạm thời để xác minh MFA hoặc {} hoàn chỉnh nếu "
-"MFA bị vô hiệu hóa."
+"Trả về token tạm thời để xác minh MFA hoặc {} hoàn chỉnh nếu MFA bị vô hiệu "
+"hóa."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:51
+#: auth_kit/mfa/mfa_api_descriptions.py:54
 msgid ""
 "Complete MFA authentication using verification code and ephemeral token."
 msgstr "Hoàn thành xác thực MFA bằng mã xác minh và token tạm thời."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:56
+#: auth_kit/mfa/mfa_api_descriptions.py:59
 msgid "Supports both TOTP codes and backup codes for verification."
 msgstr "Hỗ trợ cả mã TOTP và mã sao lưu để xác minh."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:68
+#: auth_kit/mfa/mfa_api_descriptions.py:71
 msgid "Switch to a different MFA method during authentication flow."
 msgstr "Chuyển sang phương thức MFA khác trong quá trình xác thực."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:70
+#: auth_kit/mfa/mfa_api_descriptions.py:73
 msgid "Requires valid ephemeral token from first step authentication."
 msgstr "Yêu cầu token tạm thời hợp lệ từ bước xác thực đầu tiên."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:72
-#: auth_kit/mfa/mfa_api_descriptions.py:87
-#, python-format
+#: auth_kit/mfa/mfa_api_descriptions.py:76
+#: auth_kit/mfa/mfa_api_descriptions.py:92
+#, python-brace-format
 msgid "New ephemeral token expires in {} seconds."
 msgstr "Token tạm thời mới hết hạn trong {} giây."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:81
+#: auth_kit/mfa/mfa_api_descriptions.py:85
 msgid "Resend MFA verification code using existing ephemeral token."
 msgstr "Gửi lại mã xác minh MFA bằng token tạm thời hiện có."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:84
+#: auth_kit/mfa/mfa_api_descriptions.py:88
 msgid "Only applicable for methods that require code dispatch (e.g., email)."
 msgstr "Chỉ áp dụng cho các phương thức yêu cầu gửi mã (ví dụ: email)."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:96
+#: auth_kit/mfa/mfa_api_descriptions.py:102
 msgid ""
-"List all available MFA methods with their setup and activation status. Shows "
-"which methods are configured, active, and set as primary."
+"Get a login challenge for the pending MFA method using an existing ephemeral"
+" token."
+msgstr ""
+"Lấy thử thách đăng nhập cho phương thức MFA đang chờ bằng cách sử dụng mã "
+"thông báo tạm thời hiện có."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:107
+msgid ""
+"Only applicable for challenge-response methods (e.g., passkeys). Other "
+"methods return an empty object."
+msgstr ""
+"Chỉ áp dụng cho các phương thức thử thách-phản hồi (ví dụ: passkeys). Các "
+"phương thức khác trả về đối tượng rỗng."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:116
+msgid ""
+"List all available MFA methods with their setup and activation status. Shows"
+" which methods are configured, active, and set as primary."
 msgstr ""
 "Liệt kê tất cả các phương thức MFA có sẵn với trạng thái thiết lập và kích "
 "hoạt. Hiển thị phương thức nào được cấu hình, hoạt động và được đặt làm "
 "chính."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:101
+#: auth_kit/mfa/mfa_api_descriptions.py:121
 msgid ""
 "Initialize a new MFA method setup. Creates the method with backup codes and "
 "returns setup instructions (e.g., QR code for authenticator apps). Method "
 "must be confirmed before activation."
 msgstr ""
 "Khởi tạo thiết lập phương thức MFA mới. Tạo phương thức với mã sao lưu và "
-"trả về hướng dẫn thiết lập (ví dụ: mã QR cho ứng dụng xác thực). Phương thức "
-"phải được xác nhận trước khi kích hoạt."
+"trả về hướng dẫn thiết lập (ví dụ: mã QR cho ứng dụng xác thực). Phương thức"
+" phải được xác nhận trước khi kích hoạt."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:107
+#: auth_kit/mfa/mfa_api_descriptions.py:127
 msgid ""
 "Confirm and activate a newly created MFA method using verification code. "
 "Automatically sets as primary method if no other primary method exists. "
@@ -276,7 +302,7 @@ msgstr ""
 "làm phương thức chính nếu không có phương thức chính nào khác. Bắt buộc "
 "trước khi phương thức có thể được sử dụng để xác thực."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:113
+#: auth_kit/mfa/mfa_api_descriptions.py:133
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
 "itself. Cannot deactivate primary methods - set another method as primary "
@@ -286,7 +312,7 @@ msgstr ""
 "phương thức đó. Không thể vô hiệu hóa phương thức chính - hãy đặt phương "
 "thức khác làm chính trước."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:121
+#: auth_kit/mfa/mfa_api_descriptions.py:141
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -294,15 +320,15 @@ msgstr ""
 "Đặt phương thức MFA đang hoạt động làm phương thức xác thực chính. Phương "
 "thức chính được sử dụng mặc định trong quá trình đăng nhập."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:125
+#: auth_kit/mfa/mfa_api_descriptions.py:145
 msgid "Only one method can be primary at a time."
 msgstr "Chỉ một phương thức có thể là chính tại một thời điểm."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:128
+#: auth_kit/mfa/mfa_api_descriptions.py:148
 msgid "Requires verification code from current primary method."
 msgstr "Yêu cầu mã xác minh từ phương thức chính hiện tại."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:135
+#: auth_kit/mfa/mfa_api_descriptions.py:155
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -310,79 +336,79 @@ msgstr ""
 "Gửi mã xác minh cho các phương thức hỗ trợ gửi mã. Hữu ích để kiểm tra cấu "
 "hình phương thức hoặc yêu cầu mã thủ công."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:142
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Permanently delete an MFA method."
 msgstr "Xóa vĩnh viễn phương thức MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:143
+#: auth_kit/mfa/mfa_api_descriptions.py:163
 msgid "This action cannot be undone."
 msgstr "Hành động này không thể hoàn tác."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:168
 msgid "Cannot delete active methods."
 msgstr "Không thể xóa phương thức đang hoạt động."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:151
+#: auth_kit/mfa/mfa_api_descriptions.py:171
 msgid "Cannot delete primary methods."
 msgstr "Không thể xóa phương thức chính."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:154
+#: auth_kit/mfa/mfa_api_descriptions.py:174
 msgid "Requires verification code for active methods."
 msgstr "Yêu cầu mã xác minh cho phương thức đang hoạt động."
 
-#: auth_kit/mfa/models.py:149
+#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "người dùng"
 
-#: auth_kit/mfa/models.py:151
+#: auth_kit/mfa/models.py:171
 msgid "User who owns this MFA method"
 msgstr "Người dùng sở hữu phương thức MFA này"
 
-#: auth_kit/mfa/models.py:154
+#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "tên"
 
-#: auth_kit/mfa/models.py:156
+#: auth_kit/mfa/models.py:176
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Tên phương thức MFA (ví dụ: 'app', 'email')"
 
-#: auth_kit/mfa/models.py:159
+#: auth_kit/mfa/models.py:179
 msgid "secret"
 msgstr "bí mật"
 
-#: auth_kit/mfa/models.py:161
+#: auth_kit/mfa/models.py:181
 msgid "TOTP secret key for generating verification codes"
 msgstr "Khóa bí mật TOTP để tạo mã xác minh"
 
-#: auth_kit/mfa/models.py:164
+#: auth_kit/mfa/models.py:184
 msgid "is primary"
 msgstr "là chính"
 
-#: auth_kit/mfa/models.py:166
+#: auth_kit/mfa/models.py:186
 msgid "Whether this is the user's primary MFA method"
 msgstr "Liệu đây có phải là phương thức MFA chính của người dùng không"
 
-#: auth_kit/mfa/models.py:169
+#: auth_kit/mfa/models.py:189
 msgid "is active"
 msgstr "đang hoạt động"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:191
 msgid "Whether this method is active and can be used"
 msgstr "Liệu phương thức này có đang hoạt động và có thể được sử dụng không"
 
-#: auth_kit/mfa/models.py:174
+#: auth_kit/mfa/models.py:194
 msgid "backup codes"
 msgstr "mã sao lưu"
 
-#: auth_kit/mfa/models.py:177
+#: auth_kit/mfa/models.py:197
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Trường JSON lưu trữ mã sao lưu cho việc khôi phục tài khoản"
 
-#: auth_kit/mfa/models.py:183
+#: auth_kit/mfa/models.py:203
 msgid "MFA Method"
 msgstr "Phương thức MFA"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:204
 msgid "MFA Methods"
 msgstr "Phương thức MFA"
 
@@ -392,7 +418,8 @@ msgstr "Mã không hợp lệ"
 
 #: auth_kit/mfa/serializers/login_factors.py:172
 #: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:272
+#: auth_kit/mfa/serializers/login_factors.py:274
+#: auth_kit/mfa/serializers/login_factors.py:313
 msgid "Invalid token"
 msgstr "Token không hợp lệ"
 
@@ -404,10 +431,9 @@ msgstr "Vui lòng chọn phương thức mới"
 msgid "This method is already exists"
 msgstr "Phương thức này đã tồn tại"
 
-#: auth_kit/mfa/serializers/mfa.py:145 auth_kit/mfa/serializers/mfa.py:200
-#: auth_kit/mfa/serializers/mfa.py:345
-msgid "Invalid OTP code"
-msgstr "Mã OTP không hợp lệ"
+#: auth_kit/mfa/serializers/mfa.py:145
+msgid "Invalid verification code"
+msgstr "Mã xác minh không hợp lệ"
 
 #: auth_kit/mfa/serializers/mfa.py:155
 msgid "Activated MFA method"
@@ -416,6 +442,10 @@ msgstr "Đã kích hoạt phương thức MFA"
 #: auth_kit/mfa/serializers/mfa.py:194
 msgid "You can only deactivate non-primary MFA method."
 msgstr "Bạn chỉ có thể vô hiệu hóa phương thức MFA không phải là chính."
+
+#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+msgid "Invalid OTP code"
+msgstr "Mã OTP không hợp lệ"
 
 #: auth_kit/mfa/serializers/mfa.py:206
 msgid "Deactivated MFA method"
@@ -449,19 +479,77 @@ msgstr "Đã xóa phương thức MFA"
 msgid "MFA code sent"
 msgstr "Mã MFA đã được gửi"
 
+#: auth_kit/passwordless/handlers/email_link.py:43
+msgid "Email Magic Link"
+msgstr "Liên kết kỳ diệu qua Email"
+
+#: auth_kit/passwordless/handlers/email_link.py:82
+#: auth_kit/passwordless/handlers/email_link.py:115
+msgid "A login link has been sent."
+msgstr "Liên kết đăng nhập đã được gửi."
+
+#: auth_kit/passwordless/handlers/webauthn.py:39
+msgid "Passkey / Security Key"
+msgstr "Passkey / Khóa bảo mật"
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#, python-brace-format
+msgid ""
+"Initiate passwordless authentication via {}. This is the first step of the "
+"passwordless login flow."
+msgstr ""
+"Khởi tạo xác thực không mật khẩu qua {}. Đây là bước đầu tiên của quy trình "
+"đăng nhập không mật khẩu."
+
+#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#, python-brace-format
+msgid ""
+"Complete passwordless authentication via {}. Verify the credential/token "
+"from the initiate step."
+msgstr ""
+"Hoàn tất xác thực không mật khẩu qua {}. Xác minh thông tin xác thực/mã "
+"thông báo từ bước khởi tạo."
+
+#: auth_kit/passwordless/serializers/email_link.py:98
+msgid "Invalid or expired token."
+msgstr "Mã thông báo không hợp lệ hoặc đã hết hạn."
+
+#: auth_kit/passwordless/serializers/login.py:93
+msgid "User account is disabled."
+msgstr "Tài khoản người dùng đã bị vô hiệu hóa."
+
+#: auth_kit/passwordless/serializers/webauthn.py:44
+msgid ""
+"Optional email for non-discoverable credential flow. Omit for passkey "
+"(discoverable) flow."
+msgstr ""
+"Email tùy chọn cho quy trình thông tin xác thực không thể khám phá. Bỏ qua "
+"cho quy trình passkey (có thể khám phá)."
+
+#: auth_kit/passwordless/serializers/webauthn.py:91
+msgid "WebAuthn authentication failed."
+msgstr "Xác thực WebAuthn thất bại."
+
 #: auth_kit/serializers/jwt.py:33
 msgid "Will override cookie."
 msgstr "Sẽ ghi đè cookie."
 
-#: auth_kit/serializers/jwt.py:70
+#: auth_kit/serializers/jwt.py:71
 msgid "No valid refresh token found."
 msgstr "Không tìm thấy refresh token hợp lệ."
 
-#: auth_kit/serializers/login_factors.py:124
+#: auth_kit/serializers/login_factors.py:125
 msgid "E-mail is not verified."
 msgstr "Email chưa được xác minh."
 
-#: auth_kit/serializers/login_factors.py:146
+#: auth_kit/serializers/login_factors.py:154
+msgid ""
+"Account locked due to too many failed login attempts. Please try again "
+"later."
+msgstr ""
+"Tài khoản bị khóa do quá nhiều lần đăng nhập thất bại. Vui lòng thử lại sau."
+
+#: auth_kit/serializers/login_factors.py:158
 msgid "Unable to log in with provided credentials."
 msgstr "Không thể đăng nhập với thông tin đăng nhập được cung cấp."
 
@@ -473,74 +561,71 @@ msgstr "Giá trị không hợp lệ"
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Mật khẩu cũ của bạn đã được nhập sai. Vui lòng nhập lại."
 
-#: auth_kit/serializers/registration.py:98
+#: auth_kit/serializers/registration.py:99
 msgid "A user is already registered with this e-mail address."
 msgstr "Đã có người dùng đăng ký với địa chỉ email này."
 
-#: auth_kit/serializers/registration.py:129
+#: auth_kit/serializers/registration.py:130
 msgid "The two password fields didn't match."
 msgstr "Hai trường mật khẩu không khớp."
 
 #: auth_kit/social/serializers/connect.py:55
 msgid "Social account email must match your current account email."
 msgstr ""
-"Email tài khoản mạng xã hội phải trùng khớp với email tài khoản hiện tại của "
-"bạn."
+"Email tài khoản mạng xã hội phải trùng khớp với email tài khoản hiện tại của"
+" bạn."
 
 #: auth_kit/social/serializers/connect.py:98
 msgid "Connected"
 msgstr "Đã kết nối"
 
-#: auth_kit/social/serializers/login.py:82
+#: auth_kit/social/serializers/login.py:88
 msgid "Failed to complete OAuth flow"
 msgstr "Không thể hoàn thành quy trình OAuth"
 
-#: auth_kit/social/serializers/login.py:117
+#: auth_kit/social/serializers/login.py:195
 msgid "User is already registered with this e-mail address."
 msgstr "Người dùng đã đăng ký với địa chỉ email này."
 
-#: auth_kit/social/serializers/login.py:296
+#: auth_kit/social/serializers/login.py:361
 msgid "Failed to exchange code for access token"
 msgstr "Không thể đổi mã lấy access token"
 
-#: auth_kit/social/social_api_descriptions.py:31
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:30
+#, python-brace-format
 msgid ""
-"Authenticate with {} using OAuth2/OpenID Connect authorization "
-"code to obtain access tokens."
+"Authenticate with {} using OAuth2/OpenID Connect authorization code to "
+"obtain access tokens."
 msgstr ""
-"Xác thực với {} bằng mã authorization OAuth2/OpenID Connect để lấy "
-"access token."
+"Xác thực với {} bằng mã authorization OAuth2/OpenID Connect để lấy access "
+"token."
 
-#: auth_kit/social/social_api_descriptions.py:53
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:55
+#, python-brace-format
 msgid ""
-"Connect a {} account to the current user's account. This allows "
-"the user to login using their existing {} account in the future."
+"Connect a {} account to the current user's account. This allows the user to "
+"login using their existing {} account in the future."
 msgstr ""
-"Kết nối tài khoản {} với tài khoản người dùng hiện tại. Điều này "
-"cho phép người dùng đăng nhập bằng tài khoản {} hiện có trong "
-"tương lai."
+"Kết nối tài khoản {} với tài khoản người dùng hiện tại. Điều này cho phép "
+"người dùng đăng nhập bằng tài khoản {} hiện có trong tương lai."
 
-#: auth_kit/social/social_api_descriptions.py:58
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:64
+#, python-brace-format
 msgid ""
-"Requires authentication and a valid OAuth2/OpenID Connect authorization code "
-"from {}."
+"Requires authentication and a valid OAuth2/OpenID Connect authorization code"
+" from {}."
 msgstr ""
-"Yêu cầu xác thực và mã authorization OAuth2/OpenID Connect hợp lệ từ "
-"{}."
+"Yêu cầu xác thực và mã authorization OAuth2/OpenID Connect hợp lệ từ {}."
 
-#: auth_kit/social/social_api_descriptions.py:62
-#, python-format
+#: auth_kit/social/social_api_descriptions.py:70
+#, python-brace-format
 msgid ""
-"On success, the {} account is linked and can be used for future "
-"logins."
+"On success, the {} account is linked and can be used for future logins."
 msgstr ""
-"Khi thành công, tài khoản {} sẽ được liên kết và có thể được sử "
-"dụng cho các lần đăng nhập trong tương lai."
+"Khi thành công, tài khoản {} sẽ được liên kết và có thể được sử dụng cho các"
+" lần đăng nhập trong tương lai."
 
-#: auth_kit/social/social_api_descriptions.py:85
+#: auth_kit/social/social_api_descriptions.py:94
 msgid ""
 "List all social accounts connected to the current user. Shows account "
 "details including provider, UID, and connection dates."
@@ -548,33 +633,33 @@ msgstr ""
 "Liệt kê tất cả tài khoản mạng xã hội được kết nối với người dùng hiện tại. "
 "Hiển thị chi tiết tài khoản bao gồm nhà cung cấp, UID và ngày kết nối."
 
-#: auth_kit/social/social_api_descriptions.py:90
+#: auth_kit/social/social_api_descriptions.py:99
 msgid ""
 "Disconnect a social account from the current user. Removes the social "
 "account connection and prevents future logins via that provider. Requires "
 "authentication and the account must belong to the current user."
 msgstr ""
-"Ngắt kết nối tài khoản mạng xã hội khỏi người dùng hiện tại. Xóa kết nối tài "
-"khoản mạng xã hội và ngăn chặn đăng nhập trong tương lai qua nhà cung cấp "
+"Ngắt kết nối tài khoản mạng xã hội khỏi người dùng hiện tại. Xóa kết nối tài"
+" khoản mạng xã hội và ngăn chặn đăng nhập trong tương lai qua nhà cung cấp "
 "đó. Yêu cầu xác thực và tài khoản phải thuộc về người dùng hiện tại."
 
 #: auth_kit/social/views/login.py:58
 msgid "adapter_class is not defined"
 msgstr "adapter_class không được định nghĩa"
 
-#: auth_kit/views/logout.py:111
+#: auth_kit/views/logout.py:110
 msgid "Refresh token was not included in cookie data."
 msgstr "Refresh token không được bao gồm trong dữ liệu cookie."
 
-#: auth_kit/views/logout.py:121
+#: auth_kit/views/logout.py:120
 msgid "Refresh token was not included in request data."
 msgstr "Refresh token không được bao gồm trong dữ liệu yêu cầu."
 
-#: auth_kit/views/logout.py:132
+#: auth_kit/views/logout.py:131
 msgid "An error has occurred."
 msgstr "Đã xảy ra lỗi."
 
-#: auth_kit/views/logout.py:149
+#: auth_kit/views/logout.py:148
 msgid "Successfully logged out."
 msgstr "Đăng xuất thành công."
 
@@ -582,25 +667,272 @@ msgstr "Đăng xuất thành công."
 msgid "Password reset e-mail has been sent."
 msgstr "Email đặt lại mật khẩu đã được gửi."
 
-#: auth_kit/views/password.py:111
+#: auth_kit/views/password.py:112
 msgid "Password has been reset with the new password."
 msgstr "Mật khẩu đã được đặt lại với mật khẩu mới."
 
-#: auth_kit/views/password.py:156
+#: auth_kit/views/password.py:157
 msgid "New password has been saved."
 msgstr "Mật khẩu mới đã được lưu."
 
-#: auth_kit/views/registration.py:143
+#: auth_kit/views/registration.py:157
 msgid "Verification e-mail sent."
 msgstr "Email xác minh đã được gửi."
 
-#: auth_kit/views/registration.py:144
+#: auth_kit/views/registration.py:158
 msgid "Successfully registered."
 msgstr "Đăng ký thành công."
 
-#: auth_kit/views/registration.py:224 auth_kit/views/registration.py:269
+#: auth_kit/views/registration.py:239 auth_kit/views/registration.py:284
 msgid "ok"
 msgstr "ok"
+
+#: auth_kit/webauthn/exceptions.py:24
+msgid "Requested WebAuthn credential does not exist."
+msgstr "Thông tin xác thực WebAuthn được yêu cầu không tồn tại."
+
+#: auth_kit/webauthn/exceptions.py:35
+msgid "WebAuthn verification failed."
+msgstr "Xác minh WebAuthn thất bại."
+
+#: auth_kit/webauthn/models/credential.py:136
+msgid "User who owns this WebAuthn credential"
+msgstr "Người dùng sở hữu thông tin xác thực WebAuthn này"
+
+#: auth_kit/webauthn/models/credential.py:139
+msgid "credential ID"
+msgstr "ID thông tin xác thực"
+
+#: auth_kit/webauthn/models/credential.py:141
+msgid "Unique credential identifier from the authenticator"
+msgstr "Mã định danh thông tin xác thực duy nhất từ thiết bị xác thực"
+
+#: auth_kit/webauthn/models/credential.py:144
+msgid "public key"
+msgstr "khóa công khai"
+
+#: auth_kit/webauthn/models/credential.py:145
+msgid "COSE public key bytes from registration"
+msgstr "Các byte khóa công khai COSE từ quá trình đăng ký"
+
+#: auth_kit/webauthn/models/credential.py:148
+msgid "sign count"
+msgstr "số lần ký"
+
+#: auth_kit/webauthn/models/credential.py:150
+msgid "Signature counter for replay attack detection"
+msgstr "Bộ đếm chữ ký để phát hiện tấn công phát lại"
+
+#: auth_kit/webauthn/models/credential.py:153
+msgid "transports"
+msgstr "phương tiện truyền tải"
+
+#: auth_kit/webauthn/models/credential.py:156
+msgid "Supported transport methods (e.g., usb, nfc, ble, internal)"
+msgstr ""
+"Các phương thức truyền tải được hỗ trợ (ví dụ: usb, nfc, ble, internal)"
+
+#: auth_kit/webauthn/models/credential.py:159
+msgid "discoverable"
+msgstr "có thể khám phá"
+
+#: auth_kit/webauthn/models/credential.py:161
+msgid "Whether this is a discoverable (passkey) credential"
+msgstr ""
+"Liệu đây có phải là thông tin xác thực có thể khám phá (passkey) hay không"
+
+#: auth_kit/webauthn/models/credential.py:164
+msgid "AAGUID"
+msgstr "AAGUID"
+
+#: auth_kit/webauthn/models/credential.py:168
+msgid "Authenticator Attestation GUID identifying the device type"
+msgstr "GUID chứng thực thiết bị xác thực xác định loại thiết bị"
+
+#: auth_kit/webauthn/models/credential.py:175
+msgid "User-assigned friendly name for this credential"
+msgstr "Tên thân thiện do người dùng chỉ định cho thông tin xác thực này"
+
+#: auth_kit/webauthn/models/credential.py:178
+msgid "created at"
+msgstr "ngày tạo"
+
+#: auth_kit/webauthn/models/credential.py:180
+msgid "When this credential was registered"
+msgstr "Khi thông tin xác thực này được đăng ký"
+
+#: auth_kit/webauthn/models/credential.py:183
+msgid "last used at"
+msgstr "lần sử dụng cuối"
+
+#: auth_kit/webauthn/models/credential.py:186
+msgid "When this credential was last used for authentication"
+msgstr "Khi thông tin xác thực này được sử dụng lần cuối để xác thực"
+
+#: auth_kit/webauthn/models/credential.py:192
+msgid "WebAuthn Credential"
+msgstr "Thông tin xác thực WebAuthn"
+
+#: auth_kit/webauthn/models/credential.py:193
+msgid "WebAuthn Credentials"
+msgstr "Các thông tin xác thực WebAuthn"
+
+#: auth_kit/webauthn/serializers/credential.py:63
+msgid "Optional user-friendly name for this credential"
+msgstr "Tên thân thiện tùy chọn cho thông tin xác thực này"
+
+#: auth_kit/webauthn/serializers/credential.py:93
+msgid "User-friendly name for this credential"
+msgstr "Tên thân thiện cho thông tin xác thực này"
+
+#: auth_kit/webauthn/serializers/options.py:47
+msgid "Base64URL-encoded credential ID"
+msgstr "ID thông tin xác thực được mã hóa Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:52
+#: auth_kit/webauthn/serializers/options.py:69
+msgid "Credential type"
+msgstr "Loại thông tin xác thực"
+
+#: auth_kit/webauthn/serializers/options.py:59
+msgid "Transport hints for reaching the authenticator"
+msgstr "Gợi ý truyền tải để kết nối với thiết bị xác thực"
+
+#: auth_kit/webauthn/serializers/options.py:72
+msgid "COSE algorithm identifier (e.g., -7 for ES256)"
+msgstr "Mã định danh thuật toán COSE (ví dụ: -7 cho ES256)"
+
+#: auth_kit/webauthn/serializers/options.py:84
+msgid "Human-readable RP name"
+msgstr "Tên RP có thể đọc được"
+
+#: auth_kit/webauthn/serializers/options.py:85
+msgid "RP ID (domain)"
+msgstr "RP ID (tên miền)"
+
+#: auth_kit/webauthn/serializers/options.py:93
+msgid "Base64URL-encoded user handle"
+msgstr "Mã định danh người dùng được mã hóa Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:94
+msgid "User account name"
+msgstr "Tên tài khoản người dùng"
+
+#: auth_kit/webauthn/serializers/options.py:95
+msgid "User display name"
+msgstr "Tên hiển thị người dùng"
+
+#: auth_kit/webauthn/serializers/options.py:104
+msgid "Resident key requirement"
+msgstr "Yêu cầu khóa thường trú"
+
+#: auth_kit/webauthn/serializers/options.py:108
+msgid "Whether resident key is required (deprecated, use residentKey)"
+msgstr ""
+"Liệu khóa thường trú có bắt buộc không (không dùng nữa, hãy dùng "
+"residentKey)"
+
+#: auth_kit/webauthn/serializers/options.py:113
+#: auth_kit/webauthn/serializers/options.py:209
+msgid "User verification requirement"
+msgstr "Yêu cầu xác minh người dùng"
+
+#: auth_kit/webauthn/serializers/options.py:118
+msgid "Authenticator attachment"
+msgstr "Gắn kết thiết bị xác thực"
+
+#: auth_kit/webauthn/serializers/options.py:134
+msgid "Relying Party identity"
+msgstr "Danh tính bên phụ thuộc"
+
+#: auth_kit/webauthn/serializers/options.py:138
+msgid "User account information"
+msgstr "Thông tin tài khoản người dùng"
+
+#: auth_kit/webauthn/serializers/options.py:142
+#: auth_kit/webauthn/serializers/options.py:189
+msgid "Base64URL-encoded challenge"
+msgstr "Thử thách được mã hóa Base64URL"
+
+#: auth_kit/webauthn/serializers/options.py:147
+msgid "Supported public-key credential parameters"
+msgstr "Các tham số thông tin xác thực khóa công khai được hỗ trợ"
+
+#: auth_kit/webauthn/serializers/options.py:151
+#: auth_kit/webauthn/serializers/options.py:193
+msgid "Ceremony timeout in milliseconds"
+msgstr "Thời gian chờ giao thức tính bằng mili giây"
+
+#: auth_kit/webauthn/serializers/options.py:157
+msgid "Credentials to exclude (already registered)"
+msgstr "Thông tin xác thực cần loại trừ (đã đăng ký)"
+
+#: auth_kit/webauthn/serializers/options.py:162
+msgid "Authenticator selection criteria"
+msgstr "Tiêu chí lựa chọn thiết bị xác thực"
+
+#: auth_kit/webauthn/serializers/options.py:168
+msgid "Attestation conveyance preference"
+msgstr "Tùy chọn chuyển giao chứng thực"
+
+#: auth_kit/webauthn/serializers/options.py:197
+msgid "Relying Party ID (domain)"
+msgstr "ID bên phụ thuộc (tên miền)"
+
+#: auth_kit/webauthn/serializers/options.py:203
+msgid "Allowed credentials for this authentication"
+msgstr "Thông tin xác thực được phép cho lần xác thực này"
+
+#: auth_kit/webauthn/serializers/options.py:213
+msgid "Opaque session token for the verify step"
+msgstr "Mã thông báo phiên không rõ ràng cho bước xác minh"
+
+#: auth_kit/webauthn/services.py:266
+msgid "Registration challenge expired or not found."
+msgstr "Thử thách đăng ký đã hết hạn hoặc không tìm thấy."
+
+#: auth_kit/webauthn/services.py:387
+msgid "Authentication challenge expired or not found."
+msgstr "Thử thách xác thực đã hết hạn hoặc không tìm thấy."
+
+#: auth_kit/webauthn/services.py:403
+msgid "Credential not found."
+msgstr "Không tìm thấy thông tin xác thực."
+
+#: auth_kit/webauthn/views/credential.py:116
+msgid "Credential renamed."
+msgstr "Thông tin xác thực đã được đổi tên."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:8
+msgid ""
+"List all passkeys and security keys registered for the authenticated user."
+msgstr ""
+"Liệt kê tất cả passkey và khóa bảo mật đã đăng ký cho người dùng đã xác "
+"thực."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:12
+msgid ""
+"Register a new passkey or security key. Submit the credential from the "
+"browser after calling the register_options endpoint."
+msgstr ""
+"Đăng ký passkey hoặc khóa bảo mật mới. Gửi thông tin xác thực từ trình duyệt"
+" sau khi gọi điểm cuối register_options."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:17
+msgid ""
+"Get registration options for adding a new passkey or security key. Returns a"
+" challenge for the browser to create the credential."
+msgstr ""
+"Lấy tùy chọn đăng ký để thêm passkey hoặc khóa bảo mật mới. Trả về thử thách"
+" cho trình duyệt để tạo thông tin xác thực."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:21
+msgid "Rename a passkey or security key."
+msgstr "Đổi tên passkey hoặc khóa bảo mật."
+
+#: auth_kit/webauthn/webauthn_api_descriptions.py:24
+msgid "Delete a passkey or security key. This action cannot be undone."
+msgstr "Xóa passkey hoặc khóa bảo mật. Hành động này không thể hoàn tác."
 
 #: sandbox_extras/custom_username/accounts/admin.py:11
 #: sandbox_extras/email_user/accounts/admin.py:11

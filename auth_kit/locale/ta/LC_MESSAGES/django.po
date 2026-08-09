@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:08+0000\n"
+"POT-Creation-Date: 2026-08-09 09:39+0000\n"
 "PO-Revision-Date: 2025-07-08 12:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Tamil\n"
@@ -321,17 +321,29 @@ msgstr ""
 "செய்து செயல்படுத்தவும். வேறு முக்கிய முறை இல்லைனால் தானாகவே முக்கிய முறையாக "
 "அமைக்குகிறது. அங்கீகாரத்திற்காக முறையைப் பயன்படுத்தும் முன் தேவை."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:133
+#: auth_kit/mfa/mfa_api_descriptions.py:136
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
-"itself. Cannot deactivate primary methods - set another method as primary "
-"first."
+"itself."
 msgstr ""
-"செயல்பாட்டில் உள்ள MFA முறையை செயலற்ற நிலையில் வைக்கவும். முறையிலிருந்தே "
-"சரிபார்ப்பு கோட் தேவை. முக்கிய முறைகளை செயலற்ற நிலையில் வைக்க முடியாது - "
-"முன்னே வேறு முறையை முக்கியமாக அமைக்கவும்."
+"செயலில் உள்ள MFA முறையை செயலிழக்கவும். அந்த முறையிலிருந்தே சரிபார்ப்பு "
+"குறியீடு தேவைப்படுகிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:141
+#: auth_kit/mfa/mfa_api_descriptions.py:142
+msgid "Deactivation is disabled by configuration."
+msgstr "உள்ளமைவால் செயலிழக்கல் முடக்கப்பட்டுள்ளது."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:146
+msgid "Cannot deactivate primary methods."
+msgstr "முதன்மை முறைகளை செயலிழக்க முடியாது."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:151
+msgid "Deactivating the primary method promotes another active method."
+msgstr ""
+"முதன்மை முறையை செயலிழக்குவது மற்றொரு செயலில் உள்ள முறையை முதன்மை நிலைக்கு "
+"உயர்த்துகிறது."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:158
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -339,15 +351,15 @@ msgstr ""
 "செயல்பாட்டில் உள்ள MFA முறையை முக்கிய அங்கீகார முறையாக அமைக்கவும். முக்கிய "
 "முறை உள்நுழைவு ஒழுங்கின் போது இயல்பிலையாக பயன்படுத்தப்படுகிறது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:145
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Only one method can be primary at a time."
 msgstr "ஒரு நேரத்தில் ஒரு முறை மட்டுமே முக்கியமாக இருக்க முடியும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:165
 msgid "Requires verification code from current primary method."
 msgstr "தற்போதைய முக்கிய முறையிலிருந்து சரிபார்ப்பு கோட் தேவை."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:155
+#: auth_kit/mfa/mfa_api_descriptions.py:172
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -355,147 +367,159 @@ msgstr ""
 "கோட் அனுப்பலை ஆதரிக்கும் முறைகளுக்கு சரிபார்ப்பு கோடை அனுப்பவும். முறை "
 "கான்பிக்கரேஷனைச் சோதிக்க அல்லது கையேடு கோட் கோரிக்கைகளுக்கு பயனுள்ளது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:162
+#: auth_kit/mfa/mfa_api_descriptions.py:178
+msgid ""
+"Get a challenge to verify one of your own MFA methods. WebAuthn returns "
+"ceremony options to sign; code-based methods return an empty payload."
+msgstr ""
+"உங்கள் சொந்த MFA முறைகளில் ஒன்றை சரிபார்க்க ஒரு சவாலைப் பெறவும். WebAuthn "
+"கையொப்மிட சடங்கு விருப்பங்களை வழங்கும்; குறியீட்டு அடிப்படையிலான முறைகள் "
+"காலி பேலோடை வழங்கும்."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:186
 msgid "Permanently delete an MFA method."
 msgstr "ஒரு MFA முறையை நிரந்தரமாக நீக்கவும்."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:163
+#: auth_kit/mfa/mfa_api_descriptions.py:187
 msgid "This action cannot be undone."
 msgstr "இந்த செயலை முன்னே செய்ய முடியாது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:168
+#: auth_kit/mfa/mfa_api_descriptions.py:192
 msgid "Cannot delete active methods."
 msgstr "செயல்பாட்டில் உள்ள முறைகளை நீக்க முடியாது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:171
+#: auth_kit/mfa/mfa_api_descriptions.py:195
 msgid "Cannot delete primary methods."
 msgstr "முக்கிய முறைகளை நீக்க முடியாது."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:174
+#: auth_kit/mfa/mfa_api_descriptions.py:198
 msgid "Requires verification code for active methods."
 msgstr "செயல்பாட்டில் உள்ள முறைகளுக்கு சரிபார்ப்பு கோட் தேவை."
 
-#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
+#: auth_kit/mfa/models.py:225 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "பயனர்"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:227
 msgid "User who owns this MFA method"
 msgstr "இந்த MFA முறைக்கு உரிமையான பயனர்"
 
-#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
+#: auth_kit/mfa/models.py:230 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "பெயர்"
 
-#: auth_kit/mfa/models.py:176
+#: auth_kit/mfa/models.py:232
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA முறை பெயர் (எ.கா. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:179
+#: auth_kit/mfa/models.py:235
 msgid "secret"
 msgstr "ரகசியம்"
 
-#: auth_kit/mfa/models.py:181
+#: auth_kit/mfa/models.py:237
 msgid "TOTP secret key for generating verification codes"
 msgstr "சரிபார்ப்பு கோட்கள் உருவாக்க TOTP ரகசிய விசை"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:240
 msgid "is primary"
 msgstr "முக்கியமானது"
 
-#: auth_kit/mfa/models.py:186
+#: auth_kit/mfa/models.py:242
 msgid "Whether this is the user's primary MFA method"
 msgstr "இது பயனரின் முக்கிய MFA முறையா"
 
-#: auth_kit/mfa/models.py:189
+#: auth_kit/mfa/models.py:245
 msgid "is active"
 msgstr "செயல்பாட்டில் உள்ளது"
 
-#: auth_kit/mfa/models.py:191
+#: auth_kit/mfa/models.py:247
 msgid "Whether this method is active and can be used"
 msgstr "இந்த முறை செயல்பாட்டில் உள்ளதா மற்றும் பயன்படுத்த முடியுமா"
 
-#: auth_kit/mfa/models.py:194
+#: auth_kit/mfa/models.py:250
 msgid "backup codes"
 msgstr "காப்பு கோட்கள்"
 
-#: auth_kit/mfa/models.py:197
+#: auth_kit/mfa/models.py:253
 msgid "JSON field storing backup codes for account recovery"
 msgstr "கணக்கு மீட்புக்கு காப்பு கோட்களை சேமிக்கும் JSON புலம்"
 
-#: auth_kit/mfa/models.py:203
+#: auth_kit/mfa/models.py:259
 msgid "MFA Method"
 msgstr "MFA முறை"
 
-#: auth_kit/mfa/models.py:204
+#: auth_kit/mfa/models.py:260
 msgid "MFA Methods"
 msgstr "MFA முறைகள்"
 
-#: auth_kit/mfa/serializers/login_factors.py:153
+#: auth_kit/mfa/serializers/login_factors.py:155
 msgid "Invalid code"
 msgstr "தவறான கோட்"
 
-#: auth_kit/mfa/serializers/login_factors.py:172
-#: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:274
-#: auth_kit/mfa/serializers/login_factors.py:313
+#: auth_kit/mfa/serializers/login_factors.py:174
+#: auth_kit/mfa/serializers/login_factors.py:228
+#: auth_kit/mfa/serializers/login_factors.py:276
+#: auth_kit/mfa/serializers/login_factors.py:315
 msgid "Invalid token"
 msgstr "தவறான டோக்கன்"
 
-#: auth_kit/mfa/serializers/login_factors.py:230
+#: auth_kit/mfa/serializers/login_factors.py:232
 msgid "Please select a new method"
 msgstr "கருணை செய்து புதிய முறையைத் தேர்ந்தெடுக்கவும்"
 
-#: auth_kit/mfa/serializers/mfa.py:76
+#: auth_kit/mfa/serializers/mfa.py:109
 msgid "This method is already exists"
 msgstr "இந்த முறை ஏற்கனவே இருக்கிறது"
 
-#: auth_kit/mfa/serializers/mfa.py:145
+#: auth_kit/mfa/serializers/mfa.py:178
 msgid "Invalid verification code"
 msgstr "தவறான சரிபார்ப்பு குறியீடு"
 
-#: auth_kit/mfa/serializers/mfa.py:155
+#: auth_kit/mfa/serializers/mfa.py:188
 msgid "Activated MFA method"
 msgstr "MFA முறை செயல்படுத்தப்பட்டது"
 
-#: auth_kit/mfa/serializers/mfa.py:194
-msgid "You can only deactivate non-primary MFA method."
-msgstr ""
-"நீங்கள் முக்கியமல்லாத MFA முறையை மட்டுமே செயலற்ற நிலையில் வைக்க முடியும்."
+#: auth_kit/mfa/serializers/mfa.py:230
+msgid "Cannot deactivate active MFA method"
+msgstr "செயலில் உள்ள MFA முறையை செயலிழக்க முடியாது"
 
-#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+#: auth_kit/mfa/serializers/mfa.py:231
+msgid "Cannot deactivate primary MFA method"
+msgstr "முதன்மை MFA முறையை செயலிழக்க முடியாது"
+
+#: auth_kit/mfa/serializers/mfa.py:237 auth_kit/mfa/serializers/mfa.py:381
 msgid "Invalid OTP code"
 msgstr "தவறான OTP கோட்"
 
-#: auth_kit/mfa/serializers/mfa.py:206
+#: auth_kit/mfa/serializers/mfa.py:246
 msgid "Deactivated MFA method"
 msgstr "MFA முறை செயலற்ற நிலையில் வைக்கப்பட்டது"
 
-#: auth_kit/mfa/serializers/mfa.py:262
+#: auth_kit/mfa/serializers/mfa.py:304
 msgid "Invalid primary method code"
 msgstr "தவறான முக்கிய முறை கோட்"
 
-#: auth_kit/mfa/serializers/mfa.py:275
+#: auth_kit/mfa/serializers/mfa.py:317
 msgid "Updated primary MFA method"
 msgstr "முக்கிய MFA முறை புதுப்பிக்கப்பட்டது"
 
-#: auth_kit/mfa/serializers/mfa.py:330
+#: auth_kit/mfa/serializers/mfa.py:370
 msgid "Cannot delete active MFA method"
 msgstr "செயல்பாட்டில் உள்ள MFA முறையை நீக்க முடியாது"
 
-#: auth_kit/mfa/serializers/mfa.py:336
+#: auth_kit/mfa/serializers/mfa.py:371
 msgid "Cannot delete primary MFA method"
 msgstr "முக்கிய MFA முறையை நீக்க முடியாது"
 
-#: auth_kit/mfa/serializers/mfa.py:350
+#: auth_kit/mfa/serializers/mfa.py:390
 msgid "Method does not exist"
 msgstr "முறை இல்லை"
 
-#: auth_kit/mfa/serializers/mfa.py:352
+#: auth_kit/mfa/serializers/mfa.py:392
 msgid "Deleted MFA method"
 msgstr "MFA முறை நீக்கப்பட்டது"
 
-#: auth_kit/mfa/serializers/mfa.py:392
+#: auth_kit/mfa/serializers/mfa.py:466
 msgid "MFA code sent"
 msgstr "MFA கோட் அனுப்பப்பட்டது"
 
@@ -512,7 +536,7 @@ msgstr "உள்நுழைவு இணைப்பு அனுப்பப�
 msgid "Passkey / Security Key"
 msgstr "பாஸ்கீ / பாதுகாப்பு திறவுகோல்"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#: auth_kit/passwordless/passwordless_api_descriptions.py:38
 #, python-brace-format
 msgid ""
 "Initiate passwordless authentication via {}. This is the first step of the "
@@ -521,7 +545,7 @@ msgstr ""
 "{} வழியாக கடவுச்சொல்-இல்லா அங்கீகாரத்தை தொடங்குக. இது கடவுச்சொல்-இல்லா "
 "உள்நுழைவு வழிமுறையின் முதல் படியாகும்."
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#: auth_kit/passwordless/passwordless_api_descriptions.py:59
 #, python-brace-format
 msgid ""
 "Complete passwordless authentication via {}. Verify the credential/token "

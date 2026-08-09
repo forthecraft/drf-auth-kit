@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:08+0000\n"
+"POT-Creation-Date: 2026-08-09 09:39+0000\n"
 "PO-Revision-Date: 2025-07-08 12:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Welsh\n"
@@ -312,16 +312,26 @@ msgstr ""
 "Gosod yn awtomatig fel dull cynradd os nad oes dull cynradd arall yn bodoli."
 " Angenrheidiol cyn y gellir defnyddio'r dull ar gyfer dilysiad."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:133
+#: auth_kit/mfa/mfa_api_descriptions.py:136
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
-"itself. Cannot deactivate primary methods - set another method as primary "
-"first."
+"itself."
 msgstr ""
-"Dadactifadu dull MFA gweithredol. Angen cod gwirio o'r dull ei hun. Methu "
-"dadactifadu dulliau cynradd - gosod dull arall fel un cynradd yn gyntaf."
+"Dadactifadu dull MFA gweithredol. Yn gofyn am god dilysu o'r dull ei hun."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:141
+#: auth_kit/mfa/mfa_api_descriptions.py:142
+msgid "Deactivation is disabled by configuration."
+msgstr "Mae dadactifadu wedi'i analluogi gan ffurfweddiad."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:146
+msgid "Cannot deactivate primary methods."
+msgstr "Ni ellir dadactifadu dulliau cynradd."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:151
+msgid "Deactivating the primary method promotes another active method."
+msgstr "Mae dadactifadu'r dull cynradd yn dyrchafu dull gweithredol arall."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:158
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -329,15 +339,15 @@ msgstr ""
 "Gosod dull MFA gweithredol fel y dull dilysiad cynradd. Defnyddir y dull "
 "cynradd yn ddiofyn yn ystod llif mewngofnodi."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:145
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Only one method can be primary at a time."
 msgstr "Dim ond un dull all fod yn gynradd ar y tro."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:165
 msgid "Requires verification code from current primary method."
 msgstr "Angen cod gwirio o'r dull cynradd cyfredol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:155
+#: auth_kit/mfa/mfa_api_descriptions.py:172
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -345,146 +355,159 @@ msgstr ""
 "Anfon cod gwirio ar gyfer dulliau sy'n cefnogi anfon cod. Defnyddiol ar "
 "gyfer profi ffurfweddiad dull neu geisiadau cod â llaw."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:162
+#: auth_kit/mfa/mfa_api_descriptions.py:178
+msgid ""
+"Get a challenge to verify one of your own MFA methods. WebAuthn returns "
+"ceremony options to sign; code-based methods return an empty payload."
+msgstr ""
+"Cael her i wirio un o'ch dulliau MFA eich hun. Mae WebAuthn yn dychwelyd "
+"opsiynau seremoni i'w llofnodi; mae dulliau cod-seiliedig yn dychwelyd "
+"llwyth tâl gwag."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:186
 msgid "Permanently delete an MFA method."
 msgstr "Dileu dull MFA yn barhaol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:163
+#: auth_kit/mfa/mfa_api_descriptions.py:187
 msgid "This action cannot be undone."
 msgstr "Ni ellir dadwneud y weithred hon."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:168
+#: auth_kit/mfa/mfa_api_descriptions.py:192
 msgid "Cannot delete active methods."
 msgstr "Methu dileu dulliau gweithredol."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:171
+#: auth_kit/mfa/mfa_api_descriptions.py:195
 msgid "Cannot delete primary methods."
 msgstr "Methu dileu dulliau cynradd."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:174
+#: auth_kit/mfa/mfa_api_descriptions.py:198
 msgid "Requires verification code for active methods."
 msgstr "Angen cod gwirio ar gyfer dulliau gweithredol."
 
-#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
+#: auth_kit/mfa/models.py:225 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "defnyddiwr"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:227
 msgid "User who owns this MFA method"
 msgstr "Defnyddiwr sy'n berchen ar y dull MFA hwn"
 
-#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
+#: auth_kit/mfa/models.py:230 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "enw"
 
-#: auth_kit/mfa/models.py:176
+#: auth_kit/mfa/models.py:232
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Enw dull MFA (e.e., 'app', 'email')"
 
-#: auth_kit/mfa/models.py:179
+#: auth_kit/mfa/models.py:235
 msgid "secret"
 msgstr "cyfrinach"
 
-#: auth_kit/mfa/models.py:181
+#: auth_kit/mfa/models.py:237
 msgid "TOTP secret key for generating verification codes"
 msgstr "Allwedd gyfrinachol TOTP ar gyfer cynhyrchu codau gwirio"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:240
 msgid "is primary"
 msgstr "yn gynradd"
 
-#: auth_kit/mfa/models.py:186
+#: auth_kit/mfa/models.py:242
 msgid "Whether this is the user's primary MFA method"
 msgstr "A yw hwn yn ddull MFA cynradd y defnyddiwr"
 
-#: auth_kit/mfa/models.py:189
+#: auth_kit/mfa/models.py:245
 msgid "is active"
 msgstr "yn weithredol"
 
-#: auth_kit/mfa/models.py:191
+#: auth_kit/mfa/models.py:247
 msgid "Whether this method is active and can be used"
 msgstr "A yw'r dull hwn yn weithredol ac yn gallu cael ei ddefnyddio"
 
-#: auth_kit/mfa/models.py:194
+#: auth_kit/mfa/models.py:250
 msgid "backup codes"
 msgstr "codau wrth gefn"
 
-#: auth_kit/mfa/models.py:197
+#: auth_kit/mfa/models.py:253
 msgid "JSON field storing backup codes for account recovery"
 msgstr "Maes JSON sy'n storio codau wrth gefn ar gyfer adfer cyfrif"
 
-#: auth_kit/mfa/models.py:203
+#: auth_kit/mfa/models.py:259
 msgid "MFA Method"
 msgstr "Dull MFA"
 
-#: auth_kit/mfa/models.py:204
+#: auth_kit/mfa/models.py:260
 msgid "MFA Methods"
 msgstr "Dulliau MFA"
 
-#: auth_kit/mfa/serializers/login_factors.py:153
+#: auth_kit/mfa/serializers/login_factors.py:155
 msgid "Invalid code"
 msgstr "Cod annilys"
 
-#: auth_kit/mfa/serializers/login_factors.py:172
-#: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:274
-#: auth_kit/mfa/serializers/login_factors.py:313
+#: auth_kit/mfa/serializers/login_factors.py:174
+#: auth_kit/mfa/serializers/login_factors.py:228
+#: auth_kit/mfa/serializers/login_factors.py:276
+#: auth_kit/mfa/serializers/login_factors.py:315
 msgid "Invalid token"
 msgstr "Tocyn annilys"
 
-#: auth_kit/mfa/serializers/login_factors.py:230
+#: auth_kit/mfa/serializers/login_factors.py:232
 msgid "Please select a new method"
 msgstr "Dewiswch ddull newydd"
 
-#: auth_kit/mfa/serializers/mfa.py:76
+#: auth_kit/mfa/serializers/mfa.py:109
 msgid "This method is already exists"
 msgstr "Mae'r dull hwn eisoes yn bodoli"
 
-#: auth_kit/mfa/serializers/mfa.py:145
+#: auth_kit/mfa/serializers/mfa.py:178
 msgid "Invalid verification code"
 msgstr "Cod dilysu annilys"
 
-#: auth_kit/mfa/serializers/mfa.py:155
+#: auth_kit/mfa/serializers/mfa.py:188
 msgid "Activated MFA method"
 msgstr "Dull MFA wedi'i actifadu"
 
-#: auth_kit/mfa/serializers/mfa.py:194
-msgid "You can only deactivate non-primary MFA method."
-msgstr "Gallwch ond dadactifadu dull MFA nad yw'n gynradd."
+#: auth_kit/mfa/serializers/mfa.py:230
+msgid "Cannot deactivate active MFA method"
+msgstr "Methu dadactifadu dull MFA actif"
 
-#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+#: auth_kit/mfa/serializers/mfa.py:231
+msgid "Cannot deactivate primary MFA method"
+msgstr "Methu dadactifadu dull MFA cynradd"
+
+#: auth_kit/mfa/serializers/mfa.py:237 auth_kit/mfa/serializers/mfa.py:381
 msgid "Invalid OTP code"
 msgstr "Cod OTP annilys"
 
-#: auth_kit/mfa/serializers/mfa.py:206
+#: auth_kit/mfa/serializers/mfa.py:246
 msgid "Deactivated MFA method"
 msgstr "Dull MFA wedi'i ddadactifadu"
 
-#: auth_kit/mfa/serializers/mfa.py:262
+#: auth_kit/mfa/serializers/mfa.py:304
 msgid "Invalid primary method code"
 msgstr "Cod dull cynradd annilys"
 
-#: auth_kit/mfa/serializers/mfa.py:275
+#: auth_kit/mfa/serializers/mfa.py:317
 msgid "Updated primary MFA method"
 msgstr "Dull MFA cynradd wedi'i ddiweddaru"
 
-#: auth_kit/mfa/serializers/mfa.py:330
+#: auth_kit/mfa/serializers/mfa.py:370
 msgid "Cannot delete active MFA method"
 msgstr "Methu dileu dull MFA gweithredol"
 
-#: auth_kit/mfa/serializers/mfa.py:336
+#: auth_kit/mfa/serializers/mfa.py:371
 msgid "Cannot delete primary MFA method"
 msgstr "Methu dileu dull MFA cynradd"
 
-#: auth_kit/mfa/serializers/mfa.py:350
+#: auth_kit/mfa/serializers/mfa.py:390
 msgid "Method does not exist"
 msgstr "Nid yw'r dull yn bodoli"
 
-#: auth_kit/mfa/serializers/mfa.py:352
+#: auth_kit/mfa/serializers/mfa.py:392
 msgid "Deleted MFA method"
 msgstr "Dull MFA wedi'i ddileu"
 
-#: auth_kit/mfa/serializers/mfa.py:392
+#: auth_kit/mfa/serializers/mfa.py:466
 msgid "MFA code sent"
 msgstr "Cod MFA wedi'i anfon"
 
@@ -501,7 +524,7 @@ msgstr "Anfonwyd dolen mewngofnodi."
 msgid "Passkey / Security Key"
 msgstr "Allwedd Mynediad / Allwedd Diogelwch"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#: auth_kit/passwordless/passwordless_api_descriptions.py:38
 #, python-brace-format
 msgid ""
 "Initiate passwordless authentication via {}. This is the first step of the "
@@ -510,7 +533,7 @@ msgstr ""
 "Cychwyn dilysu heb gyfrinair trwy {}. Dyma gam cyntaf llif mewngofnodi heb "
 "gyfrinair."
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#: auth_kit/passwordless/passwordless_api_descriptions.py:59
 #, python-brace-format
 msgid ""
 "Complete passwordless authentication via {}. Verify the credential/token "

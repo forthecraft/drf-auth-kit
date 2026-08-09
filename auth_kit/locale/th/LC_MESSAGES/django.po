@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:08+0000\n"
+"POT-Creation-Date: 2026-08-09 09:39+0000\n"
 "PO-Revision-Date: 2025-07-09 00:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Thai\n"
@@ -300,16 +300,26 @@ msgstr ""
 "ตั้งเป็นวิธีหลักโดยอัตโนมัติหากไม่มีวิธีหลักอื่นอยู่ "
 "จำเป็นก่อนที่จะสามารถใช้วิธีนี้สำหรับการรับรองความถูกต้อง"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:133
+#: auth_kit/mfa/mfa_api_descriptions.py:136
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
-"itself. Cannot deactivate primary methods - set another method as primary "
-"first."
+"itself."
 msgstr ""
-"ปิดใช้งานวิธี MFA ที่เปิดใช้งานอยู่ ต้องใช้รหัสยืนยันจากวิธีนั้นเอง "
-"ไม่สามารถปิดใช้งานวิธีหลัก - ตั้งวิธีอื่นเป็นหลักก่อน"
+"ปิดใช้งานวิธีการ MFA ที่ใช้งานอยู่ โดยต้องใช้รหัสยืนยันจากวิธีการนั้นเอง"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:141
+#: auth_kit/mfa/mfa_api_descriptions.py:142
+msgid "Deactivation is disabled by configuration."
+msgstr "การปิดใช้งานถูกปิดไว้โดยการตั้งค่า"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:146
+msgid "Cannot deactivate primary methods."
+msgstr "ไม่สามารถปิดใช้งานวิธีการหลักได้"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:151
+msgid "Deactivating the primary method promotes another active method."
+msgstr "การปิดใช้งานวิธีการหลักจะเลื่อนระดับวิธีการที่ใช้งานอื่นขึ้นมาแทน"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:158
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -317,15 +327,15 @@ msgstr ""
 "ตั้งวิธี MFA ที่เปิดใช้งานเป็นวิธีการรับรองความถูกต้องหลัก "
 "วิธีหลักจะถูกใช้โดยค่าเริ่มต้นในระหว่างขั้นตอนการเข้าสู่ระบบ"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:145
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Only one method can be primary at a time."
 msgstr "เฉพาะวิธีเดียวเท่านั้นที่สามารถเป็นหลักได้ในเวลาเดียวกัน"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:165
 msgid "Requires verification code from current primary method."
 msgstr "ต้องใช้รหัสยืนยันจากวิธีหลักปัจจุบัน"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:155
+#: auth_kit/mfa/mfa_api_descriptions.py:172
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -333,146 +343,158 @@ msgstr ""
 "ส่งรหัสยืนยันสำหรับวิธีที่รองรับการส่งรหัส "
 "มีประโยชน์สำหรับการทดสอบการกำหนดค่าวิธีหรือคำขอรหัสด้วยตนเอง"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:162
+#: auth_kit/mfa/mfa_api_descriptions.py:178
+msgid ""
+"Get a challenge to verify one of your own MFA methods. WebAuthn returns "
+"ceremony options to sign; code-based methods return an empty payload."
+msgstr ""
+"รับ challenge เพื่อยืนยันวิธี MFA ของคุณเอง WebAuthn จะส่งคืนตัวเลือก "
+"ceremony สำหรับการลงนาม ส่วนวิธีที่ใช้รหัสจะส่งคืน payload ว่างเปล่า"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:186
 msgid "Permanently delete an MFA method."
 msgstr "ลบวิธี MFA อย่างถาวร"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:163
+#: auth_kit/mfa/mfa_api_descriptions.py:187
 msgid "This action cannot be undone."
 msgstr "การดำเนินการนี้ไม่สามารถย้อนกลับได้"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:168
+#: auth_kit/mfa/mfa_api_descriptions.py:192
 msgid "Cannot delete active methods."
 msgstr "ไม่สามารถลบวิธีที่เปิดใช้งานอยู่"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:171
+#: auth_kit/mfa/mfa_api_descriptions.py:195
 msgid "Cannot delete primary methods."
 msgstr "ไม่สามารถลบวิธีหลัก"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:174
+#: auth_kit/mfa/mfa_api_descriptions.py:198
 msgid "Requires verification code for active methods."
 msgstr "ต้องใช้รหัสยืนยันสำหรับวิธีที่เปิดใช้งาน"
 
-#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
+#: auth_kit/mfa/models.py:225 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "ผู้ใช้"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:227
 msgid "User who owns this MFA method"
 msgstr "ผู้ใช้ที่เป็นเจ้าของวิธี MFA นี้"
 
-#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
+#: auth_kit/mfa/models.py:230 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "ชื่อ"
 
-#: auth_kit/mfa/models.py:176
+#: auth_kit/mfa/models.py:232
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "ชื่อวิธี MFA (เช่น 'app', 'email')"
 
-#: auth_kit/mfa/models.py:179
+#: auth_kit/mfa/models.py:235
 msgid "secret"
 msgstr "ข้อมูลลับ"
 
-#: auth_kit/mfa/models.py:181
+#: auth_kit/mfa/models.py:237
 msgid "TOTP secret key for generating verification codes"
 msgstr "กุญแจลับ TOTP สำหรับสร้างรหัสยืนยัน"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:240
 msgid "is primary"
 msgstr "เป็นหลัก"
 
-#: auth_kit/mfa/models.py:186
+#: auth_kit/mfa/models.py:242
 msgid "Whether this is the user's primary MFA method"
 msgstr "สิ่งนี้เป็นวิธี MFA หลักของผู้ใช้หรือไม่"
 
-#: auth_kit/mfa/models.py:189
+#: auth_kit/mfa/models.py:245
 msgid "is active"
 msgstr "เปิดใช้งาน"
 
-#: auth_kit/mfa/models.py:191
+#: auth_kit/mfa/models.py:247
 msgid "Whether this method is active and can be used"
 msgstr "วิธีนี้เปิดใช้งานและสามารถใช้งานได้หรือไม่"
 
-#: auth_kit/mfa/models.py:194
+#: auth_kit/mfa/models.py:250
 msgid "backup codes"
 msgstr "รหัสสำรอง"
 
-#: auth_kit/mfa/models.py:197
+#: auth_kit/mfa/models.py:253
 msgid "JSON field storing backup codes for account recovery"
 msgstr "ฟิลด์ JSON ที่เก็บรหัสสำรองสำหรับการกู้คืนบัญชี"
 
-#: auth_kit/mfa/models.py:203
+#: auth_kit/mfa/models.py:259
 msgid "MFA Method"
 msgstr "วิธี MFA"
 
-#: auth_kit/mfa/models.py:204
+#: auth_kit/mfa/models.py:260
 msgid "MFA Methods"
 msgstr "วิธี MFA"
 
-#: auth_kit/mfa/serializers/login_factors.py:153
+#: auth_kit/mfa/serializers/login_factors.py:155
 msgid "Invalid code"
 msgstr "รหัสไม่ถูกต้อง"
 
-#: auth_kit/mfa/serializers/login_factors.py:172
-#: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:274
-#: auth_kit/mfa/serializers/login_factors.py:313
+#: auth_kit/mfa/serializers/login_factors.py:174
+#: auth_kit/mfa/serializers/login_factors.py:228
+#: auth_kit/mfa/serializers/login_factors.py:276
+#: auth_kit/mfa/serializers/login_factors.py:315
 msgid "Invalid token"
 msgstr "token ไม่ถูกต้อง"
 
-#: auth_kit/mfa/serializers/login_factors.py:230
+#: auth_kit/mfa/serializers/login_factors.py:232
 msgid "Please select a new method"
 msgstr "โปรดเลือกวิธีใหม่"
 
-#: auth_kit/mfa/serializers/mfa.py:76
+#: auth_kit/mfa/serializers/mfa.py:109
 msgid "This method is already exists"
 msgstr "วิธีนี้มีอยู่แล้ว"
 
-#: auth_kit/mfa/serializers/mfa.py:145
+#: auth_kit/mfa/serializers/mfa.py:178
 msgid "Invalid verification code"
 msgstr "รหัสยืนยันไม่ถูกต้อง"
 
-#: auth_kit/mfa/serializers/mfa.py:155
+#: auth_kit/mfa/serializers/mfa.py:188
 msgid "Activated MFA method"
 msgstr "เปิดใช้งานวิธี MFA แล้ว"
 
-#: auth_kit/mfa/serializers/mfa.py:194
-msgid "You can only deactivate non-primary MFA method."
-msgstr "คุณสามารถปิดใช้งานเฉพาะวิธี MFA ที่ไม่ใช่หลักเท่านั้น"
+#: auth_kit/mfa/serializers/mfa.py:230
+msgid "Cannot deactivate active MFA method"
+msgstr "ไม่สามารถปิดใช้งานวิธี MFA ที่ใช้งานอยู่ได้"
 
-#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+#: auth_kit/mfa/serializers/mfa.py:231
+msgid "Cannot deactivate primary MFA method"
+msgstr "ไม่สามารถปิดใช้งานวิธี MFA หลักได้"
+
+#: auth_kit/mfa/serializers/mfa.py:237 auth_kit/mfa/serializers/mfa.py:381
 msgid "Invalid OTP code"
 msgstr "รหัส OTP ไม่ถูกต้อง"
 
-#: auth_kit/mfa/serializers/mfa.py:206
+#: auth_kit/mfa/serializers/mfa.py:246
 msgid "Deactivated MFA method"
 msgstr "ปิดใช้งานวิธี MFA แล้ว"
 
-#: auth_kit/mfa/serializers/mfa.py:262
+#: auth_kit/mfa/serializers/mfa.py:304
 msgid "Invalid primary method code"
 msgstr "รหัสวิธีหลักไม่ถูกต้อง"
 
-#: auth_kit/mfa/serializers/mfa.py:275
+#: auth_kit/mfa/serializers/mfa.py:317
 msgid "Updated primary MFA method"
 msgstr "อัปเดตวิธี MFA หลักแล้ว"
 
-#: auth_kit/mfa/serializers/mfa.py:330
+#: auth_kit/mfa/serializers/mfa.py:370
 msgid "Cannot delete active MFA method"
 msgstr "ไม่สามารถลบวิธี MFA ที่เปิดใช้งาน"
 
-#: auth_kit/mfa/serializers/mfa.py:336
+#: auth_kit/mfa/serializers/mfa.py:371
 msgid "Cannot delete primary MFA method"
 msgstr "ไม่สามารถลบวิธี MFA หลัก"
 
-#: auth_kit/mfa/serializers/mfa.py:350
+#: auth_kit/mfa/serializers/mfa.py:390
 msgid "Method does not exist"
 msgstr "วิธีไม่มีอยู่"
 
-#: auth_kit/mfa/serializers/mfa.py:352
+#: auth_kit/mfa/serializers/mfa.py:392
 msgid "Deleted MFA method"
 msgstr "ลบวิธี MFA แล้ว"
 
-#: auth_kit/mfa/serializers/mfa.py:392
+#: auth_kit/mfa/serializers/mfa.py:466
 msgid "MFA code sent"
 msgstr "ส่งรหัส MFA แล้ว"
 
@@ -489,7 +511,7 @@ msgstr "ส่งลิงก์เข้าสู่ระบบแล้ว"
 msgid "Passkey / Security Key"
 msgstr "พาสคีย์ / คีย์ความปลอดภัย"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#: auth_kit/passwordless/passwordless_api_descriptions.py:38
 #, python-brace-format
 msgid ""
 "Initiate passwordless authentication via {}. This is the first step of the "
@@ -498,7 +520,7 @@ msgstr ""
 "เริ่มต้นการยืนยันตัวตนแบบไม่ใช้รหัสผ่านผ่าน {} "
 "นี่คือขั้นตอนแรกของกระบวนการเข้าสู่ระบบแบบไม่ใช้รหัสผ่าน"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#: auth_kit/passwordless/passwordless_api_descriptions.py:59
 #, python-brace-format
 msgid ""
 "Complete passwordless authentication via {}. Verify the credential/token "

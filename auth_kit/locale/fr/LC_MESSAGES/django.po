@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:08+0000\n"
+"POT-Creation-Date: 2026-08-09 09:39+0000\n"
 "PO-Revision-Date: 2025-07-09 00:00+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: French\n"
@@ -332,17 +332,28 @@ msgstr ""
 "aucune autre méthode principale n'existe. Requis avant que la méthode puisse"
 " être utilisée pour l'authentification."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:133
+#: auth_kit/mfa/mfa_api_descriptions.py:136
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
-"itself. Cannot deactivate primary methods - set another method as primary "
-"first."
+"itself."
 msgstr ""
-"Désactive une méthode MFA active. Nécessite un code de vérification de la "
-"méthode elle-même. Impossible de désactiver les méthodes principales - "
-"définir d'abord une autre méthode comme principale."
+"Désactiver une méthode MFA active. Nécessite un code de vérification "
+"provenant de la méthode elle-même."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:141
+#: auth_kit/mfa/mfa_api_descriptions.py:142
+msgid "Deactivation is disabled by configuration."
+msgstr "La désactivation est désactivée par la configuration."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:146
+msgid "Cannot deactivate primary methods."
+msgstr "Impossible de désactiver les méthodes primaires."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:151
+msgid "Deactivating the primary method promotes another active method."
+msgstr ""
+"La désactivation de la méthode primaire promeut une autre méthode active."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:158
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -350,15 +361,15 @@ msgstr ""
 "Définit une méthode MFA active comme méthode d'authentification principale. "
 "La méthode principale est utilisée par défaut pendant le flux de connexion."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:145
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Only one method can be primary at a time."
 msgstr "Seule une méthode peut être principale à la fois."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:165
 msgid "Requires verification code from current primary method."
 msgstr "Nécessite un code de vérification de la méthode principale actuelle."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:155
+#: auth_kit/mfa/mfa_api_descriptions.py:172
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -367,147 +378,160 @@ msgstr ""
 "l'envoi de code. Utile pour tester la configuration de méthode ou les "
 "demandes de code manuelles."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:162
+#: auth_kit/mfa/mfa_api_descriptions.py:178
+msgid ""
+"Get a challenge to verify one of your own MFA methods. WebAuthn returns "
+"ceremony options to sign; code-based methods return an empty payload."
+msgstr ""
+"Obtenez un défi pour vérifier l'une de vos méthodes MFA. WebAuthn renvoie "
+"les options de cérémonie à signer ; les méthodes basées sur un code "
+"renvoient une charge utile vide."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:186
 msgid "Permanently delete an MFA method."
 msgstr "Supprime définitivement une méthode MFA."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:163
+#: auth_kit/mfa/mfa_api_descriptions.py:187
 msgid "This action cannot be undone."
 msgstr "Cette action ne peut pas être annulée."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:168
+#: auth_kit/mfa/mfa_api_descriptions.py:192
 msgid "Cannot delete active methods."
 msgstr "Impossible de supprimer les méthodes actives."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:171
+#: auth_kit/mfa/mfa_api_descriptions.py:195
 msgid "Cannot delete primary methods."
 msgstr "Impossible de supprimer les méthodes principales."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:174
+#: auth_kit/mfa/mfa_api_descriptions.py:198
 msgid "Requires verification code for active methods."
 msgstr "Nécessite un code de vérification pour les méthodes actives."
 
-#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
+#: auth_kit/mfa/models.py:225 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "utilisateur"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:227
 msgid "User who owns this MFA method"
 msgstr "Utilisateur qui possède cette méthode MFA"
 
-#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
+#: auth_kit/mfa/models.py:230 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "nom"
 
-#: auth_kit/mfa/models.py:176
+#: auth_kit/mfa/models.py:232
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "Nom de la méthode MFA (par exemple, 'app', 'email')"
 
-#: auth_kit/mfa/models.py:179
+#: auth_kit/mfa/models.py:235
 msgid "secret"
 msgstr "secret"
 
-#: auth_kit/mfa/models.py:181
+#: auth_kit/mfa/models.py:237
 msgid "TOTP secret key for generating verification codes"
 msgstr "Clé secrète TOTP pour générer des codes de vérification"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:240
 msgid "is primary"
 msgstr "est principal"
 
-#: auth_kit/mfa/models.py:186
+#: auth_kit/mfa/models.py:242
 msgid "Whether this is the user's primary MFA method"
 msgstr "Si c'est la méthode MFA principale de l'utilisateur"
 
-#: auth_kit/mfa/models.py:189
+#: auth_kit/mfa/models.py:245
 msgid "is active"
 msgstr "est actif"
 
-#: auth_kit/mfa/models.py:191
+#: auth_kit/mfa/models.py:247
 msgid "Whether this method is active and can be used"
 msgstr "Si cette méthode est active et peut être utilisée"
 
-#: auth_kit/mfa/models.py:194
+#: auth_kit/mfa/models.py:250
 msgid "backup codes"
 msgstr "codes de secours"
 
-#: auth_kit/mfa/models.py:197
+#: auth_kit/mfa/models.py:253
 msgid "JSON field storing backup codes for account recovery"
 msgstr ""
 "Champ JSON stockant les codes de secours pour la récupération de compte"
 
-#: auth_kit/mfa/models.py:203
+#: auth_kit/mfa/models.py:259
 msgid "MFA Method"
 msgstr "Méthode MFA"
 
-#: auth_kit/mfa/models.py:204
+#: auth_kit/mfa/models.py:260
 msgid "MFA Methods"
 msgstr "Méthodes MFA"
 
-#: auth_kit/mfa/serializers/login_factors.py:153
+#: auth_kit/mfa/serializers/login_factors.py:155
 msgid "Invalid code"
 msgstr "Code invalide"
 
-#: auth_kit/mfa/serializers/login_factors.py:172
-#: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:274
-#: auth_kit/mfa/serializers/login_factors.py:313
+#: auth_kit/mfa/serializers/login_factors.py:174
+#: auth_kit/mfa/serializers/login_factors.py:228
+#: auth_kit/mfa/serializers/login_factors.py:276
+#: auth_kit/mfa/serializers/login_factors.py:315
 msgid "Invalid token"
 msgstr "Jeton invalide"
 
-#: auth_kit/mfa/serializers/login_factors.py:230
+#: auth_kit/mfa/serializers/login_factors.py:232
 msgid "Please select a new method"
 msgstr "Veuillez sélectionner une nouvelle méthode"
 
-#: auth_kit/mfa/serializers/mfa.py:76
+#: auth_kit/mfa/serializers/mfa.py:109
 msgid "This method is already exists"
 msgstr "Cette méthode existe déjà"
 
-#: auth_kit/mfa/serializers/mfa.py:145
+#: auth_kit/mfa/serializers/mfa.py:178
 msgid "Invalid verification code"
 msgstr "Code de vérification invalide"
 
-#: auth_kit/mfa/serializers/mfa.py:155
+#: auth_kit/mfa/serializers/mfa.py:188
 msgid "Activated MFA method"
 msgstr "Méthode MFA activée"
 
-#: auth_kit/mfa/serializers/mfa.py:194
-msgid "You can only deactivate non-primary MFA method."
-msgstr "Vous ne pouvez désactiver que les méthodes MFA non-principales."
+#: auth_kit/mfa/serializers/mfa.py:230
+msgid "Cannot deactivate active MFA method"
+msgstr "Impossible de désactiver une méthode MFA active"
 
-#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+#: auth_kit/mfa/serializers/mfa.py:231
+msgid "Cannot deactivate primary MFA method"
+msgstr "Impossible de désactiver la méthode MFA principale"
+
+#: auth_kit/mfa/serializers/mfa.py:237 auth_kit/mfa/serializers/mfa.py:381
 msgid "Invalid OTP code"
 msgstr "Code OTP invalide"
 
-#: auth_kit/mfa/serializers/mfa.py:206
+#: auth_kit/mfa/serializers/mfa.py:246
 msgid "Deactivated MFA method"
 msgstr "Méthode MFA désactivée"
 
-#: auth_kit/mfa/serializers/mfa.py:262
+#: auth_kit/mfa/serializers/mfa.py:304
 msgid "Invalid primary method code"
 msgstr "Code de méthode principale invalide"
 
-#: auth_kit/mfa/serializers/mfa.py:275
+#: auth_kit/mfa/serializers/mfa.py:317
 msgid "Updated primary MFA method"
 msgstr "Méthode MFA principale mise à jour"
 
-#: auth_kit/mfa/serializers/mfa.py:330
+#: auth_kit/mfa/serializers/mfa.py:370
 msgid "Cannot delete active MFA method"
 msgstr "Impossible de supprimer la méthode MFA active"
 
-#: auth_kit/mfa/serializers/mfa.py:336
+#: auth_kit/mfa/serializers/mfa.py:371
 msgid "Cannot delete primary MFA method"
 msgstr "Impossible de supprimer la méthode MFA principale"
 
-#: auth_kit/mfa/serializers/mfa.py:350
+#: auth_kit/mfa/serializers/mfa.py:390
 msgid "Method does not exist"
 msgstr "La méthode n'existe pas"
 
-#: auth_kit/mfa/serializers/mfa.py:352
+#: auth_kit/mfa/serializers/mfa.py:392
 msgid "Deleted MFA method"
 msgstr "Méthode MFA supprimée"
 
-#: auth_kit/mfa/serializers/mfa.py:392
+#: auth_kit/mfa/serializers/mfa.py:466
 msgid "MFA code sent"
 msgstr "Code MFA envoyé"
 
@@ -524,7 +548,7 @@ msgstr "Un lien de connexion a été envoyé."
 msgid "Passkey / Security Key"
 msgstr "Clé d'accès / Clé de sécurité"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#: auth_kit/passwordless/passwordless_api_descriptions.py:38
 #, python-brace-format
 msgid ""
 "Initiate passwordless authentication via {}. This is the first step of the "
@@ -533,7 +557,7 @@ msgstr ""
 "Initier l'authentification sans mot de passe via {}. Il s'agit de la "
 "première étape du flux de connexion sans mot de passe."
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#: auth_kit/passwordless/passwordless_api_descriptions.py:59
 #, python-brace-format
 msgid ""
 "Complete passwordless authentication via {}. Verify the credential/token "

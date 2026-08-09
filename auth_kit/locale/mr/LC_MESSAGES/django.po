@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:08+0000\n"
+"POT-Creation-Date: 2026-08-09 09:39+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Marathi\n"
@@ -295,17 +295,26 @@ msgstr ""
 "इतर कोणतीही प्राथमिक पद्धत अस्तित्वात नसल्यास आपोआप प्राथमिक पद्धत म्हणून "
 "सेट करते. ऑथेंटिकेशनसाठी पद्धत वापरण्यापूर्वी आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:133
+#: auth_kit/mfa/mfa_api_descriptions.py:136
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
-"itself. Cannot deactivate primary methods - set another method as primary "
-"first."
+"itself."
 msgstr ""
-"सक्रिय MFA पद्धत निष्क्रिय करा. पद्धतीकडून वेरिफिकेशन कोड आवश्यक आहे. "
-"प्राथमिक पद्धती निष्क्रिय करू शकत नाही - प्रथम दुसरी पद्धत प्राथमिक म्हणून "
-"सेट करा."
+"सक्रिय MFA पद्धत निष्क्रिय करा. त्या पद्धतीकडूनच सत्यापन कोड आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:141
+#: auth_kit/mfa/mfa_api_descriptions.py:142
+msgid "Deactivation is disabled by configuration."
+msgstr "कॉन्फिगरेशनद्वारे निष्क्रियीकरण अक्षम केले आहे."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:146
+msgid "Cannot deactivate primary methods."
+msgstr "प्राथमिक पद्धती निष्क्रिय करता येत नाहीत."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:151
+msgid "Deactivating the primary method promotes another active method."
+msgstr "प्राथमिक पद्धत निष्क्रिय केल्यास दुसरी सक्रिय पद्धत प्राथमिक बनते."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:158
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -313,15 +322,15 @@ msgstr ""
 "सक्रिय MFA पद्धत प्राथमिक ऑथेंटिकेशन पद्धत म्हणून सेट करा. लॉगिन फ्लो "
 "दरम्यान प्राथमिक पद्धत डीफॉल्ट म्हणून वापरली जाते."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:145
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Only one method can be primary at a time."
 msgstr "एकाच वेळी फक्त एकच पद्धत प्राथमिक असू शकते."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:165
 msgid "Requires verification code from current primary method."
 msgstr "वर्तमान प्राथमिक पद्धतीकडून वेरिफिकेशन कोड आवश्यक आहे."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:155
+#: auth_kit/mfa/mfa_api_descriptions.py:172
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -329,146 +338,159 @@ msgstr ""
 "कोड पाठवण्याला समर्थन देणाऱ्या पद्धतींसाठी वेरिफिकेशन कोड पाठवा. पद्धत "
 "कॉन्फिगरेशन चाचणी किंवा मॅन्युअल कोड विनंत्यांसाठी उपयुक्त."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:162
+#: auth_kit/mfa/mfa_api_descriptions.py:178
+msgid ""
+"Get a challenge to verify one of your own MFA methods. WebAuthn returns "
+"ceremony options to sign; code-based methods return an empty payload."
+msgstr ""
+"तुमच्या स्वतःच्या MFA पद्धतींपैकी एक सत्यापित करण्यासाठी आव्हान मिळवा. "
+"WebAuthn स्वाक्षरी करण्यासाठी समारंभाचे पर्याय परत करते; कोड-आधारित पद्धती "
+"रिकामा payload परत करतात."
+
+#: auth_kit/mfa/mfa_api_descriptions.py:186
 msgid "Permanently delete an MFA method."
 msgstr "MFA पद्धत कायमची काढून टाका."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:163
+#: auth_kit/mfa/mfa_api_descriptions.py:187
 msgid "This action cannot be undone."
 msgstr "ही क्रिया पूर्ववत करता येणार नाही."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:168
+#: auth_kit/mfa/mfa_api_descriptions.py:192
 msgid "Cannot delete active methods."
 msgstr "सक्रिय पद्धती काढून टाकू शकत नाही."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:171
+#: auth_kit/mfa/mfa_api_descriptions.py:195
 msgid "Cannot delete primary methods."
 msgstr "प्राथमिक पद्धती काढून टाकू शकत नाही."
 
-#: auth_kit/mfa/mfa_api_descriptions.py:174
+#: auth_kit/mfa/mfa_api_descriptions.py:198
 msgid "Requires verification code for active methods."
 msgstr "सक्रिय पद्धतींसाठी वेरिफिकेशन कोड आवश्यक आहे."
 
-#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
+#: auth_kit/mfa/models.py:225 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "युजर"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:227
 msgid "User who owns this MFA method"
 msgstr "या MFA पद्धतीचा मालक असलेला युजर"
 
-#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
+#: auth_kit/mfa/models.py:230 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "नाव"
 
-#: auth_kit/mfa/models.py:176
+#: auth_kit/mfa/models.py:232
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA पद्धतीचे नाव (उदा. 'app', 'email')"
 
-#: auth_kit/mfa/models.py:179
+#: auth_kit/mfa/models.py:235
 msgid "secret"
 msgstr "गुप्त"
 
-#: auth_kit/mfa/models.py:181
+#: auth_kit/mfa/models.py:237
 msgid "TOTP secret key for generating verification codes"
 msgstr "वेरिफिकेशन कोड जेनरेट करण्यासाठी TOTP गुप्त की"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:240
 msgid "is primary"
 msgstr "प्राथमिक आहे"
 
-#: auth_kit/mfa/models.py:186
+#: auth_kit/mfa/models.py:242
 msgid "Whether this is the user's primary MFA method"
 msgstr "ही युजरची प्राथमिक MFA पद्धत आहे का"
 
-#: auth_kit/mfa/models.py:189
+#: auth_kit/mfa/models.py:245
 msgid "is active"
 msgstr "सक्रिय आहे"
 
-#: auth_kit/mfa/models.py:191
+#: auth_kit/mfa/models.py:247
 msgid "Whether this method is active and can be used"
 msgstr "ही पद्धत सक्रिय आहे आणि वापरली जाऊ शकते का"
 
-#: auth_kit/mfa/models.py:194
+#: auth_kit/mfa/models.py:250
 msgid "backup codes"
 msgstr "बॅकअप कोड्स"
 
-#: auth_kit/mfa/models.py:197
+#: auth_kit/mfa/models.py:253
 msgid "JSON field storing backup codes for account recovery"
 msgstr "अकाउंट रिकव्हरीसाठी बॅकअप कोड्स स्टोअर करणारे JSON फील्ड"
 
-#: auth_kit/mfa/models.py:203
+#: auth_kit/mfa/models.py:259
 msgid "MFA Method"
 msgstr "MFA पद्धत"
 
-#: auth_kit/mfa/models.py:204
+#: auth_kit/mfa/models.py:260
 msgid "MFA Methods"
 msgstr "MFA पद्धती"
 
-#: auth_kit/mfa/serializers/login_factors.py:153
+#: auth_kit/mfa/serializers/login_factors.py:155
 msgid "Invalid code"
 msgstr "अवैध कोड"
 
-#: auth_kit/mfa/serializers/login_factors.py:172
-#: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:274
-#: auth_kit/mfa/serializers/login_factors.py:313
+#: auth_kit/mfa/serializers/login_factors.py:174
+#: auth_kit/mfa/serializers/login_factors.py:228
+#: auth_kit/mfa/serializers/login_factors.py:276
+#: auth_kit/mfa/serializers/login_factors.py:315
 msgid "Invalid token"
 msgstr "अवैध टोकन"
 
-#: auth_kit/mfa/serializers/login_factors.py:230
+#: auth_kit/mfa/serializers/login_factors.py:232
 msgid "Please select a new method"
 msgstr "कृपया नवीन पद्धत निवडा"
 
-#: auth_kit/mfa/serializers/mfa.py:76
+#: auth_kit/mfa/serializers/mfa.py:109
 msgid "This method is already exists"
 msgstr "ही पद्धत आधीच अस्तित्वात आहे"
 
-#: auth_kit/mfa/serializers/mfa.py:145
+#: auth_kit/mfa/serializers/mfa.py:178
 msgid "Invalid verification code"
 msgstr "अवैध सत्यापन कोड"
 
-#: auth_kit/mfa/serializers/mfa.py:155
+#: auth_kit/mfa/serializers/mfa.py:188
 msgid "Activated MFA method"
 msgstr "MFA पद्धत सक्रिय केली"
 
-#: auth_kit/mfa/serializers/mfa.py:194
-msgid "You can only deactivate non-primary MFA method."
-msgstr "तुम्ही फक्त गैर-प्राथमिक MFA पद्धत निष्क्रिय करू शकता."
+#: auth_kit/mfa/serializers/mfa.py:230
+msgid "Cannot deactivate active MFA method"
+msgstr "सक्रिय MFA पद्धत निष्क्रिय करता येत नाही"
 
-#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+#: auth_kit/mfa/serializers/mfa.py:231
+msgid "Cannot deactivate primary MFA method"
+msgstr "प्राथमिक MFA पद्धत निष्क्रिय करता येत नाही"
+
+#: auth_kit/mfa/serializers/mfa.py:237 auth_kit/mfa/serializers/mfa.py:381
 msgid "Invalid OTP code"
 msgstr "अवैध OTP कोड"
 
-#: auth_kit/mfa/serializers/mfa.py:206
+#: auth_kit/mfa/serializers/mfa.py:246
 msgid "Deactivated MFA method"
 msgstr "MFA पद्धत निष्क्रिय केली"
 
-#: auth_kit/mfa/serializers/mfa.py:262
+#: auth_kit/mfa/serializers/mfa.py:304
 msgid "Invalid primary method code"
 msgstr "अवैध प्राथमिक पद्धत कोड"
 
-#: auth_kit/mfa/serializers/mfa.py:275
+#: auth_kit/mfa/serializers/mfa.py:317
 msgid "Updated primary MFA method"
 msgstr "प्राथमिक MFA पद्धत अपडेट केली"
 
-#: auth_kit/mfa/serializers/mfa.py:330
+#: auth_kit/mfa/serializers/mfa.py:370
 msgid "Cannot delete active MFA method"
 msgstr "सक्रिय MFA पद्धत काढून टाकू शकत नाही"
 
-#: auth_kit/mfa/serializers/mfa.py:336
+#: auth_kit/mfa/serializers/mfa.py:371
 msgid "Cannot delete primary MFA method"
 msgstr "प्राथमिक MFA पद्धत काढून टाकू शकत नाही"
 
-#: auth_kit/mfa/serializers/mfa.py:350
+#: auth_kit/mfa/serializers/mfa.py:390
 msgid "Method does not exist"
 msgstr "पद्धत अस्तित्वात नाही"
 
-#: auth_kit/mfa/serializers/mfa.py:352
+#: auth_kit/mfa/serializers/mfa.py:392
 msgid "Deleted MFA method"
 msgstr "MFA पद्धत काढून टाकली"
 
-#: auth_kit/mfa/serializers/mfa.py:392
+#: auth_kit/mfa/serializers/mfa.py:466
 msgid "MFA code sent"
 msgstr "MFA कोड पाठवला"
 
@@ -485,7 +507,7 @@ msgstr "लॉगिन लिंक पाठवली गेली आहे."
 msgid "Passkey / Security Key"
 msgstr "पासकी / सुरक्षा की"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#: auth_kit/passwordless/passwordless_api_descriptions.py:38
 #, python-brace-format
 msgid ""
 "Initiate passwordless authentication via {}. This is the first step of the "
@@ -494,7 +516,7 @@ msgstr ""
 "{} द्वारे पासवर्डरहित प्रमाणीकरण सुरू करा. हे पासवर्डरहित लॉगिन प्रक्रियेचे "
 "पहिले पाऊल आहे."
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#: auth_kit/passwordless/passwordless_api_descriptions.py:59
 #, python-brace-format
 msgid ""
 "Complete passwordless authentication via {}. Verify the credential/token "

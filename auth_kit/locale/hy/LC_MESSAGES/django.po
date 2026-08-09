@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DRF Auth Kit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 18:08+0000\n"
+"POT-Creation-Date: 2026-08-09 09:39+0000\n"
 "PO-Revision-Date: 2025-07-08 06:02+0000\n"
 "Last-Translator: DRF Auth Kit Team\n"
 "Language-Team: Armenian\n"
@@ -321,17 +321,25 @@ msgstr ""
 "առաջնային մեթոդ գոյություն չունի: Պահանջվում է նախքան մեթոդը կարելի է "
 "օգտագործել նույնականացման համար:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:133
+#: auth_kit/mfa/mfa_api_descriptions.py:136
 msgid ""
 "Deactivate an active MFA method. Requires verification code from the method "
-"itself. Cannot deactivate primary methods - set another method as primary "
-"first."
-msgstr ""
-"Ապաակտիվացնել ակտիվ MFA մեթոդը: Պահանջում է հաստատման ծածկագիր ինքը մեթոդից:"
-" Չի կարող ապաակտիվացնել առաջնային մեթոդները - առաջ սահմանեք այլ մեթոդ որպես "
-"առաջնային:"
+"itself."
+msgstr "Ապաակտիվացնել ակտիվ MFA մեթոդը: Պահանջվում է մեթոդի հաստատման կոդը:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:141
+#: auth_kit/mfa/mfa_api_descriptions.py:142
+msgid "Deactivation is disabled by configuration."
+msgstr "Ապաակտիվացումն անջատված է կազմաձևման կողմից:"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:146
+msgid "Cannot deactivate primary methods."
+msgstr "Հիմնական մեթոդը հնարավոր չէ ապաակտիվացնել:"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:151
+msgid "Deactivating the primary method promotes another active method."
+msgstr "Հիմնական մեթոդի ապաակտիվացումը մեկ այլ ակտիվ մեթոդ է առաջ բերում:"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:158
 msgid ""
 "Set an active MFA method as the primary authentication method. Primary "
 "method is used by default during login flow."
@@ -339,15 +347,15 @@ msgstr ""
 "Սահմանել ակտիվ MFA մեթոդը որպես առաջնային նույնականացման մեթոդ: Առաջնային "
 "մեթոդը կանխադրված կերպով օգտագործվում է մուտքի հոսքի ժամանակ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:145
+#: auth_kit/mfa/mfa_api_descriptions.py:162
 msgid "Only one method can be primary at a time."
 msgstr "Միայն մեկ մեթոդ կարող է լինել առաջնային միևնույն ժամանակ:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:148
+#: auth_kit/mfa/mfa_api_descriptions.py:165
 msgid "Requires verification code from current primary method."
 msgstr "Պահանջում է հաստատման ծածկագիր ընթացիկ առաջնային մեթոդից:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:155
+#: auth_kit/mfa/mfa_api_descriptions.py:172
 msgid ""
 "Send verification code for methods that support code dispatch. Useful for "
 "testing method configuration or manual code requests."
@@ -356,148 +364,161 @@ msgstr ""
 "առաքմանը: Օգտակար է մեթոդի կարգավորման փորձարկման կամ ձեռքի ծածկագրի "
 "հարցումների համար:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:162
+#: auth_kit/mfa/mfa_api_descriptions.py:178
+msgid ""
+"Get a challenge to verify one of your own MFA methods. WebAuthn returns "
+"ceremony options to sign; code-based methods return an empty payload."
+msgstr ""
+"Ստացեք մարտահրավեր ձեր MFA մեթոդներից մեկը հաստատելու համար: WebAuthn-ը "
+"վերադարձնում է ստորագրման արարողության ընտրանքները, իսկ կոդի վրա հիմնված "
+"մեթոդները վերադարձնում են դատարկ բովանդակություն:"
+
+#: auth_kit/mfa/mfa_api_descriptions.py:186
 msgid "Permanently delete an MFA method."
 msgstr "Մշտապես ջնջել MFA մեթոդը:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:163
+#: auth_kit/mfa/mfa_api_descriptions.py:187
 msgid "This action cannot be undone."
 msgstr "Այս գործողությունը հնարավոր չէ հետարկել:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:168
+#: auth_kit/mfa/mfa_api_descriptions.py:192
 msgid "Cannot delete active methods."
 msgstr "Հնարավոր չէ ջնջել ակտիվ մեթոդները:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:171
+#: auth_kit/mfa/mfa_api_descriptions.py:195
 msgid "Cannot delete primary methods."
 msgstr "Հնարավոր չէ ջնջել առաջնային մեթոդները:"
 
-#: auth_kit/mfa/mfa_api_descriptions.py:174
+#: auth_kit/mfa/mfa_api_descriptions.py:198
 msgid "Requires verification code for active methods."
 msgstr "Պահանջում է հաստատման ծածկագիր ակտիվ մեթոդների համար:"
 
-#: auth_kit/mfa/models.py:169 auth_kit/webauthn/models/credential.py:134
+#: auth_kit/mfa/models.py:225 auth_kit/webauthn/models/credential.py:134
 msgid "user"
 msgstr "օգտատեր"
 
-#: auth_kit/mfa/models.py:171
+#: auth_kit/mfa/models.py:227
 msgid "User who owns this MFA method"
 msgstr "Օգտագործող, որը ունի այս MFA մեթոդը"
 
-#: auth_kit/mfa/models.py:174 auth_kit/webauthn/models/credential.py:171
+#: auth_kit/mfa/models.py:230 auth_kit/webauthn/models/credential.py:171
 msgid "name"
 msgstr "անուն"
 
-#: auth_kit/mfa/models.py:176
+#: auth_kit/mfa/models.py:232
 msgid "MFA method name (e.g., 'app', 'email')"
 msgstr "MFA մեթոդի անվանումը (օր., 'app', 'email')"
 
-#: auth_kit/mfa/models.py:179
+#: auth_kit/mfa/models.py:235
 msgid "secret"
 msgstr "գաղտնի"
 
-#: auth_kit/mfa/models.py:181
+#: auth_kit/mfa/models.py:237
 msgid "TOTP secret key for generating verification codes"
 msgstr "TOTP գաղտնի բանալի հաստատման կոդեր գեներացնելու համար"
 
-#: auth_kit/mfa/models.py:184
+#: auth_kit/mfa/models.py:240
 msgid "is primary"
 msgstr "առաջնային է"
 
-#: auth_kit/mfa/models.py:186
+#: auth_kit/mfa/models.py:242
 msgid "Whether this is the user's primary MFA method"
 msgstr "Այսը օգտագործողի հիմնական MFA մեթոդը է"
 
-#: auth_kit/mfa/models.py:189
+#: auth_kit/mfa/models.py:245
 msgid "is active"
 msgstr "ակտիվ է"
 
-#: auth_kit/mfa/models.py:191
+#: auth_kit/mfa/models.py:247
 msgid "Whether this method is active and can be used"
 msgstr "Այս մեթոդը ակտիվ է և կարող է օգտագործվել"
 
-#: auth_kit/mfa/models.py:194
+#: auth_kit/mfa/models.py:250
 msgid "backup codes"
 msgstr "պահեստային ծածկագրեր"
 
-#: auth_kit/mfa/models.py:197
+#: auth_kit/mfa/models.py:253
 msgid "JSON field storing backup codes for account recovery"
 msgstr ""
 "JSON դաշտ, որը պահին է հաշվարների վերականգնման առաջանծության առաջանծական "
 "կոդերը"
 
-#: auth_kit/mfa/models.py:203
+#: auth_kit/mfa/models.py:259
 msgid "MFA Method"
 msgstr "MFA մեթոդ"
 
-#: auth_kit/mfa/models.py:204
+#: auth_kit/mfa/models.py:260
 msgid "MFA Methods"
 msgstr "MFA մեթոդներ"
 
-#: auth_kit/mfa/serializers/login_factors.py:153
+#: auth_kit/mfa/serializers/login_factors.py:155
 msgid "Invalid code"
 msgstr "Անվավեր ծածկագիր"
 
-#: auth_kit/mfa/serializers/login_factors.py:172
-#: auth_kit/mfa/serializers/login_factors.py:226
-#: auth_kit/mfa/serializers/login_factors.py:274
-#: auth_kit/mfa/serializers/login_factors.py:313
+#: auth_kit/mfa/serializers/login_factors.py:174
+#: auth_kit/mfa/serializers/login_factors.py:228
+#: auth_kit/mfa/serializers/login_factors.py:276
+#: auth_kit/mfa/serializers/login_factors.py:315
 msgid "Invalid token"
 msgstr "Անվավեր նշան"
 
-#: auth_kit/mfa/serializers/login_factors.py:230
+#: auth_kit/mfa/serializers/login_factors.py:232
 msgid "Please select a new method"
 msgstr "Խնդրում ենք ընտրել նոր մեթոդ"
 
-#: auth_kit/mfa/serializers/mfa.py:76
+#: auth_kit/mfa/serializers/mfa.py:109
 msgid "This method is already exists"
 msgstr "Այս մեթոդը արդեն գոյություն ունի"
 
-#: auth_kit/mfa/serializers/mfa.py:145
+#: auth_kit/mfa/serializers/mfa.py:178
 msgid "Invalid verification code"
 msgstr "Անվավեր հաստատման կոդ"
 
-#: auth_kit/mfa/serializers/mfa.py:155
+#: auth_kit/mfa/serializers/mfa.py:188
 msgid "Activated MFA method"
 msgstr "Ակտիվացված MFA մեթոդ"
 
-#: auth_kit/mfa/serializers/mfa.py:194
-msgid "You can only deactivate non-primary MFA method."
-msgstr "Դուք կարող եք ապաակտիվացնել միայն ոչ-առաջնային MFA մեթոդը:"
+#: auth_kit/mfa/serializers/mfa.py:230
+msgid "Cannot deactivate active MFA method"
+msgstr "Հնարավոր չէ անջատել ակտիվ MFA մեթոդը"
 
-#: auth_kit/mfa/serializers/mfa.py:200 auth_kit/mfa/serializers/mfa.py:345
+#: auth_kit/mfa/serializers/mfa.py:231
+msgid "Cannot deactivate primary MFA method"
+msgstr "Հնարավոր չէ անջատել առաջնային MFA մեթոդը"
+
+#: auth_kit/mfa/serializers/mfa.py:237 auth_kit/mfa/serializers/mfa.py:381
 msgid "Invalid OTP code"
 msgstr "Անվավեր OTP ծածկագիր"
 
-#: auth_kit/mfa/serializers/mfa.py:206
+#: auth_kit/mfa/serializers/mfa.py:246
 msgid "Deactivated MFA method"
 msgstr "Ապաակտիվացված MFA մեթոդ"
 
-#: auth_kit/mfa/serializers/mfa.py:262
+#: auth_kit/mfa/serializers/mfa.py:304
 msgid "Invalid primary method code"
 msgstr "Անվավեր առաջնային մեթոդի ծածկագիր"
 
-#: auth_kit/mfa/serializers/mfa.py:275
+#: auth_kit/mfa/serializers/mfa.py:317
 msgid "Updated primary MFA method"
 msgstr "Թարմացված առաջնային MFA մեթոդ"
 
-#: auth_kit/mfa/serializers/mfa.py:330
+#: auth_kit/mfa/serializers/mfa.py:370
 msgid "Cannot delete active MFA method"
 msgstr "Հնարավոր չէ ջնջել ակտիվ MFA մեթոդը"
 
-#: auth_kit/mfa/serializers/mfa.py:336
+#: auth_kit/mfa/serializers/mfa.py:371
 msgid "Cannot delete primary MFA method"
 msgstr "Հնարավոր չէ ջնջել առաջնային MFA մեթոդը"
 
-#: auth_kit/mfa/serializers/mfa.py:350
+#: auth_kit/mfa/serializers/mfa.py:390
 msgid "Method does not exist"
 msgstr "Մեթոդը գոյություն չունի"
 
-#: auth_kit/mfa/serializers/mfa.py:352
+#: auth_kit/mfa/serializers/mfa.py:392
 msgid "Deleted MFA method"
 msgstr "Ջնջված MFA մեթոդ"
 
-#: auth_kit/mfa/serializers/mfa.py:392
+#: auth_kit/mfa/serializers/mfa.py:466
 msgid "MFA code sent"
 msgstr "MFA ծածկագիրը ուղարկված է"
 
@@ -514,7 +535,7 @@ msgstr "Մուտքի հղումն ուղարկվել է:"
 msgid "Passkey / Security Key"
 msgstr "Մուտքային բանալի / Անվտանգության բանալի"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:42
+#: auth_kit/passwordless/passwordless_api_descriptions.py:38
 #, python-brace-format
 msgid ""
 "Initiate passwordless authentication via {}. This is the first step of the "
@@ -523,7 +544,7 @@ msgstr ""
 "Մեկնարկեք առանց գաղտնաբառի նույնականացում {} միջոցով: Սա առանց գաղտնաբառի "
 "մուտքի հոսքի առաջին քայլն է:"
 
-#: auth_kit/passwordless/passwordless_api_descriptions.py:63
+#: auth_kit/passwordless/passwordless_api_descriptions.py:59
 #, python-brace-format
 msgid ""
 "Complete passwordless authentication via {}. Verify the credential/token "

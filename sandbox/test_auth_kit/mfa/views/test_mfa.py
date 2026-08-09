@@ -213,15 +213,104 @@ class TestMFAMethodViewSet(APITestCase):
         method.refresh_from_db()
         assert method.is_active
 
-    def test_deactivate_primary_method_fails(self) -> None:
-        """Test deactivating primary method fails."""
+    def test_deactivate_primary_method_invalid_code_fails(self) -> None:
+        """Deactivating the primary still requires a valid code."""
         MFAMethodFactory.create_primary(user=self.user, name="app")
 
         data = {"method": "app", "code": "123456"}
         response: Response = self.client.post(reverse("mfa-deactivate"), data)
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert "non-primary" in str(response.data)
+        assert "Invalid OTP code" in str(response.data)
+
+    @freeze_time("2012-01-14 12:00:01")
+    def test_deactivate_primary_promotes_another_active_method(self) -> None:
+        """Deactivating the primary must hand the flag to a remaining method."""
+        method = MFAMethodFactory.create_primary(user=self.user, name="app")
+        MFAMethodFactory.create(user=self.user, name="email", is_active=True)
+        code = MFAHandlerRegistry.get_handler(method).get_otp_code()
+
+        response: Response = self.client.post(
+            reverse("mfa-deactivate"), {"method": "app", "code": code}
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        method.refresh_from_db()
+        assert not method.is_active
+        assert not method.is_primary
+        assert MFAMethod.objects.get(user=self.user, name="email").is_primary
+
+    @freeze_time("2012-01-14 12:00:01")
+    def test_deactivate_last_method_turns_mfa_off(self) -> None:
+        """A single-method user must be able to switch MFA off."""
+        method = MFAMethodFactory.create_primary(user=self.user, name="app")
+        code = MFAHandlerRegistry.get_handler(method).get_otp_code()
+
+        response: Response = self.client.post(
+            reverse("mfa-deactivate"), {"method": "app", "code": code}
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        assert not MFAMethod.objects.filter(user=self.user, is_active=True).exists()
+        assert not MFAMethod.objects.filter(user=self.user, is_primary=True).exists()
+
+    @freeze_time("2012-01-14 12:00:01")
+    @override_auth_kit_settings(MFA_PREVENT_DELETE_ACTIVE_METHOD=True)
+    def test_deactivate_blocked_when_active_removal_prevented(self) -> None:
+        """
+        Deactivation must not be a way around the removal policy.
+
+        An operator who forbids removing an active factor means it, so
+        deactivating it -- which drops it from the login flow just the same --
+        has to be refused too.
+        """
+        method = MFAMethodFactory.create_primary(user=self.user, name="app")
+        code = MFAHandlerRegistry.get_handler(method).get_otp_code()
+
+        response: Response = self.client.post(
+            reverse("mfa-deactivate"), {"method": "app", "code": code}
+        )
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "Cannot deactivate active" in str(response.data)
+        method.refresh_from_db()
+        assert method.is_active
+
+    @freeze_time("2012-01-14 12:00:01")
+    @override_auth_kit_settings(MFA_PREVENT_DELETE_PRIMARY_METHOD=True)
+    def test_deactivate_primary_blocked_when_primary_removal_prevented(self) -> None:
+        """The primary stays put when the policy protects it."""
+        method = MFAMethodFactory.create_primary(user=self.user, name="app")
+        MFAMethodFactory.create(user=self.user, name="email", is_active=True)
+        code = MFAHandlerRegistry.get_handler(method).get_otp_code()
+
+        response: Response = self.client.post(
+            reverse("mfa-deactivate"), {"method": "app", "code": code}
+        )
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "Cannot deactivate primary" in str(response.data)
+        method.refresh_from_db()
+        assert method.is_active
+        assert method.is_primary
+
+    @freeze_time("2012-01-14 12:00:01")
+    @override_auth_kit_settings(MFA_PREVENT_DELETE_PRIMARY_METHOD=True)
+    def test_deactivate_non_primary_allowed_when_only_primary_protected(self) -> None:
+        """Protecting the primary must not freeze the secondary methods."""
+        MFAMethodFactory.create_primary(user=self.user, name="app")
+        secondary = MFAMethodFactory.create(
+            user=self.user, name="email", is_active=True
+        )
+        code = MFAHandlerRegistry.get_handler(secondary).get_otp_code()
+
+        response: Response = self.client.post(
+            reverse("mfa-deactivate"), {"method": "email", "code": code}
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        secondary.refresh_from_db()
+        assert not secondary.is_active
 
     def test_set_primary_method_success(self) -> None:
         """Test setting method as primary."""
@@ -273,6 +362,19 @@ class TestMFAMethodViewSet(APITestCase):
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert "Invalid primary method code" in str(response.data)
+
+    @override_auth_kit_settings(MFA_UPDATE_PRIMARY_METHOD_REQUIRED_PRIMARY_CODE=True)
+    def test_set_primary_without_required_code_is_rejected(self) -> None:
+        """Omitting the required code must be a 400, not an unhandled 500."""
+        MFAMethodFactory.create_primary(user=self.user, name="app")
+        MFAMethodFactory.create(user=self.user, name="email", is_active=True)
+
+        response: Response = self.client.post(
+            reverse("mfa-primary"), {"method": "email"}
+        )
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "primary_code" in response.data
 
     def test_send_code_success(self) -> None:
         """Test sending verification code."""
@@ -359,6 +461,69 @@ class TestMFAMethodViewSet(APITestCase):
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert "Cannot delete primary" in str(response.data)
 
+    def test_delete_primary_promotes_another_active_method(self) -> None:
+        """
+        Removing the primary must leave the user with a primary again.
+
+        Otherwise the account is left with active methods but nothing marked
+        primary, which used to make login skip MFA entirely.
+        """
+        MFAMethodFactory.create_primary(user=self.user, name="app")
+        MFAMethodFactory.create(user=self.user, name="email", is_active=True)
+
+        response: Response = self.client.post(reverse("mfa-delete"), {"method": "app"})
+
+        assert response.status_code == status.HTTP_204_NO_CONTENT
+        assert MFAMethod.objects.get(user=self.user, name="email").is_primary
+
+    def test_delete_primary_skips_inactive_candidates(self) -> None:
+        """An inactive method must not be promoted to primary."""
+        MFAMethodFactory.create_primary(user=self.user, name="app")
+        MFAMethodFactory.create(user=self.user, name="email", is_active=False)
+
+        response: Response = self.client.post(reverse("mfa-delete"), {"method": "app"})
+
+        assert response.status_code == status.HTTP_204_NO_CONTENT
+        assert not MFAMethod.objects.filter(user=self.user, is_primary=True).exists()
+
+    def test_delete_non_primary_leaves_primary_untouched(self) -> None:
+        """Deleting a secondary method must not reshuffle the primary."""
+        MFAMethodFactory.create_primary(user=self.user, name="app")
+        MFAMethodFactory.create(user=self.user, name="email", is_active=True)
+
+        self.client.post(reverse("mfa-delete"), {"method": "email"})
+
+        assert MFAMethod.objects.get(user=self.user, name="app").is_primary
+
+    def test_set_primary_recovers_when_none_is_set(self) -> None:
+        """A user left without a primary must be able to designate one."""
+        MFAMethodFactory.create(user=self.user, name="app", is_active=True)
+
+        response: Response = self.client.post(reverse("mfa-primary"), {"method": "app"})
+
+        assert response.status_code == status.HTTP_200_OK
+        assert MFAMethod.objects.get(user=self.user, name="app").is_primary
+
+    def test_challenge_returns_empty_payload_for_code_based_method(self) -> None:
+        """Code-based methods have no challenge to answer."""
+        MFAMethodFactory.create(user=self.user, name="app", is_active=True)
+
+        response: Response = self.client.post(
+            reverse("mfa-challenge"), {"method": "app"}
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data == {}
+
+    def test_challenge_rejects_method_the_user_does_not_have(self) -> None:
+        """A challenge must not be issued for someone else's method."""
+        response: Response = self.client.post(
+            reverse("mfa-challenge"), {"method": "app"}
+        )
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert "does not exist" in str(response.data)
+
     def test_unauthenticated_access_denied(self) -> None:
         """Test all endpoints require authentication."""
         self.client.force_authenticate(user=None)
@@ -371,6 +536,7 @@ class TestMFAMethodViewSet(APITestCase):
             ("mfa-primary", "post"),
             ("mfa-send", "post"),
             ("mfa-delete", "post"),
+            ("mfa-challenge", "post"),
         ]
 
         for name, method in endpoints:

@@ -379,28 +379,40 @@ class TestMFALoginView(APITestCase):
         assert "Invalid token" in str(second_step_response.data)
 
     @freeze_time("2012-01-14 12:00:01")
-    def test_login_with_mfa_without_active_primary_method(self) -> None:
+    def test_login_challenges_active_method_when_no_primary_set(self) -> None:
+        """
+        An active method with no primary flag must still be challenged.
+
+        Deleting a primary method, or an admin edit, can leave a user with
+        active methods but no primary. Treating that as "no MFA" would hand
+        out tokens on a single factor.
+        """
         user, _email = UserFactory.create_with_email_address(self.user_data)
-        MFAMethodFactory.create(user=user)
+        MFAMethodFactory.create(user=user, name="app")
 
         first_step_response: Response = self.client.post(
             self.login_url, self.login_data, format="json"
         )
 
         assert first_step_response.status_code == status.HTTP_200_OK
+        assert first_step_response.data["mfa_enabled"]
+        assert first_step_response.data["method"] == "app"
+        assert "ephemeral_token" in first_step_response.data
+        assert "access" not in first_step_response.data
 
-        # Check JWT token fields
-        expected_fields = {
-            "access",
-            "refresh",
-            "access_expiration",
-            "mfa_enabled",
-            "refresh_expiration",
-            "user",
-        }
-        actual_fields = set(first_step_response.data.keys())
-        assert expected_fields == actual_fields
-        assert not first_step_response.data["mfa_enabled"]
+    @freeze_time("2012-01-14 12:00:01")
+    def test_login_without_any_active_method_returns_tokens(self) -> None:
+        """A user whose only method is inactive genuinely has no MFA."""
+        user, _email = UserFactory.create_with_email_address(self.user_data)
+        MFAMethodFactory.create(user=user, name="app", is_active=False)
+
+        response: Response = self.client.post(
+            self.login_url, self.login_data, format="json"
+        )
+
+        assert response.status_code == status.HTTP_200_OK
+        assert not response.data["mfa_enabled"]
+        assert "access" in response.data
 
     # Add these test methods to your existing TestMFALoginView class
 

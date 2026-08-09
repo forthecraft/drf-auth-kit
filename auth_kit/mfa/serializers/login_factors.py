@@ -75,8 +75,10 @@ class MFAFirstStepResponseSerializer(serializers.Serializer[dict[str, Any]]):
         user = self.context["user"]
 
         try:
-            mfa_method = auth_kit_mfa_settings.MFA_MODEL.objects.get_primary_active(
-                user_id=user.id
+            mfa_method = (
+                auth_kit_mfa_settings.MFA_MODEL.objects.get_method_to_challenge(
+                    user_id=user.id
+                )
             )
             handler = MFAHandlerRegistry.get_handler(mfa_method)
             handler.send_code()

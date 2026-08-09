@@ -171,6 +171,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'MFA_SECOND_STEP_SERIALIZER_FACTORY': 'auth_kit.mfa.serializers.login.get_mfa_second_step_serializer',
 
         # MFA Management Serializers
+        'MFA_METHOD_CHALLENGE_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodChallengeSerializer',
         'MFA_METHOD_CONFIG_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodConfigSerializer',
         'MFA_METHOD_CONFIRM_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodConfirmSerializer',
         'MFA_METHOD_CREATE_SERIALIZER': 'auth_kit.mfa.serializers.mfa.MFAMethodCreateSerializer',
@@ -635,10 +636,13 @@ MFA Security Settings
     Require primary method code when updating primary MFA method.
 
 **MFA_PREVENT_DELETE_ACTIVE_METHOD** (default: ``False``)
-    Prevent deletion of active MFA methods.
+    Prevent removal of active MFA methods. This covers deactivation as well as
+    deletion, since both take the factor out of the login flow. Deactivation
+    only ever targets active methods, so enabling this rejects every request to
+    ``/auth/mfa/deactivate/``.
 
 **MFA_PREVENT_DELETE_PRIMARY_METHOD** (default: ``False``)
-    Prevent deletion of the primary MFA method.
+    Prevent removal of the primary MFA method, by deletion or by deactivation.
 
 **MFA_DELETE_ACTIVE_METHOD_REQUIRE_CODE** (default: ``False``)
     Require MFA code when deleting active methods.
@@ -681,6 +685,9 @@ MFA Views & Serializers
 
 **MFA_SECOND_STEP_SERIALIZER_FACTORY** (default: :func:`~auth_kit.mfa.serializers.login.get_mfa_second_step_serializer`)
     Factory function for second step login serializers.
+
+**MFA_METHOD_CHALLENGE_SERIALIZER** (default: :class:`~auth_kit.mfa.serializers.mfa.MFAMethodChallengeSerializer`)
+    Serializer for issuing a verification challenge for one of your own methods.
 
 **MFA_METHOD_CONFIG_SERIALIZER** (default: :class:`~auth_kit.mfa.serializers.mfa.MFAMethodConfigSerializer`)
     Serializer for MFA method configuration.

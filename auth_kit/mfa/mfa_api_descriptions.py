@@ -129,10 +129,27 @@ MFA_METHOD_CONFIRM_DESCRIPTION = _(
     "Required before the method can be used for authentication."
 )
 
-MFA_METHOD_DEACTIVATE_DESCRIPTION = _(
-    "Deactivate an active MFA method. Requires verification code from the method itself. "
-    "Cannot deactivate primary methods - set another method as primary first."
-)
+
+def get_mfa_method_deactivate_description() -> _StrOrPromise:
+    """Generate dynamic description for MFA method deactivation."""
+    base = _(
+        "Deactivate an active MFA method. "
+        "Requires verification code from the method itself."
+    )
+
+    if auth_kit_mfa_settings.MFA_PREVENT_DELETE_ACTIVE_METHOD:
+        return format_lazy(
+            "{} {}", base, _("Deactivation is disabled by configuration.")
+        )
+
+    if auth_kit_mfa_settings.MFA_PREVENT_DELETE_PRIMARY_METHOD:
+        return format_lazy("{} {}", base, _("Cannot deactivate primary methods."))
+
+    return format_lazy(
+        "{} {}",
+        base,
+        _("Deactivating the primary method promotes another active method."),
+    )
 
 
 def get_mfa_method_primary_description() -> _StrOrPromise:
@@ -154,6 +171,13 @@ def get_mfa_method_primary_description() -> _StrOrPromise:
 MFA_METHOD_SEND_CODE_DESCRIPTION = _(
     "Send verification code for methods that support code dispatch. "
     "Useful for testing method configuration or manual code requests."
+)
+
+
+MFA_METHOD_CHALLENGE_DESCRIPTION = _(
+    "Get a challenge to verify one of your own MFA methods. "
+    "WebAuthn returns ceremony options to sign; code-based methods return "
+    "an empty payload."
 )
 
 

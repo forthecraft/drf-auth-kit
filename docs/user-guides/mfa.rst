@@ -154,6 +154,7 @@ Once logged in, users can manage their MFA methods via:
 - ``POST /api/auth/mfa/deactivate/`` - Deactivate MFA method
 - ``POST /api/auth/mfa/delete/`` - Delete MFA method
 - ``POST /api/auth/mfa/send/`` - Send MFA verification code
+- ``POST /api/auth/mfa/challenge/`` - Get a challenge to verify a method
 
 **Email MFA Setup**
 
@@ -208,6 +209,19 @@ When multiple MFA methods exist:
 3. Include ``primary_code`` if required by settings
 4. This method will be used by default during login
 
+The primary method only decides which factor is challenged first. A user with
+active methods but no primary is still challenged at login, and can designate a
+primary at any time.
+
+.. note::
+
+   **Upgrading from 1.7.0 or earlier.** Login used to look for the primary
+   method alone, so an account holding active methods but no primary was read
+   as having no MFA and was issued tokens straight from its password. Those
+   accounts are now challenged. If your user base contains any -- typically
+   from a deleted primary or an admin edit -- expect them to start seeing the
+   second step on their next login.
+
 **Deactivating Methods**
 
 
@@ -218,6 +232,20 @@ Temporarily disable a method without deletion:
 3. Include ``code`` for verification
 4. Method remains configured but won't be used
 
+Deactivating the primary method promotes another active method in its place.
+Deactivating the last active method turns MFA off for the account.
+
+Deactivation removes a factor from the login flow just as deletion does, so it
+answers to the same settings. ``MFA_PREVENT_DELETE_PRIMARY_METHOD`` blocks
+deactivating the primary one.
+
+.. warning::
+
+   ``MFA_PREVENT_DELETE_ACTIVE_METHOD`` disables this endpoint outright.
+   Deactivation only ever targets an active method, so with that setting on
+   there is nothing left for it to accept and every request is rejected. Leave
+   it off if users should be able to turn a factor off without deleting it.
+
 **Deleting Methods**
 
 
@@ -226,7 +254,29 @@ Permanently remove an MFA method:
 1. Use ``POST /api/auth/mfa/delete/``
 2. Set ``method`` to the method name
 3. Include ``code`` if required by settings
-4. Cannot delete the last active method (configurable)
+
+Deleting the primary method promotes another active method in its place.
+Set ``MFA_PREVENT_DELETE_ACTIVE_METHOD`` to block deleting any active method,
+or ``MFA_PREVENT_DELETE_PRIMARY_METHOD`` to block deleting the primary one.
+
+**Verifying a Method (WebAuthn)**
+
+
+Deactivation, and deletion under ``MFA_DELETE_ACTIVE_METHOD_REQUIRE_CODE``,
+require proof that you still control the method being removed. Code-based
+methods take a typed code, but WebAuthn has no code to type -- it needs a
+signed ceremony:
+
+1. Use ``POST /api/auth/mfa/challenge/`` with ``method`` set to ``"webauthn"``
+2. Pass the returned options to ``navigator.credentials.get()``
+3. Send the assertion JSON (including ``session_id``) as the ``code`` field
+
+``MFA_UPDATE_PRIMARY_METHOD_REQUIRED_PRIMARY_CODE`` works the same way with two
+differences: the proof is verified against your **current primary** method, so
+request the challenge for that method rather than the one you are promoting,
+and send the result as ``primary_code`` instead of ``code``.
+
+Code-based methods return an empty payload from this endpoint.
 
 Testing MFA Flow
 ----------------

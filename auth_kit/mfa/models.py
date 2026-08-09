@@ -103,6 +103,62 @@ class MFAMethodManager(Manager["MFAMethod"]):
         except self.model.DoesNotExist as e:
             raise MFAMethodDoesNotExistError() from e
 
+    def get_method_to_challenge(self, user_id: Any) -> "MFAMethod":
+        """
+        Retrieve the MFA method a user should be challenged with.
+
+        Prefers the primary method, but falls back to any active one. Whether a
+        user has MFA at all is decided by having an active method, never by
+        having a primary: a user left without a primary (by deleting it, or by
+        an admin edit) must still be challenged rather than silently logged in
+        with a single factor.
+
+        Args:
+            user_id: User identifier
+
+        Returns:
+            Primary active method if set, otherwise the oldest active method
+
+        Raises:
+            MFAMethodDoesNotExistError: If the user has no active method
+        """
+        method = (
+            self.filter(user_id=user_id, is_active=True)
+            .order_by("-is_primary", "pk")
+            .first()
+        )
+        if not method:
+            raise MFAMethodDoesNotExistError()
+        return method
+
+    def promote_new_primary(self, user_id: Any) -> "MFAMethod | None":
+        """
+        Give a user a primary method again if they have none.
+
+        Must run inside a transaction: the caller's active methods are locked
+        so two concurrent removals cannot both promote a successor and trip
+        the one-primary-per-user constraint.
+
+        Args:
+            user_id: User identifier
+
+        Returns:
+            The newly promoted method, or None if one already exists or the
+            user has no active method left
+        """
+        active = list(
+            self.select_for_update()
+            .filter(user_id=user_id, is_active=True)
+            .order_by("pk")
+        )
+        if not active or any(method.is_primary for method in active):
+            return None
+
+        method = active[0]
+        method.is_primary = True
+        method.save(update_fields=["is_primary"])
+        return method
+
     def check_method(
         self, user_id: int | str, method_name: str, is_active: bool = True
     ) -> None:

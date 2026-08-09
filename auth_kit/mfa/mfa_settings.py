@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         MFASecondStepRequestSerializer,
     )
     from auth_kit.mfa.serializers.mfa import (
+        MFAMethodChallengeSerializer,
         MFAMethodConfigSerializer,
         MFAMethodConfirmSerializer,
         MFAMethodCreateSerializer,
@@ -150,6 +151,9 @@ class MFASetting:
     ] = ImportStr("auth_kit.mfa.serializers.login.get_mfa_second_step_serializer")
 
     # MFA Management Serializers
+    MFA_METHOD_CHALLENGE_SERIALIZER: type["MFAMethodChallengeSerializer"] = ImportStr(
+        "auth_kit.mfa.serializers.mfa.MFAMethodChallengeSerializer"
+    )
     MFA_METHOD_CONFIG_SERIALIZER: type["MFAMethodConfigSerializer"] = ImportStr(
         "auth_kit.mfa.serializers.mfa.MFAMethodConfigSerializer"
     )

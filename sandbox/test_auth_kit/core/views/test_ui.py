@@ -8,7 +8,7 @@ from rest_framework.test import APITestCase
 
 import responses
 from allauth.socialaccount.models import SocialAccount, SocialApp  # pyright: ignore
-from auth_kit.test_utils import override_auth_kit_settings
+from auth_kit.test_utils import override_auth_kit_settings, settings_context
 
 from test_utils.user_factory import UserFactory
 
@@ -174,9 +174,14 @@ class TestAuthKitUIViewWithSocial(APITestCase):
         assert response.status_code == status.HTTP_200_OK
         assert response.context["is_authenticated"] is False
 
-    @override_auth_kit_settings(USE_PASSWORDLESS=False)
     def test_passwordless_handlers_empty_when_disabled(self) -> None:
-        response = self.client.get(reverse("auth_kit_ui"))
+        # Resolve before disabling the setting. auth_kit.urls picks its routes
+        # at import time, so importing it under USE_PASSWORDLESS=False would
+        # drop the passwordless routes for every later test in this process.
+        url = reverse("auth_kit_ui")
+
+        with settings_context(USE_PASSWORDLESS=False):
+            response = self.client.get(url)
 
         assert response.status_code == status.HTTP_200_OK
         assert response.context["passwordless_handlers"] == []

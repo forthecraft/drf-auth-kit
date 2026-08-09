@@ -13,19 +13,21 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import PolymorphicProxySerializer, extend_schema
 
 from auth_kit.mfa.handlers.base import MFAHandlerRegistry
 from auth_kit.mfa.mfa_api_descriptions import (
+    MFA_METHOD_CHALLENGE_DESCRIPTION,
     MFA_METHOD_CONFIRM_DESCRIPTION,
     MFA_METHOD_CREATE_DESCRIPTION,
-    MFA_METHOD_DEACTIVATE_DESCRIPTION,
     MFA_METHOD_LIST_DESCRIPTION,
     MFA_METHOD_SEND_CODE_DESCRIPTION,
+    get_mfa_method_deactivate_description,
     get_mfa_method_delete_description,
     get_mfa_method_primary_description,
 )
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
+from auth_kit.mfa.utils import get_login_challenge_schemas
 
 
 class MFAMethodViewSet(
@@ -44,13 +46,15 @@ class MFAMethodViewSet(
         - list: Get all available MFA methods with setup status
         - create: Initialize new MFA method with backup codes
         - confirm: Activate newly created method with verification
-        - deactivate: Deactivate active non-primary method
+        - deactivate: Deactivate an active method
         - primary: Set method as primary for user
+        - challenge: Issue a verification challenge for one of the user's methods
         - send: Send verification code for testing
         - delete: Permanently remove MFA method
     """
 
     permission_classes = (IsAuthenticated,)
+    throttle_scope = "auth_kit"
     pagination_class = None
 
     def get_serializer_class(self) -> type[Any]:
@@ -156,7 +160,7 @@ class MFAMethodViewSet(
         return Response(serializer.data)
 
     @extend_schema(
-        description=MFA_METHOD_DEACTIVATE_DESCRIPTION,
+        description=get_mfa_method_deactivate_description(),
     )
     @action(
         detail=False,
@@ -202,6 +206,35 @@ class MFAMethodViewSet(
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data)
+
+    @extend_schema(
+        description=MFA_METHOD_CHALLENGE_DESCRIPTION,
+        responses=PolymorphicProxySerializer(
+            component_name="MFAMethodChallenge",
+            serializers=get_login_challenge_schemas(),
+            resource_type_field_name=None,
+        ),
+    )
+    @action(
+        detail=False,
+        methods=["post"],
+        serializer_class=auth_kit_mfa_settings.MFA_METHOD_CHALLENGE_SERIALIZER,
+    )
+    def challenge(self, request: Request, *args: Any, **kwargs: Any) -> Response:
+        """
+        Issue a challenge for one of the caller's own MFA methods.
+
+        Args:
+            request: HTTP request with method name
+            *args: Variable length argument list
+            **kwargs: Arbitrary keyword arguments
+
+        Returns:
+            Response with method-specific challenge data
+        """
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.validated_data)
 
     @extend_schema(
         description=MFA_METHOD_SEND_CODE_DESCRIPTION,

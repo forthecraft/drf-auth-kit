@@ -6,7 +6,7 @@ deactivating, and deleting MFA methods, as well as managing primary
 method selection and sending verification codes.
 """
 
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
 from django.db import transaction
 from django.utils.translation import gettext_lazy as _
@@ -20,6 +20,39 @@ from auth_kit.mfa.fields import MFAMethodField, MFAMethodSetupDataField
 from auth_kit.mfa.handlers.base import MFAHandlerRegistry
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
 from auth_kit.mfa.models import MFAMethod
+
+if TYPE_CHECKING:  # pragma: no cover
+    from django.utils.functional import _StrOrPromise
+else:
+    _StrOrPromise = str
+
+
+def check_method_removable(
+    method: MFAMethod,
+    active_error: "_StrOrPromise",
+    primary_error: "_StrOrPromise",
+) -> None:
+    """
+    Apply the shared policy on whether a factor may be taken out of use.
+
+    Deactivating a method removes it from the login flow exactly as deleting
+    it does, so both endpoints answer to the same settings. Gating only the
+    delete path would let a user bypass the operator's policy by deactivating
+    the method instead.
+
+    Args:
+        method: MFA method being removed from use
+        active_error: Message to raise when the method is active
+        primary_error: Message to raise when the method is primary
+
+    Raises:
+        ValidationError: If settings forbid removing this method
+    """
+    if auth_kit_mfa_settings.MFA_PREVENT_DELETE_ACTIVE_METHOD and method.is_active:
+        raise serializers.ValidationError(active_error)
+
+    if auth_kit_mfa_settings.MFA_PREVENT_DELETE_PRIMARY_METHOD and method.is_primary:
+        raise serializers.ValidationError(primary_error)
 
 
 class MFAMethodGenericSerializer(serializers.Serializer[dict[str, Any]]):
@@ -160,8 +193,10 @@ class MFAMethodDeactivateSerializer(MFAMethodGenericSerializer):
     """
     Serializer for deactivating active MFA methods.
 
-    Deactivates non-primary MFA methods after code verification.
-    Primary methods cannot be deactivated directly.
+    Deactivates a method after code verification, subject to the same
+    removal settings as deletion. Deactivating the primary promotes another
+    active method in its place; deactivating the last remaining method turns
+    MFA off.
 
     Attributes:
         method: MFA method name to deactivate
@@ -181,7 +216,8 @@ class MFAMethodDeactivateSerializer(MFAMethodGenericSerializer):
             Success message dictionary
 
         Raises:
-            ValidationError: If method is primary or code invalid
+            ValidationError: If deactivation is prevented by settings
+                or code is invalid
         """
         request = cast(Request, self.context.get("request"))
 
@@ -189,18 +225,22 @@ class MFAMethodDeactivateSerializer(MFAMethodGenericSerializer):
             str(request.user.pk), attrs["method"]
         )
 
-        if method.is_primary:
-            raise serializers.ValidationError(
-                _("You can only deactivate non-primary MFA method.")
-            )
+        check_method_removable(
+            method,
+            _("Cannot deactivate active MFA method"),
+            _("Cannot deactivate primary MFA method"),
+        )
 
         handler = MFAHandlerRegistry.get_handler(method)
         is_code_valid = handler.validate_otp_code(attrs["code"])
         if not is_code_valid:
             raise serializers.ValidationError(_("Invalid OTP code"))
 
-        method.is_active = False
-        method.save()
+        with transaction.atomic():
+            method.is_active = False
+            method.is_primary = False
+            method.save(update_fields=["is_active", "is_primary"])
+            auth_kit_mfa_settings.MFA_MODEL.objects.promote_new_primary(request.user.pk)
 
         return {
             "detail": _("Deactivated MFA method"),
@@ -219,7 +259,7 @@ class MFAMethodPrimaryUpdateSerializer(MFAMethodGenericSerializer):
         primary_code: Verification code from current primary method (optional)
     """
 
-    primary_code = serializers.CharField(write_only=True, required=False)
+    primary_code = serializers.CharField(write_only=True)
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         """
@@ -251,11 +291,13 @@ class MFAMethodPrimaryUpdateSerializer(MFAMethodGenericSerializer):
         method = auth_kit_mfa_settings.MFA_MODEL.objects.get_by_name(
             str(request.user.pk), attrs["method"]
         )
-        primary_method = auth_kit_mfa_settings.MFA_MODEL.objects.get_primary_active(
-            request.user.pk
-        )
 
         if auth_kit_mfa_settings.MFA_UPDATE_PRIMARY_METHOD_REQUIRED_PRIMARY_CODE:
+            # Only looked up when a code is actually required: a user whose
+            # primary was deleted has none, and must still be able to set one.
+            primary_method = auth_kit_mfa_settings.MFA_MODEL.objects.get_primary_active(
+                request.user.pk
+            )
             handler = MFAHandlerRegistry.get_handler(primary_method)
             is_code_valid = handler.validate_code(attrs["primary_code"])
             if not is_code_valid:
@@ -323,17 +365,11 @@ class MFAMethodDeleteSerializer(MFAMethodGenericSerializer):
                 name=attrs["method"], user_id=str(request.user.pk)
             )
 
-            if (
-                auth_kit_mfa_settings.MFA_PREVENT_DELETE_ACTIVE_METHOD
-                and method.is_active
-            ):
-                raise serializers.ValidationError(_("Cannot delete active MFA method"))
-
-            if (
-                auth_kit_mfa_settings.MFA_PREVENT_DELETE_PRIMARY_METHOD
-                and method.is_primary
-            ):
-                raise serializers.ValidationError(_("Cannot delete primary MFA method"))
+            check_method_removable(
+                method,
+                _("Cannot delete active MFA method"),
+                _("Cannot delete primary MFA method"),
+            )
 
             if (
                 auth_kit_mfa_settings.MFA_DELETE_ACTIVE_METHOD_REQUIRE_CODE
@@ -344,13 +380,51 @@ class MFAMethodDeleteSerializer(MFAMethodGenericSerializer):
                 if not is_code_valid:
                     raise serializers.ValidationError(_("Invalid OTP code"))
 
-            method.delete()
+            with transaction.atomic():
+                method.delete()
+                auth_kit_mfa_settings.MFA_MODEL.objects.promote_new_primary(
+                    request.user.pk
+                )
 
         except auth_kit_mfa_settings.MFA_MODEL.DoesNotExist as e:
             raise serializers.ValidationError(_("Method does not exist")) from e
         return {
             "detail": _("Deleted MFA method"),
         }
+
+
+class MFAMethodChallengeSerializer(serializers.Serializer[dict[str, Any]]):
+    """
+    Serializer for issuing a challenge for one of the caller's own methods.
+
+    Lets challenge-response methods such as WebAuthn be verified outside the
+    login flow, where no ephemeral token is available.
+
+    Attributes:
+        method: MFA method name to obtain a challenge for
+    """
+
+    method = MFAMethodField(write_only=True)
+
+    def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
+        """
+        Build the method-specific challenge for the requesting user.
+
+        Args:
+            attrs: Input attributes dictionary
+
+        Returns:
+            Method-specific challenge data
+
+        Raises:
+            MFAMethodDoesNotExistError: If the caller has no such method
+        """
+        request = cast(Request, self.context["request"])
+        method = auth_kit_mfa_settings.MFA_MODEL.objects.get_by_name(
+            str(request.user.pk), attrs["method"]
+        )
+        handler = MFAHandlerRegistry.get_handler(method)
+        return handler.get_login_challenge()
 
 
 class MFAMethodSendCodeSerializer(MFAMethodGenericSerializer):

@@ -199,6 +199,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/MFAMethodCreate'
           description: ''
+  /auth/mfa/challenge/:
+    post:
+      operationId: mfa_challenge_create
+      description: Get a challenge to verify one of your own MFA methods. WebAuthn
+        returns ceremony options to sign; code-based methods return an empty payload.
+      tags:
+      - mfa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFAMethodChallengeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFAMethodChallengeRequest'
+        required: true
+      security:
+      - TokenAuthentication: []
+        TokenCookieAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFAMethodChallenge'
+          description: ''
   /auth/mfa/confirm/:
     post:
       operationId: mfa_confirm_create
@@ -230,8 +256,8 @@ paths:
     post:
       operationId: mfa_deactivate_create
       description: Deactivate an active MFA method. Requires verification code from
-        the method itself. Cannot deactivate primary methods - set another method
-        as primary first.
+        the method itself. Deactivating the primary method promotes another active
+        method.
       tags:
       - mfa
       requestBody:
@@ -898,6 +924,26 @@ components:
           minLength: 1
       required:
       - ephemeral_token
+    MFAMethodChallenge:
+      oneOf:
+      - $ref: '#/components/schemas/WebAuthnAuthenticationOptions'
+    MFAMethodChallengeRequest:
+      type: object
+      description: |-
+        Serializer for issuing a challenge for one of the caller's own methods.
+
+        Lets challenge-response methods such as WebAuthn be verified outside the
+        login flow, where no ephemeral token is available.
+
+        Attributes:
+            method: MFA method name to obtain a challenge for
+      properties:
+        method:
+          allOf:
+          - $ref: '#/components/schemas/MethodEnum'
+          writeOnly: true
+      required:
+      - method
     MFAMethodConfig:
       type: object
       description: |-
@@ -1012,8 +1058,10 @@ components:
       description: |-
         Serializer for deactivating active MFA methods.
 
-        Deactivates non-primary MFA methods after code verification.
-        Primary methods cannot be deactivated directly.
+        Deactivates a method after code verification, subject to the same
+        removal settings as deletion. Deactivating the primary promotes another
+        active method in its place; deactivating the last remaining method turns
+        MFA off.
 
         Attributes:
             method: MFA method name to deactivate
@@ -1027,8 +1075,10 @@ components:
       description: |-
         Serializer for deactivating active MFA methods.
 
-        Deactivates non-primary MFA methods after code verification.
-        Primary methods cannot be deactivated directly.
+        Deactivates a method after code verification, subject to the same
+        removal settings as deletion. Deactivating the primary promotes another
+        active method in its place; deactivating the last remaining method turns
+        MFA off.
 
         Attributes:
             method: MFA method name to deactivate

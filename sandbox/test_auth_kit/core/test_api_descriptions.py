@@ -13,6 +13,7 @@ from auth_kit.api_descriptions import (
     get_register_description,
 )
 from auth_kit.mfa.mfa_api_descriptions import (
+    get_mfa_method_deactivate_description,
     get_mfa_method_delete_description,
     get_mfa_method_primary_description,
 )
@@ -139,3 +140,25 @@ class TestMFAApiDescriptions(TestCase):
         desc = str(get_mfa_method_delete_description())
         assert "Cannot delete" not in desc
         assert "Requires verification" not in desc
+
+    @override_auth_kit_settings(MFA_PREVENT_DELETE_ACTIVE_METHOD=True)
+    def test_deactivate_description_when_removal_disabled(self) -> None:
+        desc = str(get_mfa_method_deactivate_description())
+        assert "Deactivation is disabled by configuration." in desc
+
+    @override_auth_kit_settings(
+        MFA_PREVENT_DELETE_ACTIVE_METHOD=False,
+        MFA_PREVENT_DELETE_PRIMARY_METHOD=True,
+    )
+    def test_deactivate_description_when_primary_protected(self) -> None:
+        desc = str(get_mfa_method_deactivate_description())
+        assert "Cannot deactivate primary methods." in desc
+
+    @override_auth_kit_settings(
+        MFA_PREVENT_DELETE_ACTIVE_METHOD=False,
+        MFA_PREVENT_DELETE_PRIMARY_METHOD=False,
+    )
+    def test_deactivate_description_without_restrictions(self) -> None:
+        desc = str(get_mfa_method_deactivate_description())
+        assert "promotes another active method" in desc
+        assert "Cannot deactivate" not in desc

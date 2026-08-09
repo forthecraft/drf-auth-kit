@@ -1,3 +1,10 @@
+## v1.8.0 (2026-08-09)
+
+### Feat
+
+- **mfa**: add method challenge endpoint and primary promotion
+- add passwordless login and WebAuthn passkey support
+
 ## v1.7.0 (2026-08-08)
 
 ### Feat

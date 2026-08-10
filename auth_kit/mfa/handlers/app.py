@@ -5,7 +5,7 @@ This module provides TOTP-based multi-factor authentication using
 authenticator applications like Google Authenticator, Authy, etc.
 """
 
-from django.contrib.auth.models import User
+from django.contrib.auth.base_user import AbstractBaseUser
 from rest_framework import serializers
 
 from ..mfa_settings import auth_kit_mfa_settings
@@ -51,7 +51,7 @@ class MFAAppHandler(MFABaseHandler):
         """
         return AppSetupSerializer
 
-    def _create_qr_link(self, user: User) -> str:
+    def _create_qr_link(self, user: AbstractBaseUser) -> str:
         """
         Create provisioning URI for authenticator app.
 
@@ -62,7 +62,7 @@ class MFAAppHandler(MFABaseHandler):
             TOTP provisioning URI string
         """
         return self._get_otp().provisioning_uri(
-            getattr(user, User.USERNAME_FIELD),
+            user.get_username(),
             self.APPLICATION_ISSUER_NAME,
         )
 

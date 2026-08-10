@@ -1,3 +1,9 @@
+## v1.8.1 (2026-08-10)
+
+### Fix
+
+- **mfa**: resolve username field from concrete user model
+
 ## v1.8.0 (2026-08-09)
 
 ### Feat

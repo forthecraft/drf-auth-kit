@@ -91,6 +91,22 @@ jobs:
         env:
           TOX_GH_MAJOR_MINOR: ${{ matrix.py }}
 
+  pkgcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+      - name: Install tox
+        run: uv tool install --python-preference only-managed --python 3.13 tox --with tox-uv --with tox-gh
+      - name: Install Python
+        run: uv python install --python-preference only-managed 3.13
+      - name: Run fresh-install dependency smoke test
+        run: tox -e pkgcheck313
+
   coverage:
     runs-on: ubuntu-latest
     services:

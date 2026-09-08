@@ -5,8 +5,14 @@ This module provides the MFAMethod model and manager for storing and managing
 user MFA configurations including secrets, backup codes, and method status.
 """
 
+import sys
 from collections.abc import Iterable
 from typing import TYPE_CHECKING, Any, ClassVar
+
+if sys.version_info >= (3, 11):
+    from typing import Self
+else:
+    from typing_extensions import Self
 
 import django
 from django.conf import settings
@@ -33,8 +39,6 @@ from django.db.models import (
     JSONField as BaseJSONField,
 )
 from django.utils.translation import gettext_lazy as _
-
-from typing_extensions import Self
 
 from .exceptions import MFAMethodDoesNotExistError
 from .mfa_settings import auth_kit_mfa_settings

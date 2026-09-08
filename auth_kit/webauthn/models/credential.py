@@ -6,7 +6,13 @@ and managing WebAuthn/FIDO2 credentials used for passwordless login
 and multi-factor authentication.
 """
 
+import sys
 from typing import TYPE_CHECKING, Any, ClassVar
+
+if sys.version_info >= (3, 11):
+    from typing import Self
+else:
+    from typing_extensions import Self
 
 from django.conf import settings
 from django.db.models import (
@@ -38,8 +44,6 @@ from django.db.models import (
     PositiveIntegerField as BasePositiveIntegerField,
 )
 from django.utils.translation import gettext_lazy as _
-
-from typing_extensions import Self
 
 from auth_kit.webauthn.exceptions import WebAuthnCredentialDoesNotExistError
 

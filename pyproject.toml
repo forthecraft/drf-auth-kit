@@ -82,7 +82,8 @@ dependencies = [
   "djangorestframework-simplejwt>=5,<6",
   "djangorestframework>=3,<4",
   "drf-spectacular",
-  "structlog"
+  "structlog",
+  "typing-extensions>=4.0; python_full_version < '3.11'"
 ]
 description = "Modern Django REST Framework authentication toolkit with JWT cookies, social login, and 2FA support"
 license = {file = "LICENSE"}

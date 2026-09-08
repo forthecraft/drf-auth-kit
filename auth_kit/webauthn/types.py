@@ -9,9 +9,13 @@ Note: WebAuthn mandates camelCase key names in the JSON exchanged with
 the browser, so the N815 lint rule is suppressed for this module.
 """
 
+import sys
 from typing import Literal, TypedDict
 
-from typing_extensions import NotRequired
+if sys.version_info >= (3, 11):
+    from typing import NotRequired
+else:
+    from typing_extensions import NotRequired
 
 AttestationPreference = Literal["none", "indirect", "direct", "enterprise"]
 UserVerification = Literal["required", "preferred", "discouraged"]

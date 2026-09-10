@@ -10,12 +10,12 @@ the browser, so the N815 lint rule is suppressed for this module.
 """
 
 import sys
-from typing import Literal, TypedDict
+from typing import Literal
 
 if sys.version_info >= (3, 11):
-    from typing import NotRequired
+    from typing import NotRequired, TypedDict
 else:
-    from typing_extensions import NotRequired
+    from typing_extensions import NotRequired, TypedDict
 
 AttestationPreference = Literal["none", "indirect", "direct", "enterprise"]
 UserVerification = Literal["required", "preferred", "discouraged"]

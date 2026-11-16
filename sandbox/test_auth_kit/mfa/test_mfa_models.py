@@ -112,12 +112,16 @@ class TestMFAMethodManager(TestCase):
     def test_create_with_backup_codes(self) -> None:
         """Test creating method with backup codes."""
         method, raw_codes = MFAMethod.objects.create_with_backup_codes(
-            user=self.user, name="app", secret="test_secret"
+            user=self.user,
+            name="app",
+            # Stored as opaque string on the model; use a valid TOTP secret
+            # so callers that build pyotp.TOTP stay compatible with 2.12+.
+            secret="JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP",
         )
 
         assert method.user == self.user
         assert method.name == "app"
-        assert method.secret == "test_secret"
+        assert method.secret == "JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP"
         assert len(raw_codes) > 0
         assert len(method.backup_codes) > 0
         assert isinstance(raw_codes, set)

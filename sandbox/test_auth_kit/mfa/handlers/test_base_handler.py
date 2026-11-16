@@ -41,7 +41,8 @@ class TestMFABaseHandler(TestCase):
         self.mfa_method = MFAMethodFactory.create(
             user=self.user,
             name="test_handler",
-            secret="JBSWY3DPEHPK3PXP",  # Base32 encoded secret
+            # 160-bit base32 secret (pyotp >= 2.12 requires >= 112 bits)
+            secret="JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP",
         )
         self.handler = MFAHandlerSubclass(self.mfa_method)
 

@@ -62,8 +62,8 @@ class MFAAppHandler(MFABaseHandler):
             TOTP provisioning URI string
         """
         return self._get_otp().provisioning_uri(
-            user.get_username(),
-            self.APPLICATION_ISSUER_NAME,
+            name=user.get_username(),
+            issuer_name=self.APPLICATION_ISSUER_NAME,
         )
 
 

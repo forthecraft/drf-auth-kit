@@ -127,7 +127,8 @@ class TestEmailLinkPasswordlessFlow(APITestCase):
         MFAMethod.objects.create(
             user=self.user,
             name="app",
-            secret="JBSWY3DPEHPK3PXP",
+            # 160-bit base32 secret (pyotp >= 2.12 requires >= 112 bits)
+            secret="JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP",
             is_active=True,
             is_primary=True,
         )

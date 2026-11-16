@@ -94,11 +94,11 @@ version = "1.8.1"
 [project.optional-dependencies]
 all = [
   "django-allauth[socialaccount]>=65.5.0",
-  "pyotp>=2.9.0",
+  "pyotp>=2.9.0,<=2.12.0",
   "webauthn>=2.0.0"
 ]
 mfa = [
-  "pyotp>=2.9.0"
+  "pyotp>=2.9.0,<=2.12.0"
 ]
 social = [
   "django-allauth[socialaccount]>=65.5.0"

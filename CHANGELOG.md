@@ -1,3 +1,11 @@
+## Unreleased
+
+### Fix
+
+- **mfa**: use keyword arguments for pyotp 2.12 compatibility
+- **mfa**: cap email TOTP interval at 120s (pyotp 2.12 limit)
+- **mfa**: use >=160-bit TOTP secrets in tests (pyotp 2.12 minimum)
+
 ## v1.8.1 (2026-08-10)
 
 ### Fix

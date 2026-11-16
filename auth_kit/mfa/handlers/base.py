@@ -95,7 +95,7 @@ class MFABaseHandler:
         Returns:
             Configured TOTP instance
         """
-        return TOTP(self.mfa_method.secret, interval=self.TOTP_INTERVAL)
+        return TOTP(s=self.mfa_method.secret, interval=self.TOTP_INTERVAL)
 
     def send_code(self) -> None:
         """Send verification code to user. Override in subclasses."""

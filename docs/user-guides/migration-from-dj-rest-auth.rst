@@ -201,6 +201,8 @@ Step 4: Update Settings
      - ``AUTH_COOKIE_SECURE``
    * - ``JWT_AUTH_SAMESITE``
      - ``AUTH_COOKIE_SAMESITE``
+   * - ``JWT_AUTH_COOKIE_USE_CSRF``
+     - ``AUTH_COOKIE_ENFORCE_CSRF`` (enabled by default)
    * - ``JWT_AUTH_COOKIE_DOMAIN``
      - ``AUTH_COOKIE_DOMAIN``
    * - ``JWT_AUTH_COOKIE_PATH``

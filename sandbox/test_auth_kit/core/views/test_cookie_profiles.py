@@ -1,5 +1,6 @@
 """Integration tests for cookie profiles through the HTTP view stack."""
 
+from django.test import override_settings
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.response import Response
@@ -98,6 +99,7 @@ class TestProfileApiIntegration(APITestCase):
         self.login_data = {"username": "testuser", "password": "complexpass123"}
 
     @override_auth_kit_settings(AUTH_COOKIE_PROFILES=APP_B_PROFILES)
+    @override_settings(CSRF_TRUSTED_ORIGINS=[APP_B_ORIGIN])
     def test_full_lifecycle_under_profile(self) -> None:
         login = self.client.post(
             self.login_url, self.login_data, format="json", HTTP_ORIGIN=APP_B_ORIGIN

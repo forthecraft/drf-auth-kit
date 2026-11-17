@@ -27,6 +27,7 @@ Here's a complete list of all available AUTH_KIT settings with their defaults:
         'AUTH_COOKIE_SAMESITE': 'Lax',         # 'Lax', 'Strict', or 'None'
         'AUTH_COOKIE_DOMAIN': None,            # Cookie domain
         'AUTH_COOKIE_PARTITIONED': False,      # Enable CHIPS Partitioned attribute
+        'AUTH_COOKIE_ENFORCE_CSRF': True,      # Reject cross-origin cookie requests
 
         # ===================================================================
         # COOKIE PROFILES
@@ -394,6 +395,48 @@ Cookie Configuration
         to be ``True``. A Django system check warning will be raised if these conditions
         are not met.
 
+**AUTH_COOKIE_ENFORCE_CSRF** (default: ``True``)
+    Reject ``POST``, ``PUT``, ``PATCH`` and ``DELETE`` requests authenticated with
+    the auth cookie when they come from an untrusted origin. See
+    :ref:`cookie-csrf-protection`.
+
+    .. versionchanged:: 2.0
+       Enabled by default.
+
+.. _cookie-csrf-protection:
+
+CSRF Protection for Cookie Authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Browsers attach cookies to requests that other sites trigger. To stop those
+requests acting as your users, Auth Kit checks the headers browsers set on
+every request, ``Sec-Fetch-Site`` and ``Origin``. No CSRF token is needed.
+
+An unsafe cookie-authenticated request is allowed when:
+
+- ``Sec-Fetch-Site`` is ``same-origin`` (or ``none``, typed by the user);
+- its ``Origin`` is listed in Django's ``CSRF_TRUSTED_ORIGINS``;
+- older browsers without ``Sec-Fetch-Site``: ``Origin`` matches the API's scheme
+  and host (behind a TLS proxy, set ``SECURE_PROXY_SSL_HEADER``);
+- neither header is sent, as with mobile apps and server-side clients.
+
+Everything else gets ``403 CSRF Failed: Untrusted origin.`` Requests using the
+``Authorization`` header and ``GET``/``HEAD``/``OPTIONS`` requests are not checked.
+
+**Same-origin frontends**, including dev servers that proxy the API, need no
+changes.
+
+**Frontends on another origin**, even a sibling subdomain such as
+``app.example.com`` calling ``api.example.com``, must be trusted:
+
+.. code-block:: python
+
+    CSRF_TRUSTED_ORIGINS = ['https://app.example.com']
+
+System checks warn when ``AUTH_COOKIE_SAMESITE='None'`` is used with enforcement
+disabled (``auth_kit.W004``) or with no ``CSRF_TRUSTED_ORIGINS``
+(``auth_kit.W005``).
+
 Cookie Profiles
 ~~~~~~~~~~~~~~~~~
 
@@ -435,9 +478,10 @@ Example — a primary session plus a per-origin ``app-b`` session::
 Because the API sets all cookies under its own domain, the browser sends every
 profile's cookie on each request; the profile only chooses which one to read or
 write. For cross-origin SPAs this also requires ``AUTH_COOKIE_SAMESITE='None'``
-with ``AUTH_COOKIE_SECURE=True`` and the origins on your CORS credentialed
-allowlist. A profile is a cookie selector, not a security boundary — each
-cookie is an independently signed token.
+with ``AUTH_COOKIE_SECURE=True``, the origins on your CORS credentialed
+allowlist, and the origins in ``CSRF_TRUSTED_ORIGINS`` (see
+:ref:`cookie-csrf-protection`). A profile is a cookie selector, not a security
+boundary — each cookie is an independently signed token.
 
 JWT-Specific Settings
 ~~~~~~~~~~~~~~~~~~~~~

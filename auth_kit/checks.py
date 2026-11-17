@@ -4,6 +4,7 @@ Django system checks for Auth Kit configuration.
 
 from typing import Any
 
+from django.conf import settings
 from django.core.checks import Warning, register
 
 from auth_kit.app_settings import auth_kit_settings
@@ -68,5 +69,40 @@ def check_cookie_profiles(**kwargs: Any) -> list[Warning]:
                     id="auth_kit.W003",
                 )
             )
+
+    return errors
+
+
+@register()
+def check_cookie_csrf_config(**kwargs: Any) -> list[Warning]:
+    """Verify the cross-origin protection setup for cookie authentication."""
+    errors: list[Warning] = []
+
+    if (
+        not auth_kit_settings.USE_AUTH_COOKIE
+        or auth_kit_settings.AUTH_COOKIE_SAMESITE != "None"
+    ):
+        return errors
+
+    if not auth_kit_settings.AUTH_COOKIE_ENFORCE_CSRF:
+        errors.append(
+            Warning(
+                "AUTH_COOKIE_ENFORCE_CSRF is disabled while "
+                'AUTH_COOKIE_SAMESITE is "None".',
+                hint="Any site can send requests authenticated as your users.",
+                id="auth_kit.W004",
+            )
+        )
+    elif not settings.CSRF_TRUSTED_ORIGINS:
+        errors.append(
+            Warning(
+                'AUTH_COOKIE_SAMESITE is "None" but CSRF_TRUSTED_ORIGINS is empty.',
+                hint=(
+                    "Unsafe requests from cross-origin frontends will be "
+                    "rejected. Add their origins to CSRF_TRUSTED_ORIGINS."
+                ),
+                id="auth_kit.W005",
+            )
+        )
 
     return errors

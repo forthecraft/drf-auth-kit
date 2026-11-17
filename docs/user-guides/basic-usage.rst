@@ -333,25 +333,10 @@ For header-based authentication:
 
 **CSRF Protection**
 
-When using cookie authentication, include CSRF tokens for state-changing requests:
-
-.. code-block:: javascript
-
-    // Get CSRF token from cookie or meta tag
-    function getCSRFToken() {
-        return document.querySelector('[name=csrfmiddlewaretoken]')?.value ||
-               getCookie('csrftoken');
-    }
-
-    // Include in POST requests
-    const response = await fetch('/api/auth/logout/', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken(),
-        }
-    });
+Cookie-authenticated ``POST``, ``PUT``, ``PATCH`` and ``DELETE`` requests from
+other sites are rejected based on the browser's ``Sec-Fetch-Site`` and ``Origin``
+headers, so no CSRF token is needed. A frontend on another origin must be listed
+in ``CSRF_TRUSTED_ORIGINS``. See :ref:`cookie-csrf-protection`.
 
 Next Steps
 ----------

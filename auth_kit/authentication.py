@@ -8,6 +8,7 @@ JWT tokens, DRF tokens, and custom authentication backends.
 from typing import Any
 
 from django.contrib.auth.base_user import AbstractBaseUser
+from rest_framework import exceptions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.request import Request
 
@@ -19,6 +20,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from auth_kit.app_settings import auth_kit_settings
 from auth_kit.cookie_profiles import resolve_cookie_profile
+from auth_kit.csrf import is_cross_origin_request
 
 
 class AuthKitCookieAuthentication(JWTAuthentication):
@@ -43,7 +45,9 @@ class AuthKitCookieAuthentication(JWTAuthentication):
             Tuple of (user, token) if authentication succeeds, None otherwise
         """
         header = self.get_header(request)
+        from_cookie = False
         if header is None and cookie_name:  # pyright: ignore
+            from_cookie = True
             raw_token = request.COOKIES.get(cookie_name)
             raw_token = raw_token.encode("utf-8") if raw_token else None
         else:
@@ -54,14 +58,25 @@ class AuthKitCookieAuthentication(JWTAuthentication):
 
         token = raw_token.decode()
 
+        result: tuple[Any, Any] | None
         if auth_kit_settings.AUTH_TYPE == "jwt":
             validated_token = self.get_validated_token(raw_token)
             user: AbstractBaseUser = self.get_user(validated_token)
-            return user, validated_token
+            result = user, validated_token
         elif auth_kit_settings.AUTH_TYPE == "token":
-            return self.authenticate_credentials(token)
+            result = self.authenticate_credentials(token)
         else:
-            return self.custom_authenticate(token)
+            result = self.custom_authenticate(token)
+
+        if result and from_cookie and auth_kit_settings.AUTH_COOKIE_ENFORCE_CSRF:
+            self.enforce_csrf(request)
+
+        return result
+
+    def enforce_csrf(self, request: Request) -> None:
+        """Reject unsafe cookie-authenticated requests from untrusted origins."""
+        if is_cross_origin_request(request):
+            raise exceptions.PermissionDenied("CSRF Failed: Untrusted origin.")
 
     def authenticate_credentials(
         self, key: str

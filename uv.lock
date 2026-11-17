@@ -887,7 +887,7 @@ wheels = [
 
 [[package]]
 name = "drf-auth-kit"
-version = "1.8.1"
+version = "2.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "django" },

@@ -1,3 +1,18 @@
+## v2.0.0 (2026-11-17)
+
+### BREAKING CHANGE
+
+- frontends on another origin must be listed in
+CSRF_TRUSTED_ORIGINS. Set AUTH_COOKIE_ENFORCE_CSRF=False to opt out.
+
+### Feat
+
+- **auth**: reject cross-origin cookie-authenticated requests
+
+### Fix
+
+- **mfa**: support pyotp 2.12
+
 ## v1.8.1 (2026-08-10)
 
 ### Fix

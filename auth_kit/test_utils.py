@@ -110,6 +110,7 @@ def settings_context(**settings: Any) -> Iterator[None]:  # noqa
             s.user_settings = {}  # type: ignore[attr-defined]
 
     def _find_settings_obj(key: str) -> Any:
+        """Return the settings object that defines ``key``, if any."""
         for s in all_settings:
             if hasattr(s, key):
                 return s

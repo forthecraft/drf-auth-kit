@@ -17,12 +17,14 @@ class MFAEmailHandler(MFABaseHandler):
     """
     Email-based MFA handler.
 
-    Sends TOTP verification codes to user's email address. Uses longer
-    TOTP intervals to account for email delivery delays.
+    Sends TOTP verification codes to user's email address. Codes stay valid
+    for 2-3 minutes to allow for email delivery delays.
     """
 
     NAME = "email"
-    TOTP_INTERVAL = 180  # 3 minutes due to email delivery delays
+    # pyotp caps the interval at 120s; the window keeps codes valid 2-3 minutes.
+    TOTP_INTERVAL = 60
+    TOTP_VALID_WINDOW = 2
     EMAIL_PLAIN_TEMPLATE = "auth_kit/mfa/email/code.txt"
     EMAIL_HTML_TEMPLATE = "auth_kit/mfa/email/code.html"
     EMAIL_SUBJECT = "Your verification code"

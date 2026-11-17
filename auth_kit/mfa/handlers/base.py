@@ -12,7 +12,7 @@ from django.contrib.auth.hashers import check_password
 from rest_framework import serializers
 from rest_framework.serializers import Serializer
 
-from pyotp import TOTP
+from pyotp.totp import TOTP
 
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
 from auth_kit.mfa.models import MFAMethod

@@ -9,6 +9,7 @@ import factory
 from auth_kit.mfa.mfa_settings import auth_kit_mfa_settings
 from auth_kit.mfa.models import MFAMethod
 from auth_kit.mfa.services.backup_codes import generate_backup_codes
+from pyotp import random_base32
 
 from .model_factory import BaseModelFactory
 
@@ -21,7 +22,7 @@ class MFAMethodFactory(BaseModelFactory[MFAMethod]):
 
     user = factory.SubFactory("test_utils.user_factory.UserFactory")
     name = "app"
-    secret = factory.Faker("pystr", min_chars=32, max_chars=32)
+    secret = factory.LazyFunction(lambda: random_base32(length=32))
     is_active = True
     is_primary = False
 
